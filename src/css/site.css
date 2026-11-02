@@ -743,10 +743,30 @@ code {
   gap: var(--space-5);
 }
 
+.footer__columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-11);
+}
+
+@media (max-width: 600px) {
+  .footer__columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.footer__columns > div > * + * {
+  margin-top: var(--space-4);
+}
+
+.footer__about {
+  color: var(--graphite);
+  font-size: 0.9375rem;
+}
+
 .footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-11);
+  display: grid;
+  gap: var(--space-2);
   padding: 0;
   list-style: none;
   font-size: 0.9375rem;
