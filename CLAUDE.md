@@ -61,7 +61,31 @@ Pages › Build and deployment). The compiled JavaScript is never committed.
 - HTML works without JavaScript; TypeScript only adds behavior (copying, toggles).
 - Colors, type, radii and spacing only from `tokens.css`. Add a token instead of a literal.
 - Fonts are self-hosted in `src/fonts/` (Fraunces is not added yet; until it is, the serif stack
-  falls back to New York on Apple devices through `ui-serif`).
+  falls back to New York in Safari through `ui-serif`, and to Georgia elsewhere).
+- Illustrations live in `src/img/<name>-{light,dark}.svg`, copied from
+  `../dush-desktop/Design/illustrations` without their `<metadata>` block, and shown through a
+  `<picture>` whose dark `<source>` follows `prefers-color-scheme`.
+
+### Motion
+
+Small, quick and optional, as in the app (design guide §11):
+
+- An element with `data-reveal` that starts below the fold waits out of sight, then fades and
+  slides up 28px once, as it scrolls into view (`ts/reveal.ts`). Elements arriving together come
+  in 90ms apart. Nothing on screen at load ever hides.
+- Inside a revealed element, share bars and the composition bar grow from the left, and a number
+  with `data-count` (plus `data-decimals`) counts up from zero (`ts/count.ts`). The final value is
+  written in the HTML; an inline number keeps its width while it counts.
+- The header draws its hairline once the page scrolls (`ts/header.ts`).
+- With `prefers-reduced-motion`, nothing moves: the scripts skip the effects and the CSS drops
+  every transition. Without JavaScript, everything is simply shown.
+- No looping, parallax or decorative animation. Timings are tokens in `tokens.css`.
+
+### Placeholders to replace
+
+- The **Mac App Store link** is temporary: `https://apps.apple.com/app/id0000000000`, in the hero
+  and the closing section of `src/index.html` (each marked `TEMP`). Replace both when the app is
+  listed.
 
 ## The platform (sibling folders in `../`)
 

@@ -54,6 +54,23 @@
   --space-12: 32px;
 
   --page-width: 880px;
+  --space-section: 112px;
+
+  /* Lines: a sheet's outline is ink at 0.7, a quiet control's at 0.45 */
+  --outline: color-mix(in srgb, var(--ink) 70%, transparent);
+  --outline-quiet: color-mix(in srgb, var(--ink) 45%, transparent);
+
+  /* Motion: small, quick and optional. None with prefers-reduced-motion. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-reveal: 700ms;
+  --duration-fill: 900ms;
+  --reveal-distance: 28px;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --space-section: 72px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
