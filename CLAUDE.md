@@ -1,0 +1,202 @@
+# dush-web
+
+The website of **dush**, a fast, read-only disk space analyzer for macOS: the `dush` CLI, its
+engine DushCore and the Mac app "dush for Mac". Free and open source (MIT).
+
+Tagline: *"See what's taking up space. What to do about it is up to you."*
+
+## How this site is built
+
+- Plain **HTML, CSS and TypeScript**. No framework, no UI library, no bundler.
+- Keep everything linear and simple: one file per page, one stylesheet of tokens and components,
+  small TypeScript modules compiled by `tsc` to plain ES modules.
+- Hosted on **GitHub Pages** (`github.com/AndreaRR18/dush-web`). Still to decide: commit the
+  compiled `.js`, or build it with a GitHub Action.
+- No analytics, trackers, cookies or third-party embeds. Fonts are self-hosted, not loaded from
+  Google Fonts (see "Promises" below).
+
+## The platform (sibling folders in `../`)
+
+| Folder | What | State |
+|---|---|---|
+| `../dush` | The CLI (Swift). `brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git` then `brew install andre_rori/tap/dush` | v1.2.0, released |
+| `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.0.0 |
+| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | All features implemented, **not released yet** (Developer ID + Homebrew cask, to be confirmed) |
+
+Source code lives on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core,dush-desktop}`.
+
+**Where the truth lives.** The sibling repos win over this file. Read them before writing copy or
+styles:
+
+- `../dush-desktop/docs/macos-app-spec.md`: product, principles (§2), features (§6–7), copy (§10),
+  sample data (§11).
+- `../dush-desktop/docs/macos-app-visual-style.md`: the "Paper" style.
+- `../dush-desktop/docs/macos-app-design-guide.md`: tokens, spacing, components, copy rules.
+- `../dush-desktop/DushMac/Sources/DesignSystem/Theme/`: `DushTheme.swift` (exact colors),
+  `Sketch.swift` (the hand-drawn pen), `PaperButtonStyle.swift`, `DushLogo.swift`.
+- `../dush-desktop/DushMac/Sources/Translations/Resources/Localizable.xcstrings`: every English
+  and Italian string of the app.
+- `../dush/README.md`, `../dush-core/README.md`: CLI usage and how sizes are measured.
+
+## Promises (never break them on the site)
+
+- **dush only looks. It never deletes.** No "Delete", "Clean", "Clean Up", "Free Up Space",
+  "Move to Trash" or a bare "Remove" about files; no trash, bin, broom, eraser or "clean up"
+  imagery. In Italian: never *Elimina*, *Cancella*, *Cestina*, *Pulisci*, *Libera spazio*.
+- **No tracking, no accounts, no in-app purchases, no network.** The AI is Apple Intelligence,
+  on the Mac. So the site has no analytics, no "Sign in", "Upgrade" or "Rate us".
+- Say: *scan, look, see, biggest, Show in Finder, Copy Path, rebuilds itself, review first*.
+  Don't say: *clean, optimize, boost, junk, delete, free up space*.
+
+## Voice
+
+Playful and friendly where nothing is at stake, plain and exact about risk. Short sentences,
+active voice, no jargon, no emoji. Italian uses informal *tu* and the terms macOS uses.
+
+| Use | English | Italian |
+|---|---|---|
+| Title | What's eating your disk? | Cosa si sta mangiando il tuo disco? |
+| Promise | dush only looks. It never deletes. | dush guarda e basta. Non elimina mai. |
+| Playful line | It's a tape measure, not a snoop. | È un metro, non una spia. |
+| Welcome | Drop a folder, see what's big. | Trascina una cartella, scopri cosa pesa. |
+| Promises | No tracking. No accounts. No in-app purchases. dush never deletes your files. | Nessun tracciamento. Nessun account. Nessun acquisto in-app. dush non elimina mai i tuoi file. |
+
+Scan messages, for flavor: *Mapping your disk galaxy…*, *It's not a tumor! It's your cache…*,
+*Houston, we have a storage problem…* (full list: `../dush/Sources/dush/FunnyMessages.swift`).
+
+## The "Paper" style
+
+A measuring notebook: warm paper, ink drawn by hand, two watercolor washes, one big number in a
+book face.
+
+### Colors
+
+Define them once as CSS custom properties, with a dark set under
+`@media (prefers-color-scheme: dark)`. Pick by what a color paints, never by how it looks.
+
+| Token | Light | Dark | Paints | Never |
+|---|---|---|---|---|
+| `--sand` | `#E9E2D5` | `#151413` | Behind a sheet: the desk | Behind Graphite text |
+| `--paper` | `#F5F0E7` | `#1E1C1A` | The page | Text |
+| `--sheet` | `#FBF8F2` | `#26231F` | Raised surfaces: cards, code blocks | Text |
+| `--shelf` | `#EEE7DB` | `#1A1917` | A side or footer band | Text |
+| `--line` | `#DDD4C5` | `#3A3631` | 1px separators, tracks | Text |
+| `--ink` | `#2A2622` | `#F5F0E7` | Text, strokes | Large fills |
+| `--graphite` | `#6E655B` | `#B8AE9F` | Secondary text, captions, units | Text on Sand |
+| `--pencil` | `#8C8174` | `#7C7368` | Dashes, hatching | Any text |
+| `--teal-ink` | `#0B6E6E` | `#5FD4CF` | Teal text and icons: calm, "safe", links | Backgrounds |
+| `--orange-ink` | `#B7431A` | `#FF9A6E` | Orange text: attention, growth | Backgrounds; text on Shelf or Sand |
+| `--teal-wash` | `#BFDDD6` | `#1F4A46` | Teal fills | Behind text you must read |
+| `--orange-wash` | `#F2C3A8` | `#5A2E1C` | Orange fills | Behind text you must read |
+| `--teal-button` | `#0B6E6E` | `#0B6E6E` | The prominent button (white label, 6:1) | Anything else |
+
+- Brand colors `#2ECCCC` (teal) and `#FF6B35` (orange) appear **only** in the logo and the icon.
+  Chart fills: `#1A9E9E`, `#F05A24`.
+- Teal is calm and main; orange is attention. **No third hue, no red.** Never color alone: a state
+  is color + icon + text.
+- No pure white or black surfaces, no gradients, no glow, no drop shadows. The only shadow is
+  hatching (parallel lines at 40°) under an illustration.
+
+### Type
+
+| Role | Face | Size |
+|---|---|---|
+| Hero number | Serif, medium, tabular figures | 64–76px |
+| Page title | Serif, regular; one word may be italic in teal ink | 40–54px |
+| Large number | Serif, medium | 34–36px |
+| Section label | Serif italic | 13–18px |
+| Body, buttons, nav | System sans (`-apple-system, system-ui, sans-serif`) | — |
+| Paths, commands | System mono (`ui-monospace, SFMono-Regular, Menlo, monospace`) | — |
+
+- The serif on the web is **Fraunces**, self-hosted, standing in for Apple's New York.
+- Units are smaller and in Graphite: **64.10** GB. Sizes use decimal units like Finder
+  (1 GB = 1,000,000,000 bytes), formatted like the CLI: `21.37 GB`.
+- Italic is a voice (labels, captions, the playful line), never emphasis, never next to risk.
+- The serif is for titles, labels and numbers, never body text, buttons or paths.
+
+### Shapes and spacing
+
+- Radii: 4 (tile), 8 (small: code block, banner), 10 (row), 14 (card), 16 (drop zone), capsule
+  for buttons, pills and tags.
+- Spacing scale: 2 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 18 · 20 · 24 · 32. Page content max width
+  880px, padding 32px (16px on phones).
+- Hairlines are 1px Line. A dashed 1.5px Pencil border means "a place to drop" or "protected",
+  nothing else.
+- Prefer a separator to a card. Never nest a sheet inside a sheet.
+
+### Hand-drawn outlines
+
+Outlines of buttons, cards and dividers wobble lightly, drawn in two passes like a pen going over
+a line. Text, icons and numbers stay crisp. Port `Sketch.swift` to TypeScript and emit SVG paths;
+**no SVG filters** (they blur and rasterize):
+
+1. Sample points along the outline every 6px (rounded rectangle: arcs at the corners, straight
+   edges between).
+2. Push each point along its normal by
+   `wobble × 0.5 × (sin(d·0.045+p0) + 0.4·sin(d·0.11+p1) + 0.15·sin(d·0.27+p2)) / 1.55`, where
+   `d` is the distance along the outline and the phases come from a seed:
+   `p_i = ((seed·7919 + i·104729) mod 628) / 100`.
+3. Join the points with quadratic curves through their midpoints.
+4. Border = one pass at full width (1.2px) + one pass at half width, 35% opacity, seed + 11,
+   wobble 1.5. Sheets use ink at 0.7.
+
+The wobble depends only on the seed and the distance, never on the size, so outlines don't shimmer
+on resize. Shapes larger than 4000px or smaller than 2px get a plain path.
+
+### Buttons
+
+| Kind | Look | Use |
+|---|---|---|
+| Prominent | Teal `#0B6E6E` capsule, white label, ink outline | The one main action of a section |
+| Outline | Ink outline, no fill (orange-ink variant for Full Scan only) | Secondary actions |
+| Quiet | Ink outline at 45% | Minor actions |
+| Selected | Teal wash under an ink outline | The chosen option of a set (tabs, EN/IT) |
+
+Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codeberg*.
+
+### Illustrations and logo
+
+- Masters: `../dush-desktop/Design/illustrations/illustration-<name>-{light,dark}.svg` (360×280:
+  home, scanning, keys, no-caches, nothing-to-compare, grows-back) and
+  `../dush-desktop/Design/icon/*.svg` (the app icon). They are drawn by `Design/paper_draw.py`;
+  never edit an exported file by hand.
+- Light and dark differ only by five colors (ink, teal wash, orange wash, paper, accent). On the
+  web, use one SVG whose colors come from CSS variables, or the two files under a `<picture>`.
+  Strip the ~8 KB C2PA `<metadata>` block from each file.
+- At most one illustration per section. They are decorative (`aria-hidden="true"`, empty `alt`),
+  with the line of copy beside them carrying the meaning. No animation beyond an optional fade
+  in, none with `prefers-reduced-motion`.
+- Allowed subjects: folders, sheets, crates, a tape measure, a magnifying glass, keys, a laptop, a
+  sprout. No people, faces, mascots or text inside a drawing.
+- The logo is flat, in brand colors: on a 32-unit grid, a tab `(3,5,11×6, r2)` in `#1A9E9E`, a
+  body `(3,8,26×19, r3.5)` in `#2ECCCC`, three bars at x 7, y 12.5/17/21.5, widths 18/13/8,
+  height 2.6, r1.3, in `#FF6B35`. Never recolor, outline or animate it.
+
+## What dush does (for feature copy)
+
+- **CLI:** `dush [paths] [--min-size 1GB] [-f|-d] [-t N] [-e] [--exclude NAME] [--json]`. With no
+  path, a curated cleanup scan of 34 cache and temp locations. Sizes match `du`; ~150,000 items
+  in about a second. Live progress with funny messages. `dush update`. Read-only.
+- **Mac app:**
+  - Drop a folder or choose one; a separate Full Scan; a Downloads & Desktop quick scan.
+  - Live counters, a rotating funny message, the biggest items so far.
+  - Results: a big serif total, a composition bar, a list with share bars; List, Map (treemap)
+    and What changed (compares two scans). Export to JSON, Markdown, CSV.
+  - History with Undo; the only thing dush ever deletes is its own history.
+  - "Safe to delete?": Apple Intelligence on the Mac, metadata only. Verdicts: Safe to delete
+    (teal check), Check first (orange triangle), Keep it (ink minus), Protected by dush (shield,
+    dashed). Follow-up questions. Protected folders are answered locally, never sent.
+  - Developer cache guide (DerivedData, simulators, DeviceSupport, `node_modules`, npm, pnpm,
+    Yarn, Gradle, Homebrew): Show in Finder and Copy Command only; dush runs nothing.
+  - Watched folders with limits and notifications, a menu bar extra with free space, Finder's
+    "Scan with dush", Shortcuts actions, opening `dush --json` reports.
+  - English and Italian.
+
+Realistic sample numbers for mockups are in the spec §11 (e.g. `~/Library/Developer`: 64.1 GB in
+1.9 s, 412,806 items; DerivedData 21.37 GB).
+
+## Accessibility
+
+Text contrast at least 4.5:1 in both themes (Graphite never on Sand, orange text only on Paper or
+Sheet, Pencil never text). Visible focus rings, keyboard reachable, `prefers-reduced-motion` and
+`prefers-color-scheme` respected, the layout works at phone width with no horizontal scroll.
