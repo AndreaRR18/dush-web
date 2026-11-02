@@ -7,13 +7,61 @@ Tagline: *"See what's taking up space. What to do about it is up to you."*
 
 ## How this site is built
 
-- Plain **HTML, CSS and TypeScript**. No framework, no UI library, no bundler.
-- Keep everything linear and simple: one file per page, one stylesheet of tokens and components,
-  small TypeScript modules compiled by `tsc` to plain ES modules.
-- Hosted on **GitHub Pages** (`github.com/AndreaRR18/dush-web`). Still to decide: commit the
-  compiled `.js`, or build it with a GitHub Action.
-- No analytics, trackers, cookies or third-party embeds. Fonts are self-hosted, not loaded from
-  Google Fonts (see "Promises" below).
+Plain **HTML, CSS and TypeScript**. No framework, no UI library, no bundler, and nothing the page
+loads from another site: no CDN, font service, analytics, cookies or embeds. The only packages are
+the two development tools in `package.json` (`typescript`, `@types/node`), pinned to exact
+versions. Nothing from `node_modules` reaches the page.
+
+```text
+src/                 the site, as it is published
+  index.html         one HTML file per page
+  css/tokens.css     the Paper tokens (colors light/dark, type, radii, spacing); nothing else
+  css/site.css       base and components, using tokens only
+  ts/*.ts            the page's TypeScript → dist/js/*.js (import siblings as "./x.ts")
+  favicon.svg        the logo
+scripts/             the harness, TypeScript run directly by Node (no compile step)
+  build.ts           src/ → dist/: copies everything but ts/, then tsc compiles ts/ to js/
+  dev.ts             builds, serves dist/ at http://localhost:8000/dush-web/, rebuilds on save
+  check.ts           the gate: type checks, the page's rules, then the build
+.github/workflows/deploy.yml   publishes to GitHub Pages on every push to main
+```
+
+| Command | Does |
+|---|---|
+| `npm ci` | Installs the two tools, once per checkout (Node 26, see `.nvmrc`) |
+| `npm run dev` | Builds, serves, rebuilds on every save in `src/`; reload the browser to see it |
+| `npm run check` | The gate: run it before every commit; the deploy runs the same |
+| `npm run build` | Only the build, into `dist/` (gitignored) |
+
+`npm run check` fails when:
+
+- the page's TypeScript or the scripts don't type-check (`strict`, no unused code, erasable
+  syntax only);
+- the HTML, CSS or TypeScript loads anything from another site. Plain links (`<a href>`) to
+  Codeberg and elsewhere are fine;
+- a `src`, `href` or `url()` starts with `/`. GitHub Pages serves the site under `/dush-web/`, so
+  every path is relative to its file. The dev server uses the same prefix, so a root-relative
+  path breaks locally too;
+- a referenced local file doesn't exist (`js/x.js` must have `ts/x.ts`).
+
+A new rule of this file that a script can check gets a check in `scripts/check.ts`.
+
+### Deploying
+
+Every push to `main` runs `.github/workflows/deploy.yml`: `npm ci`, `npm run check` (which ends
+with the build), then `dist/` goes to GitHub Pages at https://andrearr18.github.io/dush-web/. A
+failed check deploys nothing, and the previous version stays online. The workflow can also be run
+by hand from the Actions tab. The repository's Pages source must be **GitHub Actions** (Settings ›
+Pages › Build and deployment). The compiled JavaScript is never committed.
+
+### Code style
+
+- Linear and simple: one file per page, one small TypeScript module per behavior, wired in
+  `ts/main.ts`. No classes or abstractions until two places need them.
+- HTML works without JavaScript; TypeScript only adds behavior (copying, toggles).
+- Colors, type, radii and spacing only from `tokens.css`. Add a token instead of a literal.
+- Fonts are self-hosted in `src/fonts/` (Fraunces is not added yet; until it is, the serif stack
+  falls back to New York on Apple devices through `ui-serif`).
 
 ## The platform (sibling folders in `../`)
 

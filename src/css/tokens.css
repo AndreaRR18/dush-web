@@ -1,0 +1,75 @@
+/* The "Paper" tokens of dush, from DushTheme.swift. Pick a color by what it paints. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Paper */
+  --sand: #E9E2D5;
+  --paper: #F5F0E7;
+  --sheet: #FBF8F2;
+  --shelf: #EEE7DB;
+  --line: #DDD4C5;
+
+  /* Ink */
+  --ink: #2A2622;
+  --graphite: #6E655B;
+  --pencil: #8C8174;
+  --teal-ink: #0B6E6E;
+  --orange-ink: #B7431A;
+  --teal-wash: #BFDDD6;
+  --orange-wash: #F2C3A8;
+  --teal-button: #0B6E6E;
+
+  /* Brand: the logo and the icon only */
+  --brand-teal: #2ECCCC;
+  --brand-orange: #FF6B35;
+
+  /* Type */
+  --font-serif: "Fraunces", "New York", ui-serif, Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Shape */
+  --radius-tile: 4px;
+  --radius-small: 8px;
+  --radius-row: 10px;
+  --radius-card: 14px;
+  --radius-drop: 16px;
+  --radius-capsule: 999px;
+  --hairline: 1px;
+  --dashed-stroke: 1.5px;
+
+  /* Spacing scale: 2 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 18 · 20 · 24 · 32 */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-9: 18px;
+  --space-10: 20px;
+  --space-11: 24px;
+  --space-12: 32px;
+
+  --page-width: 880px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sand: #151413;
+    --paper: #1E1C1A;
+    --sheet: #26231F;
+    --shelf: #1A1917;
+    --line: #3A3631;
+
+    --ink: #F5F0E7;
+    --graphite: #B8AE9F;
+    --pencil: #7C7368;
+    --teal-ink: #5FD4CF;
+    --orange-ink: #FF9A6E;
+    --teal-wash: #1F4A46;
+    --orange-wash: #5A2E1C;
+  }
+}

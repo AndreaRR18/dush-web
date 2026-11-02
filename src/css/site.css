@@ -1,0 +1,124 @@
+/* Base and components. Colors, type and sizes come from tokens.css only. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal-ink);
+  outline-offset: 3px;
+}
+
+a {
+  color: var(--teal-ink);
+}
+
+.page {
+  max-width: calc(var(--page-width) + 2 * var(--space-12));
+  margin: 0 auto;
+  padding: var(--space-12);
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+/* Type */
+
+.title {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 7vw, 3.375rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.title em {
+  color: var(--teal-ink);
+}
+
+.lead {
+  margin: 0 0 var(--space-11);
+  color: var(--graphite);
+  font-size: 1.125rem;
+}
+
+.label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--graphite);
+}
+
+/* A copyable command: Paper with an outline, radius 8. */
+
+.command {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-5) var(--space-6);
+  background: var(--sheet);
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-small);
+}
+
+.command code {
+  flex: 1 1 16rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+/* Buttons: capsules, verb + object labels. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-7);
+  border: 1.3px solid var(--ink);
+  border-radius: var(--radius-capsule);
+  background: transparent;
+  color: var(--ink);
+  font: 500 0.9375rem/1.2 var(--font-sans);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:active {
+  opacity: 0.7;
+}
+
+.button--prominent {
+  background: var(--teal-button);
+  color: #FFFFFF;
+}
+
+.button--quiet {
+  border-width: 1px;
+  border-color: color-mix(in srgb, var(--ink) 45%, transparent);
+}
+
+.footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: var(--hairline) solid var(--line);
+}

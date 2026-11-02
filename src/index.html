@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · What's eating your disk?</title>
+  <meta name="description" content="dush finds what takes space on your Mac, very fast. It only looks. It never deletes.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <main class="page">
+    <p class="label">dush, for the Mac and the Terminal</p>
+    <h1 class="title">What's eating your <em>disk</em>?</h1>
+    <p class="lead">dush lists everything bigger than 512 MB, largest first. It only looks. It never deletes.</p>
+
+    <div class="command">
+      <code id="install-command">brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git &amp;&amp; brew install andre_rori/tap/dush</code>
+      <button class="button button--quiet" type="button" data-copy="install-command">Copy Command</button>
+    </div>
+
+    <footer class="footer">
+      <p class="label">It's a tape measure, not a snoop.</p>
+    </footer>
+  </main>
+</body>
+</html>
