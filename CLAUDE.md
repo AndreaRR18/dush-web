@@ -1,7 +1,8 @@
 # dush-web
 
 The website of **dush**, a fast, read-only disk space analyzer for macOS: the `dush` CLI, its
-engine DushCore and the Mac app "dush for Mac". Free and open source (MIT).
+engine DushCore and the Mac app "dush for Mac". All free. The CLI and DushCore are open source
+(MIT); the app's source is private.
 
 Tagline: *"See what's taking up space. What to do about it is up to you."*
 
@@ -42,7 +43,8 @@ scripts/             the harness, TypeScript run directly by Node (no compile st
 - a `src`, `href` or `url()` starts with `/`. GitHub Pages serves the site under `/dush-web/`, so
   every path is relative to its file. The dev server uses the same prefix, so a root-relative
   path breaks locally too;
-- a referenced local file doesn't exist (`js/x.js` must have `ts/x.ts`).
+- a referenced local file doesn't exist (`js/x.js` must have `ts/x.ts`);
+- a link leads to `codeberg.org/Andre_Rori/dush-desktop`, which is private.
 
 A new rule of this file that a script can check gets a check in `scripts/check.ts`.
 
@@ -98,7 +100,10 @@ Small, quick and optional, as in the app (design guide §11):
 | `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.0.0 |
 | `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | All features implemented, **not released yet** (Developer ID + Homebrew cask, to be confirmed) |
 
-Source code lives on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core,dush-desktop}`.
+The CLI and the engine live on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core}`.
+`dush-desktop` is private for good, and visitors get a 404 there. So the site never calls the app
+open source and never links to that repository. Reports about the app go to
+`https://codeberg.org/Andre_Rori/dush/issues`.
 
 **Where the truth lives.** The sibling repos win over this file. Read them before writing copy or
 styles:
