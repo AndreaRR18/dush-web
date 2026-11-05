@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · Support</title>
+  <meta name="description" content="Help for dush for Mac: how to report a problem, what you need to run it, and answers about disk access, totals, Apple Intelligence and history.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="dush, back to the home page">
+        <img src="favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <nav class="nav" aria-label="Home page sections">
+        <a href="index.html#mac">Mac app</a>
+        <a href="index.html#ai">Safe to delete?</a>
+        <a href="index.html#cli">Command line</a>
+        <a href="index.html#promises">Promises</a>
+      </nav>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <section class="page hero" aria-labelledby="support-title">
+      <div class="split">
+        <div>
+          <p class="label">Support for dush for Mac</p>
+          <h1 class="title" id="support-title">Need a <em>hand</em>?</h1>
+          <p class="lead">Something looks wrong, or you're not sure why dush did that? Start here.</p>
+          <div class="actions">
+            <a class="button button--prominent" href="https://codeberg.org/Andre_Rori/dush-desktop/issues">Report a Problem</a>
+          </div>
+        </div>
+        <figure class="illustration" aria-hidden="true">
+          <picture>
+            <source srcset="img/scanning-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="img/scanning-light.svg" width="360" height="280" alt="">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <div class="page doc">
+
+      <section class="doc__part" aria-labelledby="report-title">
+        <h2 class="doc__heading" id="report-title">Report a problem</h2>
+        <p>Problems go in the <a href="https://codeberg.org/Andre_Rori/dush-desktop/issues">issue tracker on Codeberg</a>. You need a Codeberg account to open one. Issues are public, so look over what you paste for names and paths you'd rather keep to yourself.</p>
+        <p>A good report says which versions of dush and macOS you have, what you did, what you expected and what happened instead.</p>
+        <p>To reach a person directly:</p>
+        <!-- TEMP: replace with real contact details, as Apple requires for a support URL (also on privacy.html). -->
+        <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> CONTACT DETAILS GO HERE</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="needs-title">
+        <h2 class="doc__heading" id="needs-title">What you need</h2>
+        <ul class="list">
+          <li>macOS 26 or later.</li>
+          <li>For Safe to delete?, a Mac that supports Apple Intelligence, with Apple Intelligence turned on in System Settings. The rest of dush works without it.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="questions-title">
+        <h2 class="doc__heading" id="questions-title">Questions</h2>
+
+        <h3 class="card__title">Why does dush ask for my disk, and what does it do with that access?</h3>
+        <p>macOS keeps apps out of your disk until you say so. A folder you drop or choose needs nothing more. Caches &amp; Temp, Downloads &amp; Desktop and Developer Caches look in places you didn't pick, so dush asks you to choose your startup disk once, in the system's panel.</p>
+        <p>With that access, dush reads the names, sizes and dates of files and folders. It doesn't read what's inside your files, and it never changes them. It keeps the access read-only, on this Mac.</p>
+        <p>Full Disk Access is a separate, optional step. It lets dush measure the folders macOS keeps private too, like the Trash and Safari's caches. Only you can turn it on, in System Settings. The <a href="privacy.html">Privacy Policy</a> has the whole picture.</p>
+
+        <h3 class="card__title">Why are some paths left out of the totals?</h3>
+        <p>dush can only measure what macOS lets it read. A path it can't read is left out of the totals, and a banner on the results says how many. They're usually folders macOS keeps private, another account's files, or a file system that fails to list them, like a paired iPhone's.</p>
+        <p>Full Disk Access, in Settings › Privacy, lets dush read some of them. The banner gives only the count, because dush doesn't keep those paths.</p>
+        <p>Anything you excluded, in a scan's options or in Settings › Exclusions, is left out too.</p>
+
+        <h3 class="card__title">Why can an Apple Intelligence answer be wrong?</h3>
+        <p>It's a small model running on your Mac, and it never sees what's inside your files. It works from details like the path, the size and a few names. So it can misjudge what an item is, and it can't know what matters to you.</p>
+        <p>Take a verdict as a starting point, and look at the item yourself before you decide. The app shows what the model was told, under the answer.</p>
+
+        <h3 class="card__title">How do I clear the history?</h3>
+        <p>Choose Clear History… at the bottom of the sidebar or in Settings › General. dush asks first, then removes its saved scans. Your files stay exactly where they are. Remembered Apple Intelligence answers stay too.</p>
+        <p>For a single scan, use Remove from History. To stop saving scans, turn off Save completed scans in Settings › General.</p>
+
+        <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush never deletes files. If you decide to remove something, that's always your own step, in Finder or Terminal.</span></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="favicon.svg" width="24" height="24" alt="">
+      <p class="label">It's a tape measure, not a snoop.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">The code</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">The CLI on Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-desktop">The Mac app on Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">The engine on Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">This website on GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The maker</p>
+        <p class="footer__about">dush is made by Andrea Rinaldi, who also writes about Swift, iOS and photography on ByteShutter.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, the blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">Free and open source under the MIT License. This site has no cookies and no tracking, like dush.</p>
+  </footer>
+</body>
+</html>

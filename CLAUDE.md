@@ -86,6 +86,9 @@ Small, quick and optional, as in the app (design guide §11):
 - The **Mac App Store link** is temporary: `https://apps.apple.com/app/id0000000000`, in the hero
   and the closing section of `src/index.html` (each marked `TEMP`). Replace both when the app is
   listed.
+- The **contact details** are missing: `CONTACT DETAILS GO HERE`, once in `src/privacy.html` and
+  once in `src/support.html` (each marked `TEMP`). Apple requires real contact details on the
+  support URL. Replace both before the pages go on the App Store listing.
 
 ## The platform (sibling folders in `../`)
 

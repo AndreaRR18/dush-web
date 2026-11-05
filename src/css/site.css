@@ -719,6 +719,36 @@ code {
   color: var(--orange-ink);
 }
 
+/* Long reads: the privacy policy and the support page. Separators, not sheets. */
+
+.doc {
+  padding-bottom: var(--space-section);
+}
+
+.doc__part {
+  max-width: 640px;
+  margin-top: var(--space-12);
+  padding-top: var(--space-12);
+  border-top: var(--hairline) solid var(--line);
+}
+
+.doc__part > * + * {
+  margin-top: var(--space-6);
+}
+
+.doc__part > * + .card__title,
+.doc__part > * + .notice {
+  margin-top: var(--space-11);
+}
+
+.doc__heading {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
 /* Closing and footer */
 
 .closing {
@@ -745,7 +775,7 @@ code {
 
 .footer__columns {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-11);
 }
 

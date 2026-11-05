@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · Privacy Policy</title>
+  <meta name="description" content="dush for Mac collects nothing and sends nothing. What it reads, what it keeps on your Mac, and what Apple Intelligence is told.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="dush, back to the home page">
+        <img src="favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <nav class="nav" aria-label="Home page sections">
+        <a href="index.html#mac">Mac app</a>
+        <a href="index.html#ai">Safe to delete?</a>
+        <a href="index.html#cli">Command line</a>
+        <a href="index.html#promises">Promises</a>
+      </nav>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <section class="page hero" aria-labelledby="privacy-title">
+      <div class="split">
+        <div>
+          <p class="label">dush for Mac, the command line and this website</p>
+          <h1 class="title" id="privacy-title">Privacy <em>Policy</em></h1>
+          <p class="lead">dush for Mac collects nothing and sends nothing. This page says exactly what it reads, what it keeps and where.</p>
+          <p class="caption">Last updated <time datetime="2026-11-05">November 5, 2026</time></p>
+        </div>
+        <figure class="illustration" aria-hidden="true">
+          <picture>
+            <source srcset="img/keys-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="img/keys-light.svg" width="360" height="280" alt="">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <div class="page doc">
+
+      <section class="doc__part" aria-labelledby="collects-title">
+        <h2 class="doc__heading" id="collects-title">What dush collects</h2>
+        <p>Nothing. dush for Mac has no analytics, telemetry or tracking, no device identifiers, no accounts, no ads and no in-app purchases. It sends no crash reports. It shares nothing with anyone.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="offline-title">
+        <h2 class="doc__heading" id="offline-title">It works offline</h2>
+        <p>dush for Mac works fully offline. The App Store version holds no network entitlement, the permission an app needs to connect, so macOS itself refuses any connection from it.</p>
+        <p>Notifications for watched folders are local too: macOS shows them on your Mac.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="reads-title">
+        <h2 class="doc__heading" id="reads-title">What it reads</h2>
+        <p>To measure your disk, dush reads the names, sizes and dates of files and folders. It doesn't read what's inside your files.</p>
+        <p>Two things go further, and only when you ask for them:</p>
+        <ul class="list">
+          <li><strong>Quick Look</strong> is macOS's own preview. macOS shows the file, and nothing leaves your Mac.</li>
+          <li><strong>A report you open.</strong> When you open a JSON report written by <code>dush --json</code>, dush reads that file, because showing it is what you asked for.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="keeps-title">
+        <h2 class="doc__heading" id="keeps-title">What it keeps</h2>
+        <p>dush keeps these only on this Mac, in the app's own folder. It doesn't sync or upload any of them.</p>
+        <ul class="list">
+          <li><strong>Scan history:</strong> what you scanned, when, and the names, paths and sizes of the biggest items it found.</li>
+          <li><strong>Settings:</strong> your choices, including your watched folders and their limits.</li>
+          <li><strong>Remembered Apple Intelligence answers,</strong> with the details of the item each one is about, so the same question isn't asked twice.</li>
+          <li><strong>A read-only bookmark</strong> of the disk access you gave, so you don't have to give it again.</li>
+        </ul>
+        <p>Clear History removes the saved scans, and only those. Your files aren't touched, and remembered answers and settings stay. In Settings › General you can keep scans for 30 or 90 days, or stop saving them.</p>
+        <p>Three more things to know:</p>
+        <ul class="list">
+          <li>The scanning engine writes counts and timings to macOS's own log on your Mac. Paths and names show there as <code>&lt;private&gt;</code>, and dush sends that log nowhere.</li>
+          <li>When you export a scan, the file goes where you save it. What happens to it next is up to you.</li>
+          <li>A backup of your Mac, like Time Machine, can include the app's folder, as it can any other folder.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="access-title">
+        <h2 class="doc__heading" id="access-title">Disk access</h2>
+        <p>macOS keeps apps out of your disk until you allow it.</p>
+        <ul class="list">
+          <li>A folder you drop or choose needs nothing more.</li>
+          <li>For anything else, you choose your startup disk once, in the system's panel. dush keeps that access read-only.</li>
+          <li>Full Disk Access is optional. It lets dush measure the folders macOS keeps private, like the Trash and Safari's caches. Only you can turn it on, in System Settings.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="ai-title">
+        <h2 class="doc__heading" id="ai-title">Apple Intelligence</h2>
+        <p>Apple Intelligence works only when you ask it about an item, and it runs on your Mac. dush gives the on-device model:</p>
+        <ul class="list">
+          <li>the item's path and size, and whether it's a file or a folder;</li>
+          <li>how many items sit directly inside it, and the names and sizes of the 10 largest;</li>
+          <li>its last-modified date;</li>
+          <li>in a follow-up, the conversation so far. The model can also ask for the same count, names and sizes for a subfolder of that item.</li>
+        </ul>
+        <p>What sits inside and the date each have a switch in Settings › AI. Both start on. The model never gets file contents.</p>
+        <p>Items dush protects are answered locally and never given to the model, not even by name inside their parent folder: credentials and keys, system folders, iCloud Drive, and personal folders as a whole. You can still ask about a single item inside a personal folder.</p>
+        <p>The app shows what was asked, under the answer.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="store-title">
+        <h2 class="doc__heading" id="store-title">The App Store</h2>
+        <p>Apple runs the App Store. Downloading dush there falls under <a href="https://www.apple.com/legal/privacy/en-ww/">Apple's Privacy Policy</a> and <a href="https://www.apple.com/legal/privacy/data/en/app-store/">App Store &amp; Privacy</a>, not this page.</p>
+        <p>Apple can give developers figures about their apps, which it says are aggregated and don't identify you. If you've turned on <a href="https://support.apple.com/guide/mac-help/share-analytics-information-mac-apple-mh27990/mac">Share with app developers</a>, in System Settings › Privacy &amp; Security › Analytics &amp; Improvements, Apple may also share crash data and other analytics with developers. That sharing happens on Apple's side, not in dush.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="site-title">
+        <h2 class="doc__heading" id="site-title">This website</h2>
+        <p>This site has no cookies and no analytics, and it loads nothing from another site. It's hosted on GitHub Pages. GitHub logs visitors' IP addresses for security and may keep other technical logs, as any web host does. The <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a> covers those.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="cli-title">
+        <h2 class="doc__heading" id="cli-title">The command-line tool</h2>
+        <p>The <code>dush</code> CLI collects nothing either. It touches the network only in <code>dush update</code>, which looks up the latest release through <code>git</code> and upgrades through <code>brew</code>. A copy you built from source is fetched with <code>git</code> and built again with the Swift tools, which download what the build needs.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="changes-title">
+        <h2 class="doc__heading" id="changes-title">Changes to this policy</h2>
+        <p>dush can't tell you about a change itself: it has no network and no accounts. So changes are announced here. This page gets the new text and a new date at the top, and <a href="https://github.com/AndreaRR18/dush-web/commits/main/src/privacy.html">its full history</a> stays public on GitHub. If a change comes with a new version of the app, that version's notes on the App Store say so too.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="responsible-title">
+        <h2 class="doc__heading" id="responsible-title">Who's responsible</h2>
+        <!-- TEMP: replace with the name and contact details of who is responsible (also on support.html). -->
+        <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> CONTACT DETAILS GO HERE</p>
+        <p>If you write to support or open an issue, you share what you write. Issues on Codeberg are public, and <a href="https://codeberg.org/codeberg/org/src/branch/main/PrivacyPolicy.md">Codeberg's privacy policy</a> covers them. The <a href="support.html">Support page</a> has the details.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="favicon.svg" width="24" height="24" alt="">
+      <p class="label">It's a tape measure, not a snoop.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">The code</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">The CLI on Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-desktop">The Mac app on Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">The engine on Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">This website on GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The maker</p>
+        <p class="footer__about">dush is made by Andrea Rinaldi, who also writes about Swift, iOS and photography on ByteShutter.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, the blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">Free and open source under the MIT License. This site has no cookies and no tracking, like dush.</p>
+  </footer>
+</body>
+</html>
