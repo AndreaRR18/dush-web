@@ -249,6 +249,37 @@ code {
   font-weight: 500;
 }
 
+/* Theme toggle: a quiet capsule like the language menu, with the icon of the theme it switches to.
+   Hidden without JavaScript (the head script adds .js to <html>): then the page just follows the OS. */
+
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-capsule);
+  background: transparent;
+  color: var(--graphite);
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+html.js .theme-toggle {
+  display: inline-flex;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--outline-quiet);
+}
+
+.theme-toggle:active {
+  opacity: 0.7;
+}
+
 @media (max-width: 600px) {
   .header__inner {
     padding: var(--space-6) var(--space-8);

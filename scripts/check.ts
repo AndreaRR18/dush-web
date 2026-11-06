@@ -5,8 +5,9 @@
 //
 // The rules: the page loads nothing from another site (no CDN, font service, analytics or
 // embed), every local file it references exists, no reference starts with "/", because
-// GitHub Pages serves the site under /dush-web/, not at the root of a domain, and no link leads
-// to the Mac app's repository, which is private.
+// GitHub Pages serves the site under /dush-web/, not at the root of a domain, no link leads
+// to the Mac app's repository, which is private, and every page has the theme toggle: the
+// header button, its sun/moon icons and the stored-theme script in <head>.
 
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -82,6 +83,15 @@ function checkTypeScript(file: string, text: string, problems: Problem[]): void 
   }
 }
 
+/** Every page carries the theme toggle: the button, its icons and the stored-theme head script. */
+function checkThemeToggle(file: string, text: string, problems: Problem[]): void {
+  for (const marker of ["<!-- theme-toggle:start -->", "data-theme-toggle", 'id="icon-sun"', 'id="icon-moon"', '"dush-theme"']) {
+    if (!text.includes(marker)) {
+      problems.push({ file, line: 1, message: `missing ${marker}: every page has the theme toggle and the stored-theme script in <head>` });
+    }
+  }
+}
+
 function checkRules(): Problem[] {
   const problems: Problem[] = [];
   for (const file of filesIn(src)) {
@@ -89,6 +99,7 @@ function checkRules(): Problem[] {
     switch (extname(file)) {
       case ".html":
         checkHTML(file, text, problems);
+        checkThemeToggle(file, text, problems);
         break;
       case ".css":
         checkCSS(file, text, problems);

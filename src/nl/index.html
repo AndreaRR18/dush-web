@@ -8,6 +8,7 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("dush-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
@@ -33,6 +34,8 @@
     <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
     <symbol id="icon-mac" viewBox="0 0 20 20"><rect x="2.5" y="3.5" width="15" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 17h5M10 13.5V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
     <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 0.8v1.7M10 17.5v1.7M0.8 10h1.7M17.5 10h1.7M3.5 3.5l1.2 1.2M15.3 15.3l1.2 1.2M3.5 16.5l1.2-1.2M15.3 4.7l1.2-1.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 20 20"><path d="M17.5 10.7A7.5 7.5 0 1 1 9.3 2.5a5.8 5.8 0 0 0 8.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
   </svg>
 
   <header class="header">
@@ -48,6 +51,11 @@
           <a href="#cli">Opdrachtregel</a>
           <a href="#promises">Beloften</a>
         </nav>
+        <!-- theme-toggle:start -->
+        <button class="theme-toggle" type="button" data-theme-toggle data-to-light="Schakel naar de lichte modus" data-to-dark="Schakel naar de donkere modus" aria-label="Schakel naar de donkere modus" title="Schakel naar de donkere modus" aria-pressed="false">
+          <svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg>
+        </button>
+        <!-- theme-toggle:end -->
         <!-- lang-selector:start -->
         <details class="lang">
           <summary class="lang__current" aria-label="Taal: Nederlands">
