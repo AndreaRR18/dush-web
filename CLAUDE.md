@@ -44,7 +44,9 @@ scripts/             the harness, TypeScript run directly by Node (no compile st
   every path is relative to its file. The dev server uses the same prefix, so a root-relative
   path breaks locally too;
 - a referenced local file doesn't exist (`js/x.js` must have `ts/x.ts`);
-- a link leads to `codeberg.org/Andre_Rori/dush-desktop`, which is private.
+- a link leads to `codeberg.org/Andre_Rori/dush-desktop`, which is private;
+- an HTML page is missing part of the theme toggle: the `<!-- theme-toggle:start -->` button in
+  the header, its `icon-sun`/`icon-moon` symbols, or the stored-theme script in `<head>`.
 
 A new rule of this file that a script can check gets a check in `scripts/check.ts`.
 
@@ -82,6 +84,19 @@ Small, quick and optional, as in the app (design guide §11):
 - With `prefers-reduced-motion`, nothing moves: the scripts skip the effects and the CSS drops
   every transition. Without JavaScript, everything is simply shown.
 - No looping, parallax or decorative animation. Timings are tokens in `tokens.css`.
+
+### Light and dark
+
+- Every color token is declared once in `tokens.css` with `light-dark(light, dark)` and follows the
+  page's `color-scheme`. By default the page follows the OS (`color-scheme: light dark` on `:root`).
+- The header's theme toggle (the `<!-- theme-toggle:start -->` block in every page) switches between
+  light and dark. It stores the choice in `localStorage` under `dush-theme`; an inline script in each
+  page's `<head>` applies it as `data-theme` on `<html>` before the first paint, so there is no flash
+  of the wrong theme. `:root[data-theme]` then just sets `color-scheme`, and every token follows.
+- `ts/theme.ts` also points the illustrations' `<picture>` dark sources and the two `theme-color`
+  metas at a forced theme (their `media` attributes can't see `data-theme`), swapping `media` between
+  the original and `all`/`not all`, and keeps the button's icon, label and `aria-pressed` in step.
+- Without JavaScript the button stays hidden (`html.js`) and the page simply follows the OS.
 
 ### Placeholders to replace
 
@@ -151,8 +166,10 @@ book face.
 
 ### Colors
 
-Define them once as CSS custom properties, with a dark set under
-`@media (prefers-color-scheme: dark)`. Pick by what a color paints, never by how it looks.
+Define them once as CSS custom properties with `light-dark(light, dark)` in `tokens.css` — one
+declaration per color, following the page's `color-scheme` (the OS's, or the one forced by the
+header's theme toggle, see "Light and dark" above). Pick by what a color paints, never by how it
+looks.
 
 | Token | Light | Dark | Paints | Never |
 |---|---|---|---|---|
@@ -231,6 +248,7 @@ on resize. Shapes larger than 4000px or smaller than 2px get a plain path.
 | Outline | Ink outline, no fill (orange-ink variant for Full Scan only) | Secondary actions |
 | Quiet | Ink outline at 45% | Minor actions |
 | Selected | Teal wash under an ink outline | The chosen option of a set (tabs, EN/IT) |
+| Theme toggle | Quiet capsule with a sun/moon icon, in the header | The visitor's light/dark choice, kept in `localStorage` |
 
 Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codeberg*.
 
@@ -282,4 +300,6 @@ Realistic sample numbers for mockups are in the spec §11 (e.g. `~/Library/Devel
 
 Text contrast at least 4.5:1 in both themes (Graphite never on Sand, orange text only on Paper or
 Sheet, Pencil never text). Visible focus rings, keyboard reachable, `prefers-reduced-motion` and
-`prefers-color-scheme` respected, the layout works at phone width with no horizontal scroll.
+`prefers-color-scheme` respected — or a theme forced with the header toggle, which wins over the OS
+and is remembered on the visitor's device only. The layout works at phone width with no horizontal
+scroll.

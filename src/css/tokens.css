@@ -1,23 +1,25 @@
-/* The "Paper" tokens of dush, from DushTheme.swift. Pick a color by what it paints. */
+/* The "Paper" tokens of dush, from DushTheme.swift. Pick a color by what it paints. Each color is
+   declared once with light-dark(): it follows the page's color-scheme, which is the OS's unless
+   the visitor forces a theme — the header's toggle sets data-theme on <html> (see ts/theme.ts). */
 
 :root {
   color-scheme: light dark;
 
   /* Paper */
-  --sand: #E9E2D5;
-  --paper: #F5F0E7;
-  --sheet: #FBF8F2;
-  --shelf: #EEE7DB;
-  --line: #DDD4C5;
+  --sand: light-dark(#E9E2D5, #151413);
+  --paper: light-dark(#F5F0E7, #1E1C1A);
+  --sheet: light-dark(#FBF8F2, #26231F);
+  --shelf: light-dark(#EEE7DB, #1A1917);
+  --line: light-dark(#DDD4C5, #3A3631);
 
   /* Ink */
-  --ink: #2A2622;
-  --graphite: #6E655B;
-  --pencil: #8C8174;
-  --teal-ink: #0B6E6E;
-  --orange-ink: #B7431A;
-  --teal-wash: #BFDDD6;
-  --orange-wash: #F2C3A8;
+  --ink: light-dark(#2A2622, #F5F0E7);
+  --graphite: light-dark(#6E655B, #B8AE9F);
+  --pencil: light-dark(#8C8174, #7C7368);
+  --teal-ink: light-dark(#0B6E6E, #5FD4CF);
+  --orange-ink: light-dark(#B7431A, #FF9A6E);
+  --teal-wash: light-dark(#BFDDD6, #1F4A46);
+  --orange-wash: light-dark(#F2C3A8, #5A2E1C);
   --teal-button: #0B6E6E;
 
   /* Brand: the logo and the icon only */
@@ -73,20 +75,12 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sand: #151413;
-    --paper: #1E1C1A;
-    --sheet: #26231F;
-    --shelf: #1A1917;
-    --line: #3A3631;
+/* A theme chosen with the header's toggle wins over the OS: it only has to set color-scheme,
+   and every light-dark() above follows. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
 
-    --ink: #F5F0E7;
-    --graphite: #B8AE9F;
-    --pencil: #7C7368;
-    --teal-ink: #5FD4CF;
-    --orange-ink: #FF9A6E;
-    --teal-wash: #1F4A46;
-    --orange-wash: #5A2E1C;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
