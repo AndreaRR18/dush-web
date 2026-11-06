@@ -179,6 +179,76 @@ code {
   color: var(--ink);
 }
 
+.header__side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
+/* Language selector: a quiet details menu in the header. It opens and closes on its own, no
+   JavaScript needed; lang.ts only closes it on an outside click or Escape. */
+
+.lang {
+  position: relative;
+  font-size: 0.9375rem;
+}
+
+.lang__current {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-capsule);
+  color: var(--graphite);
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang__current::-webkit-details-marker {
+  display: none;
+}
+
+.lang__current:hover,
+.lang[open] .lang__current {
+  color: var(--ink);
+  border-color: var(--outline-quiet);
+}
+
+.lang__menu {
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  right: 0;
+  z-index: 20;
+  min-width: 10.5rem;
+  margin: 0;
+  padding: var(--space-2);
+  list-style: none;
+  background: var(--sheet);
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-small);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.lang__menu a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-tile);
+  color: var(--graphite);
+  text-decoration: none;
+}
+
+.lang__menu a:hover {
+  background: var(--shelf);
+  color: var(--ink);
+}
+
+.lang__menu li[aria-current] a {
+  color: var(--teal-ink);
+  font-weight: 500;
+}
+
 @media (max-width: 600px) {
   .header__inner {
     padding: var(--space-6) var(--space-8);

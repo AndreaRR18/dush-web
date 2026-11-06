@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · Assistance</title>
+  <meta name="description" content="Aide pour dush pour Mac : comment signaler un problème, ce qu’il faut pour le faire tourner, et des réponses sur l’accès au disque, les totaux, Apple Intelligence et l’historique.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <!-- hreflang:start -->
+  <link rel="alternate" hreflang="en" href="../support.html">
+  <link rel="alternate" hreflang="de" href="../de/support.html">
+  <link rel="alternate" hreflang="es" href="../es/support.html">
+  <link rel="alternate" hreflang="fr" href="../fr/support.html">
+  <link rel="alternate" hreflang="it" href="../it/support.html">
+  <link rel="alternate" hreflang="nl" href="../nl/support.html">
+  <link rel="alternate" hreflang="pl" href="../pl/support.html">
+  <link rel="alternate" hreflang="pt" href="../pt/support.html">
+  <link rel="alternate" hreflang="x-default" href="../support.html">
+  <!-- hreflang:end -->
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="dush, retour à la page d’accueil">
+        <img src="../favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <div class="header__side">
+        <nav class="nav" aria-label="Sections de la page d’accueil">
+          <a href="index.html#mac">App Mac</a>
+          <a href="index.html#ai">Suppression sans risque&nbsp;?</a>
+          <a href="index.html#cli">Ligne de commande</a>
+          <a href="index.html#promises">Promesses</a>
+        </nav>
+        <!-- lang-selector:start -->
+        <details class="lang">
+          <summary class="lang__current" aria-label="Langue: Français">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <span>Français</span>
+          </summary>
+          <ul class="lang__menu">
+            <li><a href="../support.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="../de/support.html" lang="de" hreflang="de">Deutsch</a></li>
+            <li><a href="../es/support.html" lang="es" hreflang="es">Español</a></li>
+            <li aria-current="true"><a href="../fr/support.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="../it/support.html" lang="it" hreflang="it">Italiano</a></li>
+            <li><a href="../nl/support.html" lang="nl" hreflang="nl">Nederlands</a></li>
+            <li><a href="../pl/support.html" lang="pl" hreflang="pl">Polski</a></li>
+            <li><a href="../pt/support.html" lang="pt" hreflang="pt">Português</a></li>
+          </ul>
+        </details>
+        <!-- lang-selector:end -->
+      </div>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <section class="page hero" aria-labelledby="support-title">
+      <div class="split">
+        <div>
+          <p class="label">Assistance pour dush pour Mac</p>
+          <h1 class="title" id="support-title">Besoin d’une <em>main</em>?</h1>
+          <p class="lead">Quelque chose semble faux, ou vous n’êtes pas sûr de pourquoi dush a fait ça&nbsp;? Commencez ici.</p>
+          <div class="actions">
+            <a class="button button--prominent" href="https://codeberg.org/Andre_Rori/dush/issues">Signaler un problème</a>
+          </div>
+        </div>
+        <figure class="illustration" aria-hidden="true">
+          <picture>
+            <source srcset="../img/scanning-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/scanning-light.svg" width="360" height="280" alt="">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <div class="page doc">
+
+      <section class="doc__part" aria-labelledby="report-title">
+        <h2 class="doc__heading" id="report-title">Signaler un problème</h2>
+        <p>Les problèmes avec dush pour Mac vont dans le <a href="https://codeberg.org/Andre_Rori/dush/issues">traqueur de tickets de dush sur Codeberg</a>, que l’app partage avec l’outil en ligne de commande. Il faut un compte Codeberg pour ouvrir un ticket. Les tickets sont publics, alors relisez ce que vous collez pour les noms et chemins que vous préférez garder pour vous.</p>
+        <p>Un bon signalement dit que ça concerne l’app Mac, quelles versions de dush et macOS vous avez, ce que vous avez fait, ce que vous attendiez et ce qui s’est passé à la place.</p>
+        <p>Pour joindre directement une personne&nbsp;:</p>
+        <!-- TEMP: replace with real contact details, as Apple requires for a support URL (also on privacy.html). -->
+        <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> INSCRIVEZ LES COORDONNÉES ICI</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="needs-title">
+        <h2 class="doc__heading" id="needs-title">Ce qu’il vous faut</h2>
+        <ul class="list">
+          <li>macOS&nbsp;26 ou ultérieur.</li>
+          <li>Pour Suppression sans risque&nbsp;?, un Mac compatible Apple Intelligence, avec Apple Intelligence activé dans les Réglages Système. Le reste de dush fonctionne sans.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="questions-title">
+        <h2 class="doc__heading" id="questions-title">Questions</h2>
+
+        <h3 class="card__title">Pourquoi dush demande-t-il mon disque, et qu’en fait-il&nbsp;?</h3>
+        <p>macOS tient les apps à l’écart de votre disque tant que vous ne dites pas oui. Un dossier que vous déposez ou choisissez ne demande rien de plus. Caches et temp, Téléchargements et Bureau et Caches de dev regardent dans des endroits que vous n’avez pas choisis, alors dush vous demande de choisir une fois votre disque de démarrage dans le panneau système.</p>
+        <p>Avec cet accès, dush lit les noms, tailles et dates des fichiers et dossiers. Il ne lit pas ce qu’il y a dans vos fichiers, et ne les modifie jamais. Il garde l’accès en lecture seule, sur ce Mac.</p>
+        <p>L’accès complet au disque est une étape à part, facultative. Il permet à dush de mesurer aussi les dossiers que macOS garde privés, comme la Corbeille et les caches de Safari. Vous seul pouvez l’activer, dans les Réglages Système. La <a href="privacy.html">Politique de confidentialité</a> politique de confidentialité donne le tableau complet.</p>
+
+        <h3 class="card__title">Pourquoi certains chemins manquent-ils des totaux&nbsp;?</h3>
+        <p>dush ne peut mesurer que ce que macOS lui laisse lire. Un chemin illisible est exclu des totaux, et une bannière sur les résultats dit combien il y en a. Ce sont souvent des dossiers que macOS garde privés, des fichiers d’un autre compte, ou un système de fichiers qui échoue à les lister, comme celui d’un iPhone jumelé.</p>
+        <p>L’accès complet au disque, dans Réglages › Confidentialité, permet à dush d’en lire certains. La bannière ne donne que le nombre, car dush ne garde pas ces chemins.</p>
+        <p>Tout ce que vous avez exclu, dans les options d’une analyse ou dans Réglages › Exclusions, est exclu aussi.</p>
+
+        <h3 class="card__title">Pourquoi une réponse d’Apple Intelligence peut-elle être fausse&nbsp;?</h3>
+        <p>C’est un petit modèle qui tourne sur votre Mac, et il ne voit jamais ce qu’il y a dans vos fichiers. Il travaille avec des détails comme le chemin, la taille et quelques noms. Il peut donc se tromper sur ce qu’est un élément, et il ne peut pas savoir ce qui compte pour vous.</p>
+        <p>Prenez un verdict comme point de départ, et regardez l’élément vous-même avant de décider. L’app affiche ce qu’on a dit au modèle, sous la réponse.</p>
+
+        <h3 class="card__title">Comment vider l’historique&nbsp;?</h3>
+        <p>Choisissez Vider l’historique… en bas de la barre latérale ou dans Réglages › Général. dush demande d’abord, puis retire ses analyses enregistrées. Vos fichiers restent exactement où ils sont. Les réponses mémorisées d’Apple Intelligence restent aussi.</p>
+        <p>Pour une seule analyse, utilisez Retirer de l’historique. Pour cesser d’enregistrer les analyses, désactivez Conserver les analyses enregistrées dans Réglages › Général.</p>
+
+        <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush ne supprime jamais de fichiers. Si vous décidez de retirer quelque chose, c’est toujours votre propre geste, dans le Finder ou le Terminal.</span></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="../favicon.svg" width="24" height="24" alt="">
+      <p class="label">C’est un mètre ruban, pas un espion.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">Le code</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">La CLI sur Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">Le moteur sur Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">Ce site sur GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Le créateur</p>
+        <p class="footer__about">dush est créé par Andrea Rinaldi, qui écrit aussi sur Swift, iOS et la photographie sur ByteShutter.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, le blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Politique de confidentialité</a></li>
+          <li><a href="support.html">Assistance</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">dush pour Mac est gratuit. La CLI et le moteur sont open source sous licence MIT. Ce site n’a aucun cookie ni traçage, comme dush.</p>
+  </footer>
+</body>
+</html>

@@ -8,7 +8,8 @@ export function countUp(element: HTMLElement, delay = 0): void {
   const target = Number(element.dataset["count"]);
   if (!Number.isFinite(target)) return;
   const decimals = Number(element.dataset["decimals"] ?? 0);
-  const format = new Intl.NumberFormat("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  // The page's own language, set on <html lang>: 150,000 counts up as 150.000 in German.
+  const format = new Intl.NumberFormat(document.documentElement.lang || "en", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   const final = element.textContent;
 
   if (getComputedStyle(element).display === "inline") {

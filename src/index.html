@@ -11,6 +11,17 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
+  <!-- hreflang:start -->
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="alternate" hreflang="de" href="de/index.html">
+  <link rel="alternate" hreflang="es" href="es/index.html">
+  <link rel="alternate" hreflang="fr" href="fr/index.html">
+  <link rel="alternate" hreflang="it" href="it/index.html">
+  <link rel="alternate" hreflang="nl" href="nl/index.html">
+  <link rel="alternate" hreflang="pl" href="pl/index.html">
+  <link rel="alternate" hreflang="pt" href="pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="index.html">
+  <!-- hreflang:end -->
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
@@ -21,6 +32,7 @@
     <symbol id="icon-shield" viewBox="0 0 20 20"><path d="M10 2.5l6.25 2.4v4.6c0 3.9-2.6 6.6-6.25 8-3.65-1.4-6.25-4.1-6.25-8V4.9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2.5v15" stroke="currentColor" stroke-width="1.2"/></symbol>
     <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
     <symbol id="icon-mac" viewBox="0 0 20 20"><rect x="2.5" y="3.5" width="15" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 17h5M10 13.5V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
   </svg>
 
   <header class="header">
@@ -29,12 +41,32 @@
         <img src="favicon.svg" width="28" height="28" alt="">
         <span>dush</span>
       </a>
-      <nav class="nav" aria-label="Sections">
-        <a href="#mac">Mac app</a>
-        <a href="#ai">Safe to delete?</a>
-        <a href="#cli">Command line</a>
-        <a href="#promises">Promises</a>
-      </nav>
+      <div class="header__side">
+        <nav class="nav" aria-label="Sections">
+          <a href="#mac">Mac app</a>
+          <a href="#ai">Safe to delete?</a>
+          <a href="#cli">Command line</a>
+          <a href="#promises">Promises</a>
+        </nav>
+        <!-- lang-selector:start -->
+        <details class="lang">
+          <summary class="lang__current" aria-label="Language: English">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <span>English</span>
+          </summary>
+          <ul class="lang__menu">
+            <li aria-current="true"><a href="index.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="de/index.html" lang="de" hreflang="de">Deutsch</a></li>
+            <li><a href="es/index.html" lang="es" hreflang="es">Español</a></li>
+            <li><a href="fr/index.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="it/index.html" lang="it" hreflang="it">Italiano</a></li>
+            <li><a href="nl/index.html" lang="nl" hreflang="nl">Nederlands</a></li>
+            <li><a href="pl/index.html" lang="pl" hreflang="pl">Polski</a></li>
+            <li><a href="pt/index.html" lang="pt" hreflang="pt">Português</a></li>
+          </ul>
+        </details>
+        <!-- lang-selector:end -->
+      </div>
     </div>
   </header>
   <div class="scroll-sentinel" aria-hidden="true"></div>
@@ -277,8 +309,8 @@
           <p>Export a scan as JSON, Markdown or CSV. Open the JSON that <code>dush --json</code> writes, and compare it with what changed since.</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">English and Italiano</h3>
-          <p>Every screen, every joke, in both. dush follows your Mac's language, or the one you pick in Settings.</p>
+          <h3 class="card__title">Eight languages</h3>
+          <p>Every screen, every joke, in each of them. dush follows your Mac's language, or the one you pick in Settings.</p>
           <p class="quote" lang="it">Cosa si sta mangiando il tuo disco?</p>
         </li>
       </ul>
@@ -334,7 +366,7 @@
 
       <div class="command" data-reveal>
         <code id="install-command">brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git &amp;&amp; brew install andre_rori/tap/dush</code>
-        <button class="button button--quiet" type="button" data-copy="install-command">Copy Command</button>
+        <button class="button button--quiet" type="button" data-copy="install-command" data-copied="Copied">Copy Command</button>
       </div>
 
       <div class="split split--top cli">

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · Política de privacidad</title>
+  <meta name="description" content="dush para Mac no recoge nada ni envía nada. Qué lee, qué guarda en tu Mac y qué se le dice a Apple Intelligence.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <!-- hreflang:start -->
+  <link rel="alternate" hreflang="en" href="../privacy.html">
+  <link rel="alternate" hreflang="de" href="../de/privacy.html">
+  <link rel="alternate" hreflang="es" href="../es/privacy.html">
+  <link rel="alternate" hreflang="fr" href="../fr/privacy.html">
+  <link rel="alternate" hreflang="it" href="../it/privacy.html">
+  <link rel="alternate" hreflang="nl" href="../nl/privacy.html">
+  <link rel="alternate" hreflang="pl" href="../pl/privacy.html">
+  <link rel="alternate" hreflang="pt" href="../pt/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="../privacy.html">
+  <!-- hreflang:end -->
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="dush, volver a la página principal">
+        <img src="../favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <div class="header__side">
+        <nav class="nav" aria-label="Secciones de la página principal">
+          <a href="index.html#mac">App para Mac</a>
+          <a href="index.html#ai">¿Se puede eliminar?</a>
+          <a href="index.html#cli">Línea de comandos</a>
+          <a href="index.html#promises">Promesas</a>
+        </nav>
+        <!-- lang-selector:start -->
+        <details class="lang">
+          <summary class="lang__current" aria-label="Idioma: Español">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <span>Español</span>
+          </summary>
+          <ul class="lang__menu">
+            <li><a href="../privacy.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="../de/privacy.html" lang="de" hreflang="de">Deutsch</a></li>
+            <li aria-current="true"><a href="../es/privacy.html" lang="es" hreflang="es">Español</a></li>
+            <li><a href="../fr/privacy.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a></li>
+            <li><a href="../nl/privacy.html" lang="nl" hreflang="nl">Nederlands</a></li>
+            <li><a href="../pl/privacy.html" lang="pl" hreflang="pl">Polski</a></li>
+            <li><a href="../pt/privacy.html" lang="pt" hreflang="pt">Português</a></li>
+          </ul>
+        </details>
+        <!-- lang-selector:end -->
+      </div>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <section class="page hero" aria-labelledby="privacy-title">
+      <div class="split">
+        <div>
+          <p class="label">dush para Mac, la línea de comandos y este sitio</p>
+          <h1 class="title" id="privacy-title">Privacidad <em>Política</em></h1>
+          <p class="lead">dush para Mac no recoge nada ni envía nada. Esta página dice exactamente qué lee, qué guarda y dónde.</p>
+          <p class="caption">Última actualización <time datetime="2026-11-05">5 de noviembre de 2026</time></p>
+        </div>
+        <figure class="illustration" aria-hidden="true">
+          <picture>
+            <source srcset="../img/keys-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/keys-light.svg" width="360" height="280" alt="">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <div class="page doc">
+
+      <section class="doc__part" aria-labelledby="collects-title">
+        <h2 class="doc__heading" id="collects-title">Qué recoge dush</h2>
+        <p>Nada. dush para Mac no tiene análisis, telemetría ni rastreo, ni identificadores del dispositivo, ni cuentas, ni anuncios ni compras dentro de la app. No envía informes de fallos. No comparte nada con nadie.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="offline-title">
+        <h2 class="doc__heading" id="offline-title">Funciona sin conexión</h2>
+        <p>dush para Mac funciona completamente sin conexión. La versión de la App Store no tiene ningún permiso de red, el permiso que una app necesita para conectarse, así que el propio macOS le niega cualquier conexión.</p>
+        <p>Las notificaciones de las carpetas vigiladas también son locales: macOS las muestra en tu Mac.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="reads-title">
+        <h2 class="doc__heading" id="reads-title">Qué lee</h2>
+        <p>Para medir tu disco, dush lee los nombres, tamaños y fechas de archivos y carpetas. No lee lo que hay dentro de tus archivos.</p>
+        <p>Dos cosas van más allá, y solo cuando las pides:</p>
+        <ul class="list">
+          <li><strong>Vista rápida</strong> es la vista previa propia de macOS. macOS muestra el archivo, y nada sale de tu Mac.</li>
+          <li><strong>Un informe que abres.</strong> Cuando abres un informe JSON escrito por <code>dush --json</code>, dush lee ese archivo, porque mostrártelo es lo que pediste.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="keeps-title">
+        <h2 class="doc__heading" id="keeps-title">Qué guarda</h2>
+        <p>dush solo guarda estas cosas en este Mac, en la carpeta propia de la app. No sincroniza ni sube nada.</p>
+        <ul class="list">
+          <li><strong>Historial de escaneos:</strong> qué escaneaste, cuándo, y los nombres, rutas y tamaños de los elementos más grandes que encontró.</li>
+          <li><strong>Ajustes:</strong> tus opciones, incluidas tus carpetas vigiladas y sus límites.</li>
+          <li><strong>Respuestas recordadas de Apple Intelligence,</strong> con los detalles del elemento del que trata cada una, para no repetir la misma pregunta.</li>
+          <li><strong>Un marcador de solo lectura</strong> del acceso al disco que diste, para no tener que darlo de nuevo.</li>
+        </ul>
+        <p>Vaciar historial elimina los escaneos guardados, y solo esos. Tus archivos no se tocan, y las respuestas y ajustes recordados se quedan. En Ajustes › General puedes conservar los escaneos 30&nbsp;o 90&nbsp;días, o dejar de guardarlos.</p>
+        <p>Tres cosas más que saber:</p>
+        <ul class="list">
+          <li>El motor de escaneo escribe conteos y tiempos en el propio registro de macOS en tu Mac. Las rutas y los nombres aparecen ahí como <code>&lt;private&gt;</code>, y dush no envía ese registro a ninguna parte.</li>
+          <li>Cuando exportas un escaneo, el archivo va donde lo guardes. Lo que le pase después depende de ti.</li>
+          <li>Una copia de seguridad de tu Mac, como Time Machine, puede incluir la carpeta de la app, como cualquier otra carpeta.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="access-title">
+        <h2 class="doc__heading" id="access-title">Acceso al disco</h2>
+        <p>macOS mantiene las apps fuera de tu disco hasta que se lo permites.</p>
+        <ul class="list">
+          <li>Una carpeta que sueltas o eliges no necesita nada más.</li>
+          <li>Para cualquier otra cosa, eliges tu disco de arranque una vez, en el panel del sistema. dush mantiene ese acceso de solo lectura.</li>
+          <li>El acceso total al disco es opcional. Permite a dush medir las carpetas que macOS mantiene privadas, como la Papelera y las cachés de Safari. Solo tú puedes activarlo, en Ajustes del Sistema.</li>
+        </ul>
+      </section>
+
+      <section class="doc__part" aria-labelledby="ai-title">
+        <h2 class="doc__heading" id="ai-title">Apple Intelligence</h2>
+        <p>Apple Intelligence solo funciona cuando le preguntas sobre un elemento, y se ejecuta en tu Mac. dush le da al modelo del dispositivo:</p>
+        <ul class="list">
+          <li>la ruta y el tamaño del elemento, y si es un archivo o una carpeta;</li>
+          <li>cuántos elementos hay dentro directamente, y los nombres y tamaños de los 10 más grandes;</li>
+          <li>su fecha de última modificación;</li>
+          <li>en un seguimiento, la conversación hasta ahora. El modelo también puede pedir el mismo conteo, nombres y tamaños de una subcarpeta de ese elemento.</li>
+        </ul>
+        <p>Lo que contiene y la fecha tienen cada uno un interruptor en Ajustes › IA. Ambos empiezan activados. El modelo nunca recibe el contenido de los archivos.</p>
+        <p>Los elementos que dush protege se responden localmente y nunca se le dan al modelo, ni siquiera por su nombre dentro de su carpeta contenedora: credenciales y claves, carpetas del sistema, iCloud Drive y carpetas personales enteras. Aun así puedes preguntar por un único elemento dentro de una carpeta personal.</p>
+        <p>La app muestra lo que se preguntó, bajo la respuesta.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="store-title">
+        <h2 class="doc__heading" id="store-title">La App Store</h2>
+        <p>Apple gestiona la App Store. Descargar dush allí entra dentro de <a href="https://www.apple.com/legal/privacy/en-ww/">la Política de privacidad de Apple</a> y <a href="https://www.apple.com/legal/privacy/data/en/app-store/">la App Store y la privacidad</a>, no de esta página.</p>
+        <p>Apple puede dar a los desarrolladores cifras sobre sus apps, que dice agregadas y que no te identifican. Si has activado <a href="https://support.apple.com/guide/mac-help/share-analytics-information-mac-apple-mh27990/mac">Compartir con los desarrolladores</a>, en Ajustes del Sistema › Privacidad y seguridad › Análisis y mejoras, Apple también puede compartir datos de fallos y otros análisis con los desarrolladores. Ese intercambio ocurre por parte de Apple, no en dush.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="site-title">
+        <h2 class="doc__heading" id="site-title">Este sitio</h2>
+        <p>Este sitio no tiene cookies ni análisis, y no carga nada de otro sitio. Está alojado en GitHub Pages. GitHub registra las direcciones IP de los visitantes por seguridad y puede conservar otros registros técnicos, como hace cualquier hosting. La <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Declaración de privacidad de GitHub</a> lo cubre.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="cli-title">
+        <h2 class="doc__heading" id="cli-title">La herramienta de línea de comandos</h2>
+        <p>La CLI de <code>dush</code> tampoco recoge nada. Solo toca la red en <code>dush update</code>, que consulta la última versión mediante <code>git</code> y actualiza mediante <code>brew</code>. Una copia que compilaste desde el código fuente se obtiene con <code>git</code> y se compila de nuevo con las herramientas de Swift, que descargan lo que la compilación necesita.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="changes-title">
+        <h2 class="doc__heading" id="changes-title">Cambios en esta política</h2>
+        <p>dush no puede avisarte de un cambio por sí mismo: no tiene red ni cuentas. Por eso los cambios se anuncian aquí. Esta página recibe el texto nuevo y una fecha nueva arriba, y <a href="https://github.com/AndreaRR18/dush-web/commits/main/src/privacy.html">todo su historial</a> sigue siendo público en GitHub. Si un cambio viene con una nueva versión de la app, las notas de esa versión en la App Store también lo dicen.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="responsible-title">
+        <h2 class="doc__heading" id="responsible-title">Quién es el responsable</h2>
+        <!-- TEMP: replace with the name and contact details of who is responsible (also on support.html). -->
+        <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> PONER AQUÍ LOS DATOS DE CONTACTO</p>
+        <p>Si escribes al soporte o abres una issue, compartes lo que escribes. Las issues en Codeberg son públicas, y <a href="https://codeberg.org/codeberg/org/src/branch/main/PrivacyPolicy.md">la política de privacidad de Codeberg</a> lo cubre. La página de <a href="support.html">Soporte</a> tiene los detalles.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="../favicon.svg" width="24" height="24" alt="">
+      <p class="label">Es una cinta métrica, no un fisgón.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">El código</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">La CLI en Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">El motor en Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">Este sitio en GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">El creador</p>
+        <p class="footer__about">dush está hecho por Andrea Rinaldi, que también escribe sobre Swift, iOS y fotografía en ByteShutter.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, el blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Política de privacidad</a></li>
+          <li><a href="support.html">Soporte</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">dush para Mac es gratis. La CLI y el motor son de código abierto bajo la licencia MIT. Este sitio no tiene cookies ni rastreo, como dush.</p>
+  </footer>
+</body>
+</html>

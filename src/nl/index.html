@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · Wat vreet er van je schijf?</title>
+  <meta name="description" content="dush vindt wat ruimte in beslag neemt op je Mac, heel snel. Een Mac-app en een opdrachtregeltool op dezelfde engine. Hij kijkt alleen. Hij verwijdert nooit.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <!-- hreflang:start -->
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="de" href="../de/index.html">
+  <link rel="alternate" hreflang="es" href="../es/index.html">
+  <link rel="alternate" hreflang="fr" href="../fr/index.html">
+  <link rel="alternate" hreflang="it" href="../it/index.html">
+  <link rel="alternate" hreflang="nl" href="../nl/index.html">
+  <link rel="alternate" hreflang="pl" href="../pl/index.html">
+  <link rel="alternate" hreflang="pt" href="../pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <!-- hreflang:end -->
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.3l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="icon-keep" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.25 10h7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 20 20"><path d="M10 2.5l6.25 2.4v4.6c0 3.9-2.6 6.6-6.25 8-3.65-1.4-6.25-4.1-6.25-8V4.9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2.5v15" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
+    <symbol id="icon-mac" viewBox="0 0 20 20"><rect x="2.5" y="3.5" width="15" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 17h5M10 13.5V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="#top" aria-label="dush, terug naar boven">
+        <img src="../favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <div class="header__side">
+        <nav class="nav" aria-label="Secties">
+          <a href="#mac">Mac-app</a>
+          <a href="#ai">Veilig om te verwijderen?</a>
+          <a href="#cli">Opdrachtregel</a>
+          <a href="#promises">Beloften</a>
+        </nav>
+        <!-- lang-selector:start -->
+        <details class="lang">
+          <summary class="lang__current" aria-label="Taal: Nederlands">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <span>Nederlands</span>
+          </summary>
+          <ul class="lang__menu">
+            <li><a href="../index.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="../de/index.html" lang="de" hreflang="de">Deutsch</a></li>
+            <li><a href="../es/index.html" lang="es" hreflang="es">Español</a></li>
+            <li><a href="../fr/index.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="../it/index.html" lang="it" hreflang="it">Italiano</a></li>
+            <li aria-current="true"><a href="../nl/index.html" lang="nl" hreflang="nl">Nederlands</a></li>
+            <li><a href="../pl/index.html" lang="pl" hreflang="pl">Polski</a></li>
+            <li><a href="../pt/index.html" lang="pt" hreflang="pt">Português</a></li>
+          </ul>
+        </details>
+        <!-- lang-selector:end -->
+      </div>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="page hero">
+      <div class="split">
+        <div>
+          <p class="label">Voor je Mac en voor je Terminal</p>
+          <h1 class="title">Wat vreet er van je <em>schijf</em>?</h1>
+          <p class="lead">Sleep een map erin en dush zet alles boven de 512&nbsp;MB op een rij, grootste eerst. Hij is heel snel, hij meet zoals <code>du</code>, en hij kijkt alleen. Hij verwijdert nooit iets.</p>
+          <div class="actions">
+            <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
+            <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Download voor Mac</a>
+            <a class="button" href="#cli">Installeer de CLI</a>
+          </div>
+          <p class="caption">De app is gratis en heeft macOS&nbsp;26 nodig. De opdrachtregeltool is gratis en open source, en heeft macOS&nbsp;14 nodig.</p>
+        </div>
+        <figure class="illustration">
+          <picture>
+            <source srcset="../img/home-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/home-light.svg" width="360" height="280" alt="">
+          </picture>
+          <figcaption class="label">Het is een meetlint, geen spion.</figcaption>
+        </figure>
+      </div>
+
+      <ul class="facts" data-reveal>
+        <li>
+          <span class="fact__number" data-count="150000">150.000</span>
+          <span class="fact__text">items gemeten in ongeveer een seconde, op een Mac met Apple-silicon. Sneller dan <code>du</code> op dezelfde map.</span>
+        </li>
+        <li>
+          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__text">cache-, log- en tijdelijke locaties die de volledige scan controleert. Geen map om te kiezen.</span>
+        </li>
+        <li>
+          <span class="fact__number">0</span>
+          <span class="fact__text">bestanden verwijderd, verplaatst of gewijzigd. Nooit. Wat je ermee doet, beslis je zelf.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Scanning -->
+    <section class="page section" id="mac" aria-labelledby="scan-title">
+      <div class="split split--reverse" data-reveal>
+        <div>
+          <p class="label">dush voor Mac</p>
+          <h2 class="heading" id="scan-title">Sleep een map erin, zie wat groot is.</h2>
+          <p>Sleep een of meer mappen op het venster of het Dock-icoon, of druk op ⌘O. dush loopt ze parallel door en telt elk bestand, ook verborgen bestanden en app-bundels, terwijl je de aantallen ziet stijgen.</p>
+          <ul class="list">
+            <li><strong>Volledige scan</strong> heeft geen map nodig. Hij controleert de caches en tijdelijke mappen waarin alleen spullen staan die je Mac opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, de DerivedData en DeviceSupport van Xcode, de simulatorcaches en die van VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn vallen af, en geneste mappen tellen maar één keer mee.</li>
+            <li><strong>Downloads en Bureaublad</strong> scant de twee gebruikelijke verdachten met één klik.</li>
+            <li><strong>Tot nu toe grootste</strong>: grote bestanden verschijnen zodra ze gevonden zijn, mappen zodra ze gemeten zijn. Druk op Esc om jederzeit te stoppen.</li>
+            <li><strong>Jouw opties</strong>: een minimumgrootte (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB of je eigen, zoals <code>1.5 GiB</code>), alleen bestanden of mappen, sla over <code>node_modules</code>, <code>.git</code> en andere ontwikkelaarsmappen, of sluit namen en patronen uit zoals <code>*.xcarchive</code>.</li>
+          </ul>
+        </div>
+        <figure class="illustration">
+          <picture>
+            <source srcset="../img/scanning-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/scanning-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+          <figcaption class="pill">Je schijf-sterrenstelsel in kaart brengen…</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="page section" aria-labelledby="results-title">
+      <div class="intro" data-reveal>
+        <p class="label">De resultaten</p>
+        <h2 class="heading" id="results-title">Het getal staat voorop.</h2>
+        <p>Elke grootte is de ruimte die een bestand echt inneemt op de schijf, precies gemeten zoals <code>du</code>: hardlinks tellen één keer mee, symlinks worden nooit gevolgd, en een map die bijna al zijn grootte aan één submap te danken heeft, verschijnt als één regel, zodat een grote cache de lijst niet drie keer vult.</p>
+      </div>
+
+      <article class="sheet results" data-reveal aria-label="Voorbeeldresultaten voor ~/Library/Developer">
+        <p class="label">~/Library/Developer</p>
+        <p class="hero-size"><span data-count="64.10" data-decimals="2">64,10</span> <span class="unit">GB</span></p>
+        <p class="caption">412.806 items in 1,9&nbsp;s · 7 items boven de 512&nbsp;MB · 3 paden konden niet gelezen worden</p>
+
+        <div class="composition" aria-hidden="true">
+          <span class="composition__part composition__part--teal" style="--share: 33"></span>
+          <span class="composition__part composition__part--orange" style="--share: 23"></span>
+          <span class="composition__part composition__part--teal" style="--share: 11"></span>
+          <span class="composition__part composition__part--rest" style="--share: 33"></span>
+        </div>
+        <p class="composition__legend label">DerivedData · 33% · Devices · 23% · iPhone16,2 27.0 · 11% · Al het andere · 33%</p>
+
+        <ol class="rows">
+          <li class="row" style="--share: 0.333"><span class="row__name">DerivedData</span><span class="row__path">~/Library/Developer/Xcode/DerivedData</span><span class="row__size">21,37 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.232"><span class="row__name">Devices</span><span class="row__path">~/Library/Developer/CoreSimulator/Devices</span><span class="row__size">14,90 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.105"><span class="row__name">iPhone16,2 27.0 (24A5355q)</span><span class="row__path">~/Library/Developer/Xcode/iOS DeviceSupport/iPhone16,2 27.0 (24A5355q)</span><span class="row__size">6,72 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.083"><span class="row__name">Archives</span><span class="row__path">~/Library/Developer/Xcode/Archives</span><span class="row__size">5,31 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.048"><span class="row__name">Caches</span><span class="row__path">~/Library/Developer/CoreSimulator/Caches</span><span class="row__size">3,08 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.033"><span class="row__name">Watch7,1 11.0 (22R349)</span><span class="row__path">~/Library/Developer/Xcode/watchOS DeviceSupport/Watch7,1 11.0 (22R349)</span><span class="row__size">2,12 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.019"><span class="row__name">Previews</span><span class="row__path">~/Library/Developer/Xcode/UserData/Previews</span><span class="row__size">1,21 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+        </ol>
+      </article>
+
+      <ul class="cards cards--three">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Lijst</h3>
+          <p>Grootste eerst, elk met zijn aandeel van het totaal. Zoek, sorteer op grootte of naam, en rechtsklik voor Toon in Finder, Kopieer pad, Geef snel weer of Vraag de AI. Niets in het menu verwijdert.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Kaart</h3>
+          <p>Dezelfde scan als boomkaart: blokken naar schijfgebruik, gekleurd per map op het hoogste niveau. Klik op een blok om in te zoomen, volg het spoor terug naar buiten.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Wat is er gewijzigd</h3>
+          <p>Vergelijkt de nieuwste scan van een map met een eerdere uit je geschiedenis. <span class="growth">Is 7,90&nbsp;GB gegroeid</span> sinds 20 sep, 18:40 uur: dit is gegroeid, dit is gekrompen en dit is nieuw.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- AI -->
+    <section class="page section" id="ai" aria-labelledby="ai-title">
+      <div class="split split--top">
+        <div data-reveal>
+          <p class="label">Veilig om te verwijderen?</p>
+          <h2 class="heading" id="ai-title">Vraag het je Mac, niet een server.</h2>
+          <p>Niet zeker wat een map is? Selecteer hem en vraag het. Apple Intelligence antwoordt op deze Mac, met een oordeel, een samenvatting van één regel en wat er gebeurt als je hem verwijdert. Vraag daarna verder, zoals <q>Raak ik mijn SwiftUI-previews kwijt?</q></p>
+          <p>dush vertelt het model alleen over het item:</p>
+          <ul class="list">
+            <li>altijd het pad, de naam, de grootte en of het een bestand of een map is;</li>
+            <li>als je wilt, hoeveel items er direct in zitten, de namen en groottes van de 10 grootste, en wanneer het voor het laatst gewijzigd is;</li>
+            <li>nooit wat er in je bestanden staat.</li>
+          </ul>
+          <p>Wat het te horen kreeg staat onder elk antwoord. Geen server, geen account, geen sleutel. Niets verlaat je Mac.</p>
+        </div>
+
+        <div class="stack" data-reveal>
+          <article class="sheet verdict" aria-label="Voorbeeldantwoord voor DerivedData">
+            <p class="verdict__title verdict--safe"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Veilig om te verwijderen</p>
+            <p class="verdict__summary">De buildcache van Xcode. Die groeit vanzelf weer aan.</p>
+            <ul class="list">
+              <li>Buildproducten, indexen en logs van elk project dat Xcode ooit heeft geopend.</li>
+              <li>Xcode bouwt opnieuw wat het nodig heeft, dus je volgende build duurt alleen langer.</li>
+              <li>Sluit Xcode eerst af, zodat het onderweg geen nieuwe bestanden schrijft.</li>
+            </ul>
+            <p class="footnote"><svg class="icon" aria-hidden="true"><use href="#icon-mac"/></svg> Op deze Mac aan Apple Intelligence gevraagd: pad, grootte en de namen van de 10 grootste items erin. Niets heeft deze Mac verlaten. Nooit bestandsinhoud.</p>
+          </article>
+
+          <ul class="verdicts">
+            <li class="verdict--safe"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg><span><strong>Veilig om te verwijderen</strong> Gegevens die vanzelf terugkomen, zoals DerivedData.</span></li>
+            <li class="verdict--check"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg><span><strong>Controleer eerst</strong> Er zitten dingen in die je misschien wilt houden, zoals simulators.</span></li>
+            <li class="verdict--keep"><svg class="icon" aria-hidden="true"><use href="#icon-keep"/></svg><span><strong>Houden</strong> Belangrijke gegevens, zoals Xcode-archieven met hun debugsymbolen.</span></li>
+            <li class="verdict--keep"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg><span><strong>Beschermd door dush</strong> Systeemmappen, sleutels zoals <code>~/.ssh</code>, iCloud Drive en hele persoonlijke mappen krijgen meteen een antwoord. Geen AI geraadpleegd, geen bytes verstuurd.</span></li>
+          </ul>
+
+          <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> AI-antwoorden kunnen fout zijn. dush verwijdert nooit iets. Als je besluit iets te verwijderen, doe het dan zelf in de Finder.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer caches -->
+    <section class="page section" id="caches" aria-labelledby="caches-title">
+      <div class="split" data-reveal>
+        <div>
+          <p class="label">Ontwikkelaarscaches</p>
+          <h2 class="heading" id="caches-title">Je tools bouwen het meeste hiervan zelf opnieuw op.</h2>
+          <p>dush weet waar ontwikkelaarstools hun caches bewaren en telt ze op: <strong class="serif-number">48,29&nbsp;GB</strong> op een volle Mac. Van elk zegt het wat het is, of het zichzelf opnieuw opbouwt of een controle waard is, en hoe je het leegmaakt zoals dat tool suggereert. Jij doet het leegmaken. dush voert niets uit.</p>
+        </div>
+        <figure class="illustration illustration--small">
+          <picture>
+            <source srcset="../img/grows-back-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/grows-back-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+        </figure>
+      </div>
+
+      <ul class="cards">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Buildcache van Xcode</h3>
+          <p>Buildbestanden en indexen. Xcode bouwt ze opnieuw bij de volgende build.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Niet-beschikbare simulators</h3>
+          <p>Simulators waarvan de OS-versie niet meer geïnstalleerd is, met de apps en gegevens die erop staan.</p>
+          <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controleer eerst</p>
+          <code class="card__command">xcrun simctl delete unavailable</code>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Oude apparaatomersteuning</h3>
+          <p>Debugsymbolen voor iOS- en watchOS-versies die je apparaten niet meer draaien. De nieuwste versie van elk apparaat blijft erbuiten.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Verouderde node_modules</h3>
+          <p>Pakketten in projecten waar niemand 90+ dagen iets aan heeft gewijzigd, in je codemappen, nooit in Documenten of het Bureaublad.</p>
+          <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controleer eerst</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <p>Pakketten die je pakketbeheerders hebben gedownload. Ze downloaden ze opnieuw wanneer een project ze nodig heeft.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
+          <code class="card__command">pnpm store prune</code>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Gradle and Homebrew</h3>
+          <p>Afhankelijkheden, builduitvoer, bottles en oude versies van wat je hebt geïnstalleerd.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
+          <code class="card__command">brew cleanup</code>
+        </li>
+      </ul>
+      <p class="caption center" data-reveal>Elke kaart heeft Toon in Finder, die precies de mappen van de cache selecteert, en Kopieer commando als het tool er een heeft. Alleen de eigen commando's van de tools, om zelf in de Terminal te plakken.</p>
+    </section>
+
+    <!-- More -->
+    <section class="page section" aria-labelledby="more-title">
+      <div class="intro" data-reveal>
+        <p class="label">En de rest</p>
+        <h2 class="heading" id="more-title">Kleine dingen die een Mac ruim houden.</h2>
+      </div>
+      <ul class="cards cards--three">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Scangeschiedenis</h3>
+          <p>Elke scan wordt op je Mac bewaard, gegroepeerd per dag, en opent direct opnieuw zonder opnieuw te scannen. Bewaar hem 30&nbsp;dagen, 90&nbsp;dagen of voor altijd, of bewaar niets.</p>
+          <p class="quote">Uit de geschiedenis verwijderd. Je bestanden zijn niet aangeraakt.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Bewaakte mappen</h3>
+          <p>Geef een map een limiet en dush meldt het één keer wanneer een scan eroverheen gaat. Hij kan ze elke dag of elke week scannen zolang hij open is.</p>
+          <p class="quote">Developer zit boven de 60&nbsp;GB. Het is nu 64,10&nbsp;GB, 7,90&nbsp;GB erbij sinds 20 sep.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Menubalk</h3>
+          <p>Vrije schijfruimte in één oogopslag, je bewaakte mappen en hoeveel ze zijn gegroeid, en snelkoppelingen om te scannen. Uit todat je hem aanzet.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Finder en Snelkoppelingen</h3>
+          <p>Rechtsklik op een map, kies Scan met dush. In Snelkoppelingen: Scan map, Mapgrootte en Vrije schijfruimte.</p>
+          <p class="quote">Developer neemt 64,10&nbsp;GB in.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Rapporten</h3>
+          <p>Exporteer een scan als JSON, Markdown of CSV. Open de JSON die <code>dush --json</code> schrijft, en vergelijk het met wat er sindsdien is gewijzigd.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Acht talen</h3>
+          <p>Elk scherm, elke grap, in elk ervan. dush volgt de taal van je Mac, of degene die je kiest in Instellingen.</p>
+          <p class="quote" lang="it">Cosa si sta mangiando il tuo disco?</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Promises -->
+    <section class="page section" id="promises" aria-labelledby="promises-title">
+      <div class="split split--reverse split--top">
+        <div data-reveal>
+          <p class="label">Onze beloften</p>
+          <h2 class="heading" id="promises-title">dush kijkt alleen. Hij verwijdert nooit.</h2>
+          <dl class="promises">
+            <div>
+              <dt>dush verwijdert nooit je bestanden</dt>
+              <dd>Hij kijkt alleen. Iets verwijderen is altijd jouw keuze, in de Finder of de Terminal. Het enige dat dush kan verwijderen is zijn eigen scangeschiedenis.</dd>
+            </div>
+            <div>
+              <dt>Geen tracking, geen profilering</dt>
+              <dd>Geen analyses, geen telemetrie, geen identificatiegegevens. Je scans verlaten deze Mac nooit.</dd>
+            </div>
+            <div>
+              <dt>Altijd offline</dt>
+              <dd>dush gebruikt nooit het netwerk. Apple Intelligence antwoordt op deze Mac, dus er verlaat niets.</dd>
+            </div>
+            <div>
+              <dt>Geen accounts</dt>
+              <dd>Geen aanmelding, geen e-mail, geen cloudsynchronisatie.</dd>
+            </div>
+            <div>
+              <dt>Geen in-app aankopen</dt>
+              <dd>Gratis. Geen abonnementen, geen Pro-versie, geen advertenties.</dd>
+            </div>
+          </dl>
+          <p>Dit zijn niet zomaar woorden: de tests falen als de code ooit het netwerk bereikt, een bestand verwijdert dat niet van hem is, of een verwijderknop krijgt.</p>
+        </div>
+        <figure class="illustration" data-reveal>
+          <picture>
+            <source srcset="../img/keys-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/keys-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+          <figcaption class="label">Zelfs met de sleutels van elke kamer leest dush alleen namen en groottes.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CLI -->
+    <section class="page section" id="cli" aria-labelledby="cli-title">
+      <div class="intro" data-reveal>
+        <p class="label">In de Terminal</p>
+        <h2 class="heading" id="cli-title">Dezelfde engine, in je shell.</h2>
+        <p>dush begon als opdrachtregeltool, en dat is het nog steeds. De app en de CLI delen dezelfde engine, dus ze geven dezelfde groottes voor dezelfde map, tot op de byte nauwkeurig. Installeer het met Homebrew:</p>
+      </div>
+
+      <div class="command" data-reveal>
+        <code id="install-command">brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git &amp;&amp; brew install andre_rori/tap/dush</code>
+        <button class="button button--quiet" type="button" data-copy="install-command" data-copied="Gekopieerd">Kopieer commando</button>
+      </div>
+
+      <div class="split split--top cli">
+        <div data-reveal>
+          <h3 class="card__title">Probeer het</h3>
+<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
+dush
+
+<span class="comment"># Your home, files over 1 GB, the top 10</span>
+dush ~ --min-size 1GB --files-only --top 10
+
+<span class="comment"># Skip node_modules, .git, DerivedData and friends</span>
+dush ~/Code --exclude-dev
+
+<span class="comment"># A report for your scripts</span>
+dush ~/Library/Developer --json &gt; developer.json</code></pre>
+        </div>
+        <div data-reveal>
+          <h3 class="card__title">Wat je krijgt</h3>
+<pre class="code"><code>      Size  Name
+-------------------------------
+   <span class="size">6.72 GB</span>  <span class="name">iPhone16,2 27.0 (24A5355q)/</span>
+   <span class="size">2.43 GB</span>  <span class="name">com.spotify.client/</span>
+   <span class="size">2.09 GB</span>  <span class="name">_cacache/</span>
+
+Found 3 items of at least 512.00 MB.
+Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
+          <ul class="list">
+            <li>Groottes zoals de Finder ze toont, 1&nbsp;GB = 1.000.000.000 bytes.</li>
+            <li>Live voortgang op stderr, met een grapje of twee, zodat gepipette uitvoer schoon blijft.</li>
+            <li><code>--json</code> voor scripts, <code>NO_COLOR</code> voor platte tekst, <code>dush update</code> om actueel te blijven.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="page section closing" aria-labelledby="closing-title" data-reveal>
+      <h2 class="title" id="closing-title">Zie wat ruimte in beslag neemt.</h2>
+      <p class="lead">Wat je ermee doet, beslis je zelf.</p>
+      <div class="actions actions--center">
+        <!-- TEMP: replace with the real Mac App Store link (also in the hero). -->
+        <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Download voor Mac</a>
+        <a class="button" href="#cli">Installeer de CLI</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="../favicon.svg" width="24" height="24" alt="">
+      <p class="label">Het is een meetlint, geen spion.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">De code</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">De CLI op Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">De engine op Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">Deze website op GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">De maker</p>
+        <p class="footer__about">dush is gemaakt door Andrea Rinaldi, die op ByteShutter ook schrijft over Swift, iOS en fotografie.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, de blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Privacyverklaring</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">dush voor Mac is gratis. De CLI en de engine zijn open source onder de MIT-licentie. Deze site heeft geen cookies en geen tracking, net als dush.</p>
+  </footer>
+</body>
+</html>
