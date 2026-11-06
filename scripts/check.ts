@@ -4,8 +4,9 @@
 //   3. builds dist/.
 //
 // The rules: the page loads nothing from another site (no CDN, font service, analytics or
-// embed), every local file it references exists, and no reference starts with "/", because
-// GitHub Pages serves the site under /dush-web/, not at the root of a domain.
+// embed), every local file it references exists, no reference starts with "/", because
+// GitHub Pages serves the site under /dush-web/, not at the root of a domain, and no link leads
+// to the Mac app's repository, which is private.
 
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -16,6 +17,7 @@ type Problem = { file: string; line: number; message: string };
 
 const external = /^(https?:)?\/\//i;
 const elsewhere = /^(mailto:|tel:|data:|#)/i;
+const privateRepository = /codeberg\.org\/Andre_Rori\/dush-desktop/i;
 
 function filesIn(folder: string): string[] {
   return readdirSync(folder, { recursive: true, encoding: "utf8" })
@@ -44,6 +46,7 @@ function checkReference(file: string, line: number, reference: string, isResourc
   if (value === "" || elsewhere.test(value)) return;
   if (external.test(value)) {
     if (isResource) problems.push({ file, line, message: `loads ${value} from another site: put the file in src/ instead` });
+    if (privateRepository.test(value)) problems.push({ file, line, message: `${value} is private: visitors get a 404` });
     return;
   }
   if (value.startsWith("/")) {
