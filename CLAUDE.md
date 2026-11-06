@@ -19,7 +19,7 @@ src/                 the site, as it is published
   css/tokens.css     the Paper tokens (colors light/dark, type, radii, spacing); nothing else
   css/site.css       base and components, using tokens only
   ts/*.ts            the page's TypeScript → dist/js/*.js (import siblings as "./x.ts")
-  favicon.svg        the logo
+  favicon.svg        the logo and the tab icon (the app icon, simplified)
 scripts/             the harness, TypeScript run directly by Node (no compile step)
   build.ts           src/ → dist/: copies everything but ts/, then tsc compiles ts/ to js/
   dev.ts             builds, serves dist/ at http://localhost:8000/dush-web/, rebuilds on save
@@ -248,9 +248,12 @@ Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codebe
   in, none with `prefers-reduced-motion`.
 - Allowed subjects: folders, sheets, crates, a tape measure, a magnifying glass, keys, a laptop, a
   sprout. No people, faces, mascots or text inside a drawing.
-- The logo is flat, in brand colors: on a 32-unit grid, a tab `(3,5,11×6, r2)` in `#1A9E9E`, a
-  body `(3,8,26×19, r3.5)` in `#2ECCCC`, three bars at x 7, y 12.5/17/21.5, widths 18/13/8,
-  height 2.6, r1.3, in `#FF6B35`. Never recolor, outline or animate it.
+- The logo is the app icon in its simplified form, `../dush-desktop/Design/icon/app-icon-small.svg`
+  (the one made for 16 and 32 px: a paper tile, an ink-outlined teal-wash folder, two orange bars).
+  `src/favicon.svg` is that file with the C2PA `<metadata>` block and the fixed `width`/`height`
+  removed, and it serves as the tab icon and the header and footer logo. When the icon changes
+  in dush-desktop, re-copy and strip it again; never edit it by hand, recolor or animate it. The
+  old flat teal-and-orange folder is retired on the site.
 
 ## What dush does (for feature copy)
 
