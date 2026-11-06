@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dush · O que está a comer o seu disco?</title>
+  <meta name="description" content="O dush encontra o que ocupa espaço no seu Mac, muito depressa. Uma app para Mac e uma ferramenta de linha de comandos sobre o mesmo motor. Só olha. Nunca elimina.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <!-- hreflang:start -->
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="de" href="../de/index.html">
+  <link rel="alternate" hreflang="es" href="../es/index.html">
+  <link rel="alternate" hreflang="fr" href="../fr/index.html">
+  <link rel="alternate" hreflang="it" href="../it/index.html">
+  <link rel="alternate" hreflang="nl" href="../nl/index.html">
+  <link rel="alternate" hreflang="pl" href="../pl/index.html">
+  <link rel="alternate" hreflang="pt" href="../pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <!-- hreflang:end -->
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <svg class="icons" aria-hidden="true">
+    <symbol id="icon-check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.3l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-caution" viewBox="0 0 20 20"><path d="M10 2.75l7.75 13.5H2.25z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v3.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="icon-keep" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.25 10h7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 20 20"><path d="M10 2.5l6.25 2.4v4.6c0 3.9-2.6 6.6-6.25 8-3.65-1.4-6.25-4.1-6.25-8V4.9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 2.5v15" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="0.95" fill="currentColor"/></symbol>
+    <symbol id="icon-mac" viewBox="0 0 20 20"><rect x="2.5" y="3.5" width="15" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 17h5M10 13.5V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.75" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.4" ry="7.75" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M2.25 10h15.5" stroke="currentColor" stroke-width="1.1"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="#top" aria-label="dush, voltar ao topo">
+        <img src="../favicon.svg" width="28" height="28" alt="">
+        <span>dush</span>
+      </a>
+      <div class="header__side">
+        <nav class="nav" aria-label="Secções">
+          <a href="#mac">App para Mac</a>
+          <a href="#ai">É seguro eliminar?</a>
+          <a href="#cli">Linha de comandos</a>
+          <a href="#promises">Promessas</a>
+        </nav>
+        <!-- lang-selector:start -->
+        <details class="lang">
+          <summary class="lang__current" aria-label="Idioma: Português">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <span>Português</span>
+          </summary>
+          <ul class="lang__menu">
+            <li><a href="../index.html" lang="en" hreflang="en">English</a></li>
+            <li><a href="../de/index.html" lang="de" hreflang="de">Deutsch</a></li>
+            <li><a href="../es/index.html" lang="es" hreflang="es">Español</a></li>
+            <li><a href="../fr/index.html" lang="fr" hreflang="fr">Français</a></li>
+            <li><a href="../it/index.html" lang="it" hreflang="it">Italiano</a></li>
+            <li><a href="../nl/index.html" lang="nl" hreflang="nl">Nederlands</a></li>
+            <li><a href="../pl/index.html" lang="pl" hreflang="pl">Polski</a></li>
+            <li aria-current="true"><a href="../pt/index.html" lang="pt" hreflang="pt">Português</a></li>
+          </ul>
+        </details>
+        <!-- lang-selector:end -->
+      </div>
+    </div>
+  </header>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="page hero">
+      <div class="split">
+        <div>
+          <p class="label">Para o seu Mac e para o seu Terminal</p>
+          <h1 class="title">O que está a comer o seu <em>disco</em>?</h1>
+          <p class="lead">Largue uma pasta e o dush lista tudo o que tiver mais de 512&nbsp;MB, do maior para o menor. É muito rápido, mede como <code>du</code>, e só olha. Nunca elimina.</p>
+          <div class="actions">
+            <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
+            <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Transferir para Mac</a>
+            <a class="button" href="#cli">Instalar a CLI</a>
+          </div>
+          <p class="caption">A app é grátis e precisa do macOS&nbsp;26. A ferramenta de linha de comandos é grátis e de código aberto, e precisa do macOS&nbsp;14.</p>
+        </div>
+        <figure class="illustration">
+          <picture>
+            <source srcset="../img/home-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/home-light.svg" width="360" height="280" alt="">
+          </picture>
+          <figcaption class="label">É uma fita métrica, não um bisbilhoteiro.</figcaption>
+        </figure>
+      </div>
+
+      <ul class="facts" data-reveal>
+        <li>
+          <span class="fact__number" data-count="150000">150&nbsp;000</span>
+          <span class="fact__text">elementos medidos em cerca de um segundo, num Mac com Apple silicon. Mais rápido do que <code>du</code> na mesma pasta.</span>
+        </li>
+        <li>
+          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__text">localizações de caches, logs e ficheiros temporários verificadas pela análise completa. Sem pasta para escolher.</span>
+        </li>
+        <li>
+          <span class="fact__number">0</span>
+          <span class="fact__text">ficheiros eliminados, movidos ou alterados. Nunca. O que faz com eles depende de si.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Scanning -->
+    <section class="page section" id="mac" aria-labelledby="scan-title">
+      <div class="split split--reverse" data-reveal>
+        <div>
+          <p class="label">dush para Mac</p>
+          <h2 class="heading" id="scan-title">Largue uma pasta, veja o que pesa.</h2>
+          <p>Arraste uma ou mais pastas para a janela ou para o ícone no Dock, ou prima ⌘O. O dush percorre-as em paralelo e conta cada ficheiro, incluindo os ocultos e os pacotes de apps, enquanto vê os números subirem.</p>
+          <ul class="list">
+            <li><strong>Análise completa</strong> não precisa de pasta. Verifica as caches e pastas temporárias que só guardam coisas que o seu Mac pode reconstruir: caches do sistema e das apps, logs, o Lixo, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, o DerivedData e o DeviceSupport do Xcode, as caches dos simuladores e as do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e as aninhadas contam só uma vez.</li>
+            <li><strong>Descargas e Secretária</strong> analisa os dois suspeitos do costume com um clique.</li>
+            <li><strong>Maiores até agora</strong>: os ficheiros grandes aparecem assim que são encontrados, as pastas assim que são medidas. Prima Esc para parar a qualquer momento.</li>
+            <li><strong>As suas opções</strong>: um tamanho mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB ou o seu próprio, como <code>1.5 GiB</code>), apenas ficheiros ou pastas, salte <code>node_modules</code>, <code>.git</code> e outras pastas de programação, ou exclua nomes e padrões como <code>*.xcarchive</code>.</li>
+          </ul>
+        </div>
+        <figure class="illustration">
+          <picture>
+            <source srcset="../img/scanning-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/scanning-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+          <figcaption class="pill">A mapear a galáxia do seu disco…</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="page section" aria-labelledby="results-title">
+      <div class="intro" data-reveal>
+        <p class="label">Os resultados</p>
+        <h2 class="heading" id="results-title">O número vem primeiro.</h2>
+        <p>Cada tamanho é o espaço que um ficheiro ocupa de verdade no disco, medido exatamente como <code>du</code>: as ligações rígidas contam uma vez, as ligações simbólicas nunca são seguidas, e uma pasta que deve quase todo o seu tamanho a uma subpasta aparece numa só linha, para uma cache grande não encher a lista três vezes.</p>
+      </div>
+
+      <article class="sheet results" data-reveal aria-label="Resultados de exemplo para ~/Library/Developer">
+        <p class="label">~/Library/Developer</p>
+        <p class="hero-size"><span data-count="64.10" data-decimals="2">64,10</span> <span class="unit">GB</span></p>
+        <p class="caption">412&nbsp;806 elementos em 1,9&nbsp;s · 7 elementos acima de 512&nbsp;MB · 3 caminhos não puderam ser lidos</p>
+
+        <div class="composition" aria-hidden="true">
+          <span class="composition__part composition__part--teal" style="--share: 33"></span>
+          <span class="composition__part composition__part--orange" style="--share: 23"></span>
+          <span class="composition__part composition__part--teal" style="--share: 11"></span>
+          <span class="composition__part composition__part--rest" style="--share: 33"></span>
+        </div>
+        <p class="composition__legend label">DerivedData · 33% · Devices · 23% · iPhone16,2 27.0 · 11% · Todo o resto · 33%</p>
+
+        <ol class="rows">
+          <li class="row" style="--share: 0.333"><span class="row__name">DerivedData</span><span class="row__path">~/Library/Developer/Xcode/DerivedData</span><span class="row__size">21,37 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.232"><span class="row__name">Devices</span><span class="row__path">~/Library/Developer/CoreSimulator/Devices</span><span class="row__size">14,90 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.105"><span class="row__name">iPhone16,2 27.0 (24A5355q)</span><span class="row__path">~/Library/Developer/Xcode/iOS DeviceSupport/iPhone16,2 27.0 (24A5355q)</span><span class="row__size">6,72 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.083"><span class="row__name">Archives</span><span class="row__path">~/Library/Developer/Xcode/Archives</span><span class="row__size">5,31 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.048"><span class="row__name">Caches</span><span class="row__path">~/Library/Developer/CoreSimulator/Caches</span><span class="row__size">3,08 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.033"><span class="row__name">Watch7,1 11.0 (22R349)</span><span class="row__path">~/Library/Developer/Xcode/watchOS DeviceSupport/Watch7,1 11.0 (22R349)</span><span class="row__size">2,12 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+          <li class="row" style="--share: 0.019"><span class="row__name">Previews</span><span class="row__path">~/Library/Developer/Xcode/UserData/Previews</span><span class="row__size">1,21 <span class="unit">GB</span></span><span class="share" aria-hidden="true"><span class="share__fill"></span></span></li>
+        </ol>
+      </article>
+
+      <ul class="cards cards--three">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Lista</h3>
+          <p>Do maior para o menor, cada um com a sua parte do total. Pesquise, ordene por tamanho ou nome, e clique direito para Mostrar no Finder, Copiar caminho, Vista rápida ou Perguntar à IA. Nada no menu elimina.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Mapa</h3>
+          <p>A mesma análise como mapa de árvore: blocos proporcionais ao uso do disco, coloridos pela pasta de primeiro nível. Clique num bloco para ampliar, siga o rasto para voltar atrás.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">O que mudou</h3>
+          <p>Compara a análise mais recente de uma pasta com uma anterior do seu histórico. <span class="growth">Cresceu 7,90&nbsp;GB</span> desde 20 set, 18:40: isto é o que cresceu, o que diminuiu e o que é novo.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- AI -->
+    <section class="page section" id="ai" aria-labelledby="ai-title">
+      <div class="split split--top">
+        <div data-reveal>
+          <p class="label">É seguro eliminar?</p>
+          <h2 class="heading" id="ai-title">Pergunte ao seu Mac, não a um servidor.</h2>
+          <p>Não tem a certeza do que é uma pasta? Selecione-a e pergunte. A Apple Intelligence responde neste Mac, com um parecer, um resumo numa linha e o que acontece se a remover. Depois pergunte mais, como <q>Vou perder as minhas pré-visualizações SwiftUI?</q></p>
+          <p>O dush diz ao modelo apenas sobre o elemento:</p>
+          <ul class="list">
+            <li>sempre o caminho, o nome, o tamanho e se é um ficheiro ou uma pasta;</li>
+            <li>se quiser, quantos elementos lá dentro diretamente, os nomes e tamanhos dos 10 maiores, e quando mudou pela última vez;</li>
+            <li>nunca o que está dentro dos seus ficheiros.</li>
+          </ul>
+          <p>O que lhe foi dito aparece debaixo de cada resposta. Sem servidor, sem conta, sem chave. Nada sai do seu Mac.</p>
+        </div>
+
+        <div class="stack" data-reveal>
+          <article class="sheet verdict" aria-label="Resposta de exemplo para DerivedData">
+            <p class="verdict__title verdict--safe"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> É seguro eliminar</p>
+            <p class="verdict__summary">A cache de compilação do Xcode. Volta a crescer sozinha.</p>
+            <ul class="list">
+              <li>Produtos de compilação, índices e logs de cada projeto que o Xcode já abriu.</li>
+              <li>O Xcode reconstrói o que precisa, por isso a próxima compilação será apenas mais lenta.</li>
+              <li>Feche primeiro o Xcode para ele não escrever ficheiros novos a meio do caminho.</li>
+            </ul>
+            <p class="footnote"><svg class="icon" aria-hidden="true"><use href="#icon-mac"/></svg> Perguntado à Apple Intelligence neste Mac: caminho, tamanho e os nomes dos 10 maiores elementos lá dentro. Nada saiu deste Mac. Nunca os conteúdos dos ficheiros.</p>
+          </article>
+
+          <ul class="verdicts">
+            <li class="verdict--safe"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg><span><strong>É seguro eliminar</strong> Dados que voltam sozinhos, como o DerivedData.</span></li>
+            <li class="verdict--check"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg><span><strong>Verificar primeiro</strong> Guarda coisas que pode querer manter, como os simuladores.</span></li>
+            <li class="verdict--keep"><svg class="icon" aria-hidden="true"><use href="#icon-keep"/></svg><span><strong>Manter</strong> Dados importantes, como os Arquivos do Xcode com os seus símbolos de depuração.</span></li>
+            <li class="verdict--keep"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg><span><strong>Protegido pelo dush</strong> Pastas do sistema, chaves como <code>~/.ssh</code>, o iCloud Drive e as pastas pessoais inteiras recebem uma resposta de imediato. Sem IA consultada, sem bytes enviados.</span></li>
+          </ul>
+
+          <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> As respostas da IA podem estar erradas. O dush nunca elimina nada. Se decidir remover algo, faça-o por si no Finder.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer caches -->
+    <section class="page section" id="caches" aria-labelledby="caches-title">
+      <div class="split" data-reveal>
+        <div>
+          <p class="label">Caches de programador</p>
+          <h2 class="heading" id="caches-title">As suas ferramentas reconstruem a maior parte disto sozinhas.</h2>
+          <p>O dush sabe onde as ferramentas de programação guardam as caches e soma-as: <strong class="serif-number">48,29&nbsp;GB</strong> num Mac bem usado. De cada uma diz o que é, se se reconstrói sozinha ou se vale a pena revê-la primeiro, e como a limpe do modo que essa ferramenta sugere. A limpeza é por sua conta. O dush não executa nada.</p>
+        </div>
+        <figure class="illustration illustration--small">
+          <picture>
+            <source srcset="../img/grows-back-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/grows-back-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+        </figure>
+      </div>
+
+      <ul class="cards">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Cache de compilação do Xcode</h3>
+          <p>Ficheiros de compilação e índices. O Xcode reconstrói-os na próxima compilação.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Simuladores indisponíveis</h3>
+          <p>Simuladores cuja versão do SO já não está instalada, com as apps e os dados que neles estão.</p>
+          <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Rever primeiro</p>
+          <code class="card__command">xcrun simctl delete unavailable</code>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Suporte antigo de dispositivos</h3>
+          <p>Símbolos de depuração de versões de iOS e watchOS que os seus dispositivos já não correm. A versão mais recente de cada dispositivo fica de fora.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">node_modules parados</h3>
+          <p>Pacotes em projetos que ninguém mexe há 90+ dias, nas suas pastas de código, nunca em Documentos ou na Secretária.</p>
+          <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Rever primeiro</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <p>Pacotes que os seus gestores de pacotes transferiram. Voltam a transferi-los quando um projeto precisa deles.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
+          <code class="card__command">pnpm store prune</code>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Gradle and Homebrew</h3>
+          <p>Dependências, saídas de compilação, bottles e versões antigas do que instalou.</p>
+          <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
+          <code class="card__command">brew cleanup</code>
+        </li>
+      </ul>
+      <p class="caption center" data-reveal>Cada cartão tem Mostrar no Finder, que seleciona exatamente as pastas da cache, e Copiar comando quando a ferramenta tem um. Apenas os comandos próprios das ferramentas, para colar por si no Terminal.</p>
+    </section>
+
+    <!-- More -->
+    <section class="page section" aria-labelledby="more-title">
+      <div class="intro" data-reveal>
+        <p class="label">E o resto</p>
+        <h2 class="heading" id="more-title">Pequenas coisas que mantêm um Mac espaçoso.</h2>
+      </div>
+      <ul class="cards cards--three">
+        <li class="card" data-reveal>
+          <h3 class="card__title">Histórico de análises</h3>
+          <p>Cada análise fica guardada no seu Mac, agrupada por dia, e reabre de imediato sem analisar de novo. Guarde-a 30&nbsp;dias, 90&nbsp;dias ou para sempre, ou não guarde nada.</p>
+          <p class="quote">Removida do histórico. Os seus ficheiros não foram tocados.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Pastas vigiadas</h3>
+          <p>Dê um limite a uma pasta e o dush avisa-o, uma vez, quando uma análise a encontra acima da linha. Pode analisá-las todos os dias ou todas as semanas enquanto estiver aberto.</p>
+          <p class="quote">A Developer passa dos 60&nbsp;GB. Agora tem 64,10&nbsp;GB, mais 7,90&nbsp;GB desde 20 set.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Barra de menus</h3>
+          <p>Espaço livre em disco num relance, as suas pastas vigiadas e quanto cresceram, e atalhos para analisar. Desligada até a ligar.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Finder e Atalhos</h3>
+          <p>Clique direito numa pasta, escolha Analisar com o dush. Em Atalhos: Analisar pasta, Tamanho da pasta e Espaço livre em disco.</p>
+          <p class="quote">A Developer ocupa 64,10&nbsp;GB.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Relatórios</h3>
+          <p>Exporte uma análise como JSON, Markdown ou CSV. Abra o JSON que <code>dush --json</code> escreve, e compare-o com o que mudou desde então.</p>
+        </li>
+        <li class="card" data-reveal>
+          <h3 class="card__title">Oito idiomas</h3>
+          <p>Cada ecrã, cada piada, em cada um deles. O dush segue o idioma do seu Mac, ou aquele que escolher nas Definições.</p>
+          <p class="quote" lang="it">Cosa si sta mangiando il tuo disco?</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Promises -->
+    <section class="page section" id="promises" aria-labelledby="promises-title">
+      <div class="split split--reverse split--top">
+        <div data-reveal>
+          <p class="label">As nossas promessas</p>
+          <h2 class="heading" id="promises-title">O dush só olha. Nunca elimina.</h2>
+          <dl class="promises">
+            <div>
+              <dt>O dush nunca elimina os seus ficheiros</dt>
+              <dd>Só olha. Remover algo é sempre decisão sua, no Finder ou no Terminal. A única coisa que o dush pode remover é o seu próprio histórico de análises.</dd>
+            </div>
+            <div>
+              <dt>Sem seguimento, sem criação de perfis</dt>
+              <dd>Sem análises, sem telemetria, sem identificadores. As suas análises nunca saem deste Mac.</dd>
+            </div>
+            <div>
+              <dt>Sempre offline</dt>
+              <dd>O dush nunca usa a rede. A Apple Intelligence responde neste Mac, por isso nada sai dele.</dd>
+            </div>
+            <div>
+              <dt>Sem contas</dt>
+              <dd>Sem início de sessão, sem e-mail, sem sincronização na nuvem.</dd>
+            </div>
+            <div>
+              <dt>Sem compras na app</dt>
+              <dd>Grátis. Sem subscrições, sem versão Pro, sem anúncios.</dd>
+            </div>
+          </dl>
+          <p>Isto não são só palavras: os testes falham se o código alguma vez chegar à rede, eliminar um ficheiro que não lhe pertence, ou tiver um botão de eliminar.</p>
+        </div>
+        <figure class="illustration" data-reveal>
+          <picture>
+            <source srcset="../img/keys-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="../img/keys-light.svg" width="360" height="280" alt="" loading="lazy">
+          </picture>
+          <figcaption class="label">Mesmo com as chaves de todas as salas, o dush só lê nomes e tamanhos.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CLI -->
+    <section class="page section" id="cli" aria-labelledby="cli-title">
+      <div class="intro" data-reveal>
+        <p class="label">No Terminal</p>
+        <h2 class="heading" id="cli-title">O mesmo motor, na sua shell.</h2>
+        <p>O dush começou como ferramenta de linha de comandos, e ainda o é. A app e a CLI partilham o mesmo motor, por isso dão os mesmos tamanhos para a mesma pasta, até ao byte. Instale-o com o Homebrew:</p>
+      </div>
+
+      <div class="command" data-reveal>
+        <code id="install-command">brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git &amp;&amp; brew install andre_rori/tap/dush</code>
+        <button class="button button--quiet" type="button" data-copy="install-command" data-copied="Copiado">Copiar comando</button>
+      </div>
+
+      <div class="split split--top cli">
+        <div data-reveal>
+          <h3 class="card__title">Experimente</h3>
+<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
+dush
+
+<span class="comment"># Your home, files over 1 GB, the top 10</span>
+dush ~ --min-size 1GB --files-only --top 10
+
+<span class="comment"># Skip node_modules, .git, DerivedData and friends</span>
+dush ~/Code --exclude-dev
+
+<span class="comment"># A report for your scripts</span>
+dush ~/Library/Developer --json &gt; developer.json</code></pre>
+        </div>
+        <div data-reveal>
+          <h3 class="card__title">O que obtém</h3>
+<pre class="code"><code>      Size  Name
+-------------------------------
+   <span class="size">6.72 GB</span>  <span class="name">iPhone16,2 27.0 (24A5355q)/</span>
+   <span class="size">2.43 GB</span>  <span class="name">com.spotify.client/</span>
+   <span class="size">2.09 GB</span>  <span class="name">_cacache/</span>
+
+Found 3 items of at least 512.00 MB.
+Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
+          <ul class="list">
+            <li>Tamanhos como o Finder os mostra, 1&nbsp;GB = 1.000.000.000 bytes.</li>
+            <li>Progresso em direto no stderr, com uma piada ou outra, para a saída em pipe ficar limpa.</li>
+            <li><code>--json</code> para scripts, <code>NO_COLOR</code> para texto simples, <code>dush update</code> para se manter atual.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="page section closing" aria-labelledby="closing-title" data-reveal>
+      <h2 class="title" id="closing-title">Veja o que está a ocupar espaço.</h2>
+      <p class="lead">O que faz com isso depende de si.</p>
+      <div class="actions actions--center">
+        <!-- TEMP: replace with the real Mac App Store link (also in the hero). -->
+        <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Transferir para Mac</a>
+        <a class="button" href="#cli">Instalar a CLI</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page footer">
+    <div class="footer__brand">
+      <img src="../favicon.svg" width="24" height="24" alt="">
+      <p class="label">É uma fita métrica, não um bisbilhoteiro.</p>
+    </div>
+    <div class="footer__columns">
+      <div>
+        <p class="label">O código</p>
+        <ul class="footer__links">
+          <li><a href="https://codeberg.org/Andre_Rori/dush">A CLI no Codeberg</a></li>
+          <li><a href="https://codeberg.org/Andre_Rori/dush-core">O motor no Codeberg</a></li>
+          <li><a href="https://github.com/AndreaRR18/dush-web">Este site no GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">O autor</p>
+        <p class="footer__about">O dush é feito por Andrea Rinaldi, que também escreve sobre Swift, iOS e fotografia no ByteShutter.</p>
+        <ul class="footer__links">
+          <li><a href="https://github.com/AndreaRR18" rel="me">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-rinaldi-707322b7/" rel="me">LinkedIn</a></li>
+          <li><a href="https://andrearr18.github.io/byteshutter/" rel="me">ByteShutter, o blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">The details</p>
+        <ul class="footer__links">
+          <li><a href="privacy.html">Política de Privacidade</a></li>
+          <li><a href="support.html">Suporte</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caption">O dush para Mac é grátis. A CLI e o motor são de código aberto sob a licença MIT. Este site não tem cookies nem seguimento, tal como o dush.</p>
+  </footer>
+</body>
+</html>
