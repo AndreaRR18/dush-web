@@ -1,0 +1,53 @@
+# Runs on every pull request, so nothing reaches main without the same gate as the deploy:
+# `npm run check` (type-checks, the page's rules, the translation parity, the build).
+# Make the "Check" job a required status check in Settings › Branches (or a ruleset) for main.
+
+name: CI
+
+on:
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+# Least privilege: the jobs only read the repository.
+permissions:
+  contents: read
+
+# A new push to the same pull request cancels the run it makes obsolete.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run check
+      # The build must be reproducible: a committed file that the build rewrites is a mistake.
+      - name: Nothing generated is left uncommitted
+        run: git diff --exit-code
+
+  dependencies:
+    name: Dependencies
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high

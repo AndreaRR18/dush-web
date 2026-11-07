@@ -1,0 +1,18 @@
+# Keeps the workflow actions and the two dev dependencies current, one pull request a week.
+# Each pull request goes through the CI check before it can be merged.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      dev-dependencies:
+        patterns: ["*"]
