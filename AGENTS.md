@@ -64,7 +64,7 @@ scripts/             the harness, TypeScript run directly by Node (no compile st
   check.ts           the gate: type checks, the page's rules, then the build
   setup.sh           npm run setup: installs the tools, turns on the git hook
 .githooks/pre-commit  runs npm run check before every commit (any tool, any person)
-.github/workflows/ci.yml       the "Check" gate on every pull request (+ dependency review)
+.github/workflows/ci.yml       the "Check" gate on every pull request (+ dependency audit)
 .github/workflows/deploy.yml   publishes to GitHub Pages on every push to main
 .github/dependabot.yml         weekly updates of the actions and dev dependencies
 ```
