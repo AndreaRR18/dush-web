@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node scripts/build.ts",
     "dev": "node scripts/dev.ts",
-    "check": "node scripts/check.ts"
+    "check": "node scripts/check.ts",
+    "setup": "sh scripts/setup.sh"
   },
   "devDependencies": {
     "@types/node": "26.6.5",

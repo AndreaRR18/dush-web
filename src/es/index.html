@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -86,7 +86,7 @@
       <div class="split">
         <div>
           <p class="label">Para tu Mac y para tu Terminal</p>
-          <h1 class="title">Qué se está comiendo tu <em>disco</em>?</h1>
+          <h1 class="title">¿Qué se está comiendo tu <em>disco</em>?</h1>
           <p class="lead">Suelta una carpeta y dush lista todo lo que pese más de 512&nbsp;MB, de mayor a menor. Es muy rápido, mide como <code>du</code>, y solo mira. Nunca elimina.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">ubicaciones de caché, logs y archivos temporales que comprueba el escaneo completo. Sin carpeta que elegir.</span>
+          <span class="fact__text">ubicaciones de caché, logs y archivos temporales que comprueba Cachés y temp. Sin carpeta que elegir.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,7 +128,7 @@
           <h2 class="heading" id="scan-title">Suelta una carpeta, mira qué pesa.</h2>
           <p>Arrastra una o más carpetas a la ventana o al icono del Dock, o pulsa ⌘O. dush las recorre en paralelo y cuenta cada archivo, incluidos los ocultos y los paquetes de apps, mientras ves subir los números.</p>
           <ul class="list">
-            <li><strong>Escaneo completo</strong> no necesita carpeta. Comprueba las cachés y carpetas temporales que solo guardan cosas que tu Mac puede reconstruir: cachés del sistema y de apps, logs, la Papelera, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, el DerivedData y el DeviceSupport de Xcode, las cachés de los simuladores y las de VS&nbsp;Code. Las carpetas que no están o no son seguras quedan fuera, y las anidadas solo se cuentan una vez.</li>
+            <li><strong>Cachés y temp</strong> no necesita carpeta. Comprueba las cachés y carpetas temporales que solo guardan cosas que tu Mac puede reconstruir: cachés del sistema y de apps, logs, la Papelera, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, el DerivedData y el DeviceSupport de Xcode, las cachés de los simuladores y las de VS&nbsp;Code. Las carpetas que no están o no son seguras quedan fuera, y las anidadas solo se cuentan una vez.</li>
             <li><strong>Descargas y Escritorio</strong> escanea los dos sospechosos habituales con un clic.</li>
             <li><strong>Los más grandes hasta ahora</strong>: los archivos grandes aparecen en cuanto se encuentran, las carpetas en cuanto se miden. Pulsa Esc para detenerte cuando quieras.</li>
             <li><strong>Tus opciones</strong>: un tamaño mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB o el tuyo, como <code>1.5 GiB</code>), solo archivos o carpetas, omite <code>node_modules</code>, <code>.git</code> y otras carpetas de desarrollo, o excluye nombres y patrones como <code>*.xcarchive</code>.</li>
@@ -271,13 +271,13 @@
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Revisar primero</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm y Yarn</h3>
           <p>Paquetes que tus gestores de paquetes descargaron. Los vuelven a descargar cuando un proyecto los necesita.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Se reconstruye sola</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle y Homebrew</h3>
           <p>Dependencias, salidas de compilación, botellas y versiones antiguas de lo que instalaste.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Se reconstruye sola</p>
           <code class="card__command">brew cleanup</code>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">Los detalles</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Política de privacidad</a></li>
           <li><a href="support.html">Soporte</a></li>

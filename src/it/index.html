@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -100,7 +100,7 @@
             <source srcset="../img/home-dark.svg" media="(prefers-color-scheme: dark)">
             <img src="../img/home-light.svg" width="360" height="280" alt="">
           </picture>
-          <figcaption class="label">È un metro da sarto, non una spia.</figcaption>
+          <figcaption class="label">È un metro, non una spia.</figcaption>
         </figure>
       </div>
 
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">percorsi di cache, log e temporanei controllati dalla scansione completa. Nessuna cartella da scegliere.</span>
+          <span class="fact__text">percorsi di cache, log e temporanei controllati da Cache e temporanei. Nessuna cartella da scegliere.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,7 +128,7 @@
           <h2 class="heading" id="scan-title">Trascina una cartella, vedi cosa pesa.</h2>
           <p>Trascina una o più cartelle sulla finestra o sull'icona nel Dock, oppure premi ⌘O. dush le percorre in parallelo e conta ogni file, nascosti e bundle delle app inclusi, mentre guardi i numeri salire.</p>
           <ul class="list">
-            <li><strong>Scansione completa</strong> non serve una cartella. Controlla le cache e le cartelle temporanee che contengono solo roba che il tuo Mac può ricostruire: cache di sistema e delle app, log, il Cestino, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData e DeviceSupport di Xcode, le cache dei simulatori e quelle di VS&nbsp;Code. Le cartelle che non ci sono o non sono sicure restano fuori, e quelle annidate vengono contate una volta sola.</li>
+            <li><strong>Cache e temporanei</strong> non richiede una cartella. Controlla le cache e le cartelle temporanee che contengono solo roba che il tuo Mac può ricostruire: cache di sistema e delle app, log, il Cestino, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData e DeviceSupport di Xcode, le cache dei simulatori e quelle di VS&nbsp;Code. Le cartelle che non ci sono o non sono sicure restano fuori, e quelle annidate vengono contate una volta sola.</li>
             <li><strong>Download e Scrivania</strong> scansiona i due soliti sospetti con un clic.</li>
             <li><strong>I più grandi finora</strong>: i file grandi compaiono appena vengono trovati, le cartelle appena sono misurate. Premi Esc per fermarti quando vuoi.</li>
             <li><strong>Le tue opzioni</strong>: una dimensione minima (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB o una tua, come <code>1.5 GiB</code>), solo file o cartelle, salta <code>node_modules</code>, <code>.git</code> e altre cartelle di sviluppo, oppure escludi nomi e pattern come <code>*.xcarchive</code>.</li>
@@ -266,18 +266,18 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Si ricrea da sola</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">node_modules ferme</h3>
+          <h3 class="card__title">node_modules inattivi</h3>
           <p>Pacchetti in progetti che nessuno ha toccato da 90+ giorni, nelle tue cartelle di codice, mai in Documenti o Scrivania.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controlla prima</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm e Yarn</h3>
           <p>Pacchetti che i tuoi gestori di pacchetti hanno scaricato. Li riscaricano quando un progetto ne ha bisogno.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Si ricrea da sola</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle e Homebrew</h3>
           <p>Dipendenze, output di build, bottiglie e vecchie versioni di quello che hai installato.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Si ricrea da sola</p>
           <code class="card__command">brew cleanup</code>
@@ -319,7 +319,7 @@
         <li class="card" data-reveal>
           <h3 class="card__title">Otto lingue</h3>
           <p>Ogni schermata, ogni battuta, in ognuna di esse. dush segue la lingua del tuo Mac, o quella che scegli nelle Impostazioni.</p>
-          <p class="quote" lang="it">Cosa si sta mangiando il tuo disco?</p>
+          <p class="quote" lang="en">What’s eating your disk?</p>
         </li>
       </ul>
     </section>
@@ -426,7 +426,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
   <footer class="page footer">
     <div class="footer__brand">
       <img src="../favicon.svg" width="24" height="24" alt="">
-      <p class="label">È un metro da sarto, non una spia.</p>
+      <p class="label">È un metro, non una spia.</p>
     </div>
     <div class="footer__columns">
       <div>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">I dettagli</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Informativa sulla privacy</a></li>
           <li><a href="support.html">Supporto</a></li>

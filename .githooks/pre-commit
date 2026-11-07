@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Runs the site's gate (type checks, the page's rules, the build) before every commit, whichever
+# tool or person commits. Enable with `npm run setup` (or `git config core.hooksPath .githooks`).
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+[ -z "$(git diff --cached --name-only)" ] && exit 0
+
+if [ ! -d node_modules ]; then
+  echo "node_modules is missing: run \`npm run setup\` first." >&2
+  exit 1
+fi
+
+npm run --silent check >&2 || {
+  echo "The check failed: fix the errors above, then commit again." >&2
+  exit 1
+}

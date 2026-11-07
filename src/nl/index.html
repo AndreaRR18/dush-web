@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">cache-, log- en tijdelijke locaties die de volledige scan controleert. Geen map om te kiezen.</span>
+          <span class="fact__text">cache-, log- en tijdelijke locaties die Caches en temp controleert. Geen map om te kiezen.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,9 +128,9 @@
           <h2 class="heading" id="scan-title">Sleep een map erin, zie wat groot is.</h2>
           <p>Sleep een of meer mappen op het venster of het Dock-icoon, of druk op ⌘O. dush loopt ze parallel door en telt elk bestand, ook verborgen bestanden en app-bundels, terwijl je de aantallen ziet stijgen.</p>
           <ul class="list">
-            <li><strong>Volledige scan</strong> heeft geen map nodig. Hij controleert de caches en tijdelijke mappen waarin alleen spullen staan die je Mac opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, de DerivedData en DeviceSupport van Xcode, de simulatorcaches en die van VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn vallen af, en geneste mappen tellen maar één keer mee.</li>
+            <li><strong>Caches en temp</strong> heeft geen map nodig. Die controleert de caches en tijdelijke mappen waarin alleen spullen staan die je Mac opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, de DerivedData en DeviceSupport van Xcode, de simulatorcaches en die van VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn vallen af, en geneste mappen tellen maar één keer mee.</li>
             <li><strong>Downloads en Bureaublad</strong> scant de twee gebruikelijke verdachten met één klik.</li>
-            <li><strong>Tot nu toe grootste</strong>: grote bestanden verschijnen zodra ze gevonden zijn, mappen zodra ze gemeten zijn. Druk op Esc om jederzeit te stoppen.</li>
+            <li><strong>Tot nu toe grootste</strong>: grote bestanden verschijnen zodra ze gevonden zijn, mappen zodra ze gemeten zijn. Druk op Esc om op elk moment te stoppen.</li>
             <li><strong>Jouw opties</strong>: een minimumgrootte (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB of je eigen, zoals <code>1.5 GiB</code>), alleen bestanden of mappen, sla over <code>node_modules</code>, <code>.git</code> en andere ontwikkelaarsmappen, of sluit namen en patronen uit zoals <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -271,13 +271,13 @@
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controleer eerst</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm en Yarn</h3>
           <p>Pakketten die je pakketbeheerders hebben gedownload. Ze downloaden ze opnieuw wanneer een project ze nodig heeft.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle en Homebrew</h3>
           <p>Afhankelijkheden, builduitvoer, bottles en oude versies van wat je hebt geïnstalleerd.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
           <code class="card__command">brew cleanup</code>
@@ -305,7 +305,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Menubalk</h3>
-          <p>Vrije schijfruimte in één oogopslag, je bewaakte mappen en hoeveel ze zijn gegroeid, en snelkoppelingen om te scannen. Uit todat je hem aanzet.</p>
+          <p>Vrije schijfruimte in één oogopslag, je bewaakte mappen en hoeveel ze zijn gegroeid, en snelkoppelingen om te scannen. Uit totdat je hem aanzet.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder en Snelkoppelingen</h3>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">De details</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Privacyverklaring</a></li>
           <li><a href="support.html">Support</a></li>

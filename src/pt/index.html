@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">localizações de caches, logs e ficheiros temporários verificadas pela análise completa. Sem pasta para escolher.</span>
+          <span class="fact__text">localizações de caches, logs e ficheiros temporários verificadas por Caches e temp. Sem pasta para escolher.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,7 +128,7 @@
           <h2 class="heading" id="scan-title">Largue uma pasta, veja o que pesa.</h2>
           <p>Arraste uma ou mais pastas para a janela ou para o ícone no Dock, ou prima ⌘O. O dush percorre-as em paralelo e conta cada ficheiro, incluindo os ocultos e os pacotes de apps, enquanto vê os números subirem.</p>
           <ul class="list">
-            <li><strong>Análise completa</strong> não precisa de pasta. Verifica as caches e pastas temporárias que só guardam coisas que o seu Mac pode reconstruir: caches do sistema e das apps, logs, o Lixo, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, o DerivedData e o DeviceSupport do Xcode, as caches dos simuladores e as do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e as aninhadas contam só uma vez.</li>
+            <li><strong>Caches e temp</strong> não precisa de pasta. Verifica as caches e pastas temporárias que só guardam coisas que o seu Mac pode reconstruir: caches do sistema e das apps, logs, o Lixo, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, o DerivedData e o DeviceSupport do Xcode, as caches dos simuladores e as do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e as aninhadas contam só uma vez.</li>
             <li><strong>Descargas e Secretária</strong> analisa os dois suspeitos do costume com um clique.</li>
             <li><strong>Maiores até agora</strong>: os ficheiros grandes aparecem assim que são encontrados, as pastas assim que são medidas. Prima Esc para parar a qualquer momento.</li>
             <li><strong>As suas opções</strong>: um tamanho mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB ou o seu próprio, como <code>1.5 GiB</code>), apenas ficheiros ou pastas, salte <code>node_modules</code>, <code>.git</code> e outras pastas de programação, ou exclua nomes e padrões como <code>*.xcarchive</code>.</li>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Caches de programador</p>
           <h2 class="heading" id="caches-title">As suas ferramentas reconstruem a maior parte disto sozinhas.</h2>
-          <p>O dush sabe onde as ferramentas de programação guardam as caches e soma-as: <strong class="serif-number">48,29&nbsp;GB</strong> num Mac bem usado. De cada uma diz o que é, se se reconstrói sozinha ou se vale a pena revê-la primeiro, e como a limpe do modo que essa ferramenta sugere. A limpeza é por sua conta. O dush não executa nada.</p>
+          <p>O dush sabe onde as ferramentas de programação guardam as caches e soma-as: <strong class="serif-number">48,29&nbsp;GB</strong> num Mac bem usado. De cada uma diz o que é, se se reconstrói sozinha ou se vale a pena revê-la primeiro, e como a limpar do modo que essa ferramenta sugere. A limpeza é por sua conta. O dush não executa nada.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -271,13 +271,13 @@
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Rever primeiro</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm e Yarn</h3>
           <p>Pacotes que os seus gestores de pacotes transferiram. Voltam a transferi-los quando um projeto precisa deles.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle e Homebrew</h3>
           <p>Dependências, saídas de compilação, bottles e versões antigas do que instalou.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
           <code class="card__command">brew cleanup</code>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">Os detalhes</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Política de Privacidade</a></li>
           <li><a href="support.html">Suporte</a></li>
