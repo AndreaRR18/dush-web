@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">lokalizacje pamięci podręcznej, logów i plików tymczasowych sprawdzane przez pełny skan. Nie trzeba wybierać folderu.</span>
+          <span class="fact__text">lokalizacje pamięci podręcznej, logów i plików tymczasowych sprawdzane przez Cache i temp. Nie trzeba wybierać folderu.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,7 +128,7 @@
           <h2 class="heading" id="scan-title">Upuść folder, zobacz, co jest duże.</h2>
           <p>Przeciągnij jeden folder lub więcej na okno albo ikonę w Docku, albo naciśnij ⌘O. dush przeszukuje je równolegle i liczy każdy plik, także ukryte i pakiety aplikacji, a Ty patrzysz, jak liczby rosną.</p>
           <ul class="list">
-            <li><strong>Pełny skan</strong> nie potrzebuje folderu. Sprawdza pamięci podręczne i foldery tymczasowe, w których jest tylko to, co Twój Mac może odbudować: pamięci podręczne systemu i aplikacji, logi, Kosz, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData i DeviceSupport Xcode'a, pamięci podręczne symulatorów oraz VS&nbsp;Code. Foldery, których nie ma albo nie są bezpieczne, są pomijane, a zagnieżdżone liczą się tylko raz.</li>
+            <li><strong>Cache i temp</strong> nie potrzebuje folderu. Sprawdza pamięci podręczne i foldery tymczasowe, w których jest tylko to, co Twój Mac może odbudować: pamięci podręczne systemu i aplikacji, logi, Kosz, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData i DeviceSupport Xcode'a, pamięci podręczne symulatorów oraz VS&nbsp;Code. Foldery, których nie ma albo nie są bezpieczne, są pomijane, a zagnieżdżone liczą się tylko raz.</li>
             <li><strong>Pobrane rzeczy i Biurko</strong> skanuje dwa zwykłe podejrzane jednym kliknięciem.</li>
             <li><strong>Największe jak dotąd</strong>: duże pliki pojawiają się, gdy tylko zostaną znalezione, foldery, gdy tylko zostaną zmierzone. Naciśnij Esc, aby zatrzymać w dowolnym momencie.</li>
             <li><strong>Twoje opcje</strong>: minimalny rozmiar (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB albo własny, na przykład <code>1.5 GiB</code>), tylko pliki lub foldery, pomiń <code>node_modules</code>, <code>.git</code> i inne foldery deweloperskie, albo wyklucz nazwy i wzorce takie jak <code>*.xcarchive</code>.</li>
@@ -266,18 +266,18 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Odbudowuje się sama</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Zastałe node_modules</h3>
+          <h3 class="card__title">Nieużywane node_modules</h3>
           <p>Pakiety w projektach, których nikt nie ruszał od 90+ dni, w Twoich folderach z kodem, nigdy w Dokumentach ani na Biurku.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Najpierw sprawdź</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm i Yarn</h3>
           <p>Pakiety pobrane przez Twoich menedżerów pakietów. Pobierają je ponownie, gdy projekt ich potrzebuje.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Odbudowuje się sama</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle i Homebrew</h3>
           <p>Zależności, wyniki kompilacji, butelki i stare wersje tego, co zainstalowałeś.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Odbudowuje się sama</p>
           <code class="card__command">brew cleanup</code>
@@ -309,7 +309,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder i Skróty</h3>
-          <p>Kliknij folder prawym przyciskiem i wybierz Skanuj przez dush. W Skrótách: Skanuj folder, Rozmiar folderu i Wolne miejsce na dysku.</p>
+          <p>Kliknij folder prawym przyciskiem i wybierz Skanuj przez dush. W Skrótach: Skanuj folder, Rozmiar folderu i Wolne miejsce na dysku.</p>
           <p class="quote">Developer zajmuje 64,10&nbsp;GB.</p>
         </li>
         <li class="card" data-reveal>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">Szczegóły</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Polityka prywatności</a></li>
           <li><a href="support.html">Wsparcie</a></li>

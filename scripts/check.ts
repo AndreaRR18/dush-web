@@ -6,8 +6,10 @@
 // The rules: the page loads nothing from another site (no CDN, font service, analytics or
 // embed), every local file it references exists, no reference starts with "/", because
 // GitHub Pages serves the site under /dush-web/, not at the root of a domain, no link leads
-// to the Mac app's repository, which is private, and every page has the theme toggle: the
-// header button, its sun/moon icons and the stored-theme script in <head>.
+// to the Mac app's repository, which is private, every page has the theme toggle: the
+// header button, its sun/moon icons and the stored-theme script in <head>, no placeholder is left
+// but the Mac App Store link, and each translation matches its English page (structure, links,
+// contact address, date).
 
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -57,6 +59,11 @@ function checkReference(file: string, line: number, reference: string, isResourc
   if (!exists(file, value)) problems.push({ file, line, message: `"${value}" doesn't exist in src/` });
 }
 
+/** A link the visitor or a search engine follows, not a file the page loads: <a>, and <link rel="alternate"> (hreflang URLs must be absolute). */
+function isNavigation(name: string | undefined, tag: string): boolean {
+  return name === "a" || (name === "link" && /\srel\s*=\s*["'](alternate|canonical)["']/i.test(tag));
+}
+
 function checkHTML(file: string, text: string, problems: Problem[]): void {
   for (const tag of text.matchAll(/<([a-z][a-z0-9-]*)\b[^>]*>/gi)) {
     const name = tag[1]?.toLowerCase();
@@ -66,7 +73,7 @@ function checkHTML(file: string, text: string, problems: Problem[]): void {
       const references = attribute[1]?.toLowerCase() === "srcset"
         ? value.split(",").map((candidate) => candidate.trim().split(/\s+/)[0] ?? "")
         : [value];
-      for (const reference of references) checkReference(file, line, reference, name !== "a", problems);
+      for (const reference of references) checkReference(file, line, reference, !isNavigation(name, tag[0]), problems);
     }
   }
 }
@@ -92,6 +99,70 @@ function checkThemeToggle(file: string, text: string, problems: Problem[]): void
   }
 }
 
+const languages = ["de", "es", "fr", "it", "nl", "pl", "pt"];
+const pages = ["index.html", "support.html", "privacy.html"];
+
+/** The body's tags with their classes: the structure of a page, whatever language its text is in. */
+function skeleton(text: string): string[] {
+  const body = text.slice(text.indexOf("<body"));
+  return [...body.matchAll(/<([a-z][a-z0-9-]*)\b([^>]*)>/gi)].map((tag) => {
+    const classes = /\sclass\s*=\s*"([^"]*)"/i.exec(tag[2] ?? "")?.[1] ?? "";
+    return `${tag[1]?.toLowerCase()}.${classes}`;
+  });
+}
+
+/** The visitor's links, without the folder prefix a translation adds ("../de/index.html" is "de/index.html"). */
+function links(text: string): string[] {
+  const body = text.slice(text.indexOf("<body"));
+  return [...body.matchAll(/<a\b[^>]*\shref\s*=\s*"([^"]*)"/gi)].map((link) => (link[1] ?? "").replace(/^(\.\.\/)+/, "")).sort();
+}
+
+function first(text: string, pattern: RegExp): string {
+  return pattern.exec(text)?.[1] ?? "";
+}
+
+/** The English page is the reference: every translation has its structure, links, contact address and date. */
+function checkLanguages(): Problem[] {
+  const problems: Problem[] = [];
+  for (const page of pages) {
+    const englishFile = join(src, page);
+    const english = readFileSync(englishFile, "utf8");
+    const englishSkeleton = skeleton(english);
+    const englishLinks = links(english);
+    for (const language of languages) {
+      const file = join(src, language, page);
+      const text = readFileSync(file, "utf8");
+      if (first(text, /<html lang="([^"]*)"/) !== language) {
+        problems.push({ file, line: 1, message: `<html lang> must be "${language}"` });
+      }
+      const mine = skeleton(text);
+      const at = mine.findIndex((tag, index) => tag !== englishSkeleton[index]);
+      if (at !== -1 || mine.length !== englishSkeleton.length) {
+        problems.push({ file, line: 1, message: `structure differs from ${page} in English (first difference at tag ${Math.max(at, 0) + 1}: ${mine[at] ?? "end"} instead of ${englishSkeleton[at] ?? "end"})` });
+      }
+      if (links(text).join("\n") !== englishLinks.join("\n")) {
+        const missing = englishLinks.filter((link) => !links(text).includes(link));
+        const extra = links(text).filter((link) => !englishLinks.includes(link));
+        problems.push({ file, line: 1, message: `links differ from ${page} in English (missing: ${missing.join(", ") || "none"}; extra: ${extra.join(", ") || "none"})` });
+      }
+      if (first(text, /<time datetime="([^"]*)"/) !== first(english, /<time datetime="([^"]*)"/)) {
+        problems.push({ file, line: 1, message: `"last updated" date differs from ${page} in English` });
+      }
+    }
+  }
+  return problems;
+}
+
+/** Leftovers that must never ship: the one allowed TEMP is the Mac App Store link. */
+function checkLeftovers(file: string, text: string, problems: Problem[]): void {
+  for (const match of text.matchAll(/<!--\s*TEMP:(?![^>]*Mac App Store link)/g)) {
+    problems.push({ file, line: lineOf(text, match.index), message: "a TEMP placeholder is still here: replace it" });
+  }
+  for (const match of text.matchAll(/Full Scan|CONTACT DETAILS GO HERE/g)) {
+    problems.push({ file, line: lineOf(text, match.index), message: `"${match[0]}": the app calls it Caches & Temp, and contact details are real` });
+  }
+}
+
 function checkRules(): Problem[] {
   const problems: Problem[] = [];
   for (const file of filesIn(src)) {
@@ -100,6 +171,7 @@ function checkRules(): Problem[] {
       case ".html":
         checkHTML(file, text, problems);
         checkThemeToggle(file, text, problems);
+        checkLeftovers(file, text, problems);
         break;
       case ".css":
         checkCSS(file, text, problems);
@@ -109,6 +181,7 @@ function checkRules(): Problem[] {
         break;
     }
   }
+  problems.push(...checkLanguages());
   return problems;
 }
 

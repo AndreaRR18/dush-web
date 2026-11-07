@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/site.css">
   <!-- hreflang:start -->
-  <link rel="alternate" hreflang="en" href="../index.html">
-  <link rel="alternate" hreflang="de" href="../de/index.html">
-  <link rel="alternate" hreflang="es" href="../es/index.html">
-  <link rel="alternate" hreflang="fr" href="../fr/index.html">
-  <link rel="alternate" hreflang="it" href="../it/index.html">
-  <link rel="alternate" hreflang="nl" href="../nl/index.html">
-  <link rel="alternate" hreflang="pl" href="../pl/index.html">
-  <link rel="alternate" hreflang="pt" href="../pt/index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="en" href="https://andrearr18.github.io/dush-web/index.html">
+  <link rel="alternate" hreflang="de" href="https://andrearr18.github.io/dush-web/de/index.html">
+  <link rel="alternate" hreflang="es" href="https://andrearr18.github.io/dush-web/es/index.html">
+  <link rel="alternate" hreflang="fr" href="https://andrearr18.github.io/dush-web/fr/index.html">
+  <link rel="alternate" hreflang="it" href="https://andrearr18.github.io/dush-web/it/index.html">
+  <link rel="alternate" hreflang="nl" href="https://andrearr18.github.io/dush-web/nl/index.html">
+  <link rel="alternate" hreflang="pl" href="https://andrearr18.github.io/dush-web/pl/index.html">
+  <link rel="alternate" hreflang="pt" href="https://andrearr18.github.io/dush-web/pt/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://andrearr18.github.io/dush-web/index.html">
   <!-- hreflang:end -->
   <script type="module" src="../js/main.js"></script>
 </head>
@@ -111,7 +111,7 @@
         </li>
         <li>
           <span class="fact__number" data-count="34">34</span>
-          <span class="fact__text">Cache-, Log- und Temp-Orte, die der komplette Scan prüft. Kein Ordner nötig.</span>
+          <span class="fact__text">Cache-, Log- und Temp-Orte, die Caches &amp; Temp prüft. Kein Ordner nötig.</span>
         </li>
         <li>
           <span class="fact__number">0</span>
@@ -128,7 +128,7 @@
           <h2 class="heading" id="scan-title">Wirf einen Ordner rein, sieh, was groß ist.</h2>
           <p>Zieh einen oder mehrere Ordner auf das Fenster oder das Dock-Symbol oder drück ⌘O. dush geht sie parallel durch und zählt jede Datei, versteckte und App-Bundles eingeschlossen, während du zusiehst, wie die Zahlen steigen.</p>
           <ul class="list">
-            <li><strong>Kompletter Scan</strong> braucht keinen Ordner. Er prüft die Cache- und Temp-Ordner, in denen nur Zeug liegt, das dein Mac neu aufbauen kann: System- und App-Caches, Logs, der Papierkorb, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcodes DerivedData und DeviceSupport, die Simulator-Caches und die von VS&nbsp;Code. Ordner, die nicht da oder nicht sicher sind, bleiben außen vor, und verschachtelte werden nur einmal gezählt.</li>
+            <li><strong>Caches &amp; Temp</strong> braucht keinen Ordner. Der Scan prüft die Cache- und Temp-Ordner, in denen nur Zeug liegt, das dein Mac neu aufbauen kann: System- und App-Caches, Logs, der Papierkorb, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcodes DerivedData und DeviceSupport, die Simulator-Caches und die von VS&nbsp;Code. Ordner, die nicht da oder nicht sicher sind, bleiben außen vor, und verschachtelte werden nur einmal gezählt.</li>
             <li><strong>Downloads &amp; Schreibtisch</strong> scannt die zwei üblichen Verdächtigen mit einem Klick.</li>
             <li><strong>Bisher größte</strong>: Große Dateien erscheinen, sobald sie gefunden werden, Ordner, sobald sie gemessen sind. Drück Esc, um jederzeit zu stoppen.</li>
             <li><strong>Deine Optionen</strong>: eine Mindestgröße (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB oder deine eigene, wie <code>1.5 GiB</code>), nur Dateien oder Ordner, überspringe <code>node_modules</code>, <code>.git</code> und andere Entwickler-Ordner, oder schließe Namen und Muster aus wie <code>*.xcarchive</code>.</li>
@@ -271,13 +271,13 @@
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Erst prüfen</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">npm, pnpm and Yarn</h3>
+          <h3 class="card__title">npm, pnpm und Yarn</h3>
           <p>Pakete, die deine Paketmanager geladen haben. Sie laden sie erneut, wenn ein Projekt sie braucht.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Baut sich selbst neu auf</p>
           <code class="card__command">pnpm store prune</code>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Gradle and Homebrew</h3>
+          <h3 class="card__title">Gradle und Homebrew</h3>
           <p>Abhängigkeiten, Build-Ausgaben, Bottles und alte Versionen von dem, was du installiert hast.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Baut sich selbst neu auf</p>
           <code class="card__command">brew cleanup</code>
@@ -447,7 +447,7 @@ Scanned 200,874 items (18.78 GB) in 0.9s.</code></pre>
         </ul>
       </div>
       <div>
-        <p class="label">The details</p>
+        <p class="label">Die Details</p>
         <ul class="footer__links">
           <li><a href="privacy.html">Datenschutzrichtlinie</a></li>
           <li><a href="support.html">Support</a></li>
