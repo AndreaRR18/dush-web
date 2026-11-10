@@ -36,7 +36,13 @@ function rebuild(): void {
 
 /** The file of dist/ a request path names, or nothing when it's outside dist/ or missing. */
 function fileFor(pathname: string): string | undefined {
-  const inside = decodeURIComponent(pathname.slice(base.length));
+  let inside: string;
+  try {
+    inside = decodeURIComponent(pathname.slice(base.length));
+  } catch {
+    // A malformed escape (%zz) is not a file: answer 404 instead of stopping the server.
+    return undefined;
+  }
   let file = join(dist, inside);
   if (relative(dist, file).startsWith("..")) return undefined;
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, "index.html");

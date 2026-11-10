@@ -9,9 +9,12 @@
 // to the Mac app's repository, which is private, every page has the theme toggle: the
 // header button, its sun/moon icons and the stored-theme script in <head>, no placeholder is left
 // but the Mac App Store link, and each translation matches its English page (structure, links,
-// contact address, date).
+// contact address, date). Every page also carries the Content-Security-Policy that makes the
+// browser enforce "nothing from another site" (it must name the hash of the one inline script, and
+// come before it), sends no referrer, and holds no web address in an inline script or style.
 
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { build, root, src, tsc } from "./build.ts";
@@ -87,6 +90,48 @@ function checkCSS(file: string, text: string, problems: Problem[]): void {
 function checkTypeScript(file: string, text: string, problems: Problem[]): void {
   for (const match of text.matchAll(/["'`](https?:)?\/\/[^"'`\s]*/gi)) {
     problems.push({ file, line: lineOf(text, match.index), message: `${match[0].slice(1)}: the page's code never reaches another site` });
+  }
+}
+
+/** The policy every page states, but for the hash of its inline script. */
+const policy = (hash: string): string =>
+  `default-src 'none'; script-src 'self' 'sha256-${hash}'; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'`;
+
+/**
+ * Every page tells the browser to load and run only the site's own files: a tag slipped into a
+ * page can't reach another site. A <meta> policy only covers what comes after it, so it sits
+ * before the first script; and it can't be loosened without this check noticing.
+ */
+function checkPolicy(file: string, text: string, problems: Problem[]): void {
+  const inline = [...text.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+  const meta = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/.exec(text);
+  if (inline.length !== 1) {
+    problems.push({ file, line: 1, message: "a page has exactly one inline script, the stored-theme one in <head>" });
+    return;
+  }
+  const expected = policy(createHash("sha256").update(inline[0]?.[1] ?? "").digest("base64"));
+  if (!meta) {
+    problems.push({ file, line: 1, message: `missing <meta http-equiv="Content-Security-Policy" content="${expected}">` });
+  } else if (meta[1] !== expected) {
+    problems.push({ file, line: lineOf(text, meta.index), message: `the Content-Security-Policy must be exactly: ${expected}` });
+  } else if (meta.index > text.search(/<script\b/)) {
+    problems.push({ file, line: lineOf(text, meta.index), message: "the Content-Security-Policy comes before the first <script>: it only covers what follows it" });
+  }
+  if (!text.includes('<meta name="referrer" content="no-referrer">')) {
+    problems.push({ file, line: 1, message: 'missing <meta name="referrer" content="no-referrer">: a link out never says which page it came from' });
+  }
+  if (/<meta\b[^>]*http-equiv\s*=\s*["']?refresh/i.test(text)) {
+    problems.push({ file, line: 1, message: "a page never redirects with <meta http-equiv=refresh>" });
+  }
+}
+
+/** Code and styles written in the page itself reach no other site either: inline scripts, <style> and style attributes. */
+function checkInline(file: string, text: string, problems: Problem[]): void {
+  for (const block of text.matchAll(/<(script|style)\b[^>]*>([\s\S]*?)<\/\1>|\sstyle\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)) {
+    const code = block[2] ?? block[3] ?? block[4] ?? "";
+    for (const match of code.matchAll(/(https?:)?\/\/[a-z0-9.-]+\.[a-z]{2,}[^\s"'`)]*/gi)) {
+      problems.push({ file, line: lineOf(text, block.index), message: `${match[0]}: inline code and styles never reach another site` });
+    }
   }
 }
 
@@ -171,6 +216,8 @@ function checkRules(): Problem[] {
       case ".html":
         checkHTML(file, text, problems);
         checkThemeToggle(file, text, problems);
+        checkPolicy(file, text, problems);
+        checkInline(file, text, problems);
         checkLeftovers(file, text, problems);
         break;
       case ".css":
