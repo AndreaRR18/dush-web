@@ -322,7 +322,7 @@ html.js .theme-toggle {
 .label {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--graphite);
+  color: var(--teal-ink);
 }
 
 .caption {
@@ -863,9 +863,16 @@ html.js .theme-toggle {
 .footer {
   display: grid;
   gap: var(--space-8);
-  padding-top: var(--space-11);
-  padding-bottom: var(--space-12);
-  border-top: var(--hairline) solid var(--line);
+  margin-bottom: var(--space-12);
+  padding: var(--space-11) var(--space-12);
+  background: var(--shelf);
+  border-radius: var(--radius-card);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: var(--space-9) var(--space-8);
+  }
 }
 
 .footer__brand {

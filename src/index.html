@@ -87,7 +87,7 @@
         <div>
           <p class="label">For your Mac, and for your Terminal</p>
           <h1 class="title">What's eating your <em>disk</em>?</h1>
-          <p class="lead">Drop a folder and dush lists everything bigger than 512&nbsp;MB, largest first. It's very fast, it measures like <code>du</code>, and it only looks. It never deletes.</p>
+          <p class="lead">Drop a folder and dush shows you what's taking the space, biggest first — everything over 512&nbsp;MB. It measures exactly like <code>du</code>, and it only looks. It never deletes.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
             <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Download for Mac</a>
@@ -126,9 +126,9 @@
         <div>
           <p class="label">dush for Mac</p>
           <h2 class="heading" id="scan-title">Drop a folder, see what's big.</h2>
-          <p>Drag one or more folders onto the window or onto the Dock icon, or press ⌘O. dush walks them in parallel and counts every file, hidden ones and app bundles included, while you watch the numbers climb.</p>
+          <p>Drag one or more folders onto the window or the Dock icon, or press ⌘O. dush counts every file — hidden ones and app bundles included — while you watch the numbers climb.</p>
           <ul class="list">
-            <li><strong>Caches &amp; Temp</strong> needs no folder. It checks the caches and temp folders that only hold stuff your Mac can rebuild: system and app caches, logs, the Trash, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode's DerivedData and DeviceSupport, the simulator caches and VS Code's. Folders that aren't there or aren't safe are left out, and nested ones are counted once.</li>
+            <li><strong>Caches &amp; Temp</strong> needs no folder. It checks the caches and temp folders your Mac can rebuild on its own: system and app caches, logs, the Trash, and the caches of npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode, simulators and VS&nbsp;Code. Folders that don't exist or aren't safe are skipped, and a folder inside another folder counts once.</li>
             <li><strong>Downloads &amp; Desktop</strong> scans the two usual suspects in one click.</li>
             <li><strong>Biggest so far</strong>: large files show up the moment they're found, folders as soon as they're measured. Press Esc to stop at any time.</li>
             <li><strong>Your options</strong>: a minimum size (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB or your own, like <code>1.5 GiB</code>), files or folders only, skip <code>node_modules</code>, <code>.git</code> and other developer folders, or exclude names and patterns like <code>*.xcarchive</code>.</li>
@@ -149,7 +149,7 @@
       <div class="intro" data-reveal>
         <p class="label">The results</p>
         <h2 class="heading" id="results-title">The number comes first.</h2>
-        <p>Every size is the space a file really takes on disk, measured exactly like <code>du</code>: hard links count once, symlinks are never followed, and a folder that owes almost all its size to one subfolder shows up as one line, so a big cache doesn't fill the list three times.</p>
+        <p>Every size is the space a file really takes on disk, measured exactly like <code>du</code>: hard links count once, symlinks are never followed, and a folder whose size is almost all in one subfolder shows up as one line, so one big cache doesn't fill the list three times.</p>
       </div>
 
       <article class="sheet results" data-reveal aria-label="Sample results for ~/Library/Developer">
@@ -183,7 +183,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Map</h3>
-          <p>The same scan as a treemap: blocks sized by disk usage, colored by top-level folder. Click a block to zoom in, follow the breadcrumb back out.</p>
+          <p>The same scan as a treemap: blocks sized by disk usage, colored by top-level folder. Click a block to zoom in, the path above to zoom back out.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">What changed</h3>
@@ -199,13 +199,13 @@
           <p class="label">Safe to delete?</p>
           <h2 class="heading" id="ai-title">Ask your Mac, not a server.</h2>
           <p>Not sure what a folder is? Select it and ask. Apple Intelligence answers on this Mac, with a verdict, a one-line summary and what happens if you remove it. Then ask more, like <q>Will I lose my SwiftUI previews?</q></p>
-          <p>dush tells the model only about the item:</p>
+          <p>dush gives the model only details about that item:</p>
           <ul class="list">
             <li>always its path, name, size and whether it's a file or a folder;</li>
-            <li>if you like, how many items sit inside, the names and sizes of the 10 largest, and when it last changed;</li>
+            <li>if you want, how many items are inside, the names and sizes of the 10 largest, and when it last changed;</li>
             <li>never what's inside your files.</li>
           </ul>
-          <p>What it was told is shown under every answer. No server, no account, no key. Nothing leaves your Mac.</p>
+          <p>You can see what was sent under every answer. No server, no account, no key. Nothing leaves your Mac.</p>
         </div>
 
         <div class="stack" data-reveal>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Developer Caches</p>
           <h2 class="heading" id="caches-title">Your tools rebuild most of this on their own.</h2>
-          <p>dush knows where developer tools keep their caches and adds them up: <strong class="serif-number">48.29&nbsp;GB</strong> on a busy Mac. For each one it says what it is, whether it rebuilds itself or is worth a review first, and how to clear it the way that tool suggests. You do the clearing. dush runs nothing.</p>
+          <p>dush knows where your developer tools keep their caches and adds them up: <strong class="serif-number">48.29&nbsp;GB</strong> on a busy Mac. For each cache it tells you what it is, whether the tool rebuilds it on its own or it's worth a look first, and the command that tool suggests. You paste and run that command yourself, in Terminal. dush runs nothing.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -256,7 +256,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Unavailable simulators</h3>
-          <p>Simulators whose OS version isn't installed anymore, with the apps and data on them.</p>
+          <p>Simulators for iOS versions that are no longer installed, with the apps and data on them.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Review first</p>
           <code class="card__command">xcrun simctl delete unavailable</code>
         </li>
@@ -266,7 +266,7 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Rebuilds itself</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Stale node_modules</h3>
+          <h3 class="card__title">Unused node_modules</h3>
           <p>Packages in projects nobody changed in 90+ days, in your code folders, never in Documents or Desktop.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Review first</p>
         </li>
@@ -278,12 +278,12 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Gradle and Homebrew</h3>
-          <p>Dependencies, build outputs, bottles and old versions of what you installed.</p>
+          <p>Dependencies, build outputs and old versions of what you installed.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Rebuilds itself</p>
           <code class="card__command">brew cleanup</code>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Every card has Show in Finder, which selects exactly the cache's folders, and Copy Command when the tool has one. Only the tools' own commands, to paste into Terminal yourself.</p>
+      <p class="caption center" data-reveal>Every card has Show in Finder, which selects exactly the cache's folders, and Copy Command when the tool has one — you paste it into Terminal and run it yourself.</p>
     </section>
 
     <!-- More -->
@@ -300,7 +300,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Watched folders</h3>
-          <p>Give a folder a limit and dush tells you, once, when a scan finds it past the line. It can scan them every day or every week while it's open.</p>
+          <p>Give a folder a limit and dush tells you, once, when a scan finds it over the limit. It can check them every day or every week while dush is open.</p>
           <p class="quote">Developer is over 60&nbsp;GB. It's 64.10&nbsp;GB now, up 7.90&nbsp;GB since Sep 20.</p>
         </li>
         <li class="card" data-reveal>
@@ -328,12 +328,12 @@
     <section class="page section" id="promises" aria-labelledby="promises-title">
       <div class="split split--reverse split--top">
         <div data-reveal>
-          <p class="label">Our promises</p>
+          <p class="label">The promises</p>
           <h2 class="heading" id="promises-title">dush only looks. It never deletes.</h2>
           <dl class="promises">
             <div>
               <dt>dush never deletes your files</dt>
-              <dd>It only looks. Removing something is always your call, in Finder or Terminal. The one thing dush can remove is its own scan history.</dd>
+              <dd>It only looks. Removing something is always your choice, in Finder or Terminal. The only thing dush ever removes is its own scan history.</dd>
             </div>
             <div>
               <dt>No tracking, no profiling</dt>
@@ -352,7 +352,7 @@
               <dd>Free. No subscriptions, no Pro version, no ads.</dd>
             </div>
           </dl>
-          <p>These aren't just words: the tests fail if the code ever reaches the network, deletes a file it doesn't own, or gets a delete button.</p>
+          <p>Not just words: dush's own tests fail if the code ever reaches the network, deletes a file it doesn't own, or grows a delete button.</p>
         </div>
         <figure class="illustration" data-reveal>
           <picture>
@@ -368,7 +368,7 @@
     <section class="page section" id="cli" aria-labelledby="cli-title">
       <div class="intro" data-reveal>
         <p class="label">In the Terminal</p>
-        <h2 class="heading" id="cli-title">The same engine, in your shell.</h2>
+        <h2 class="heading" id="cli-title">The same engine, in your Terminal.</h2>
         <p>dush started as a command-line tool, and it still is one. The app and the CLI share the same engine, so they report the same sizes for the same folder, down to the byte. Install it with Homebrew:</p>
       </div>
 

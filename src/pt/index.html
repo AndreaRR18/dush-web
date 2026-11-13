@@ -87,7 +87,7 @@
         <div>
           <p class="label">Para o seu Mac e para o seu Terminal</p>
           <h1 class="title">O que está a comer o seu <em>disco</em>?</h1>
-          <p class="lead">Largue uma pasta e o dush lista tudo o que tiver mais de 512&nbsp;MB, do maior para o menor. É muito rápido, mede como <code>du</code>, e só olha. Nunca elimina.</p>
+          <p class="lead">Largue uma pasta e o dush mostra-lhe o que está a ocupar espaço, do maior para o menor: tudo o que tiver mais de 512&nbsp;MB. Mede exatamente como <code>du</code>, e só olha. Nunca elimina.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
             <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Transferir para Mac</a>
@@ -126,9 +126,9 @@
         <div>
           <p class="label">dush para Mac</p>
           <h2 class="heading" id="scan-title">Largue uma pasta, veja o que pesa.</h2>
-          <p>Arraste uma ou mais pastas para a janela ou para o ícone no Dock, ou prima ⌘O. O dush percorre-as em paralelo e conta cada ficheiro, incluindo os ocultos e os pacotes de apps, enquanto vê os números subirem.</p>
+          <p>Arraste uma ou mais pastas para a janela ou para o ícone no Dock, ou prima ⌘O. O dush conta cada ficheiro — incluindo os ocultos e os pacotes de apps — enquanto vê os números subirem.</p>
           <ul class="list">
-            <li><strong>Caches e temp</strong> não precisa de pasta. Verifica as caches e pastas temporárias que só guardam coisas que o seu Mac pode reconstruir: caches do sistema e das apps, logs, o Lixo, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, o DerivedData e o DeviceSupport do Xcode, as caches dos simuladores e as do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e as aninhadas contam só uma vez.</li>
+            <li><strong>Caches e temp</strong> não precisa de pasta. Verifica as caches e pastas temporárias que o seu Mac pode reconstruir sozinho: caches do sistema e das apps, logs, o Lixo, e as caches do npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, do Xcode, dos simuladores e do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e uma pasta dentro de outra conta só uma vez.</li>
             <li><strong>Descargas e Secretária</strong> analisa os dois suspeitos do costume com um clique.</li>
             <li><strong>Maiores até agora</strong>: os ficheiros grandes aparecem assim que são encontrados, as pastas assim que são medidas. Prima Esc para parar a qualquer momento.</li>
             <li><strong>As suas opções</strong>: um tamanho mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB ou o seu próprio, como <code>1.5 GiB</code>), apenas ficheiros ou pastas, salte <code>node_modules</code>, <code>.git</code> e outras pastas de programação, ou exclua nomes e padrões como <code>*.xcarchive</code>.</li>
@@ -149,7 +149,7 @@
       <div class="intro" data-reveal>
         <p class="label">Os resultados</p>
         <h2 class="heading" id="results-title">O número vem primeiro.</h2>
-        <p>Cada tamanho é o espaço que um ficheiro ocupa de verdade no disco, medido exatamente como <code>du</code>: as ligações rígidas contam uma vez, as ligações simbólicas nunca são seguidas, e uma pasta que deve quase todo o seu tamanho a uma subpasta aparece numa só linha, para uma cache grande não encher a lista três vezes.</p>
+        <p>Cada tamanho é o espaço que um ficheiro ocupa de verdade no disco, medido exatamente como <code>du</code>: as ligações rígidas contam uma vez, as ligações simbólicas nunca são seguidas, e uma pasta cujo tamanho está quase todo numa subpasta aparece numa só linha, para uma cache grande não encher a lista três vezes.</p>
       </div>
 
       <article class="sheet results" data-reveal aria-label="Resultados de exemplo para ~/Library/Developer">
@@ -183,7 +183,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Mapa</h3>
-          <p>A mesma análise como mapa de árvore: blocos proporcionais ao uso do disco, coloridos pela pasta de primeiro nível. Clique num bloco para ampliar, siga o rasto para voltar atrás.</p>
+          <p>A mesma análise como mapa de árvore: blocos proporcionais ao uso do disco, coloridos pela pasta de primeiro nível. Clique num bloco para ampliar, o caminho em cima para voltar atrás.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">O que mudou</h3>
@@ -199,13 +199,13 @@
           <p class="label">É seguro eliminar?</p>
           <h2 class="heading" id="ai-title">Pergunte ao seu Mac, não a um servidor.</h2>
           <p>Não tem a certeza do que é uma pasta? Selecione-a e pergunte. A Apple Intelligence responde neste Mac, com um parecer, um resumo numa linha e o que acontece se a remover. Depois pergunte mais, como <q>Vou perder as minhas pré-visualizações SwiftUI?</q></p>
-          <p>O dush diz ao modelo apenas sobre o elemento:</p>
+          <p>O dush dá ao modelo apenas detalhes desse elemento:</p>
           <ul class="list">
             <li>sempre o caminho, o nome, o tamanho e se é um ficheiro ou uma pasta;</li>
-            <li>se quiser, quantos elementos lá dentro diretamente, os nomes e tamanhos dos 10 maiores, e quando mudou pela última vez;</li>
+            <li>se quiser, quantos elementos lá dentro, os nomes e tamanhos dos 10 maiores, e quando mudou pela última vez;</li>
             <li>nunca o que está dentro dos seus ficheiros.</li>
           </ul>
-          <p>O que lhe foi dito aparece debaixo de cada resposta. Sem servidor, sem conta, sem chave. Nada sai do seu Mac.</p>
+          <p>Pode ver o que foi enviado debaixo de cada resposta. Sem servidor, sem conta, sem chave. Nada sai do seu Mac.</p>
         </div>
 
         <div class="stack" data-reveal>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Caches de programador</p>
           <h2 class="heading" id="caches-title">As suas ferramentas reconstruem a maior parte disto sozinhas.</h2>
-          <p>O dush sabe onde as ferramentas de programação guardam as caches e soma-as: <strong class="serif-number">48,29&nbsp;GB</strong> num Mac bem usado. De cada uma diz o que é, se se reconstrói sozinha ou se vale a pena revê-la primeiro, e como a limpar do modo que essa ferramenta sugere. A limpeza é por sua conta. O dush não executa nada.</p>
+          <p>O dush sabe onde as ferramentas de programação guardam as caches e soma-as: <strong class="serif-number">48,29&nbsp;GB</strong> num Mac bem usado. De cada uma diz o que é, se a ferramenta a reconstrói sozinha ou se vale a pena revê-la primeiro, e o comando que a própria ferramenta sugere. Esse comando cola-o no Terminal e executa-o por si. O dush não executa nada.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -256,7 +256,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Simuladores indisponíveis</h3>
-          <p>Simuladores cuja versão do SO já não está instalada, com as apps e os dados que neles estão.</p>
+          <p>Simuladores de versões de iOS que já não estão instaladas, com as apps e os dados que neles estão.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Rever primeiro</p>
           <code class="card__command">xcrun simctl delete unavailable</code>
         </li>
@@ -266,7 +266,7 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">node_modules parados</h3>
+          <h3 class="card__title">node_modules não usados</h3>
           <p>Pacotes em projetos que ninguém mexe há 90+ dias, nas suas pastas de código, nunca em Documentos ou na Secretária.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Rever primeiro</p>
         </li>
@@ -278,12 +278,12 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Gradle e Homebrew</h3>
-          <p>Dependências, saídas de compilação, bottles e versões antigas do que instalou.</p>
+          <p>Dependências, saídas de compilação e versões antigas do que instalou.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Reconstrói-se sozinha</p>
           <code class="card__command">brew cleanup</code>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Cada cartão tem Mostrar no Finder, que seleciona exatamente as pastas da cache, e Copiar comando quando a ferramenta tem um. Apenas os comandos próprios das ferramentas, para colar por si no Terminal.</p>
+      <p class="caption center" data-reveal>Cada cartão tem Mostrar no Finder, que seleciona exatamente as pastas da cache, e Copiar comando quando a ferramenta tem um — cola-o no Terminal e executa-o por si.</p>
     </section>
 
     <!-- More -->
@@ -300,7 +300,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Pastas vigiadas</h3>
-          <p>Dê um limite a uma pasta e o dush avisa-o, uma vez, quando uma análise a encontra acima da linha. Pode analisá-las todos os dias ou todas as semanas enquanto estiver aberto.</p>
+          <p>Dê um limite a uma pasta e o dush avisa-o, uma vez, quando uma análise a encontra acima do limite. Pode analisá-las todos os dias ou todas as semanas enquanto o dush estiver aberto.</p>
           <p class="quote">A Developer passa dos 60&nbsp;GB. Agora tem 64,10&nbsp;GB, mais 7,90&nbsp;GB desde 20 set.</p>
         </li>
         <li class="card" data-reveal>
@@ -328,12 +328,12 @@
     <section class="page section" id="promises" aria-labelledby="promises-title">
       <div class="split split--reverse split--top">
         <div data-reveal>
-          <p class="label">As nossas promessas</p>
+          <p class="label">As promessas</p>
           <h2 class="heading" id="promises-title">O dush só olha. Nunca elimina.</h2>
           <dl class="promises">
             <div>
               <dt>O dush nunca elimina os seus ficheiros</dt>
-              <dd>Só olha. Remover algo é sempre decisão sua, no Finder ou no Terminal. A única coisa que o dush pode remover é o seu próprio histórico de análises.</dd>
+              <dd>Só olha. Remover algo é sempre decisão sua, no Finder ou no Terminal. A única coisa que o dush alguma vez remove é o seu próprio histórico de análises.</dd>
             </div>
             <div>
               <dt>Sem seguimento, sem criação de perfis</dt>
@@ -352,7 +352,7 @@
               <dd>Grátis. Sem subscrições, sem versão Pro, sem anúncios.</dd>
             </div>
           </dl>
-          <p>Isto não são só palavras: os testes falham se o código alguma vez chegar à rede, eliminar um ficheiro que não lhe pertence, ou tiver um botão de eliminar.</p>
+          <p>Não são só palavras: os próprios testes do dush falham se o código alguma vez chegar à rede, eliminar um ficheiro que não lhe pertence, ou ganhar um botão de eliminar.</p>
         </div>
         <figure class="illustration" data-reveal>
           <picture>
@@ -368,7 +368,7 @@
     <section class="page section" id="cli" aria-labelledby="cli-title">
       <div class="intro" data-reveal>
         <p class="label">No Terminal</p>
-        <h2 class="heading" id="cli-title">O mesmo motor, na sua shell.</h2>
+        <h2 class="heading" id="cli-title">O mesmo motor, no seu Terminal.</h2>
         <p>O dush começou como ferramenta de linha de comandos, e ainda o é. A app e a CLI partilham o mesmo motor, por isso dão os mesmos tamanhos para a mesma pasta, até ao byte. Instale-o com o Homebrew:</p>
       </div>
 

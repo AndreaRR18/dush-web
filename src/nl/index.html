@@ -87,7 +87,7 @@
         <div>
           <p class="label">Voor je Mac en voor je Terminal</p>
           <h1 class="title">Wat vreet er van je <em>schijf</em>?</h1>
-          <p class="lead">Sleep een map erin en dush zet alles boven de 512&nbsp;MB op een rij, grootste eerst. Hij is heel snel, hij meet zoals <code>du</code>, en hij kijkt alleen. Hij verwijdert nooit iets.</p>
+          <p class="lead">Sleep een map erin en dush laat je zien wat de ruimte inneemt, grootste eerst: alles boven de 512&nbsp;MB. Hij meet precies zoals <code>du</code>, en hij kijkt alleen. Hij verwijdert nooit iets.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
             <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Download voor Mac</a>
@@ -126,9 +126,9 @@
         <div>
           <p class="label">dush voor Mac</p>
           <h2 class="heading" id="scan-title">Sleep een map erin, zie wat groot is.</h2>
-          <p>Sleep een of meer mappen op het venster of het Dock-icoon, of druk op ⌘O. dush loopt ze parallel door en telt elk bestand, ook verborgen bestanden en app-bundels, terwijl je de aantallen ziet stijgen.</p>
+          <p>Sleep een of meer mappen op het venster of het Dock-icoon, of druk op ⌘O. dush telt elk bestand — ook verborgen bestanden en app-bundels — terwijl je de aantallen ziet stijgen.</p>
           <ul class="list">
-            <li><strong>Caches en temp</strong> heeft geen map nodig. Die controleert de caches en tijdelijke mappen waarin alleen spullen staan die je Mac opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, de DerivedData en DeviceSupport van Xcode, de simulatorcaches en die van VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn vallen af, en geneste mappen tellen maar één keer mee.</li>
+            <li><strong>Caches en temp</strong> heeft geen map nodig. Die controleert de caches en tijdelijke mappen die je Mac zelf opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, en de caches van npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode, simulators en VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn worden overgeslagen, en een map in een map telt maar één keer mee.</li>
             <li><strong>Downloads en Bureaublad</strong> scant de twee gebruikelijke verdachten met één klik.</li>
             <li><strong>Tot nu toe grootste</strong>: grote bestanden verschijnen zodra ze gevonden zijn, mappen zodra ze gemeten zijn. Druk op Esc om op elk moment te stoppen.</li>
             <li><strong>Jouw opties</strong>: een minimumgrootte (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB of je eigen, zoals <code>1.5 GiB</code>), alleen bestanden of mappen, sla over <code>node_modules</code>, <code>.git</code> en andere ontwikkelaarsmappen, of sluit namen en patronen uit zoals <code>*.xcarchive</code>.</li>
@@ -149,7 +149,7 @@
       <div class="intro" data-reveal>
         <p class="label">De resultaten</p>
         <h2 class="heading" id="results-title">Het getal staat voorop.</h2>
-        <p>Elke grootte is de ruimte die een bestand echt inneemt op de schijf, precies gemeten zoals <code>du</code>: hardlinks tellen één keer mee, symlinks worden nooit gevolgd, en een map die bijna al zijn grootte aan één submap te danken heeft, verschijnt als één regel, zodat een grote cache de lijst niet drie keer vult.</p>
+        <p>Elke grootte is de ruimte die een bestand echt inneemt op de schijf, precies gemeten zoals <code>du</code>: hardlinks tellen één keer mee, symlinks worden nooit gevolgd, en een map waarvan de grootte bijna helemaal in één submap zit, verschijnt als één regel, zodat een grote cache de lijst niet drie keer vult.</p>
       </div>
 
       <article class="sheet results" data-reveal aria-label="Voorbeeldresultaten voor ~/Library/Developer">
@@ -183,7 +183,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Kaart</h3>
-          <p>Dezelfde scan als boomkaart: blokken naar schijfgebruik, gekleurd per map op het hoogste niveau. Klik op een blok om in te zoomen, volg het spoor terug naar buiten.</p>
+          <p>Dezelfde scan als boomkaart: blokken naar schijfgebruik, gekleurd per map op het hoogste niveau. Klik op een blok om in te zoomen, het pad bovenaan om terug te gaan.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Wat is er gewijzigd</h3>
@@ -199,13 +199,13 @@
           <p class="label">Veilig om te verwijderen?</p>
           <h2 class="heading" id="ai-title">Vraag het je Mac, niet een server.</h2>
           <p>Niet zeker wat een map is? Selecteer hem en vraag het. Apple Intelligence antwoordt op deze Mac, met een oordeel, een samenvatting van één regel en wat er gebeurt als je hem verwijdert. Vraag daarna verder, zoals <q>Raak ik mijn SwiftUI-previews kwijt?</q></p>
-          <p>dush vertelt het model alleen over het item:</p>
+          <p>dush geeft het model alleen details over dat item:</p>
           <ul class="list">
             <li>altijd het pad, de naam, de grootte en of het een bestand of een map is;</li>
-            <li>als je wilt, hoeveel items er direct in zitten, de namen en groottes van de 10 grootste, en wanneer het voor het laatst gewijzigd is;</li>
+            <li>als je wilt, hoeveel items erin zitten, de namen en groottes van de 10 grootste, en wanneer het voor het laatst gewijzigd is;</li>
             <li>nooit wat er in je bestanden staat.</li>
           </ul>
-          <p>Wat het te horen kreeg staat onder elk antwoord. Geen server, geen account, geen sleutel. Niets verlaat je Mac.</p>
+          <p>Wat er is verstuurd zie je onder elk antwoord. Geen server, geen account, geen sleutel. Niets verlaat je Mac.</p>
         </div>
 
         <div class="stack" data-reveal>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Ontwikkelaarscaches</p>
           <h2 class="heading" id="caches-title">Je tools bouwen het meeste hiervan zelf opnieuw op.</h2>
-          <p>dush weet waar ontwikkelaarstools hun caches bewaren en telt ze op: <strong class="serif-number">48,29&nbsp;GB</strong> op een volle Mac. Van elk zegt het wat het is, of het zichzelf opnieuw opbouwt of een controle waard is, en hoe je het leegmaakt zoals dat tool suggereert. Jij doet het leegmaken. dush voert niets uit.</p>
+          <p>dush weet waar je ontwikkelaarstools hun caches bewaren en telt ze op: <strong class="serif-number">48,29&nbsp;GB</strong> op een volle Mac. Van elke cache zegt het wat het is, of het tool die zelf opnieuw opbouwt of een blik waard is, en welk commando dat tool zelf suggereert. Dat commando plak je zelf in de Terminal en voer je zelf uit. dush voert niets uit.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -256,7 +256,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Niet-beschikbare simulators</h3>
-          <p>Simulators waarvan de OS-versie niet meer geïnstalleerd is, met de apps en gegevens die erop staan.</p>
+          <p>Simulators voor iOS-versies die niet meer geïnstalleerd zijn, met de apps en gegevens die erop staan.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controleer eerst</p>
           <code class="card__command">xcrun simctl delete unavailable</code>
         </li>
@@ -266,7 +266,7 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">Verouderde node_modules</h3>
+          <h3 class="card__title">Ongebruikte node_modules</h3>
           <p>Pakketten in projecten waar niemand 90+ dagen iets aan heeft gewijzigd, in je codemappen, nooit in Documenten of het Bureaublad.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Controleer eerst</p>
         </li>
@@ -278,12 +278,12 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Gradle en Homebrew</h3>
-          <p>Afhankelijkheden, builduitvoer, bottles en oude versies van wat je hebt geïnstalleerd.</p>
+          <p>Afhankelijkheden, builduitvoer en oude versies van wat je hebt geïnstalleerd.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Bouwt zichzelf opnieuw op</p>
           <code class="card__command">brew cleanup</code>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Elke kaart heeft Toon in Finder, die precies de mappen van de cache selecteert, en Kopieer commando als het tool er een heeft. Alleen de eigen commando's van de tools, om zelf in de Terminal te plakken.</p>
+      <p class="caption center" data-reveal>Elke kaart heeft Toon in Finder, die precies de mappen van de cache selecteert, en Kopieer commando als het tool er een heeft — je plakt het zelf in de Terminal en voert het zelf uit.</p>
     </section>
 
     <!-- More -->
@@ -300,7 +300,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Bewaakte mappen</h3>
-          <p>Geef een map een limiet en dush meldt het één keer wanneer een scan eroverheen gaat. Hij kan ze elke dag of elke week scannen zolang hij open is.</p>
+          <p>Geef een map een limiet en dush meldt het één keer wanneer een scan eroverheen gaat. Hij kan ze elke dag of elke week controleren zolang dush open is.</p>
           <p class="quote">Developer zit boven de 60&nbsp;GB. Het is nu 64,10&nbsp;GB, 7,90&nbsp;GB erbij sinds 20 sep.</p>
         </li>
         <li class="card" data-reveal>
@@ -328,12 +328,12 @@
     <section class="page section" id="promises" aria-labelledby="promises-title">
       <div class="split split--reverse split--top">
         <div data-reveal>
-          <p class="label">Onze beloften</p>
+          <p class="label">De beloften</p>
           <h2 class="heading" id="promises-title">dush kijkt alleen. Hij verwijdert nooit.</h2>
           <dl class="promises">
             <div>
               <dt>dush verwijdert nooit je bestanden</dt>
-              <dd>Hij kijkt alleen. Iets verwijderen is altijd jouw keuze, in de Finder of de Terminal. Het enige dat dush kan verwijderen is zijn eigen scangeschiedenis.</dd>
+              <dd>Hij kijkt alleen. Iets verwijderen is altijd jouw keuze, in de Finder of de Terminal. Het enige dat dush ooit verwijdert is zijn eigen scangeschiedenis.</dd>
             </div>
             <div>
               <dt>Geen tracking, geen profilering</dt>
@@ -352,7 +352,7 @@
               <dd>Gratis. Geen abonnementen, geen Pro-versie, geen advertenties.</dd>
             </div>
           </dl>
-          <p>Dit zijn niet zomaar woorden: de tests falen als de code ooit het netwerk bereikt, een bestand verwijdert dat niet van hem is, of een verwijderknop krijgt.</p>
+          <p>Niet zomaar woorden: de eigen tests van dush falen als de code ooit het netwerk bereikt, een bestand verwijdert dat niet van hem is, of een verwijderknop krijgt.</p>
         </div>
         <figure class="illustration" data-reveal>
           <picture>
@@ -368,7 +368,7 @@
     <section class="page section" id="cli" aria-labelledby="cli-title">
       <div class="intro" data-reveal>
         <p class="label">In de Terminal</p>
-        <h2 class="heading" id="cli-title">Dezelfde engine, in je shell.</h2>
+        <h2 class="heading" id="cli-title">Dezelfde engine, in je Terminal.</h2>
         <p>dush begon als opdrachtregeltool, en dat is het nog steeds. De app en de CLI delen dezelfde engine, dus ze geven dezelfde groottes voor dezelfde map, tot op de byte nauwkeurig. Installeer het met Homebrew:</p>
       </div>
 
