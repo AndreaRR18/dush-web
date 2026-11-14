@@ -87,7 +87,7 @@
         <div>
           <p class="label">Dla Twojego Maca i dla Twojego Terminala</p>
           <h1 class="title">Co zżera Twój <em>dysk</em>?</h1>
-          <p class="lead">Upuść folder, a dush wypisze wszystko większe niż 512&nbsp;MB, od największego. Działa bardzo szybko, mierzy jak <code>du</code>, i tylko patrzy. Nigdy nie usuwa.</p>
+          <p class="lead">Upuść folder, a dush pokaże Ci, co zajmuje miejsce, od największego: wszystko powyżej 512&nbsp;MB. Mierzy dokładnie jak <code>du</code> i tylko patrzy. Nigdy nie usuwa.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
             <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Pobierz na Maca</a>
@@ -126,9 +126,9 @@
         <div>
           <p class="label">dush na Maca</p>
           <h2 class="heading" id="scan-title">Upuść folder, zobacz, co jest duże.</h2>
-          <p>Przeciągnij jeden folder lub więcej na okno albo ikonę w Docku, albo naciśnij ⌘O. dush przeszukuje je równolegle i liczy każdy plik, także ukryte i pakiety aplikacji, a Ty patrzysz, jak liczby rosną.</p>
+          <p>Przeciągnij jeden folder lub więcej na okno albo ikonę w Docku, albo naciśnij ⌘O. dush liczy każdy plik — także ukryte i pakiety aplikacji — a Ty patrzysz, jak liczby rosną.</p>
           <ul class="list">
-            <li><strong>Cache i temp</strong> nie potrzebuje folderu. Sprawdza pamięci podręczne i foldery tymczasowe, w których jest tylko to, co Twój Mac może odbudować: pamięci podręczne systemu i aplikacji, logi, Kosz, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData i DeviceSupport Xcode'a, pamięci podręczne symulatorów oraz VS&nbsp;Code. Foldery, których nie ma albo nie są bezpieczne, są pomijane, a zagnieżdżone liczą się tylko raz.</li>
+            <li><strong>Cache i temp</strong> nie potrzebuje folderu. Sprawdza pamięci podręczne i foldery tymczasowe, które Twój Mac może sam odbudować: pamięci podręczne systemu i aplikacji, logi, Kosz, oraz pamięci podręczne npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode'a, symulatorów i VS&nbsp;Code. Foldery, których nie ma albo nie są bezpieczne, są pomijane, a folder w folderze liczy się tylko raz.</li>
             <li><strong>Pobrane rzeczy i Biurko</strong> skanuje dwa zwykłe podejrzane jednym kliknięciem.</li>
             <li><strong>Największe jak dotąd</strong>: duże pliki pojawiają się, gdy tylko zostaną znalezione, foldery, gdy tylko zostaną zmierzone. Naciśnij Esc, aby zatrzymać w dowolnym momencie.</li>
             <li><strong>Twoje opcje</strong>: minimalny rozmiar (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB albo własny, na przykład <code>1.5 GiB</code>), tylko pliki lub foldery, pomiń <code>node_modules</code>, <code>.git</code> i inne foldery deweloperskie, albo wyklucz nazwy i wzorce takie jak <code>*.xcarchive</code>.</li>
@@ -149,7 +149,7 @@
       <div class="intro" data-reveal>
         <p class="label">Wyniki</p>
         <h2 class="heading" id="results-title">Liczba jest pierwsza.</h2>
-        <p>Każdy rozmiar to miejsce, które plik naprawdę zajmuje na dysku, mierzony dokładnie jak <code>du</code>: twarde dowiązania liczą się raz, dowiązania symboliczne nigdy nie są podążane, a folder, który prawie cały swój rozmiar zawdzięcza jednemu podfolderowi, pojawia się jako jedna linia, żeby duża pamięć podręczna nie zapchała listy trzy razy.</p>
+        <p>Każdy rozmiar to miejsce, które plik naprawdę zajmuje na dysku, mierzony dokładnie jak <code>du</code>: twarde dowiązania liczą się raz, dowiązania symboliczne nigdy nie są podążane, a folder, którego rozmiar prawie w całości mieści się w jednym podfolderze, pojawia się jako jedna linia, żeby duża pamięć podręczna nie zapchała listy trzy razy.</p>
       </div>
 
       <article class="sheet results" data-reveal aria-label="Przykładowe wyniki dla ~/Library/Developer">
@@ -183,7 +183,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Mapa</h3>
-          <p>Ten sam skan jako mapa drzewa: bloki o rozmiarze zależnym od użycia dysku, kolorowane według folderu najwyższego poziomu. Kliknij blok, aby się przybliżyć, podążaj za śladem, aby wrócić.</p>
+          <p>Ten sam skan jako mapa drzewa: bloki o rozmiarze zależnym od użycia dysku, kolorowane według folderu najwyższego poziomu. Kliknij blok, aby się przybliżyć, ścieżkę na górze, aby wrócić.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Co się zmieniło</h3>
@@ -199,13 +199,13 @@
           <p class="label">Można bezpiecznie usunąć?</p>
           <h2 class="heading" id="ai-title">Zapytaj Maca, nie serwer.</h2>
           <p>Nie wiesz, czym jest folder? Wybierz go i zapytaj. Apple Intelligence odpowiada na tym Macu, z werdyktem, jednoliniowym podsumowaniem i tym, co się stanie, jeśli go usuniesz. Potem zapytaj dalej, na przykład <q>Czy stracę podglądy SwiftUI?</q></p>
-          <p>dush mówi modelowi tylko o elemencie:</p>
+          <p>dush podaje modelowi tylko szczegóły tego elementu:</p>
           <ul class="list">
             <li>zawsze jego ścieżkę, nazwę, rozmiar i to, czy to plik, czy folder;</li>
-            <li>jeśli chcesz, ile elementów jest bezpośrednio w środku, nazwy i rozmiary 10 największych oraz kiedy ostatnio się zmienił;</li>
+            <li>jeśli chcesz, ile elementów jest w środku, nazwy i rozmiary 10 największych oraz kiedy ostatnio się zmienił;</li>
             <li>nigdy zawartości Twoich plików.</li>
           </ul>
-          <p>To, co zostało powiedziane, pokazuje się pod każdą odpowiedzią. Bez serwera, konta czy klucza. Nic nie opuszcza Twojego Maca.</p>
+          <p>To, co zostało wysłane, widać pod każdą odpowiedzią. Bez serwera, konta czy klucza. Nic nie opuszcza Twojego Maca.</p>
         </div>
 
         <div class="stack" data-reveal>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Cache deweloperskie</p>
           <h2 class="heading" id="caches-title">Twoje narzędzia same odbudowują większość tego.</h2>
-          <p>dush wie, gdzie narzędzia deweloperskie trzymają swoje pamięci podręczne, i je sumuje: <strong class="serif-number">48,29&nbsp;GB</strong> na mocno używanym Macu. O każdej mówi, czym jest, czy odbudowuje się sama, czy najpierw warto ją przejrzeć, i jak ją wyczyścić tak, jak sugeruje to narzędzie. Czyszczenie wykonujesz Ty. dush nic nie uruchamia.</p>
+          <p>dush wie, gdzie narzędzia deweloperskie trzymają swoje pamięci podręczne, i je sumuje: <strong class="serif-number">48,29&nbsp;GB</strong> na mocno używanym Macu. O każdej mówi, czym jest, czy narzędzie odbudowuje ją samo, czy najpierw warto ją przejrzeć, oraz jakie polecenie sugeruje samo narzędzie. To polecenie wklejasz samodzielnie w Terminalu i sam je uruchamiasz. dush nic nie uruchamia.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -256,7 +256,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Niedostępne symulatory</h3>
-          <p>Symulatory, których wersji systemu nie ma już zainstalowanej, wraz z aplikacjami i danymi na nich.</p>
+          <p>Symulatory wersji iOS, których nie ma już zainstalowanych, wraz z aplikacjami i danymi na nich.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Najpierw sprawdź</p>
           <code class="card__command">xcrun simctl delete unavailable</code>
         </li>
@@ -278,12 +278,12 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Gradle i Homebrew</h3>
-          <p>Zależności, wyniki kompilacji, butelki i stare wersje tego, co zainstalowałeś.</p>
+          <p>Zależności, wyniki kompilacji i stare wersje tego, co zainstalowałeś.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Odbudowuje się sama</p>
           <code class="card__command">brew cleanup</code>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Każda karta ma Pokaż w Finderze, co wybiera dokładnie foldery pamięci podręcznej, i Kopiuj polecenie, gdy narzędzie je ma. Tylko własne polecenia narzędzi, do wklejenia samodzielnie w Terminalu.</p>
+      <p class="caption center" data-reveal>Każda karta ma Pokaż w Finderze, co wybiera dokładnie foldery pamięci podręcznej, i Kopiuj polecenie, gdy narzędzie je ma — wklejasz je samodzielnie w Terminalu i sam je uruchamiasz.</p>
     </section>
 
     <!-- More -->
@@ -300,7 +300,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Obserwowane foldery</h3>
-          <p>Daj folderowi limit, a dush powiadomi Cię raz, gdy skan znajdzie go ponad linię. Może skanować je co dzień albo co tydzień, gdy jest otwarty.</p>
+          <p>Daj folderowi limit, a dush powiadomi Cię raz, gdy skan znajdzie go ponad limitem. Może skanować je co dzień albo co tydzień, gdy dush jest otwarty.</p>
           <p class="quote">Developer przekracza 60&nbsp;GB. Ma teraz 64,10&nbsp;GB, czyli 7,90&nbsp;GB więcej od 20 wrz.</p>
         </li>
         <li class="card" data-reveal>
@@ -328,12 +328,12 @@
     <section class="page section" id="promises" aria-labelledby="promises-title">
       <div class="split split--reverse split--top">
         <div data-reveal>
-          <p class="label">Nasze obietnice</p>
+          <p class="label">Obietnice</p>
           <h2 class="heading" id="promises-title">dush tylko patrzy. Nigdy nie usuwa.</h2>
           <dl class="promises">
             <div>
               <dt>dush nigdy nie usuwa Twoich plików</dt>
-              <dd>Tylko patrzy. Usunięcie czegokolwiek to zawsze Twój wybór, w Finderze lub Terminalu. Jedyną rzeczą, którą dush może usunąć, jest własna historia skanów.</dd>
+              <dd>Tylko patrzy. Usunięcie czegokolwiek to zawsze Twój wybór, w Finderze lub Terminalu. Jedyną rzeczą, którą dush kiedykolwiek usuwa, jest własna historia skanów.</dd>
             </div>
             <div>
               <dt>Bez śledzenia, bez profilowania</dt>
@@ -352,7 +352,7 @@
               <dd>Darmowe. Bez subskrypcji, wersji Pro ani reklam.</dd>
             </div>
           </dl>
-          <p>To nie tylko słowa: testy zawodzą, jeśli kod kiedykolwiek dotrze do sieci, usunie plik, który do niego nie należy, albo dostanie przycisk usuwania.</p>
+          <p>To nie tylko słowa: własne testy dusha zawodzą, jeśli kod kiedykolwiek dotrze do sieci, usunie plik, który do niego nie należy, albo dostanie przycisk usuwania.</p>
         </div>
         <figure class="illustration" data-reveal>
           <picture>
@@ -368,7 +368,7 @@
     <section class="page section" id="cli" aria-labelledby="cli-title">
       <div class="intro" data-reveal>
         <p class="label">W Terminalu</p>
-        <h2 class="heading" id="cli-title">Ten sam silnik, w Twoim shellu.</h2>
+        <h2 class="heading" id="cli-title">Ten sam silnik, w Twoim Terminalu.</h2>
         <p>dush zaczynał jako narzędzie wiersza poleceń i nim pozostał. Aplikacja i CLI współdzielą ten sam silnik, więc podają te same rozmiary dla tego samego folderu, co do bajta. Zainstaluj przez Homebrew:</p>
       </div>
 

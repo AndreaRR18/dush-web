@@ -87,7 +87,7 @@
         <div>
           <p class="label">Pour votre Mac et pour votre Terminal</p>
           <h1 class="title">Qu’est-ce qui mange votre <em>disque</em>&nbsp;?</h1>
-          <p class="lead">Déposez un dossier et dush liste tout ce qui dépasse 512&nbsp;Mo, du plus grand au plus petit. C’est très rapide, il mesure comme <code>du</code>, et il ne fait que regarder. Il ne supprime jamais rien.</p>
+          <p class="lead">Déposez un dossier et dush vous montre ce qui prend de la place, du plus grand au plus petit&nbsp;: tout ce qui dépasse 512&nbsp;Mo. Il mesure exactement comme <code>du</code>, et il ne fait que regarder. Il ne supprime jamais rien.</p>
           <div class="actions">
             <!-- TEMP: replace with the real Mac App Store link (also in the last section). -->
             <a class="button button--prominent" href="https://apps.apple.com/app/id0000000000">Télécharger pour Mac</a>
@@ -126,9 +126,9 @@
         <div>
           <p class="label">dush pour Mac</p>
           <h2 class="heading" id="scan-title">Déposez un dossier, voyez ce qui pèse.</h2>
-          <p>Glissez un ou plusieurs dossiers sur la fenêtre ou sur l’icône du Dock, ou appuyez sur ⌘O. dush les parcourt en parallèle et compte chaque fichier, cachés et bundles d’apps inclus, pendant que vous regardez les chiffres monter.</p>
+          <p>Glissez un ou plusieurs dossiers sur la fenêtre ou sur l’icône du Dock, ou appuyez sur ⌘O. dush compte chaque fichier — cachés et bundles d’apps inclus — pendant que vous regardez les chiffres monter.</p>
           <ul class="list">
-            <li><strong>Caches et temp</strong> n’a besoin d’aucun dossier. Cette analyse examine les caches et dossiers temporaires qui ne contiennent que ce que votre Mac peut reconstruire : caches système et d’apps, logs, la Corbeille, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, le DerivedData et le DeviceSupport d’Xcode, les caches des simulateurs et ceux de VS&nbsp;Code. Les dossiers absents ou peu sûrs sont exclus, et les dossiers imbriqués ne comptent qu’une fois.</li>
+            <li><strong>Caches et temp</strong> n’a besoin d’aucun dossier. Cette analyse examine les caches et dossiers temporaires que votre Mac peut reconstruire lui-même&nbsp;: caches système et d’apps, logs, la Corbeille, et les caches de npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode, des simulateurs et de VS&nbsp;Code. Les dossiers inexistants ou peu sûrs sont ignorés, et un dossier dans un dossier ne compte qu’une fois.</li>
             <li><strong>Téléchargements et Bureau</strong> analyse les deux suspects habituels en un clic.</li>
             <li><strong>Les plus gros pour l’instant</strong>&nbsp;: les gros fichiers apparaissent dès qu’ils sont trouvés, les dossiers dès qu’ils sont mesurés. Appuyez sur Esc pour arrêter à tout moment.</li>
             <li><strong>Vos options</strong>&nbsp;: une taille minimale (100&nbsp;Mo, 512&nbsp;Mo, 1&nbsp;Go, 5&nbsp;Go ou la vôtre, comme <code>1.5 GiB</code>), fichiers ou dossiers uniquement, ignorez <code>node_modules</code>, <code>.git</code> et autres dossiers de développement, ou excluez des noms et motifs comme <code>*.xcarchive</code>.</li>
@@ -149,7 +149,7 @@
       <div class="intro" data-reveal>
         <p class="label">Les résultats</p>
         <h2 class="heading" id="results-title">Le chiffre d’abord.</h2>
-        <p>Chaque taille est l’espace qu’un fichier occupe vraiment sur le disque, mesuré exactement comme <code>du</code>&nbsp;: les liens durs ne comptent qu’une fois, les symlinks ne sont jamais suivis, et un dossier qui doit presque toute sa taille à un sous-dossier n’apparaît qu’une ligne, pour qu’un gros cache ne remplisse pas la liste trois fois.</p>
+        <p>Chaque taille est l’espace qu’un fichier occupe vraiment sur le disque, mesuré exactement comme <code>du</code>&nbsp;: les liens durs ne comptent qu’une fois, les symlinks ne sont jamais suivis, et un dossier dont la taille tient presque entièrement à un sous-dossier n’apparaît qu’en une ligne, pour qu’un gros cache ne remplisse pas la liste trois fois.</p>
       </div>
 
       <article class="sheet results" data-reveal aria-label="Résultats d’exemple pour ~/Library/Developer">
@@ -183,7 +183,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Carte</h3>
-          <p>La même analyse en treemap : des blocs proportionnés à l’espace utilisé, colorés par dossier de premier niveau. Cliquez sur un bloc pour zoomer, suivez le fil d’Ariane pour revenir en arrière.</p>
+          <p>La même analyse en treemap&nbsp;: des blocs proportionnés à l’espace utilisé, colorés par dossier de premier niveau. Cliquez sur un bloc pour zoomer, le chemin en haut pour revenir en arrière.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Ce qui a changé</h3>
@@ -199,13 +199,13 @@
           <p class="label">Suppression sans risque&nbsp;?</p>
           <h2 class="heading" id="ai-title">Demandez à votre Mac, pas à un serveur.</h2>
           <p>Pas sûr de ce qu’est un dossier&nbsp;? Sélectionnez-le et demandez. Apple Intelligence répond sur ce Mac, avec un verdict, un résumé en une ligne et ce qui se passe si vous le retirez. Puis demandez encore, par exemple <q>Vais-je perdre mes aperçus SwiftUI&nbsp;?</q></p>
-          <p>dush ne dit au modèle que l’élément&nbsp;:</p>
+          <p>dush ne donne au modèle que des détails sur cet élément&nbsp;:</p>
           <ul class="list">
             <li>toujours son chemin, son nom, sa taille et s’il s’agit d’un fichier ou d’un dossier&nbsp;;</li>
-            <li>si vous voulez, combien d’éléments il contient directement, les noms et tailles des 10 plus gros, et quand il a changé pour la dernière fois&nbsp;;</li>
+            <li>si vous voulez, combien d’éléments il contient, les noms et tailles des 10 plus gros, et quand il a changé pour la dernière fois&nbsp;;</li>
             <li>jamais ce qu’il y a dans vos fichiers.</li>
           </ul>
-          <p>Ce qu’on lui a dit est affiché sous chaque réponse. Aucun serveur, aucun compte, aucune clé. Rien ne quitte votre Mac.</p>
+          <p>Ce qui a été envoyé est visible sous chaque réponse. Aucun serveur, aucun compte, aucune clé. Rien ne quitte votre Mac.</p>
         </div>
 
         <div class="stack" data-reveal>
@@ -238,7 +238,7 @@
         <div>
           <p class="label">Caches de dev</p>
           <h2 class="heading" id="caches-title">Vos outils reconstruisent la plupart de tout ça tout seuls.</h2>
-          <p>dush sait où les outils de développement mettent leurs caches et les additionne&nbsp;: <strong class="serif-number">48,29&nbsp;Go</strong> sur un Mac bien chargé. Pour chacun, il dit ce que c’est, s’il se reconstruit tout seul ou s’il vaut mieux vérifier d’abord, et comment le vider comme cet outil le suggère. C’est vous qui videz. dush n’exécute rien.</p>
+          <p>dush sait où les outils de développement mettent leurs caches et les additionne&nbsp;: <strong class="serif-number">48,29&nbsp;Go</strong> sur un Mac bien chargé. Pour chacun, il dit ce que c’est, si l’outil le reconstruit tout seul ou s’il vaut mieux vérifier d’abord, et la commande que l’outil suggère lui-même. Vous collez cette commande vous-même dans le Terminal et vous l’exécutez. dush n’exécute rien.</p>
         </div>
         <figure class="illustration illustration--small">
           <picture>
@@ -256,7 +256,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Simulateurs indisponibles</h3>
-          <p>Simulateurs dont la version d’OS n’est plus installée, avec les apps et les données qu’ils contiennent.</p>
+          <p>Simulateurs pour des versions d’iOS qui ne sont plus installées, avec les apps et les données qu’ils contiennent.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Vérifier d’abord</p>
           <code class="card__command">xcrun simctl delete unavailable</code>
         </li>
@@ -266,7 +266,7 @@
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Se reconstruit tout seul</p>
         </li>
         <li class="card" data-reveal>
-          <h3 class="card__title">node_modules obsolètes</h3>
+          <h3 class="card__title">node_modules inutilisés</h3>
           <p>Paquets dans des projets que personne n’a touchés depuis plus de 90 jours, dans vos dossiers de code, jamais dans Documents ou le Bureau.</p>
           <p class="tag tag--orange"><svg class="icon" aria-hidden="true"><use href="#icon-caution"/></svg> Vérifier d’abord</p>
         </li>
@@ -278,12 +278,12 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Gradle et Homebrew</h3>
-          <p>Dépendances, sorties de build, bouteilles et anciennes versions de ce que vous avez installé.</p>
+          <p>Dépendances, sorties de build et anciennes versions de ce que vous avez installé.</p>
           <p class="tag tag--teal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Se reconstruit tout seul</p>
           <code class="card__command">brew cleanup</code>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Chaque carte a Afficher dans le Finder, qui sélectionne exactement les dossiers du cache, et Copier la commande quand l’outil en a une. Seulement les commandes propres aux outils, à coller vous-même dans le Terminal.</p>
+      <p class="caption center" data-reveal>Chaque carte a Afficher dans le Finder, qui sélectionne exactement les dossiers du cache, et Copier la commande quand l’outil en a une — vous la collez vous-même dans le Terminal et vous l’exécutez.</p>
     </section>
 
     <!-- More -->
@@ -300,7 +300,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Dossiers surveillés</h3>
-          <p>Donnez une limite à un dossier et dush vous prévient, une fois, quand une analyse le trouve au-delà. Il peut les analyser chaque jour ou chaque semaine tant qu’il est ouvert.</p>
+          <p>Donnez une limite à un dossier et dush vous prévient, une fois, quand une analyse le trouve au-delà. Il peut les analyser chaque jour ou chaque semaine tant que dush est ouvert.</p>
           <p class="quote">Developer dépasse les 60&nbsp;Go. Il fait 64,10&nbsp;Go maintenant, soit 7,90&nbsp;Go de plus depuis le 20 sept.</p>
         </li>
         <li class="card" data-reveal>
@@ -328,12 +328,12 @@
     <section class="page section" id="promises" aria-labelledby="promises-title">
       <div class="split split--reverse split--top">
         <div data-reveal>
-          <p class="label">Nos promesses</p>
+          <p class="label">Les promesses</p>
           <h2 class="heading" id="promises-title">dush ne fait que regarder. Il ne supprime jamais.</h2>
           <dl class="promises">
             <div>
               <dt>dush ne supprime jamais vos fichiers</dt>
-              <dd>Il ne fait que regarder. Retirer quelque chose est toujours votre décision, dans le Finder ou le Terminal. La seule chose que dush puisse retirer, c’est son propre historique d’analyses.</dd>
+              <dd>Il ne fait que regarder. Retirer quelque chose est toujours votre décision, dans le Finder ou le Terminal. La seule chose que dush retire un jour, c’est son propre historique d’analyses.</dd>
             </div>
             <div>
               <dt>Aucun traçage, aucun profilage</dt>
@@ -352,7 +352,7 @@
               <dd>Gratuit. Aucun abonnement, aucune version Pro, aucune publicité.</dd>
             </div>
           </dl>
-          <p>Ce ne sont pas que des mots : les tests échouent si le code atteint un jour le réseau, supprime un fichier qui ne lui appartient pas, ou se dote d’un bouton de suppression.</p>
+          <p>Pas que des mots&nbsp;: les propres tests de dush échouent si le code atteint un jour le réseau, supprime un fichier qui ne lui appartient pas, ou se dote d’un bouton de suppression.</p>
         </div>
         <figure class="illustration" data-reveal>
           <picture>
@@ -368,7 +368,7 @@
     <section class="page section" id="cli" aria-labelledby="cli-title">
       <div class="intro" data-reveal>
         <p class="label">Dans le Terminal</p>
-        <h2 class="heading" id="cli-title">Le même moteur, dans votre shell.</h2>
+        <h2 class="heading" id="cli-title">Le même moteur, dans votre Terminal.</h2>
         <p>dush a commencé comme outil en ligne de commande, et il l’est toujours. L’app et la CLI partagent le même moteur, donc elles donnent les mêmes tailles pour le même dossier, à l’octet près. Installez-le avec Homebrew&nbsp;:</p>
       </div>
 
