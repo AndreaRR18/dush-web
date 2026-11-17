@@ -11,7 +11,10 @@
 // but the Mac App Store link, and each translation matches its English page (structure, links,
 // contact address, date). Every page also carries the Content-Security-Policy that makes the
 // browser enforce "nothing from another site" (it must name the hash of the one inline script, and
-// come before it), sends no referrer, and holds no web address in an inline script or style.
+// come before it), sends no referrer, and holds no web address in an inline script or style. The
+// privacy page keeps the sections a notice needs, names the authority and the host's own
+// statement, shares its contact address with the support page, and is never dated in the future;
+// every page links to it.
 
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -147,6 +150,47 @@ function checkThemeToggle(file: string, text: string, problems: Problem[]): void
 const languages = ["de", "es", "fr", "it", "nl", "pl", "pt"];
 const pages = ["index.html", "support.html", "privacy.html"];
 
+/** What a privacy notice has to carry: the controller, the website, writing to us, the rights, the changes. */
+const privacySections = ["responsible-title", "site-title", "write-title", "rights-title", "changes-title"];
+
+/** The authority a visitor can complain to, and the host's own statement: both are named, never paraphrased. */
+const privacyLinks = [
+  "https://www.garanteprivacy.it/",
+  "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+];
+
+/** The address the site gives, in the privacy page and on the support page: one address, both places. */
+function contactAddress(text: string): string {
+  return /<a href="mailto:([^"]+)"/.exec(text)?.[1] ?? "";
+}
+
+/**
+ * The privacy page says who is responsible, what the website does, what happens to what you send,
+ * what you can ask for and where to complain, and it is never dated in the future. A notice that
+ * loses one of those stops being a notice, so the check holds them in place.
+ */
+function checkPrivacy(file: string, text: string, problems: Problem[]): void {
+  for (const id of privacySections) {
+    if (!text.includes(`id="${id}"`)) {
+      problems.push({ file, line: 1, message: `missing id="${id}": the privacy page names the controller, the website, writing to us, the rights and the changes` });
+    }
+  }
+  for (const link of privacyLinks) {
+    if (!text.includes(`href="${link}"`)) {
+      problems.push({ file, line: 1, message: `missing ${link}: the privacy page names the authority and the host's own statement` });
+    }
+  }
+  const date = /<time datetime="(\d{4}-\d{2}-\d{2})"/.exec(text)?.[1];
+  // The latest date it is anywhere on Earth (UTC+14), so a page dated just after midnight in Italy
+  // doesn't fail on a machine or a CI runner that is still on the day before.
+  const today = new Date(Date.now() + 14 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  if (!date) {
+    problems.push({ file, line: 1, message: 'missing <time datetime="YYYY-MM-DD">: the page says when it last changed' });
+  } else if (date > today) {
+    problems.push({ file, line: 1, message: `"last updated" is ${date}, which is in the future: a policy can't be dated ahead` });
+  }
+}
+
 /** The body's tags with their classes: the structure of a page, whatever language its text is in. */
 function skeleton(text: string): string[] {
   const body = text.slice(text.indexOf("<body"));
@@ -219,6 +263,7 @@ function checkRules(): Problem[] {
         checkPolicy(file, text, problems);
         checkInline(file, text, problems);
         checkLeftovers(file, text, problems);
+        if (file.endsWith("privacy.html")) checkPrivacy(file, text, problems);
         break;
       case ".css":
         checkCSS(file, text, problems);
@@ -229,6 +274,20 @@ function checkRules(): Problem[] {
     }
   }
   problems.push(...checkLanguages());
+
+  // One address for support and for privacy, and a way to the policy from every page.
+  const privacy = readFileSync(join(src, "privacy.html"), "utf8");
+  const support = readFileSync(join(src, "support.html"), "utf8");
+  if (contactAddress(privacy) !== contactAddress(support)) {
+    problems.push({ file: join(src, "privacy.html"), line: 1, message: "the contact address differs from the one on support.html" });
+  }
+  for (const page of pages) {
+    const file = join(src, page);
+    if (!links(readFileSync(file, "utf8")).includes("privacy.html")) {
+      problems.push({ file, line: 1, message: "every page links to privacy.html in its footer" });
+    }
+  }
+
   return problems;
 }
 
