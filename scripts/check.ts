@@ -8,7 +8,7 @@
 // GitHub Pages serves the site under /dush-web/, not at the root of a domain, no link leads
 // to the Mac app's repository, which is private, every page has the theme toggle: the
 // header button, its sun/moon icons and the stored-theme script in <head>, no placeholder is left
-// but the Mac App Store link, and each translation matches its English page (structure, links,
+// (the App Store link included), and each translation matches its English page (structure, links,
 // contact address, date). Every page also carries the Content-Security-Policy that makes the
 // browser enforce "nothing from another site" (it must name the hash of the one inline script, and
 // come before it), sends no referrer, and holds no web address in an inline script or style. The
@@ -242,10 +242,13 @@ function checkLanguages(): Problem[] {
   return problems;
 }
 
-/** Leftovers that must never ship: the one allowed TEMP is the Mac App Store link. */
+/** Leftovers that must never ship: a TEMP placeholder, the placeholder App Store link, old names. */
 function checkLeftovers(file: string, text: string, problems: Problem[]): void {
-  for (const match of text.matchAll(/<!--\s*TEMP:(?![^>]*Mac App Store link)/g)) {
+  for (const match of text.matchAll(/<!--\s*TEMP:/g)) {
     problems.push({ file, line: lineOf(text, match.index), message: "a TEMP placeholder is still here: replace it" });
+  }
+  for (const match of text.matchAll(/apps\.apple\.com\/[^"']*id0{6,}/g)) {
+    problems.push({ file, line: lineOf(text, match.index), message: "the placeholder App Store link: dush for Mac is id6831255058" });
   }
   for (const match of text.matchAll(/Full Scan|CONTACT DETAILS GO HERE/g)) {
     problems.push({ file, line: lineOf(text, match.index), message: `"${match[0]}": the app calls it Caches & Temp, and contact details are real` });

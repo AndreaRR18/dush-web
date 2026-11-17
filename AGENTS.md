@@ -89,8 +89,8 @@ scripts/             the harness, TypeScript run directly by Node (no compile st
 - a link leads to `codeberg.org/Andre_Rori/dush-desktop`, which is private;
 - an HTML page is missing part of the theme toggle: the `<!-- theme-toggle:start -->` button in
   the header, its `icon-sun`/`icon-moon` symbols, or the stored-theme script in `<head>`;
-- a page still has a `<!-- TEMP: -->` placeholder (the Mac App Store link is the only allowed
-  one), the words "Full Scan" or "CONTACT DETAILS GO HERE";
+- a page still has a `<!-- TEMP: -->` placeholder, the placeholder App Store link
+  (`id0000000000`), the words "Full Scan" or "CONTACT DETAILS GO HERE";
 - a page lacks the exact `Content-Security-Policy` `<meta>` (own files only, plus the hash of the
   one inline script) before its first script, or `<meta name="referrer" content="no-referrer">`,
   or redirects with `<meta http-equiv=refresh>`; change the inline script and the check prints
@@ -153,11 +153,11 @@ Small, quick and optional, as in the app (design guide §11):
   the original and `all`/`not all`, and keeps the button's icon, label and `aria-pressed` in step.
 - Without JavaScript the button stays hidden (`html.js`) and the page simply follows the OS.
 
-### Placeholders to replace
+### Values kept in many files
 
-- The **Mac App Store link** is temporary: `https://apps.apple.com/app/id0000000000`, in the hero
-  and the closing section of `src/index.html` (each marked `TEMP`). Replace both when the app is
-  listed.
+- The **Mac App Store link** is `https://apps.apple.com/app/id6831255058?mt=12`, in the hero and the
+  closing section of `src/index.html` and the seven translated home pages (16 links). It has no
+  country in the path, so Apple opens each visitor's own store.
 - The **contact details** are in `src/privacy.html` and `src/support.html` and in the seven translated pairs
   (`gibbone-aromi-3e@icloud.com`). Change the address in all 16 files at once.
 - `hreflang` links are absolute (`https://andrearr18.github.io/dush-web/…`), as search engines require. Move them
@@ -169,7 +169,7 @@ Small, quick and optional, as in the app (design guide §11):
 |---|---|---|
 | `../dush` | The CLI (Swift). `brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git` then `brew install andre_rori/tap/dush` | v1.2.0, released |
 | `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.0.0 |
-| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | All features implemented, **not released yet** (Developer ID + Homebrew cask, to be confirmed) |
+| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | v1.0, released on the Mac App Store (id6831255058) |
 
 The CLI and the engine live on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core}`.
 `dush-desktop` is private for good, and visitors get a 404 there. So the site never calls the app
