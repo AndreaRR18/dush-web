@@ -9,9 +9,15 @@
 // to the Mac app's repository, which is private, every page has the theme toggle: the
 // header button, its sun/moon icons and the stored-theme script in <head>, no placeholder is left
 // but the Mac App Store link, and each translation matches its English page (structure, links,
-// contact address, date).
+// contact address, date). Every page also carries the Content-Security-Policy that makes the
+// browser enforce "nothing from another site" (it must name the hash of the one inline script, and
+// come before it), sends no referrer, and holds no web address in an inline script or style. The
+// privacy page keeps the sections a notice needs, names the authority and the host's own
+// statement, shares its contact address with the support page, and is never dated in the future;
+// every page links to it.
 
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { build, root, src, tsc } from "./build.ts";
@@ -90,6 +96,48 @@ function checkTypeScript(file: string, text: string, problems: Problem[]): void 
   }
 }
 
+/** The policy every page states, but for the hash of its inline script. */
+const policy = (hash: string): string =>
+  `default-src 'none'; script-src 'self' 'sha256-${hash}'; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'`;
+
+/**
+ * Every page tells the browser to load and run only the site's own files: a tag slipped into a
+ * page can't reach another site. A <meta> policy only covers what comes after it, so it sits
+ * before the first script; and it can't be loosened without this check noticing.
+ */
+function checkPolicy(file: string, text: string, problems: Problem[]): void {
+  const inline = [...text.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+  const meta = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/.exec(text);
+  if (inline.length !== 1) {
+    problems.push({ file, line: 1, message: "a page has exactly one inline script, the stored-theme one in <head>" });
+    return;
+  }
+  const expected = policy(createHash("sha256").update(inline[0]?.[1] ?? "").digest("base64"));
+  if (!meta) {
+    problems.push({ file, line: 1, message: `missing <meta http-equiv="Content-Security-Policy" content="${expected}">` });
+  } else if (meta[1] !== expected) {
+    problems.push({ file, line: lineOf(text, meta.index), message: `the Content-Security-Policy must be exactly: ${expected}` });
+  } else if (meta.index > text.search(/<script\b/)) {
+    problems.push({ file, line: lineOf(text, meta.index), message: "the Content-Security-Policy comes before the first <script>: it only covers what follows it" });
+  }
+  if (!text.includes('<meta name="referrer" content="no-referrer">')) {
+    problems.push({ file, line: 1, message: 'missing <meta name="referrer" content="no-referrer">: a link out never says which page it came from' });
+  }
+  if (/<meta\b[^>]*http-equiv\s*=\s*["']?refresh/i.test(text)) {
+    problems.push({ file, line: 1, message: "a page never redirects with <meta http-equiv=refresh>" });
+  }
+}
+
+/** Code and styles written in the page itself reach no other site either: inline scripts, <style> and style attributes. */
+function checkInline(file: string, text: string, problems: Problem[]): void {
+  for (const block of text.matchAll(/<(script|style)\b[^>]*>([\s\S]*?)<\/\1>|\sstyle\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)) {
+    const code = block[2] ?? block[3] ?? block[4] ?? "";
+    for (const match of code.matchAll(/(https?:)?\/\/[a-z0-9.-]+\.[a-z]{2,}[^\s"'`)]*/gi)) {
+      problems.push({ file, line: lineOf(text, block.index), message: `${match[0]}: inline code and styles never reach another site` });
+    }
+  }
+}
+
 /** Every page carries the theme toggle: the button, its icons and the stored-theme head script. */
 function checkThemeToggle(file: string, text: string, problems: Problem[]): void {
   for (const marker of ["<!-- theme-toggle:start -->", "data-theme-toggle", 'id="icon-sun"', 'id="icon-moon"', '"dush-theme"']) {
@@ -101,6 +149,47 @@ function checkThemeToggle(file: string, text: string, problems: Problem[]): void
 
 const languages = ["de", "es", "fr", "it", "nl", "pl", "pt"];
 const pages = ["index.html", "support.html", "privacy.html"];
+
+/** What a privacy notice has to carry: the controller, the website, writing to us, the rights, the changes. */
+const privacySections = ["responsible-title", "site-title", "write-title", "rights-title", "changes-title"];
+
+/** The authority a visitor can complain to, and the host's own statement: both are named, never paraphrased. */
+const privacyLinks = [
+  "https://www.garanteprivacy.it/",
+  "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+];
+
+/** The address the site gives, in the privacy page and on the support page: one address, both places. */
+function contactAddress(text: string): string {
+  return /<a href="mailto:([^"]+)"/.exec(text)?.[1] ?? "";
+}
+
+/**
+ * The privacy page says who is responsible, what the website does, what happens to what you send,
+ * what you can ask for and where to complain, and it is never dated in the future. A notice that
+ * loses one of those stops being a notice, so the check holds them in place.
+ */
+function checkPrivacy(file: string, text: string, problems: Problem[]): void {
+  for (const id of privacySections) {
+    if (!text.includes(`id="${id}"`)) {
+      problems.push({ file, line: 1, message: `missing id="${id}": the privacy page names the controller, the website, writing to us, the rights and the changes` });
+    }
+  }
+  for (const link of privacyLinks) {
+    if (!text.includes(`href="${link}"`)) {
+      problems.push({ file, line: 1, message: `missing ${link}: the privacy page names the authority and the host's own statement` });
+    }
+  }
+  const date = /<time datetime="(\d{4}-\d{2}-\d{2})"/.exec(text)?.[1];
+  // The latest date it is anywhere on Earth (UTC+14), so a page dated just after midnight in Italy
+  // doesn't fail on a machine or a CI runner that is still on the day before.
+  const today = new Date(Date.now() + 14 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  if (!date) {
+    problems.push({ file, line: 1, message: 'missing <time datetime="YYYY-MM-DD">: the page says when it last changed' });
+  } else if (date > today) {
+    problems.push({ file, line: 1, message: `"last updated" is ${date}, which is in the future: a policy can't be dated ahead` });
+  }
+}
 
 /** The body's tags with their classes: the structure of a page, whatever language its text is in. */
 function skeleton(text: string): string[] {
@@ -171,7 +260,10 @@ function checkRules(): Problem[] {
       case ".html":
         checkHTML(file, text, problems);
         checkThemeToggle(file, text, problems);
+        checkPolicy(file, text, problems);
+        checkInline(file, text, problems);
         checkLeftovers(file, text, problems);
+        if (file.endsWith("privacy.html")) checkPrivacy(file, text, problems);
         break;
       case ".css":
         checkCSS(file, text, problems);
@@ -182,6 +274,20 @@ function checkRules(): Problem[] {
     }
   }
   problems.push(...checkLanguages());
+
+  // One address for support and for privacy, and a way to the policy from every page.
+  const privacy = readFileSync(join(src, "privacy.html"), "utf8");
+  const support = readFileSync(join(src, "support.html"), "utf8");
+  if (contactAddress(privacy) !== contactAddress(support)) {
+    problems.push({ file: join(src, "privacy.html"), line: 1, message: "the contact address differs from the one on support.html" });
+  }
+  for (const page of pages) {
+    const file = join(src, page);
+    if (!links(readFileSync(file, "utf8")).includes("privacy.html")) {
+      problems.push({ file, line: 1, message: "every page links to privacy.html in its footer" });
+    }
+  }
+
   return problems;
 }
 

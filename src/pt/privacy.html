@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Y9ULqaTsclkYG/fhtY1Tc78hTB2TELxyHcl3iV0SbNg='; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
   <title>dush · Política de Privacidade</title>
   <meta name="description" content="O dush para Mac não recolhe nada nem envia nada. O que lê, o que guarda no seu Mac e o que é dito à Apple Intelligence.">
   <meta name="color-scheme" content="light dark">
@@ -82,7 +84,7 @@
           <p class="label">o dush para Mac, a linha de comandos e este site</p>
           <h1 class="title" id="privacy-title">Política de <em>privacidade</em></h1>
           <p class="lead">O dush para Mac não recolhe nada nem envia nada. Esta página diz exatamente o que lê, o que guarda e onde.</p>
-          <p class="caption">Última atualização <time datetime="2026-11-06">6 de novembro de 2026</time></p>
+          <p class="caption">Última atualização <time datetime="2026-11-17">17 de novembro de 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -94,6 +96,12 @@
     </section>
 
     <div class="page doc">
+
+      <section class="doc__part" aria-labelledby="responsible-title">
+        <h2 class="doc__heading" id="responsible-title">Quem é o responsável</h2>
+        <p>Andrea Rinaldi é responsável pelo dush e por este site. Contacto: <a href="mailto:gibbone-aromi-3e@icloud.com">gibbone-aromi-3e@icloud.com</a>.</p>
+        <p>Não há encarregado da proteção de dados nomeado, porque nenhum dos casos que o exigem se aplica aqui.</p>
+      </section>
 
       <section class="doc__part" aria-labelledby="collects-title">
         <h2 class="doc__heading" id="collects-title">O que o dush recolhe</h2>
@@ -161,12 +169,30 @@
       <section class="doc__part" aria-labelledby="store-title">
         <h2 class="doc__heading" id="store-title">A App Store</h2>
         <p>A Apple gere a App Store. Transferir o dush de lá cai sob <a href="https://www.apple.com/legal/privacy/en-ww/">a Política de Privacidade da Apple</a> e <a href="https://www.apple.com/legal/privacy/data/en/app-store/">a App Store e a privacidade</a>, não esta página.</p>
-        <p>A Apple pode dar aos programadores números sobre as suas apps, que diz agregados e que não o identificam. Se ativou <a href="https://support.apple.com/guide/mac-help/share-analytics-information-mac-apple-mh27990/mac">Partilhar com os programadores</a>, em Definições do Sistema › Privacidade e Segurança › Estatísticas de utilização e melhorias, a Apple também pode partilhar dados de falhas e outras estatísticas com os programadores. Essa partilha acontece do lado da Apple, não no dush.</p>
+        <p>A Apple pode dar aos programadores números sobre as suas apps, que diz agregados e que não o identificam. Se ativou <a href="https://support.apple.com/guide/mac-help/share-analytics-information-mac-apple-mh27990/mac">Partilhar com os programadores</a>, em Definições do Sistema › Privacidade e Segurança › Estatísticas de utilização e melhorias, a Apple também pode partilhar dados de falhas e outras estatísticas com os programadores. Essa partilha acontece do lado da Apple, não no dush: a app não envia nada por si.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="site-title">
         <h2 class="doc__heading" id="site-title">Este site</h2>
-        <p>Este site não tem cookies nem análises, e não carrega nada de outro site. Está alojado no GitHub Pages. O GitHub regista os endereços IP dos visitantes para segurança e pode manter outros registos técnicos, como faz qualquer alojamento. A <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Declaração de Privacidade do GitHub</a> cobre isso.</p>
+        <p>Este site não tem cookies nem análises, e não carrega nada de outro site. Cada ficheiro que mostra vem do mesmo sítio que a página.</p>
+        <p>A única coisa que guarda no seu navegador é o modo claro ou escuro que escolhe com o botão do cabeçalho. Fica no armazenamento local do navegador com o nome <code>dush-theme</code>, só é escrito quando carrega no botão, e não é enviado para lado nenhum. É uma definição que pediu, por isso o site não precisa de um aviso de consentimento para ela. As definições do seu navegador apagam-na, e o site funciona sem ela.</p>
+        <p>Está alojado no GitHub Pages. Para responder a um pedido, o GitHub recebe o seu endereço IP, a página que pediu, a hora e o que o seu navegador diz ser. O GitHub guarda isso por segurança e para travar abusos, e decide durante quanto tempo: a <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Declaração de Privacidade do GitHub</a> dá os critérios e lista as empresas de que o GitHub se serve. O GitHub é o responsável por esses dados. Este site nunca vê esses registos e não guarda nada deles.</p>
+        <p>O GitHub está nos Estados Unidos. Para os dados que vêm da Europa, apoia-se no Quadro de Privacidade de Dados UE-EUA e nas cláusulas contratuais-tipo da Comissão Europeia.</p>
+        <p>As ligações para outros sites não levam referenciador, por isso a página de onde vem não é transmitida.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="write-title">
+        <h2 class="doc__heading" id="write-title">Se nos escrever</h2>
+        <p>Escreva para <a href="mailto:gibbone-aromi-3e@icloud.com">gibbone-aromi-3e@icloud.com</a> e partilha o que escreve, e o seu endereço. É lido, tem resposta e fica numa caixa iCloud, por isso a Apple também o guarda. É apagado 12 meses depois da última mensagem.</p>
+        <p>As questões no Codeberg são públicas: qualquer pessoa as pode ler, e os motores de busca podem encontrá-las. A <a href="https://codeberg.org/codeberg/org/src/branch/main/PrivacyPolicy.md">política de privacidade do Codeberg</a> cobre o que o Codeberg faz com elas. A página de <a href="support.html">Suporte</a> diz o que pôr num relato.</p>
+        <p>Responder a um e-mail assenta num interesse legítimo: dar resposta a quem escreve. Com o que envia não se faz mais nada.</p>
+      </section>
+
+      <section class="doc__part" aria-labelledby="rights-title">
+        <h2 class="doc__heading" id="rights-title">Os seus direitos</h2>
+        <p>Para o que envia por e-mail, pode pedir para ver, para corrigir, para apagar, para limitar o uso ou para se opor a que seja usado. A GitHub, o Codeberg e a Apple respondem pelos seus próprios dados, segundo as declarações indicadas acima.</p>
+        <p>Escreva para <a href="mailto:gibbone-aromi-3e@icloud.com">gibbone-aromi-3e@icloud.com</a>. Não custa nada, e recebe resposta dentro de um mês.</p>
+        <p>Se a resposta não o satisfizer, pode reclamar para o <a href="https://www.garanteprivacy.it/">Garante per la protezione dei dati personali</a>, Piazza Venezia 11, 00187 Roma, Itália, ou para a autoridade do lugar onde vive.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="cli-title">
@@ -177,12 +203,7 @@
       <section class="doc__part" aria-labelledby="changes-title">
         <h2 class="doc__heading" id="changes-title">Alterações a esta política</h2>
         <p>O dush não o pode avisar de uma alteração: não tem rede nem contas. Por isso as alterações são anunciadas aqui. Esta página recebe o texto novo e uma data nova no topo, e <a href="https://github.com/AndreaRR18/dush-web/commits/main/src/privacy.html">todo o seu histórico</a> fica público no GitHub. Se uma alteração vier com uma nova versão da app, as notas dessa versão na App Store também o dizem.</p>
-      </section>
-
-      <section class="doc__part" aria-labelledby="responsible-title">
-        <h2 class="doc__heading" id="responsible-title">Quem é o responsável</h2>
-        <p>Andrea Rinaldi é responsável pelo dush. Contacto: <a href="mailto:gibbone-aromi-3e@icloud.com">gibbone-aromi-3e@icloud.com</a>.</p>
-        <p>Se escrever ao suporte ou abrir uma issue, partilha o que escreve. As issues no Codeberg são públicas, e <a href="https://codeberg.org/codeberg/org/src/branch/main/PrivacyPolicy.md">a política de privacidade do Codeberg</a> cobre-as. A página de <a href="support.html">Suporte</a> tem os detalhes.</p>
+        <p>Esta página existe em oito línguas. Se uma tradução divergir do inglês, é o inglês que conta.</p>
       </section>
 
     </div>

@@ -91,6 +91,15 @@ scripts/             the harness, TypeScript run directly by Node (no compile st
   the header, its `icon-sun`/`icon-moon` symbols, or the stored-theme script in `<head>`;
 - a page still has a `<!-- TEMP: -->` placeholder (the Mac App Store link is the only allowed
   one), the words "Full Scan" or "CONTACT DETAILS GO HERE";
+- a page lacks the exact `Content-Security-Policy` `<meta>` (own files only, plus the hash of the
+  one inline script) before its first script, or `<meta name="referrer" content="no-referrer">`,
+  or redirects with `<meta http-equiv=refresh>`; change the inline script and the check prints
+  the policy with the new hash;
+- an inline `<script>`, `<style>` or `style` attribute holds a web address;
+- the privacy page loses a section a notice needs (who is responsible, the website, writing to us,
+  the rights, the changes), stops naming the Garante or the GitHub Privacy Statement, gives a
+  contact address that differs from the support page's, or is dated in the future; and every page
+  links to it;
 - a translation (`src/{de,es,fr,it,nl,pl,pt}/`) differs from its English page in `<html lang>`,
   tag structure, links (so the contact address too) or "last updated" date.
 
