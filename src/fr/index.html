@@ -131,6 +131,8 @@
           <ul class="list">
             <li><strong>Caches et temp</strong> n’a besoin d’aucun dossier. Cette analyse examine les caches et dossiers temporaires qui ne contiennent que ce que votre Mac peut reconstruire : caches système et d’apps, logs, la Corbeille, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, le DerivedData et le DeviceSupport d’Xcode, les caches des simulateurs et ceux de VS&nbsp;Code. Les dossiers absents ou peu sûrs sont exclus, et les dossiers imbriqués ne comptent qu’une fois.</li>
             <li><strong>Téléchargements et Bureau</strong> analyse les deux suspects habituels en un clic.</li>
+            <li><strong>Fichiers volumineux</strong> n’a pas besoin de dossier non plus : les plus gros fichiers de votre dossier personnel au-delà de 100&nbsp;Mo, avec leur taille et depuis combien de temps ils sont là. Du plus gros au plus petit, ou du plus ancien au plus récent pour trouver ceux que plus personne n’ouvre. La liste est conservée : elle s’affiche tout de suite la fois suivante.</li>
+            <li><strong>Analyser ce dossier</strong> relance l’analyse du seul dossier sélectionné, avec les options déjà à l’écran. L’analyse que vous regardiez reste dans l’historique.</li>
             <li><strong>Les plus gros pour l’instant</strong>&nbsp;: les gros fichiers apparaissent dès qu’ils sont trouvés, les dossiers dès qu’ils sont mesurés. Appuyez sur Esc pour arrêter à tout moment.</li>
             <li><strong>Vos options</strong>&nbsp;: une taille minimale (100&nbsp;Mo, 512&nbsp;Mo, 1&nbsp;Go, 5&nbsp;Go ou la vôtre, comme <code>1.5 GiB</code>), fichiers ou dossiers uniquement, ignorez <code>node_modules</code>, <code>.git</code> et autres dossiers de développement, ou excluez des noms et motifs comme <code>*.xcarchive</code>.</li>
           </ul>
@@ -191,6 +193,7 @@
           <p>Compare la dernière analyse d’un dossier à une précédente de votre historique. <span class="growth">A grossi de 7,90&nbsp;Go</span> depuis le 20 sept. 18:40 : voici ce qui a grossi, ce qui a rétréci et ce qui est nouveau.</p>
         </li>
       </ul>
+      <p class="caption center" data-reveal>Double-cliquez une ligne pour continuer dedans : un dossier toujours là est analysé, un fichier s’ouvre dans le Finder. Retour et Suivant dans la barre de titre (⌘[ et ⌘]) parcourent les écrans que vous avez visités, et chacun revient avec son filtre et sa sélection.</p>
     </section>
 
     <!-- AI -->
