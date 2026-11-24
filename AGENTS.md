@@ -169,7 +169,7 @@ Small, quick and optional, as in the app (design guide §11):
 |---|---|---|
 | `../dush` | The CLI (Swift). `brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git` then `brew install andre_rori/tap/dush` | v1.2.0, released |
 | `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.0.0 |
-| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | v1.0, released on the Mac App Store (id6831255058) |
+| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | v1.2.0, released on the Mac App Store (id6831255058) |
 
 The CLI and the engine live on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core}`.
 `dush-desktop` is private for good, and visitors get a 404 there. So the site never calls the app
@@ -335,10 +335,13 @@ Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codebe
   path, a curated cleanup scan of 34 cache and temp locations. Sizes match `du`; ~150,000 items
   in about a second. Live progress with funny messages. `dush update`. Read-only.
 - **Mac app:**
-  - Drop a folder or choose one; a separate Caches & Temp scan (never called "Full Scan": it reads a few GB of caches, not the whole disk); a Downloads & Desktop quick scan.
+  - Drop a folder or choose one; a separate Caches & Temp scan (never called "Full Scan": it reads a few GB of caches, not the whole disk); a Downloads & Desktop quick scan; Large files, every file in the home folder over 100 MB with its age, largest or oldest first.
+  - Scan This Folder repeats the scan on the selected folder, with the options on screen; the previous scan stays in History.
   - Live counters, a rotating funny message, the biggest items so far.
   - Results: a big serif total, a composition bar, a list with share bars; List, Map (treemap)
-    and What changed (compares two scans). Export to JSON, Markdown, CSV.
+    and What changed (compares two scans). Double-clicking a row goes into it (a folder is
+    scanned, a file is shown in Finder). Back and Forward in the title bar walk the visited
+    screens. Export to JSON, Markdown, CSV.
   - History with Undo; the only thing dush ever deletes is its own history.
   - "Safe to delete?": Apple Intelligence on the Mac, metadata only. Verdicts: Safe to delete
     (teal check), Check first (orange triangle), Keep it (ink minus), Protected by dush (shield,

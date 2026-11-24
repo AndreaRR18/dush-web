@@ -131,6 +131,8 @@
           <ul class="list">
             <li><strong>Caches &amp; Temp</strong> needs no folder. It checks the caches and temp folders that only hold stuff your Mac can rebuild: system and app caches, logs, the Trash, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode's DerivedData and DeviceSupport, the simulator caches and VS Code's. Folders that aren't there or aren't safe are left out, and nested ones are counted once.</li>
             <li><strong>Downloads &amp; Desktop</strong> scans the two usual suspects in one click.</li>
+            <li><strong>Large files</strong> needs no folder either: the biggest files in your home folder over 100&nbsp;MB, with how big each one is and how long it's been sitting there. Largest first, or oldest first to find the ones nothing has opened in a while. The list is kept, so it opens at once next time.</li>
+            <li><strong>Scan This Folder</strong> scans again just the folder you've selected, with the options that are already on screen. The scan you were looking at stays in History.</li>
             <li><strong>Biggest so far</strong>: large files show up the moment they're found, folders as soon as they're measured. Press Esc to stop at any time.</li>
             <li><strong>Your options</strong>: a minimum size (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB or your own, like <code>1.5 GiB</code>), files or folders only, skip <code>node_modules</code>, <code>.git</code> and other developer folders, or exclude names and patterns like <code>*.xcarchive</code>.</li>
           </ul>
@@ -191,6 +193,7 @@
           <p>Compares a folder's latest scan with an earlier one from your history. <span class="growth">Grew by 7.90&nbsp;GB</span> since Sep 20, 18:40: here's what grew, what shrank and what's new.</p>
         </li>
       </ul>
+      <p class="caption center" data-reveal>Double-click a row to carry on into it: a folder that's still there is scanned, a file opens in Finder. Back and Forward in the title bar (⌘[ and ⌘]) walk the screens you visited, and each one comes back with its filter and its selection.</p>
     </section>
 
     <!-- AI -->

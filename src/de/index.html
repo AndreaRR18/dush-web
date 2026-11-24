@@ -131,6 +131,8 @@
           <ul class="list">
             <li><strong>Caches &amp; Temp</strong> braucht keinen Ordner. Der Scan prüft die Cache- und Temp-Ordner, in denen nur Zeug liegt, das dein Mac neu aufbauen kann: System- und App-Caches, Logs, der Papierkorb, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcodes DerivedData und DeviceSupport, die Simulator-Caches und die von VS&nbsp;Code. Ordner, die nicht da oder nicht sicher sind, bleiben außen vor, und verschachtelte werden nur einmal gezählt.</li>
             <li><strong>Downloads &amp; Schreibtisch</strong> scannt die zwei üblichen Verdächtigen mit einem Klick.</li>
+            <li><strong>Große Dateien</strong> braucht auch keinen Ordner: die größten Dateien in deinem Benutzerordner über 100&nbsp;MB, mit ihrer Größe und damit, wie lange sie schon dort liegt. Die größte zuerst, oder die älteste zuerst, um die zu finden, an die niemand mehr gerührt hat. Die Liste bleibt gespeichert und ist beim nächsten Mal sofort da.</li>
+            <li><strong>Diesen Ordner scannen</strong> wiederholt den Scan nur für den Ordner, den du ausgewählt hast, mit den Optionen, die schon auf dem Bildschirm stehen. Der Scan, den du gerade angesehen hast, bleibt im Verlauf.</li>
             <li><strong>Bisher größte</strong>: Große Dateien erscheinen, sobald sie gefunden werden, Ordner, sobald sie gemessen sind. Drück Esc, um jederzeit zu stoppen.</li>
             <li><strong>Deine Optionen</strong>: eine Mindestgröße (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB oder deine eigene, wie <code>1.5 GiB</code>), nur Dateien oder Ordner, überspringe <code>node_modules</code>, <code>.git</code> und andere Entwickler-Ordner, oder schließe Namen und Muster aus wie <code>*.xcarchive</code>.</li>
           </ul>
@@ -191,6 +193,7 @@
           <p>Vergleicht den neuesten Scan eines Ordners mit einem früheren aus deinem Verlauf. <span class="growth">Ist um 7,90&nbsp;GB gewachsen</span> seit 20. Sept, 18:40 Uhr: hier ist, was gewachsen ist, was geschrumpft ist und was neu ist.</p>
         </li>
       </ul>
+      <p class="caption center" data-reveal>Doppelklicke eine Zeile, um weiterzugehen: ein Ordner, der noch da ist, wird gescannt, eine Datei öffnet sich im Finder. Zurück und Vorwärts in der Titelleiste (⌘[ und ⌘]) gehen durch die Bildschirme, die du besucht hast, und jeder kommt mit seinem Filter und seiner Auswahl zurück.</p>
     </section>
 
     <!-- AI -->
