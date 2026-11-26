@@ -84,7 +84,7 @@
           <p class="label">dush voor Mac, de opdrachtregel en deze website</p>
           <h1 class="title" id="privacy-title">Privacy<em>verklaring</em></h1>
           <p class="lead">dush voor Mac verzamelt niets en stuurt niets. Deze pagina zegt precies wat het leest, wat het bewaart en waar.</p>
-          <p class="caption">Laatst bijgewerkt <time datetime="2026-11-17">17 november 2026</time></p>
+          <p class="caption">Laatst bijgewerkt <time datetime="2026-11-25">25 november 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,7 +111,7 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Het werkt offline</h2>
         <p>dush voor Mac werkt volledig offline. De App Store-versie heeft geen netwerkbevoegdheid, de toestemming die een app nodig heeft om te verbinden, dus macOS weigert zelf elke verbinding.</p>
-        <p>Meldingen voor bewaakte mappen zijn ook lokaal: macOS toont ze op je Mac.</p>
+        <p>Meldingen voor favorieten zijn ook lokaal: macOS toont ze op je Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
@@ -128,12 +128,12 @@
         <h2 class="doc__heading" id="keeps-title">Wat het bewaart</h2>
         <p>dush bewaart deze dingen alleen op deze Mac, in de eigen map van de app. Het synchroniseert niets en upload niets.</p>
         <ul class="list">
-          <li><strong>Scangeschiedenis:</strong> wat je gescand hebt, wanneer, en de namen, paden en groottes van de grootste gevonden items.</li>
-          <li><strong>Instellingen:</strong> je keuzes, inclusief je bewaakte mappen en hun limieten.</li>
+          <li><strong>Opgeslagen scans van elke sectie:</strong> voor elke plek in de navigatiekolom, favorieten en recente mappen inbegrepen, de laatste 10 scans: wanneer, en de namen, paden en groottes van de grootste gevonden items. De lijst met grote bestanden en de meting van je ontwikkelaarscaches worden op dezelfde manier bewaard.</li>
+          <li><strong>Instellingen:</strong> je keuzes, inclusief je favorieten en hun limieten.</li>
           <li><strong>Onthouden antwoorden van Apple Intelligence,</strong>  met de details van het item waar het over gaat, zodat dezelfde vraag niet twee keer gesteld wordt.</li>
           <li><strong>Een alleen-lezen bladwijzer</strong> van de schijftoegang die je gaf, zodat je die niet opnieuw hoeft te geven.</li>
         </ul>
-        <p>Wis geschiedenis verwijdert de opgeslagen scans, en alleen die. Je bestanden worden niet aangeraakt, en onthouden antwoorden en instellingen blijven. In Instellingen › Algemeen kun je scans 30&nbsp;of 90&nbsp;dagen bewaren, of helemaal niet meer opslaan.</p>
+        <p>Vergeet deze sectie, in het menu van een sectie, verwijdert de opgeslagen scans van die sectie; een favoriet blijft een favoriet. Verwijder uit favorieten en Verwijder uit recent halen een map uit de navigatiekolom, met zijn opgeslagen scans. Wis opgeslagen gegevens…, onderaan de navigatiekolom en in Instellingen › Algemeen, verwijdert de opgeslagen scans van elke sectie, de lijst met grote bestanden en de meting van de ontwikkelaarscaches. Geen van alle raakt je bestanden aan, en onthouden antwoorden, instellingen en je favorieten blijven.</p>
         <p>Nog drie dingen om te weten:</p>
         <ul class="list">
           <li>De scanengine schrijft tellingen en tijden naar het eigen log van macOS op je Mac. Paden en namen verschijnen daar als <code>&lt;private&gt;</code>, en dush stuurt dat log nergens heen.</li>
@@ -197,7 +197,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">De opdrachtregeltool</h2>
-        <p>Ook de CLI van <code>dush</code> verzamelt niets. Hij raakt het netwerk alleen aan in <code>dush update</code>, die de nieuwste release opzoekt via <code>git</code> en upgrade via <code>brew</code>. Een kopie die je vanuit de broncode hebt gebouwd wordt opgehaald met <code>git</code> en opnieuw gebouwd met de Swift-tools, die downloaden wat de build nodig heeft.</p>
+        <p>Ook de CLI van <code>dush</code> verzamelt niets. Zijn sessie bewaart dezelfde soort opgeslagen scans, de lijst met grote bestanden, de meting van de ontwikkelaarscaches, onthouden antwoorden en zijn instellingen in zijn eigen map, <code>~/Library/Application Support/dush/CLI</code>, en alleen daar: <code>/forget</code> en <code>/clear-data</code> verwijderen de opgeslagen scans, nooit je bestanden. Hij raakt het netwerk alleen aan in <code>dush update</code>, die de nieuwste release opzoekt via <code>git</code> en upgrade via <code>brew</code>. Een kopie die je vanuit de broncode hebt gebouwd wordt opgehaald met <code>git</code> en opnieuw gebouwd met de Swift-tools, die downloaden wat de build nodig heeft.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

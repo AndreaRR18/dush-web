@@ -84,7 +84,7 @@
           <p class="label">o dush para Mac, a linha de comandos e este site</p>
           <h1 class="title" id="privacy-title">Política de <em>privacidade</em></h1>
           <p class="lead">O dush para Mac não recolhe nada nem envia nada. Esta página diz exatamente o que lê, o que guarda e onde.</p>
-          <p class="caption">Última atualização <time datetime="2026-11-17">17 de novembro de 2026</time></p>
+          <p class="caption">Última atualização <time datetime="2026-11-25">25 de novembro de 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,7 +111,7 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Funciona offline</h2>
         <p>O dush para Mac funciona totalmente offline. A versão da App Store não tem nenhum direito de rede, a permissão que uma app precisa para se ligar, por isso o próprio macOS lhe recusa qualquer ligação.</p>
-        <p>As notificações das pastas vigiadas também são locais: o macOS mostra-as no seu Mac.</p>
+        <p>As notificações dos favoritos também são locais: o macOS mostra-as no seu Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
@@ -128,12 +128,12 @@
         <h2 class="doc__heading" id="keeps-title">O que guarda</h2>
         <p>O dush guarda estas coisas apenas neste Mac, na pasta própria da app. Não sincroniza nem carrega nada.</p>
         <ul class="list">
-          <li><strong>Histórico de análises:</strong> o que analisou, quando, e os nomes, caminhos e tamanhos dos maiores elementos encontrados.</li>
-          <li><strong>Definições:</strong> as suas escolhas, incluindo as pastas vigiadas e os seus limites.</li>
+          <li><strong>Análises guardadas de cada secção:</strong> de cada sítio da barra lateral, incluindo favoritos e pastas recentes, as suas últimas 10 análises: quando, e os nomes, caminhos e tamanhos dos maiores elementos encontrados. A lista de ficheiros grandes e a medição das suas caches de programador ficam guardadas da mesma forma.</li>
+          <li><strong>Definições:</strong> as suas escolhas, incluindo os favoritos e os seus limites.</li>
           <li><strong>Respostas da Apple Intelligence memorizadas,</strong> com os detalhes do elemento a que cada uma diz respeito, para a mesma pergunta não ser feita duas vezes.</li>
           <li><strong>Um marcador só de leitura</strong> do acesso ao disco que concedeu, para não ter de o dar outra vez.</li>
         </ul>
-        <p>Limpar histórico remove as análises guardadas, e só essas. Os seus ficheiros não são tocados, e as respostas e definições memorizadas ficam. Em Definições › Geral pode manter as análises 30&nbsp;ou 90&nbsp;dias, ou deixar de as guardar.</p>
+        <p>Esquecer esta secção, no menu de uma secção, remove as suas análises guardadas; um favorito continua a ser favorito. Remover dos favoritos e Remover dos recentes tiram uma pasta da barra lateral, com as suas análises guardadas. Limpar dados guardados…, no fundo da barra lateral e em Definições › Geral, remove as análises guardadas de todas as secções, a lista de ficheiros grandes e a medição das caches de programador. Nenhum deles toca nos seus ficheiros, e as respostas memorizadas, as definições e os seus favoritos ficam.</p>
         <p>Mais três coisas a saber:</p>
         <ul class="list">
           <li>O motor de análise escreve contagens e tempos no próprio registo do macOS no seu Mac. Os caminhos e nomes aparecem lá como <code>&lt;private&gt;</code>, e o dush não envia esse registo para lado nenhum.</li>
@@ -197,7 +197,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">A ferramenta de linha de comandos</h2>
-        <p>Também a CLI do <code>dush</code> não recolhe nada. Toca na rede apenas em <code>dush update</code>, que procura a versão mais recente através de <code>git</code> e atualiza através de <code>brew</code>. Uma cópia que compilou a partir do código-fonte é obtida com <code>git</code> e compilada de novo com as ferramentas Swift, que descarregam o que a compilação precisa.</p>
+        <p>Também a CLI do <code>dush</code> não recolhe nada. A sua sessão guarda o mesmo tipo de análises, a lista de ficheiros grandes, a medição das caches de programador, as respostas memorizadas e as suas definições na sua própria pasta, <code>~/Library/Application Support/dush/CLI</code>, e só aí: <code>/forget</code> e <code>/clear-data</code> removem as análises guardadas, nunca os seus ficheiros. Toca na rede apenas em <code>dush update</code>, que procura a versão mais recente através de <code>git</code> e atualiza através de <code>brew</code>. Uma cópia que compilou a partir do código-fonte é obtida com <code>git</code> e compilada de novo com as ferramentas Swift, que descarregam o que a compilação precisa.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

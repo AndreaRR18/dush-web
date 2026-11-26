@@ -56,8 +56,9 @@ Short sentences, active voice, no jargon, no emoji, no "we". dush looks, it neve
 - **Delete words, by context.** Allowed when negated (*It never deletes*), in the AI's question
   and verdicts (*Safe to delete?*, the app's own words), when describing a third-party command
   (`xcrun simctl delete unavailable`), and in the user deciding alone outside dush. Never as a
-  label or action on a file, never as a sales pitch. dush's own scan history is the only thing it
-  removes: use the app's *Clear History* / *Remove from History* words for it.
+  label or action on a file, never as a sales pitch. dush's own saved scans are the only thing it
+  removes: use the app's *Forget This Section*, *Remove from Favorites* / *Remove from Recent* and
+  *Clear Saved Data…* words for them (the app's History and watched folders are gone).
 - **A pun is rebuilt, not copied.** *It's a tape measure, not a snoop* becomes the language's own
   tape measure and own snoop (*Maßband / Schnüffler*, *cinta métrica / fisgón*).
 - **Reassurance uses the language's set phrase** (*nicht angetastet*, *pozostały nietknięte*).

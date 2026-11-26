@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Y9ULqaTsclkYG/fhtY1Tc78hTB2TELxyHcl3iV0SbNg='; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>dush · Support</title>
-  <meta name="description" content="Help for dush for Mac: how to report a problem, what you need to run it, and answers about disk access, totals, Apple Intelligence and history.">
+  <meta name="description" content="Help for dush for Mac: how to report a problem, what you need to run it, and answers about disk access, totals, Apple Intelligence and saved scans.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
@@ -120,7 +120,7 @@
         <h2 class="doc__heading" id="questions-title">Questions</h2>
 
         <h3 class="card__title">Why does dush ask for my disk, and what does it do with that access?</h3>
-        <p>macOS keeps apps out of your disk until you say so. A folder you drop or choose needs nothing more. Caches &amp; Temp, Downloads &amp; Desktop and Developer Caches look in places you didn't pick, so dush asks you to choose your startup disk once, in the system's panel.</p>
+        <p>macOS keeps apps out of your disk until you say so. A folder you drop or choose needs nothing more. Caches &amp; Temp, Downloads &amp; Desktop, Large files, Developer Caches and Entire Mac look in places you didn't pick, so dush asks you to choose your startup disk once, in the system's panel.</p>
         <p>With that access, dush reads the names, sizes and dates of files and folders. It doesn't read what's inside your files, and it never changes them. It keeps the access read-only, on this Mac.</p>
         <p>Full Disk Access is a separate, optional step. It lets dush measure the folders macOS keeps private too, like the Trash and Safari's caches. Only you can turn it on, in System Settings. The <a href="privacy.html">Privacy Policy</a> has the whole picture.</p>
 
@@ -129,13 +129,21 @@
         <p>Full Disk Access, in Settings › Privacy, lets dush read some of them. The banner gives only the count, because dush doesn't keep those paths.</p>
         <p>Anything you excluded, in a scan's options or in Settings › Exclusions, is left out too.</p>
 
+        <h3 class="card__title">Why doesn't Entire Mac update by itself?</h3>
+        <p>Measuring your whole disk takes longer than the other sections, from a few seconds to a few minutes. To spare your CPU and battery, dush only does it when you ask: press Rescan. Your last result stays there in the meantime.</p>
+        <p>Under the results, dush compares its total with the used space your disk reports. The difference is APFS snapshots, purgeable space and what dush couldn't read, such as other accounts' files. Full Disk Access, in Settings › Privacy, lets dush read some of what it couldn't.</p>
+
+        <h3 class="card__title">Can I keep using dush while it scans?</h3>
+        <p>Yes. Every section opens on its last scan at once and updates itself in the background, so you can look at results, open other sections and ask Apple Intelligence in the meantime. Scans take turns, and Entire Mac has a lane of its own, so it never holds up the others.</p>
+        <p>Rescan (⌘R) brings the section on screen up to date now. Esc stops its update, and its last scan stays.</p>
+
         <h3 class="card__title">Why can an Apple Intelligence answer be wrong?</h3>
         <p>It's a small model running on your Mac, and it never sees what's inside your files. It works from details like the path, the size and a few names. So it can misjudge what an item is, and it can't know what matters to you.</p>
         <p>Take a verdict as a starting point, and look at the item yourself before you decide. The app shows what the model was told, under the answer.</p>
 
-        <h3 class="card__title">How do I clear the history?</h3>
-        <p>Choose Clear History… at the bottom of the sidebar or in Settings › General. dush asks first, then removes its saved scans. Your files stay exactly where they are. Remembered Apple Intelligence answers stay too.</p>
-        <p>For a single scan, use Remove from History. To stop saving scans, turn off Save completed scans in Settings › General.</p>
+        <h3 class="card__title">How do I clear what dush saved?</h3>
+        <p>Choose Clear Saved Data… at the bottom of the sidebar or in Settings › General. dush asks first, then removes the saved scans of every section, favorites and recent folders included. Your files stay exactly where they are. Remembered Apple Intelligence answers, your settings and your favorites stay too.</p>
+        <p>For one section, choose Forget This Section from its menu. Remove from Favorites and Remove from Recent take a folder out of the sidebar, with its saved scans. Each of these three can be undone right away.</p>
 
         <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush never deletes files. If you decide to remove something, that's always your own step, in Finder or Terminal.</span></p>
       </section>

@@ -332,23 +332,25 @@ Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codebe
 ## What dush does (for feature copy)
 
 - **CLI:** `dush [paths] [--min-size 1GB] [-f|-d] [-t N] [-e] [--exclude NAME] [--json]`. With no
-  path, a curated cleanup scan of 34 cache and temp locations. Sizes match `du`; ~150,000 items
+  argument on a terminal, a full-screen session with the same live sections as the app
+  (`/entire`, Favorites, Recent; English only); `dush --no-tui`, a path or a pipe scans once (with
+  no path, a curated cleanup scan of 34 cache and temp locations). Sizes match `du`; ~150,000 items
   in about a second. Live progress with funny messages. `dush update`. Read-only.
 - **Mac app:**
-  - Drop a folder or choose one; a separate Caches & Temp scan (never called "Full Scan": it reads a few GB of caches, not the whole disk); a Downloads & Desktop quick scan; Large files, every file in the home folder over 100 MB with its age, largest or oldest first.
-  - Scan This Folder repeats the scan on the selected folder, with the options on screen; the previous scan stays in History.
+  - Live sections in the sidebar, each opening on its last scan and updating itself in the background (scans take turns; nothing waits for them; Rescan, ⌘R, in every section): Caches & Temp (never called "Full Scan": it reads a few GB of caches, not the whole disk), Downloads & Desktop, Large files (every file in the home folder over 100 MB with its age, largest or oldest first), Developer Caches and Entire Mac (the whole startup disk, scanned only when you press Rescan).
+  - New Scan: drop a folder or choose one; the last 10 are kept in Recent. Scan This Folder repeats the scan on the selected folder, with the options on screen; Back returns to the previous scan.
   - Live counters, a rotating funny message, the biggest items so far.
   - Results: a big serif total, a composition bar, a list with share bars; List, Map (treemap)
-    and What changed (compares two scans). Double-clicking a row goes into it (a folder is
+    and What changed (compares a section's scan with one of its last 10). Double-clicking a row goes into it (a folder is
     scanned, a file is shown in Finder). Back and Forward in the title bar walk the visited
     screens. Export to JSON, Markdown, CSV.
-  - History with Undo; the only thing dush ever deletes is its own history.
+  - Saved scans: each section keeps its last 10. Forget This Section, Remove from Favorites / Remove from Recent (with Undo) and Clear Saved Data… are the only things dush removes, and only its own data.
   - "Safe to delete?": Apple Intelligence on the Mac, metadata only. Verdicts: Safe to delete
     (teal check), Check first (orange triangle), Keep it (ink minus), Protected by dush (shield,
     dashed). Follow-up questions. Protected folders are answered locally, never sent.
   - Developer cache guide (DerivedData, simulators, DeviceSupport, `node_modules`, npm, pnpm,
     Yarn, Gradle, Homebrew): Show in Finder and Copy Command only; dush runs nothing.
-  - Watched folders with limits and notifications, a menu bar extra with free space, Finder's
+  - Favorites (formerly watched folders): the user's own folders as sections, with limits and notifications; a menu bar extra with free space, Finder's
     "Scan with dush", Shortcuts actions, opening `dush --json` reports.
   - Eight languages: English, German, Spanish, French, Italian, Dutch, Polish, Portuguese.
 

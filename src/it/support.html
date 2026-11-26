@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Y9ULqaTsclkYG/fhtY1Tc78hTB2TELxyHcl3iV0SbNg='; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>dush · Supporto</title>
-  <meta name="description" content="Aiuto per dush per Mac: come segnalare un problema, cosa serve per farlo girare e risposte su accesso al disco, totali, Apple Intelligence e cronologia.">
+  <meta name="description" content="Aiuto per dush per Mac: come segnalare un problema, cosa serve per farlo girare e risposte su accesso al disco, totali, Apple Intelligence e scansioni salvate.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
@@ -120,7 +120,7 @@
         <h2 class="doc__heading" id="questions-title">Domande</h2>
 
         <h3 class="card__title">Perché dush chiede il mio disco, e cosa ci fa con quell'accesso?</h3>
-        <p>macOS tiene le app lontane dal tuo disco finché non dici di sì. Una cartella che trascini o scegli non serve altro. Cache e temporanei, Download e Scrivania e Cache di sviluppo guardano in posti che non hai scelto, quindi dush ti chiede di scegliere una volta il disco di avvio nel pannello di sistema.</p>
+        <p>macOS tiene le app lontane dal tuo disco finché non dici di sì. Una cartella che trascini o scegli non serve altro. Cache e temporanei, Download e Scrivania, File di grandi dimensioni, Cache di sviluppo e Tutto il Mac guardano in posti che non hai scelto, quindi dush ti chiede di scegliere una volta il disco di avvio nel pannello di sistema.</p>
         <p>Con quell'accesso, dush legge nomi, dimensioni e date di file e cartelle. Non legge cosa c'è dentro i tuoi file, e non li modifica mai. Tiene l'accesso in sola lettura, su questo Mac.</p>
         <p>L'accesso completo al disco è un passo a parte, facoltativo. Permette a dush di misurare anche le cartelle che macOS tiene private, come il Cestino e le cache di Safari. Puoi attivarlo solo tu, nelle Impostazioni di Sistema. L’<a href="privacy.html">Informativa sulla privacy</a> ha il quadro completo.</p>
 
@@ -129,13 +129,21 @@
         <p>L'accesso completo al disco, in Impostazioni › Privacy, permette a dush di leggerne alcuni. Il banner dà solo il numero, perché dush non conserva quei percorsi.</p>
         <p>Tutto quello che hai escluso, nelle opzioni di una scansione o in Impostazioni › Esclusioni, manca lo stesso.</p>
 
+        <h3 class="card__title">Perché Tutto il Mac non si aggiorna da solo?</h3>
+        <p>Misurare tutto il disco richiede più tempo delle altre sezioni, da qualche secondo a qualche minuto. Per risparmiare CPU e batteria, dush lo fa solo quando glielo chiedi: premi Riscansiona. Nel frattempo il tuo ultimo risultato resta lì.</p>
+        <p>Sotto i risultati, dush confronta il suo totale con lo spazio occupato indicato dal disco. La differenza sono istantanee APFS, spazio eliminabile dal sistema e ciò che dush non ha potuto leggere, come i file di altri account. L'accesso completo al disco, in Impostazioni › Privacy, permette a dush di leggerne una parte.</p>
+
+        <h3 class="card__title">Posso continuare a usare dush mentre scansiona?</h3>
+        <p>Sì. Ogni sezione si apre subito sull'ultima scansione e si aggiorna da sola in background, così nel frattempo puoi guardare i risultati, aprire altre sezioni e chiedere ad Apple Intelligence. Le scansioni fanno a turno, e Tutto il Mac ha una corsia tutta sua, così non trattiene mai le altre.</p>
+        <p>Riscansiona (⌘R) aggiorna subito la sezione sullo schermo. Esc ne interrompe l'aggiornamento, e l'ultima scansione resta.</p>
+
         <h3 class="card__title">Perché una risposta di Apple Intelligence può essere sbagliata?</h3>
         <p>È un modello piccolo che gira sul tuo Mac, e non vede mai cosa c'è dentro i tuoi file. Lavora con dettagli come percorso, dimensione e qualche nome. Quindi può sbagliare a valutare cos'è un elemento, e non può sapere cosa conta per te.</p>
         <p>Prendi un verdetto come punto di partenza, e guarda l'elemento tu prima di decidere. L'app mostra cosa è stato detto al modello, sotto la risposta.</p>
 
-        <h3 class="card__title">Come svuoto la cronologia?</h3>
-        <p>Scegli Svuota cronologia… in fondo alla barra laterale o in Impostazioni › Generali. dush chiede prima, poi rimuove le sue scansioni salvate. I tuoi file restano esattamente dove sono. Anche le risposte ricordate di Apple Intelligence restano.</p>
-        <p>Per una singola scansione, usa Rimuovi dalla cronologia. Per smettere di salvare le scansioni, disattiva Conserva le scansioni salvate in Impostazioni › Generali.</p>
+        <h3 class="card__title">Come svuoto ciò che dush ha salvato?</h3>
+        <p>Scegli Svuota dati salvati… in fondo alla barra laterale o in Impostazioni › Generali. dush chiede prima, poi rimuove le scansioni salvate di ogni sezione, compresi i preferiti e le cartelle recenti. I tuoi file restano esattamente dove sono. Anche le risposte ricordate di Apple Intelligence, le tue impostazioni e i tuoi preferiti restano.</p>
+        <p>Per una sola sezione, scegli Dimentica questa sezione dal suo menu. Rimuovi dai Preferiti e Rimuovi da Recenti tolgono una cartella dalla barra laterale, con le sue scansioni salvate. Ognuna di queste tre azioni si può annullare subito dopo.</p>
 
         <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush non elimina mai file. Se decidi di rimuovere qualcosa, è sempre un tuo passo, nel Finder o nel Terminale.</span></p>
       </section>

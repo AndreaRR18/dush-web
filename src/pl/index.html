@@ -128,12 +128,15 @@
           <p class="label">dush na Maca</p>
           <h2 class="heading" id="scan-title">Upuść folder, zobacz, co jest duże.</h2>
           <p>Przeciągnij jeden folder lub więcej na okno albo ikonę w Docku, albo naciśnij ⌘O. dush przeszukuje je równolegle i liczy każdy plik, także ukryte i pakiety aplikacji, a Ty patrzysz, jak liczby rosną.</p>
+          <p>Pasek boczny trzyma Twoje stałe miejsca zmierzone: Cache i temp, Pobrane rzeczy i Biurko, Duże pliki, Cache deweloperskie i Cały Mac. Każda sekcja otwiera się od razu na ostatnim skanie i sama aktualizuje się w tle, a Ty dalej się rozglądasz.</p>
           <ul class="list">
             <li><strong>Cache i temp</strong> nie potrzebuje folderu. Sprawdza pamięci podręczne i foldery tymczasowe, w których jest tylko to, co Twój Mac może odbudować: pamięci podręczne systemu i aplikacji, logi, Kosz, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData i DeviceSupport Xcode'a, pamięci podręczne symulatorów oraz VS&nbsp;Code. Foldery, których nie ma albo nie są bezpieczne, są pomijane, a zagnieżdżone liczą się tylko raz.</li>
-            <li><strong>Pobrane rzeczy i Biurko</strong> skanuje dwa zwykłe podejrzane jednym kliknięciem.</li>
-            <li><strong>Duże pliki</strong> też nie potrzebują folderu: największe pliki w Twoim folderze domowym powyżej 100&nbsp;MB, z ich rozmiarem i z tym, jak długo tam leżą. Od największego albo od najstarszego, żeby znaleźć te, których nikt dawno nie otwierał. Lista zostaje zapisana, więc następnym razem jest od razu.</li>
-            <li><strong>Skanuj ten folder</strong> powtarza skan tylko wybranego folderu, z opcjami, które są już na ekranie. Skan, na który patrzysz, zostaje w historii.</li>
-            <li><strong>Największe jak dotąd</strong>: duże pliki pojawiają się, gdy tylko zostaną znalezione, foldery, gdy tylko zostaną zmierzone. Naciśnij Esc, aby zatrzymać w dowolnym momencie.</li>
+            <li><strong>Pobrane rzeczy i Biurko</strong> pilnuje dwóch miejsc, w których piętrzą się pliki.</li>
+            <li><strong>Duże pliki</strong> też nie potrzebują folderu: największe pliki w Twoim folderze domowym powyżej 100&nbsp;MB, z ich rozmiarem i z tym, jak długo tam leżą. Od największego albo od najstarszego, żeby znaleźć te, których nikt dawno nie otwierał.</li>
+            <li><strong>Cały Mac</strong> to cały dysk startowy, każdy plik policzony raz. Mierzenie go trwa dłużej niż pozostałe sekcje, od kilku sekund do kilku minut, więc żeby oszczędzać procesor i baterię, dush robi to tylko wtedy, gdy naciśniesz Skanuj ponownie. Do tego czasu ostatni wynik zostaje na miejscu.</li>
+            <li><strong>Skanuj ten folder</strong> powtarza skan tylko wybranego folderu, z opcjami, które są już na ekranie. Wróć prowadzi z powrotem do skanu, który był na ekranie.</li>
+            <li><strong>Największe jak dotąd</strong>: przy pierwszym skanie duże pliki pojawiają się, gdy tylko zostaną znalezione, foldery, gdy tylko zostaną zmierzone. Naciśnij Esc, aby zatrzymać w dowolnym momencie.</li>
+            <li><strong>Skanuj ponownie</strong>, w każdej sekcji, od razu ją aktualizuje (⌘R). Aktualizacje nigdy nie blokują okna: skany czekają w tle na swoją kolej i nic nie czeka na nie.</li>
             <li><strong>Twoje opcje</strong>: minimalny rozmiar (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB albo własny, na przykład <code>1.5 GiB</code>), tylko pliki lub foldery, pomiń <code>node_modules</code>, <code>.git</code> i inne foldery deweloperskie, albo wyklucz nazwy i wzorce takie jak <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -190,7 +193,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Co się zmieniło</h3>
-          <p>Porównuje najnowszy skan folderu z wcześniejszym z Twojej historii. <span class="growth">Urosło o 7,90&nbsp;GB</span> od 20 wrz, 18:40: oto co urosło, co się zmniejszyło i co jest nowe.</p>
+          <p>Porównuje najnowszy skan sekcji z jednym z jej 10 ostatnich skanów. <span class="growth">Urosło o 7,90&nbsp;GB</span> od 20 wrz, 18:40: oto co urosło, co się zmniejszyło i co jest nowe.</p>
         </li>
       </ul>
       <p class="caption center" data-reveal>Kliknij dwukrotnie wiersz, żeby iść dalej: folder, który wciąż jest, zostanie przeskanowany, a plik otworzy się w Finderze. Wróć i Dalej na pasku tytułu (⌘[ i ⌘]) przechodzą przez odwiedzone ekrany, a każdy wraca z własnym filtrem i zaznaczeniem.</p>
@@ -298,18 +301,18 @@
       </div>
       <ul class="cards cards--three">
         <li class="card" data-reveal>
-          <h3 class="card__title">Historia skanów</h3>
-          <p>Każdy skan jest zapisywany na Twoim Macu, pogrupowany według dnia, i otwiera się natychmiast bez ponownego skanowania. Zachowaj go 30&nbsp;dni, 90&nbsp;dni lub na zawsze, albo nie zapisuj wcale.</p>
-          <p class="quote">Usunięto z historii. Twoje pliki pozostały nietknięte.</p>
-        </li>
-        <li class="card" data-reveal>
-          <h3 class="card__title">Obserwowane foldery</h3>
-          <p>Daj folderowi limit, a dush powiadomi Cię raz, gdy skan znajdzie go ponad linię. Może skanować je co dzień albo co tydzień, gdy jest otwarty.</p>
+          <h3 class="card__title">Ulubione</h3>
+          <p>Twoje własne foldery, każdy jako sekcja na pasku bocznym, aktualne jak reszta. Ustaw jednemu limit rozmiaru, a dush wyśle powiadomienie, gdy skan stwierdzi, że go przekroczył. Może je też skanować codziennie albo co tydzień, gdy jest otwarty.</p>
           <p class="quote">Developer przekracza 60&nbsp;GB. Ma teraz 64,10&nbsp;GB, czyli 7,90&nbsp;GB więcej od 20 wrz.</p>
         </li>
         <li class="card" data-reveal>
+          <h3 class="card__title">Ostatnie</h3>
+          <p>10 ostatnich folderów skanowanych z Nowego skanu, jedno kliknięcie dalej na pasku bocznym. Zapomnij o tej sekcji czyści zapisane skany jednej sekcji, a Wyczyść zapisane dane… wszystkich.</p>
+          <p class="quote">Zapisane skany zapomniane. Twoje pliki pozostały nietknięte.</p>
+        </li>
+        <li class="card" data-reveal>
           <h3 class="card__title">Pasek menu</h3>
-          <p>Wolne miejsce na dysku w mgnieniu oka, Twoje obserwowane foldery i o ile urosły, oraz skróty do skanowania. Wyłączone, dopóki tego nie włączysz.</p>
+          <p>Wolne miejsce na dysku w mgnieniu oka, Twoje ulubione foldery i o ile urosły, oraz skróty do skanowania. Wyłączone, dopóki tego nie włączysz.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder i Skróty</h3>
@@ -337,7 +340,7 @@
           <dl class="promises">
             <div>
               <dt>dush nigdy nie usuwa Twoich plików</dt>
-              <dd>Tylko patrzy. Usunięcie czegokolwiek to zawsze Twój wybór, w Finderze lub Terminalu. Jedyną rzeczą, którą dush może usunąć, jest własna historia skanów.</dd>
+              <dd>Tylko patrzy. Usunięcie czegokolwiek to zawsze Twój wybór, w Finderze lub Terminalu. Jedyną rzeczą, którą dush może usunąć, jest to, co sam zapisał: własne skany.</dd>
             </div>
             <div>
               <dt>Bez śledzenia, bez profilowania</dt>
@@ -374,6 +377,7 @@
         <p class="label">W Terminalu</p>
         <h2 class="heading" id="cli-title">Ten sam silnik, w Twoim shellu.</h2>
         <p>dush zaczynał jako narzędzie wiersza poleceń i nim pozostał. Aplikacja i CLI współdzielą ten sam silnik, więc podają te same rozmiary dla tego samego folderu, co do bajta. Zainstaluj przez Homebrew:</p>
+        <p>W terminalu samo <code>dush</code> otwiera sesję na cały ekran z tymi samymi sekcjami na żywo co aplikacja, po angielsku: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, skanowany tylko po naciśnięciu <code>r</code>), Twoje Favorites i 10 ostatnich folderów w Recent. Każda otwiera się na ostatnim skanie i aktualizuje się w tle. Podaj <code>dush</code> ścieżkę lub opcję albo przekieruj jego wyjście, a przeskanuje raz i wypisze tabelę, jak poniżej.</p>
       </div>
 
       <div class="command" data-reveal>
@@ -384,8 +388,8 @@
       <div class="split split--top cli">
         <div data-reveal>
           <h3 class="card__title">Wypróbuj</h3>
-<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
-dush
+<pre class="code"><code><span class="comment"># The caches and temp folders, printed once</span>
+dush --no-tui
 
 <span class="comment"># Your home, files over 1 GB, the top 10</span>
 dush ~ --min-size 1GB --files-only --top 10

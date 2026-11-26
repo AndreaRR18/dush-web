@@ -84,7 +84,7 @@
           <p class="label">dush para Mac, la línea de comandos y este sitio</p>
           <h1 class="title" id="privacy-title">Política de <em>privacidad</em></h1>
           <p class="lead">dush para Mac no recoge nada ni envía nada. Esta página dice exactamente qué lee, qué guarda y dónde.</p>
-          <p class="caption">Última actualización <time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+          <p class="caption">Última actualización <time datetime="2026-11-25">25 de noviembre de 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,7 +111,7 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Funciona sin conexión</h2>
         <p>dush para Mac funciona completamente sin conexión. La versión de la App Store no tiene ningún permiso de red, el permiso que una app necesita para conectarse, así que el propio macOS le niega cualquier conexión.</p>
-        <p>Las notificaciones de las carpetas vigiladas también son locales: macOS las muestra en tu Mac.</p>
+        <p>Las notificaciones de los favoritos también son locales: macOS las muestra en tu Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
@@ -128,12 +128,12 @@
         <h2 class="doc__heading" id="keeps-title">Qué guarda</h2>
         <p>dush solo guarda estas cosas en este Mac, en la carpeta propia de la app. No sincroniza ni sube nada.</p>
         <ul class="list">
-          <li><strong>Historial de escaneos:</strong> qué escaneaste, cuándo, y los nombres, rutas y tamaños de los elementos más grandes que encontró.</li>
-          <li><strong>Ajustes:</strong> tus opciones, incluidas tus carpetas vigiladas y sus límites.</li>
+          <li><strong>Escaneos guardados de cada sección:</strong> de cada sitio de la barra lateral, favoritos y carpetas recientes incluidos, sus 10 últimos escaneos: cuándo, y los nombres, rutas y tamaños de los elementos más grandes encontrados. La lista de archivos grandes y la medición de tus cachés de desarrollador se guardan igual.</li>
+          <li><strong>Ajustes:</strong> tus opciones, incluidos tus favoritos y sus límites.</li>
           <li><strong>Respuestas recordadas de Apple Intelligence,</strong> con los detalles del elemento del que trata cada una, para no repetir la misma pregunta.</li>
           <li><strong>Un marcador de solo lectura</strong> del acceso al disco que diste, para no tener que darlo de nuevo.</li>
         </ul>
-        <p>Vaciar historial elimina los escaneos guardados, y solo esos. Tus archivos no se tocan, y las respuestas y ajustes recordados se quedan. En Ajustes › General puedes conservar los escaneos 30&nbsp;o 90&nbsp;días, o dejar de guardarlos.</p>
+        <p>Olvidar esta sección, en el menú de una sección, quita sus escaneos guardados; un favorito sigue siendo favorito. Quitar de Favoritos y Quitar de Recientes sacan una carpeta de la barra lateral, con sus escaneos guardados. Vaciar datos guardados…, al final de la barra lateral y en Ajustes › General, quita los escaneos guardados de todas las secciones, la lista de archivos grandes y la medición de las cachés de desarrollador. Ninguno toca tus archivos, y las respuestas recordadas, los ajustes y tus favoritos se quedan.</p>
         <p>Tres cosas más que saber:</p>
         <ul class="list">
           <li>El motor de escaneo escribe conteos y tiempos en el propio registro de macOS en tu Mac. Las rutas y los nombres aparecen ahí como <code>&lt;private&gt;</code>, y dush no envía ese registro a ninguna parte.</li>
@@ -197,7 +197,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">La herramienta de línea de comandos</h2>
-        <p>La CLI de <code>dush</code> tampoco recoge nada. Solo toca la red en <code>dush update</code>, que consulta la última versión mediante <code>git</code> y actualiza mediante <code>brew</code>. Una copia que compilaste desde el código fuente se obtiene con <code>git</code> y se compila de nuevo con las herramientas de Swift, que descargan lo que la compilación necesita.</p>
+        <p>La CLI de <code>dush</code> tampoco recoge nada. Su sesión conserva escaneos guardados del mismo tipo, la lista de archivos grandes, la medición de las cachés de desarrollador, las respuestas recordadas y sus ajustes en su propia carpeta, <code>~/Library/Application Support/dush/CLI</code>, y solo allí: <code>/forget</code> y <code>/clear-data</code> quitan los escaneos guardados, nunca tus archivos. Solo toca la red en <code>dush update</code>, que consulta la última versión mediante <code>git</code> y actualiza mediante <code>brew</code>. Una copia que compilaste desde el código fuente se obtiene con <code>git</code> y se compila de nuevo con las herramientas de Swift, que descargan lo que la compilación necesita.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

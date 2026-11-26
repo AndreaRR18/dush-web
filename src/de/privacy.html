@@ -84,7 +84,7 @@
           <p class="label">dush für Mac, die Kommandozeile und diese Website</p>
           <h1 class="title" id="privacy-title">Datenschutz<em>richtlinie</em></h1>
           <p class="lead">dush für Mac sammelt nichts und sendet nichts. Diese Seite sagt genau, was es liest, was es behält und wo.</p>
-          <p class="caption">Zuletzt aktualisiert <time datetime="2026-11-17">17. November 2026</time></p>
+          <p class="caption">Zuletzt aktualisiert <time datetime="2026-11-25">25. November 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,7 +111,7 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Es funktioniert offline</h2>
         <p>dush für Mac funktioniert komplett offline. Die App-Store-Version hat keine Netzwerk-Berechtigung, die Erlaubnis, die eine App zum Verbinden braucht, deshalb verweigert macOS selbst jede Verbindung.</p>
-        <p>Mitteilungen für überwachte Ordner sind auch lokal: macOS zeigt sie auf deinem Mac.</p>
+        <p>Mitteilungen für Favoriten sind auch lokal: macOS zeigt sie auf deinem Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
@@ -128,12 +128,12 @@
         <h2 class="doc__heading" id="keeps-title">Was es behält</h2>
         <p>dush behält das nur auf diesem Mac, im eigenen Ordner der App. Es synchronisiert oder lädt nichts davon hoch.</p>
         <ul class="list">
-          <li><strong>Scan-Verlauf:</strong> was du gescannt hast, wann, und die Namen, Pfade und Größen der größten gefundenen Elemente.</li>
-          <li><strong>Einstellungen:</strong> deine Einstellungen, inklusive deiner überwachten Ordner und ihrer Grenzen.</li>
+          <li><strong>Gesicherte Scans jedes Bereichs:</strong> für jeden Ort in der Seitenleiste, Favoriten und zuletzt benutzte Ordner eingeschlossen, seine letzten 10 Scans: wann, und die Namen, Pfade und Größen der größten gefundenen Elemente. Die Liste der großen Dateien und die Messung deiner Entwickler-Caches werden genauso aufbewahrt.</li>
+          <li><strong>Einstellungen:</strong> deine Einstellungen, inklusive deiner Favoriten und ihrer Grenzen.</li>
           <li><strong>Gemerkte Apple-Intelligence-Antworten,</strong> mit den Details des Elements, um das es geht, damit dieselbe Frage nicht zweimal gestellt wird.</li>
           <li><strong>Ein schreibgeschütztes Lesezeichen</strong> für den Plattenzugriff, den du gewährt hast, damit du ihn nicht erneut gewähren musst.</li>
         </ul>
-        <p>Verlauf leeren entfernt die gespeicherten Scans, und nur die. Deine Dateien bleiben unberührt, und gemerkte Antworten und Einstellungen bleiben. In Einstellungen › Allgemein kannst du Scans 30&nbsp;oder 90&nbsp;Tage behalten oder ganz auf das Speichern verzichten.</p>
+        <p>„Diesen Bereich vergessen“, im Menü eines Bereichs, entfernt dessen gesicherte Scans; ein Favorit bleibt ein Favorit. „Aus Favoriten entfernen“ und „Aus ‚Zuletzt benutzt‘ entfernen“ nehmen einen Ordner samt seinen gesicherten Scans aus der Seitenleiste. „Gesicherte Daten entfernen …“, unten in der Seitenleiste und in Einstellungen › Allgemein, entfernt die gesicherten Scans aller Bereiche, die Liste der großen Dateien und die Messung der Entwickler-Caches. Keines davon tastet deine Dateien an, und gemerkte Antworten, Einstellungen und deine Favoriten bleiben.</p>
         <p>Drei Dinge noch:</p>
         <ul class="list">
           <li>Die Scan-Engine schreibt Zählungen und Zeiten in das eigene Protokoll von macOS auf deinem Mac. Pfade und Namen erscheinen dort als <code>&lt;private&gt;</code>, und dush schickt dieses Protokoll nirgends hin.</li>
@@ -197,7 +197,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">Das Kommandozeilen-Tool</h2>
-        <p>Die CLI von <code>dush</code> sammelt auch nichts. Ins Netzwerk geht sie nur bei <code>dush update</code>, das die neueste Version über <code>git</code> sucht und über <code>brew</code> aktualisiert. Eine Kopie, die du aus dem Quellcode gebaut hast, wird über <code>git</code> geholt und mit den Swift-Tools neu gebaut, die herunterladen, was der Build braucht.</p>
+        <p>Die CLI von <code>dush</code> sammelt auch nichts. Ihre Sitzung bewahrt dieselbe Art gesicherter Scans, die Liste der großen Dateien, die Messung der Entwickler-Caches, gemerkte Antworten und ihre Einstellungen in ihrem eigenen Ordner auf, <code>~/Library/Application Support/dush/CLI</code>, und nur dort: <code>/forget</code> und <code>/clear-data</code> entfernen die gesicherten Scans, nie deine Dateien. Ins Netzwerk geht sie nur bei <code>dush update</code>, das die neueste Version über <code>git</code> sucht und über <code>brew</code> aktualisiert. Eine Kopie, die du aus dem Quellcode gebaut hast, wird über <code>git</code> geholt und mit den Swift-Tools neu gebaut, die herunterladen, was der Build braucht.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">
