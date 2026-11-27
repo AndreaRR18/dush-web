@@ -84,7 +84,7 @@
           <p class="label">dush for Mac, the command line and this website</p>
           <h1 class="title" id="privacy-title">Privacy <em>Policy</em></h1>
           <p class="lead">dush for Mac collects nothing and sends nothing. This page says exactly what it reads, what it keeps and where.</p>
-          <p class="caption">Last updated <time datetime="2026-11-25">November 25, 2026</time></p>
+          <p class="caption">Last updated <time datetime="2026-11-27">November 27, 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -117,6 +117,7 @@
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">What it reads</h2>
         <p>To measure your disk, dush reads the names, sizes and dates of files and folders. It doesn't read what's inside your files.</p>
+        <p>To know which folders changed since a section's last scan, dush also asks macOS for its local record of file-system changes: folder paths only. That record stays on your Mac, and nothing is sent anywhere.</p>
         <p>Two things go further, and only when you ask for them:</p>
         <ul class="list">
           <li><strong>Quick Look</strong> is macOS's own preview. macOS shows the file, and nothing leaves your Mac.</li>
@@ -129,11 +130,12 @@
         <p>dush keeps these only on this Mac, in the app's own folder. It doesn't sync or upload any of them.</p>
         <ul class="list">
           <li><strong>Saved scans of each section:</strong> for each place in the sidebar, your favorites and recent folders included, its last 10 scans: when, and the names, paths and sizes of the biggest items found. The Large files list and the measurement of your developer caches are kept the same way.</li>
+          <li><strong>A map of each section's folders</strong> (its tree index): the names and sizes of the folders it scanned, favorites and recent folders included, so the next update measures again only what changed. It's the biggest thing dush keeps, and it stays on this Mac like the rest.</li>
           <li><strong>Settings:</strong> your choices, including your favorites and their limits.</li>
           <li><strong>Remembered Apple Intelligence answers,</strong> with the details of the item each one is about, so the same question isn't asked twice.</li>
           <li><strong>A read-only bookmark</strong> of the disk access you gave, so you don't have to give it again.</li>
         </ul>
-        <p>Forget This Section, in a section's menu, removes that section's saved scans; a favorite stays a favorite. Remove from Favorites and Remove from Recent take a folder out of the sidebar, with its saved scans. Clear Saved Data…, at the bottom of the sidebar and in Settings › General, removes the saved scans of every section, the Large files list and the developer caches' measurement. None of them touches your files, and remembered answers, settings and your favorites stay.</p>
+        <p>Forget This Section, in a section's menu, removes that section's saved scans and its map of folders; a favorite stays a favorite. Remove from Favorites and Remove from Recent take a folder out of the sidebar, with its saved scans and its map. Clear Saved Data…, at the bottom of the sidebar and in Settings › General, removes the saved scans and folder maps of every section, the Large files list and the developer caches' measurement. None of them touches your files, and remembered answers, settings and your favorites stay.</p>
         <p>Three more things to know:</p>
         <ul class="list">
           <li>The scanning engine writes counts and timings to macOS's own log on your Mac. Paths and names show there as <code>&lt;private&gt;</code>, and dush sends that log nowhere.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">The command-line tool</h2>
-        <p>The <code>dush</code> CLI collects nothing either. Its session keeps the same kind of saved scans, the Large Files list, the developer caches' measurement, remembered answers and its settings in its own folder, <code>~/Library/Application Support/dush/CLI</code>, and only there: <code>/forget</code> and <code>/clear-data</code> remove the saved scans, never your files. It touches the network only in <code>dush update</code>, which looks up the latest release through <code>git</code> and upgrades through <code>brew</code>. A copy you built from source is fetched with <code>git</code> and built again with the Swift tools, which download what the build needs.</p>
+        <p>The <code>dush</code> CLI collects nothing either. Its session keeps the same kind of saved scans, the names and sizes of the folders each section scanned, the Large Files list, the developer caches' measurement, remembered answers and its settings in its own folder, <code>~/Library/Application Support/dush/CLI</code>, and only there: <code>/forget</code> and <code>/clear-data</code> remove the saved scans and folder maps, never your files. It touches the network only in <code>dush update</code>, which looks up the latest release through <code>git</code> and upgrades through <code>brew</code>. A copy you built from source is fetched with <code>git</code> and built again with the Swift tools, which download what the build needs. Apple Intelligence in the session runs on your Mac and works only when you ask. It gets what you type and the name of the view you're in. To answer a question about that view, it also gets your earlier questions with its answers, and the paths and sizes of at most 20 items, with their shares or changes. About a single item, it gets the same kind of details as in the app. dush leaves the items it protects out of what it describes to it, and never gives it file contents.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

@@ -84,7 +84,7 @@
           <p class="label">dush für Mac, die Kommandozeile und diese Website</p>
           <h1 class="title" id="privacy-title">Datenschutz<em>richtlinie</em></h1>
           <p class="lead">dush für Mac sammelt nichts und sendet nichts. Diese Seite sagt genau, was es liest, was es behält und wo.</p>
-          <p class="caption">Zuletzt aktualisiert <time datetime="2026-11-25">25. November 2026</time></p>
+          <p class="caption">Zuletzt aktualisiert <time datetime="2026-11-27">27. November 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -117,6 +117,7 @@
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">Was es liest</h2>
         <p>Um deine Platte zu messen, liest dush die Namen, Größen und Daten von Dateien und Ordnern. Es liest nicht, was in deinen Dateien steht.</p>
+        <p>Um zu wissen, welche Ordner sich seit dem letzten Scan eines Bereichs geändert haben, fragt dush macOS auch nach seinem lokalen Verzeichnis der Dateisystem-Änderungen: nur Ordnerpfade. Dieses Verzeichnis bleibt auf deinem Mac, und nichts wird irgendwohin gesendet.</p>
         <p>Zwei Dinge gehen weiter, und nur wenn du danach fragst:</p>
         <ul class="list">
           <li><strong>Übersicht</strong> ist die eigene Vorschau von macOS. macOS zeigt die Datei, und nichts verlässt deinen Mac.</li>
@@ -129,11 +130,12 @@
         <p>dush behält das nur auf diesem Mac, im eigenen Ordner der App. Es synchronisiert oder lädt nichts davon hoch.</p>
         <ul class="list">
           <li><strong>Gesicherte Scans jedes Bereichs:</strong> für jeden Ort in der Seitenleiste, Favoriten und zuletzt benutzte Ordner eingeschlossen, seine letzten 10 Scans: wann, und die Namen, Pfade und Größen der größten gefundenen Elemente. Die Liste der großen Dateien und die Messung deiner Entwickler-Caches werden genauso aufbewahrt.</li>
+          <li><strong>Eine Karte der Ordner jedes Bereichs</strong> (sein Baum-Index): die Namen und Größen der Ordner, die er gescannt hat, Favoriten und zuletzt benutzte Ordner eingeschlossen, damit das nächste Update nur das neu misst, was sich geändert hat. Das ist das Größte, was dush aufbewahrt, und es bleibt wie der Rest auf diesem Mac.</li>
           <li><strong>Einstellungen:</strong> deine Einstellungen, inklusive deiner Favoriten und ihrer Grenzen.</li>
           <li><strong>Gemerkte Apple-Intelligence-Antworten,</strong> mit den Details des Elements, um das es geht, damit dieselbe Frage nicht zweimal gestellt wird.</li>
           <li><strong>Ein schreibgeschütztes Lesezeichen</strong> für den Plattenzugriff, den du gewährt hast, damit du ihn nicht erneut gewähren musst.</li>
         </ul>
-        <p>„Diesen Bereich vergessen“, im Menü eines Bereichs, entfernt dessen gesicherte Scans; ein Favorit bleibt ein Favorit. „Aus Favoriten entfernen“ und „Aus ‚Zuletzt benutzt‘ entfernen“ nehmen einen Ordner samt seinen gesicherten Scans aus der Seitenleiste. „Gesicherte Daten entfernen …“, unten in der Seitenleiste und in Einstellungen › Allgemein, entfernt die gesicherten Scans aller Bereiche, die Liste der großen Dateien und die Messung der Entwickler-Caches. Keines davon tastet deine Dateien an, und gemerkte Antworten, Einstellungen und deine Favoriten bleiben.</p>
+        <p>„Diesen Bereich vergessen“, im Menü eines Bereichs, entfernt dessen gesicherte Scans und seine Ordnerkarte; ein Favorit bleibt ein Favorit. „Aus Favoriten entfernen“ und „Aus ‚Zuletzt benutzt‘ entfernen“ nehmen einen Ordner samt seinen gesicherten Scans und seiner Karte aus der Seitenleiste. „Gesicherte Daten entfernen …“, unten in der Seitenleiste und in Einstellungen › Allgemein, entfernt die gesicherten Scans und Ordnerkarten aller Bereiche, die Liste der großen Dateien und die Messung der Entwickler-Caches. Keines davon tastet deine Dateien an, und gemerkte Antworten, Einstellungen und deine Favoriten bleiben.</p>
         <p>Drei Dinge noch:</p>
         <ul class="list">
           <li>Die Scan-Engine schreibt Zählungen und Zeiten in das eigene Protokoll von macOS auf deinem Mac. Pfade und Namen erscheinen dort als <code>&lt;private&gt;</code>, und dush schickt dieses Protokoll nirgends hin.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">Das Kommandozeilen-Tool</h2>
-        <p>Die CLI von <code>dush</code> sammelt auch nichts. Ihre Sitzung bewahrt dieselbe Art gesicherter Scans, die Liste der großen Dateien, die Messung der Entwickler-Caches, gemerkte Antworten und ihre Einstellungen in ihrem eigenen Ordner auf, <code>~/Library/Application Support/dush/CLI</code>, und nur dort: <code>/forget</code> und <code>/clear-data</code> entfernen die gesicherten Scans, nie deine Dateien. Ins Netzwerk geht sie nur bei <code>dush update</code>, das die neueste Version über <code>git</code> sucht und über <code>brew</code> aktualisiert. Eine Kopie, die du aus dem Quellcode gebaut hast, wird über <code>git</code> geholt und mit den Swift-Tools neu gebaut, die herunterladen, was der Build braucht.</p>
+        <p>Die CLI von <code>dush</code> sammelt auch nichts. Ihre Sitzung bewahrt dieselbe Art gesicherter Scans, die Namen und Größen der Ordner, die jeder Bereich gescannt hat, die Liste der großen Dateien, die Messung der Entwickler-Caches, gemerkte Antworten und ihre Einstellungen in ihrem eigenen Ordner auf, <code>~/Library/Application Support/dush/CLI</code>, und nur dort: <code>/forget</code> und <code>/clear-data</code> entfernen die gesicherten Scans und Ordnerkarten, nie deine Dateien. Ins Netzwerk geht sie nur bei <code>dush update</code>, das die neueste Version über <code>git</code> sucht und über <code>brew</code> aktualisiert. Eine Kopie, die du aus dem Quellcode gebaut hast, wird über <code>git</code> geholt und mit den Swift-Tools neu gebaut, die herunterladen, was der Build braucht. Apple Intelligence läuft in der Sitzung auf deinem Mac und arbeitet nur, wenn du fragst. Sie bekommt, was du tippst, und den Namen der Ansicht, in der du bist. Für eine Frage zu dieser Ansicht bekommt sie auch deine früheren Fragen mit ihren Antworten sowie Pfade und Größen von höchstens 20 Elementen, mit ihren Anteilen oder Änderungen. Zu einem einzelnen Element bekommt sie dieselbe Art von Angaben wie in der App. Geschützte Elemente lässt dush aus dem heraus, was es ihr beschreibt, und Dateiinhalte bekommt sie nie.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

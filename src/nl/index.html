@@ -111,7 +111,7 @@
           <span class="fact__text">items gemeten in ongeveer een seconde, op een Mac met Apple-silicon. Sneller dan <code>du</code> op dezelfde map.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">cache-, log- en tijdelijke locaties die Caches en temp controleert. Geen map om te kiezen.</span>
         </li>
         <li>
@@ -128,13 +128,13 @@
           <p class="label">dush voor Mac</p>
           <h2 class="heading" id="scan-title">Sleep een map erin, zie wat groot is.</h2>
           <p>Sleep een of meer mappen op het venster of het Dock-icoon, of druk op ⌘O. dush loopt ze parallel door en telt elk bestand, ook verborgen bestanden en app-bundels, terwijl je de aantallen ziet stijgen.</p>
-          <p>De navigatiekolom houdt je vaste plekken gemeten: Caches en temp, Downloads en Bureaublad, Grote bestanden, Ontwikkelaarscaches en Hele Mac. Elke sectie opent meteen op zijn laatste scan en werkt zichzelf bij op de achtergrond, terwijl jij verder rondkijkt.</p>
+          <p>De navigatiekolom houdt je vaste plekken gemeten: Caches en temp, Downloads en Bureaublad, Grote bestanden, Ontwikkelaarscaches en Hele Mac. Elke sectie opent meteen op zijn laatste scan. dush werkt die pas uit zichzelf bij als die scan minstens drie dagen oud is, op de achtergrond, terwijl jij verder rondkijkt; Hele Mac wacht op jou. Een update meet alleen opnieuw wat er sinds de laatste scan is gewijzigd. Stop je terwijl je op een daarvan zit, dan opent dush daar de volgende keer.</p>
           <ul class="list">
             <li><strong>Caches en temp</strong> heeft geen map nodig. Die controleert de caches en tijdelijke mappen waarin alleen spullen staan die je Mac opnieuw kan opbouwen: systeem- en app-caches, logs, de Prullenmand, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, de DerivedData en DeviceSupport van Xcode, de simulatorcaches en die van VS&nbsp;Code. Mappen die er niet zijn of niet veilig zijn vallen af, en geneste mappen tellen maar één keer mee.</li>
             <li><strong>Downloads en Bureaublad</strong> houdt de twee plekken in de gaten waar bestanden zich opstapelen.</li>
             <li><strong>Grote bestanden</strong> heeft ook geen map nodig: de grootste bestanden in je thuismap boven de 100&nbsp;MB, met hoe groot ze zijn en hoe lang ze er al staan. Het grootste eerst, of het oudste eerst om te vinden waar niemand meer naar omkijkt.</li>
             <li><strong>Hele Mac</strong> is je hele opstartschijf, elk bestand één keer geteld. Die meten duurt langer dan de andere secties, van een paar seconden tot een paar minuten, dus om je processor en batterij te sparen doet dush het alleen als je op Scan opnieuw klikt. Je laatste resultaat blijft daar zolang staan.</li>
-            <li><strong>Scan deze map</strong> doet de scan opnieuw, alleen voor de map die je hebt geselecteerd, met de opties die al op het scherm staan. Vorige brengt je terug naar de scan waar je naar keek.</li>
+            <li><strong>Scan deze map</strong> scant alleen de map die je hebt geselecteerd, met de opties van de scan waarin je zit, en zet die bij je recente mappen. Heeft dush dat de afgelopen drie dagen al gedaan, dan zie je meteen die scan. Vorige brengt je terug naar de scan waar je naar keek.</li>
             <li><strong>Tot nu toe grootste</strong>: bij een eerste scan verschijnen grote bestanden zodra ze gevonden zijn, mappen zodra ze gemeten zijn. Druk op Esc om op elk moment te stoppen.</li>
             <li><strong>Scan opnieuw</strong>, in elke sectie, werkt die meteen bij (⌘R). Updates blokkeren het venster nooit: de scans wachten op de achtergrond hun beurt af, en niets wacht op hen.</li>
             <li><strong>Jouw opties</strong>: een minimumgrootte (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB of je eigen, zoals <code>1.5 GiB</code>), alleen bestanden of mappen, sla over <code>node_modules</code>, <code>.git</code> en andere ontwikkelaarsmappen, of sluit namen en patronen uit zoals <code>*.xcarchive</code>.</li>
@@ -196,7 +196,7 @@
           <p>Vergelijkt de nieuwste scan van een sectie met een van zijn laatste 10 scans. <span class="growth">Is 7,90&nbsp;GB gegroeid</span> sinds 20 sep, 18:40 uur: dit is gegroeid, dit is gekrompen en dit is nieuw.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Dubbelklik een rij om erin verder te gaan: een map die er nog is wordt gescand, een bestand opent in de Finder. Vorige en Volgende in de titelbalk (⌘[ en ⌘]) lopen door de schermen die je hebt bezocht, en elk komt terug met zijn filter en zijn selectie.</p>
+      <p class="caption center" data-reveal>Dubbelklik een rij om erin verder te gaan: een map die er nog is opent met zijn eigen scan, een bestand opent in de Finder. Vorige en Volgende in de titelbalk (⌘[ en ⌘]) lopen door de schermen die je hebt bezocht, en elk komt terug met zijn filter en zijn selectie.</p>
     </section>
 
     <!-- AI -->
@@ -307,7 +307,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Recent</h3>
-          <p>De laatste 10 mappen die je via Nieuwe scan hebt gescand, één klik weg in de navigatiekolom. Vergeet deze sectie wist de opgeslagen scans van één sectie, Wis opgeslagen gegevens… die van allemaal.</p>
+          <p>De laatste 10 mappen die je hebt gescand, via Nieuwe scan of door er vanuit een scan in te gaan, één klik weg in de navigatiekolom. Vergeet deze sectie wist de opgeslagen scans van één sectie, Wis opgeslagen gegevens… die van allemaal.</p>
           <p class="quote">Opgeslagen scans vergeten. Je bestanden zijn niet aangeraakt.</p>
         </li>
         <li class="card" data-reveal>
@@ -376,8 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">In de Terminal</p>
         <h2 class="heading" id="cli-title">Dezelfde engine, in je shell.</h2>
-        <p>dush begon als opdrachtregeltool, en dat is het nog steeds. De app en de CLI delen dezelfde engine, dus ze geven dezelfde groottes voor dezelfde map, tot op de byte nauwkeurig. Installeer het met Homebrew:</p>
-        <p>In een terminal opent <code>dush</code> zonder meer een sessie over het hele venster, met dezelfde live secties als de app, in het Engels: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, alleen gescand als je op <code>r</code> drukt), je Favorites en de laatste 10 mappen in Recent. Elke sectie opent op zijn laatste scan en werkt zichzelf erachter bij. Geef <code>dush</code> een pad of een optie, of stuur de uitvoer door, en het scant één keer en drukt de tabel af, zoals hieronder.</p>
+        <p>dush begon als opdrachtregeltool, en dat is het nog steeds. De app en de CLI delen dezelfde engine, dus ze geven dezelfde groottes voor dezelfde map, tot op de byte nauwkeurig. Installeer het met Homebrew, dat het met Xcode 26 bouwt:</p>
+        <p>In een terminal opent <code>dush</code> zonder meer een sessie over het hele venster, met dezelfde live secties als de app, in het Engels: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, alleen gescand als je op <code>r</code> drukt), je Favorites en de laatste 10 mappen in Recent. Elke sectie opent op zijn laatste scan en werkt zichzelf, als die scan drie dagen oud is, erachter bij door alleen opnieuw te meten wat er is gewijzigd. Je kunt ook in je eigen woorden vragen: Apple Intelligence, op deze Mac, kiest het commando of antwoordt, en kan zich vergissen. Bij een item in de resultaten vraagt <code>a</code> of het veilig is om te verwijderen. Geef <code>dush</code> een pad of een optie, of stuur de uitvoer door, en het scant één keer en drukt de tabel af, zoals hieronder.</p>
       </div>
 
       <div class="command" data-reveal>

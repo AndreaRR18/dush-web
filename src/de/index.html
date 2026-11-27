@@ -111,7 +111,7 @@
           <span class="fact__text">Elemente in etwa einer Sekunde, auf einem Mac mit Apple Silicon. Schneller als <code>du</code> auf demselben Ordner.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">Cache-, Log- und Temp-Orte, die Caches &amp; Temp prüft. Kein Ordner nötig.</span>
         </li>
         <li>
@@ -128,13 +128,13 @@
           <p class="label">dush für Mac</p>
           <h2 class="heading" id="scan-title">Wirf einen Ordner rein, sieh, was groß ist.</h2>
           <p>Zieh einen oder mehrere Ordner auf das Fenster oder das Dock-Symbol oder drück ⌘O. dush geht sie parallel durch und zählt jede Datei, versteckte und App-Bundles eingeschlossen, während du zusiehst, wie die Zahlen steigen.</p>
-          <p>Die Seitenleiste hält deine üblichen Orte vermessen: Caches &amp; Temp, Downloads &amp; Schreibtisch, Große Dateien, Entwickler-Caches und Ganzer Mac. Jeder Bereich öffnet sofort mit seinem letzten Scan und aktualisiert sich im Hintergrund, während du dich weiter umsiehst.</p>
+          <p>Die Seitenleiste hält deine üblichen Orte vermessen: Caches &amp; Temp, Downloads &amp; Schreibtisch, Große Dateien, Entwickler-Caches und Ganzer Mac. Jeder Bereich öffnet sofort mit seinem letzten Scan. Von selbst aktualisiert dush ihn erst, wenn dieser Scan mindestens drei Tage alt ist, im Hintergrund, während du dich weiter umsiehst; Ganzer Mac wartet auf dich. Ein Update misst nur das neu, was sich seit dem letzten Scan geändert hat. Beendest du dush in einem dieser Bereiche, öffnet es sich beim nächsten Mal dort.</p>
           <ul class="list">
             <li><strong>Caches &amp; Temp</strong> braucht keinen Ordner. Der Scan prüft die Cache- und Temp-Ordner, in denen nur Zeug liegt, das dein Mac neu aufbauen kann: System- und App-Caches, Logs, der Papierkorb, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcodes DerivedData und DeviceSupport, die Simulator-Caches und die von VS&nbsp;Code. Ordner, die nicht da oder nicht sicher sind, bleiben außen vor, und verschachtelte werden nur einmal gezählt.</li>
             <li><strong>Downloads &amp; Schreibtisch</strong> behält die zwei Orte im Blick, an denen sich Dateien stapeln.</li>
             <li><strong>Große Dateien</strong> braucht auch keinen Ordner: die größten Dateien in deinem Benutzerordner über 100&nbsp;MB, mit ihrer Größe und damit, wie lange sie schon dort liegt. Die größte zuerst, oder die älteste zuerst, um die zu finden, an die niemand mehr gerührt hat.</li>
             <li><strong>Ganzer Mac</strong> ist dein ganzes Startvolume, jede Datei einmal gezählt. Ihn zu messen dauert länger als die anderen Bereiche, von ein paar Sekunden bis zu ein paar Minuten. Um Prozessor und Batterie zu schonen, macht dush das deshalb nur, wenn du auf „Erneut scannen“ klickst. Dein letztes Ergebnis bleibt so lange dort.</li>
-            <li><strong>Diesen Ordner scannen</strong> wiederholt den Scan nur für den Ordner, den du ausgewählt hast, mit den Optionen, die schon auf dem Bildschirm stehen. Zurück bringt dich zu dem Scan, den du gerade angesehen hast.</li>
+            <li><strong>Diesen Ordner scannen</strong> scannt nur den Ordner, den du ausgewählt hast, mit den Optionen des Scans, in dem du bist, und nimmt ihn bei den zuletzt benutzten Ordnern auf. Hat dush das in den letzten drei Tagen schon getan, siehst du sofort diesen Scan. Zurück bringt dich zu dem Scan, den du gerade angesehen hast.</li>
             <li><strong>Bisher größte</strong>: Beim ersten Scan erscheinen große Dateien, sobald sie gefunden werden, Ordner, sobald sie gemessen sind. Drück Esc, um jederzeit zu stoppen.</li>
             <li><strong>Erneut scannen</strong> bringt jeden Bereich sofort auf den neuesten Stand (⌘R). Aktualisierungen blockieren das Fenster nie: Die Scans wechseln sich im Hintergrund ab, und nichts wartet auf sie.</li>
             <li><strong>Deine Optionen</strong>: eine Mindestgröße (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB oder deine eigene, wie <code>1.5 GiB</code>), nur Dateien oder Ordner, überspringe <code>node_modules</code>, <code>.git</code> und andere Entwickler-Ordner, oder schließe Namen und Muster aus wie <code>*.xcarchive</code>.</li>
@@ -196,7 +196,7 @@
           <p>Vergleicht den neuesten Scan eines Bereichs mit einem seiner letzten 10 Scans. <span class="growth">Ist um 7,90&nbsp;GB gewachsen</span> seit 20. Sept, 18:40 Uhr: hier ist, was gewachsen ist, was geschrumpft ist und was neu ist.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Doppelklicke eine Zeile, um weiterzugehen: ein Ordner, der noch da ist, wird gescannt, eine Datei öffnet sich im Finder. Zurück und Vorwärts in der Titelleiste (⌘[ und ⌘]) gehen durch die Bildschirme, die du besucht hast, und jeder kommt mit seinem Filter und seiner Auswahl zurück.</p>
+      <p class="caption center" data-reveal>Doppelklicke eine Zeile, um weiterzugehen: ein Ordner, der noch da ist, öffnet sich mit eigenem Scan, eine Datei im Finder. Zurück und Vorwärts in der Titelleiste (⌘[ und ⌘]) gehen durch die Bildschirme, die du besucht hast, und jeder kommt mit seinem Filter und seiner Auswahl zurück.</p>
     </section>
 
     <!-- AI -->
@@ -307,7 +307,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Zuletzt benutzt</h3>
-          <p>Die letzten 10 Ordner, die du über „Neuer Scan“ gescannt hast, einen Klick entfernt in der Seitenleiste. „Diesen Bereich vergessen“ entfernt die gesicherten Scans eines Bereichs, „Gesicherte Daten entfernen …“ die aller Bereiche.</p>
+          <p>Die letzten 10 Ordner, die du gescannt hast, über „Neuer Scan“ oder aus einem Scan heraus, einen Klick entfernt in der Seitenleiste. „Diesen Bereich vergessen“ entfernt die gesicherten Scans eines Bereichs, „Gesicherte Daten entfernen …“ die aller Bereiche.</p>
           <p class="quote">Gesicherte Scans vergessen. Deine Dateien wurden nicht angetastet.</p>
         </li>
         <li class="card" data-reveal>
@@ -376,8 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">Im Terminal</p>
         <h2 class="heading" id="cli-title">Dieselbe Engine, in deiner Shell.</h2>
-        <p>dush begann als Kommandozeilen-Tool, und das ist es immer noch. App und CLI teilen dieselbe Engine, melden also für denselben Ordner dieselben Größen, bis auf das Byte genau. Installiere sie mit Homebrew:</p>
-        <p>Im Terminal öffnet <code>dush</code> allein eine Vollbild-Sitzung mit denselben Live-Bereichen wie die App, auf Englisch: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, nur gescannt, wenn du <code>r</code> drückst), deine Favorites und die letzten 10 Ordner in Recent. Jeder Bereich öffnet mit seinem letzten Scan und aktualisiert sich dahinter. Gib <code>dush</code> einen Pfad oder eine Option, oder leite die Ausgabe um, dann scannt es einmal und gibt die Tabelle aus, wie unten.</p>
+        <p>dush begann als Kommandozeilen-Tool, und das ist es immer noch. App und CLI teilen dieselbe Engine, melden also für denselben Ordner dieselben Größen, bis auf das Byte genau. Installiere sie mit Homebrew, das sie mit Xcode 26 baut:</p>
+        <p>Im Terminal öffnet <code>dush</code> allein eine Vollbild-Sitzung mit denselben Live-Bereichen wie die App, auf Englisch: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, nur gescannt, wenn du <code>r</code> drückst), deine Favorites und die letzten 10 Ordner in Recent. Jeder Bereich öffnet mit seinem letzten Scan; ist der drei Tage alt, aktualisiert er sich dahinter und misst dabei nur das neu, was sich geändert hat. Du kannst auch in eigenen Worten fragen: Apple Intelligence auf diesem Mac wählt den Befehl oder antwortet, und kann sich irren. Bei einem Element in den Ergebnissen fragt <code>a</code>, ob es sicher löschbar ist. Gib <code>dush</code> einen Pfad oder eine Option, oder leite die Ausgabe um, dann scannt es einmal und gibt die Tabelle aus, wie unten.</p>
       </div>
 
       <div class="command" data-reveal>

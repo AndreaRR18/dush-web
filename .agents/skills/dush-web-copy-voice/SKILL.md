@@ -44,8 +44,8 @@ Scan* to **Caches & Temp**: names change in the app first, and the site follows.
 
 3. **Who does what to whom?** Name the subject of every clause: dush, the model, the user, a tool.
    Write it out where the English leaves it out.
-4. **Is it a fact?** Numbers, versions, sizes, counts and names (512 MB, 34 locations, macOS 26,
-   macOS 14, eight languages, sample sizes) come from the sibling repos. Never invent or round one.
+4. **Is it a fact?** Numbers, versions, sizes, counts and names (512 MB, 33 locations, macOS 26,
+   Xcode 26, eight languages, sample sizes) come from the sibling repos. Never invent or round one.
 
 ## The voice
 

@@ -111,7 +111,7 @@
           <span class="fact__text">elementos medidos em cerca de um segundo, num Mac com Apple silicon. Mais rápido do que <code>du</code> na mesma pasta.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">localizações de caches, logs e ficheiros temporários verificadas por Caches e temp. Sem pasta para escolher.</span>
         </li>
         <li>
@@ -128,13 +128,13 @@
           <p class="label">dush para Mac</p>
           <h2 class="heading" id="scan-title">Largue uma pasta, veja o que pesa.</h2>
           <p>Arraste uma ou mais pastas para a janela ou para o ícone no Dock, ou prima ⌘O. O dush percorre-as em paralelo e conta cada ficheiro, incluindo os ocultos e os pacotes de apps, enquanto vê os números subirem.</p>
-          <p>A barra lateral mantém medidos os sítios de sempre: Caches e temp, Descargas e Secretária, Ficheiros grandes, Caches de programador e Mac inteiro. Cada um abre logo na última análise e atualiza-se sozinho em segundo plano, enquanto continua a ver.</p>
+          <p>A barra lateral mantém medidos os sítios de sempre: Caches e temp, Descargas e Secretária, Ficheiros grandes, Caches de programador e Mac inteiro. Cada um abre logo na última análise. O dush só o atualiza por si quando essa análise tem pelo menos três dias, em segundo plano, enquanto continua a ver; o Mac inteiro espera por si. Uma atualização mede outra vez só o que mudou desde a última análise. Se sair enquanto está num deles, da próxima vez o dush abre aí.</p>
           <ul class="list">
             <li><strong>Caches e temp</strong> não precisa de pasta. Verifica as caches e pastas temporárias que só guardam coisas que o seu Mac pode reconstruir: caches do sistema e das apps, logs, o Lixo, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, o DerivedData e o DeviceSupport do Xcode, as caches dos simuladores e as do VS&nbsp;Code. As pastas que não existem ou não são seguras ficam de fora, e as aninhadas contam só uma vez.</li>
             <li><strong>Descargas e Secretária</strong> fica de olho nos dois sítios onde os ficheiros se acumulam.</li>
             <li><strong>Ficheiros grandes</strong> também não precisa de pasta: os maiores ficheiros da sua pasta pessoal acima de 100&nbsp;MB, com o que ocupam e há quanto tempo ali estão. O maior primeiro, ou os mais antigos primeiro para encontrar os que já ninguém abre.</li>
             <li><strong>Mac inteiro</strong> é todo o disco de arranque, com cada ficheiro contado uma vez. Medi-lo demora mais do que as outras secções, de alguns segundos a alguns minutos, por isso, para poupar o processador e a bateria, o dush só o faz quando carrega em Analisar novamente. Entretanto, o seu último resultado fica ali.</li>
-            <li><strong>Analisar esta pasta</strong> repete a análise só da pasta que selecionou, com as opções que já estão no ecrã. Anterior volta à análise que estava a ver.</li>
+            <li><strong>Analisar esta pasta</strong> analisa só a pasta que selecionou, com as opções da análise em que está, e junta-a às pastas recentes. Se o dush já o fez nos últimos três dias, vê logo essa análise. Anterior volta à análise que estava a ver.</li>
             <li><strong>Maiores até agora</strong>: numa primeira análise, os ficheiros grandes aparecem assim que são encontrados, as pastas assim que são medidas. Prima Esc para parar a qualquer momento.</li>
             <li><strong>Analisar novamente</strong>, em cada secção, atualiza-a já (⌘R). As atualizações nunca bloqueiam a janela: as análises esperam a sua vez em segundo plano, e nada espera por elas.</li>
             <li><strong>As suas opções</strong>: um tamanho mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB ou o seu próprio, como <code>1.5 GiB</code>), apenas ficheiros ou pastas, salte <code>node_modules</code>, <code>.git</code> e outras pastas de programação, ou exclua nomes e padrões como <code>*.xcarchive</code>.</li>
@@ -196,7 +196,7 @@
           <p>Compara a análise mais recente de uma secção com uma das suas últimas 10 análises. <span class="growth">Cresceu 7,90&nbsp;GB</span> desde 20 set, 18:40: isto é o que cresceu, o que diminuiu e o que é novo.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Faça duplo clique numa linha para continuar lá dentro: uma pasta que ainda existe é analisada, um ficheiro abre no Finder. Anterior e Avançar na barra de título (⌘[ e ⌘]) percorrem os ecrãs que visitou, e cada um volta com o seu filtro e a sua seleção.</p>
+      <p class="caption center" data-reveal>Faça duplo clique numa linha para continuar lá dentro: uma pasta que ainda existe abre com a sua própria análise, um ficheiro abre no Finder. Anterior e Avançar na barra de título (⌘[ e ⌘]) percorrem os ecrãs que visitou, e cada um volta com o seu filtro e a sua seleção.</p>
     </section>
 
     <!-- AI -->
@@ -307,7 +307,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Recentes</h3>
-          <p>As últimas 10 pastas que analisou a partir de Nova análise, a um clique na barra lateral. Esquecer esta secção tira as análises guardadas de uma secção, e Limpar dados guardados… as de todas.</p>
+          <p>As últimas 10 pastas que analisou, a partir de Nova análise ou entrando nelas a partir de uma análise, a um clique na barra lateral. Esquecer esta secção tira as análises guardadas de uma secção, e Limpar dados guardados… as de todas.</p>
           <p class="quote">Análises guardadas esquecidas. Os seus ficheiros não foram tocados.</p>
         </li>
         <li class="card" data-reveal>
@@ -376,8 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">No Terminal</p>
         <h2 class="heading" id="cli-title">O mesmo motor, na sua shell.</h2>
-        <p>O dush começou como ferramenta de linha de comandos, e ainda o é. A app e a CLI partilham o mesmo motor, por isso dão os mesmos tamanhos para a mesma pasta, até ao byte. Instale-o com o Homebrew:</p>
-        <p>Num terminal, <code>dush</code> sozinho abre uma sessão em ecrã inteiro com as mesmas secções sempre atualizadas da app, em inglês: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, analisado só quando prime <code>r</code>), os seus Favorites e as últimas 10 pastas em Recent. Cada uma abre na última análise e atualiza-se por trás. Dê ao <code>dush</code> um caminho ou uma opção, ou redirecione a saída, e ele analisa uma vez e mostra a tabela, como abaixo.</p>
+        <p>O dush começou como ferramenta de linha de comandos, e ainda o é. A app e a CLI partilham o mesmo motor, por isso dão os mesmos tamanhos para a mesma pasta, até ao byte. Instale-o com o Homebrew, que o compila com o Xcode 26:</p>
+        <p>Num terminal, <code>dush</code> sozinho abre uma sessão em ecrã inteiro com as mesmas secções sempre atualizadas da app, em inglês: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, analisado só quando prime <code>r</code>), os seus Favorites e as últimas 10 pastas em Recent. Cada uma abre na última análise e, quando esta tem três dias, atualiza-se por trás a medir outra vez só o que mudou. Também pode perguntar pelas suas palavras: a Apple Intelligence, neste Mac, escolhe o comando ou responde, e pode enganar-se. Num item dos resultados, <code>a</code> pergunta se é seguro eliminar. Dê ao <code>dush</code> um caminho ou uma opção, ou redirecione a saída, e ele analisa uma vez e mostra a tabela, como abaixo.</p>
       </div>
 
       <div class="command" data-reveal>

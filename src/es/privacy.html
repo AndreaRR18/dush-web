@@ -84,7 +84,7 @@
           <p class="label">dush para Mac, la línea de comandos y este sitio</p>
           <h1 class="title" id="privacy-title">Política de <em>privacidad</em></h1>
           <p class="lead">dush para Mac no recoge nada ni envía nada. Esta página dice exactamente qué lee, qué guarda y dónde.</p>
-          <p class="caption">Última actualización <time datetime="2026-11-25">25 de noviembre de 2026</time></p>
+          <p class="caption">Última actualización <time datetime="2026-11-27">27 de noviembre de 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -117,6 +117,7 @@
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">Qué lee</h2>
         <p>Para medir tu disco, dush lee los nombres, tamaños y fechas de archivos y carpetas. No lee lo que hay dentro de tus archivos.</p>
+        <p>Para saber qué carpetas han cambiado desde el último escaneo de una sección, dush también pregunta a macOS por su registro local de cambios del sistema de archivos: solo rutas de carpetas. Ese registro se queda en tu Mac y no se envía nada a ninguna parte.</p>
         <p>Dos cosas van más allá, y solo cuando las pides:</p>
         <ul class="list">
           <li><strong>Vista rápida</strong> es la vista previa propia de macOS. macOS muestra el archivo, y nada sale de tu Mac.</li>
@@ -129,11 +130,12 @@
         <p>dush solo guarda estas cosas en este Mac, en la carpeta propia de la app. No sincroniza ni sube nada.</p>
         <ul class="list">
           <li><strong>Escaneos guardados de cada sección:</strong> de cada sitio de la barra lateral, favoritos y carpetas recientes incluidos, sus 10 últimos escaneos: cuándo, y los nombres, rutas y tamaños de los elementos más grandes encontrados. La lista de archivos grandes y la medición de tus cachés de desarrollador se guardan igual.</li>
+          <li><strong>Un mapa de las carpetas de cada sección</strong> (su índice de árbol): los nombres y tamaños de las carpetas que ha escaneado, favoritos y carpetas recientes incluidos, para que la próxima actualización vuelva a medir solo lo que ha cambiado. Es lo más grande que guarda dush, y se queda en este Mac como el resto.</li>
           <li><strong>Ajustes:</strong> tus opciones, incluidos tus favoritos y sus límites.</li>
           <li><strong>Respuestas recordadas de Apple Intelligence,</strong> con los detalles del elemento del que trata cada una, para no repetir la misma pregunta.</li>
           <li><strong>Un marcador de solo lectura</strong> del acceso al disco que diste, para no tener que darlo de nuevo.</li>
         </ul>
-        <p>Olvidar esta sección, en el menú de una sección, quita sus escaneos guardados; un favorito sigue siendo favorito. Quitar de Favoritos y Quitar de Recientes sacan una carpeta de la barra lateral, con sus escaneos guardados. Vaciar datos guardados…, al final de la barra lateral y en Ajustes › General, quita los escaneos guardados de todas las secciones, la lista de archivos grandes y la medición de las cachés de desarrollador. Ninguno toca tus archivos, y las respuestas recordadas, los ajustes y tus favoritos se quedan.</p>
+        <p>Olvidar esta sección, en el menú de una sección, quita sus escaneos guardados y su mapa de carpetas; un favorito sigue siendo favorito. Quitar de Favoritos y Quitar de Recientes sacan una carpeta de la barra lateral, con sus escaneos guardados y su mapa. Vaciar datos guardados…, al final de la barra lateral y en Ajustes › General, quita los escaneos guardados y los mapas de carpetas de todas las secciones, la lista de archivos grandes y la medición de las cachés de desarrollador. Ninguno toca tus archivos, y las respuestas recordadas, los ajustes y tus favoritos se quedan.</p>
         <p>Tres cosas más que saber:</p>
         <ul class="list">
           <li>El motor de escaneo escribe conteos y tiempos en el propio registro de macOS en tu Mac. Las rutas y los nombres aparecen ahí como <code>&lt;private&gt;</code>, y dush no envía ese registro a ninguna parte.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">La herramienta de línea de comandos</h2>
-        <p>La CLI de <code>dush</code> tampoco recoge nada. Su sesión conserva escaneos guardados del mismo tipo, la lista de archivos grandes, la medición de las cachés de desarrollador, las respuestas recordadas y sus ajustes en su propia carpeta, <code>~/Library/Application Support/dush/CLI</code>, y solo allí: <code>/forget</code> y <code>/clear-data</code> quitan los escaneos guardados, nunca tus archivos. Solo toca la red en <code>dush update</code>, que consulta la última versión mediante <code>git</code> y actualiza mediante <code>brew</code>. Una copia que compilaste desde el código fuente se obtiene con <code>git</code> y se compila de nuevo con las herramientas de Swift, que descargan lo que la compilación necesita.</p>
+        <p>La CLI de <code>dush</code> tampoco recoge nada. Su sesión conserva escaneos guardados del mismo tipo, los nombres y tamaños de las carpetas que ha escaneado cada sección, la lista de archivos grandes, la medición de las cachés de desarrollador, las respuestas recordadas y sus ajustes en su propia carpeta, <code>~/Library/Application Support/dush/CLI</code>, y solo allí: <code>/forget</code> y <code>/clear-data</code> quitan los escaneos guardados y los mapas de carpetas, nunca tus archivos. Solo toca la red en <code>dush update</code>, que consulta la última versión mediante <code>git</code> y actualiza mediante <code>brew</code>. Una copia que compilaste desde el código fuente se obtiene con <code>git</code> y se compila de nuevo con las herramientas de Swift, que descargan lo que la compilación necesita. Apple Intelligence, en la sesión, funciona en tu Mac y solo cuando preguntas. Recibe lo que escribes y el nombre de la vista en la que estás. Para responder a una pregunta sobre esa vista, recibe además tus preguntas anteriores con sus respuestas, y las rutas y tamaños de un máximo de 20 elementos, con sus proporciones o cambios. Sobre un solo elemento, recibe el mismo tipo de datos que en la app. dush deja los elementos que protege fuera de lo que le describe, y nunca le da el contenido de los archivos.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

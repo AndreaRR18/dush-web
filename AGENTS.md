@@ -167,9 +167,9 @@ Small, quick and optional, as in the app (design guide §11):
 
 | Folder | What | State |
 |---|---|---|
-| `../dush` | The CLI (Swift). `brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git` then `brew install andre_rori/tap/dush` | v1.2.0, released |
-| `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.0.0 |
-| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | v1.2.0, released on the Mac App Store (id6831255058) |
+| `../dush` | The CLI (Swift). `brew tap andre_rori/tap https://codeberg.org/Andre_Rori/homebrew-tap.git` then `brew install andre_rori/tap/dush` | v2.0.0, released; macOS 26+, Homebrew builds it with Xcode 26 |
+| `../dush-core` | The scanning engine, shared by CLI and app, so both report the same sizes as `du` | v1.3.0 |
+| `../dush-desktop` | dush for Mac, SwiftUI, macOS 26+ | v1.2.0 on the Mac App Store (id6831255058); 2.0.0 in preparation. Copy about 2.0.0 features is published only once it is on the store |
 
 The CLI and the engine live on Codeberg: `https://codeberg.org/Andre_Rori/{dush,dush-core}`.
 `dush-desktop` is private for good, and visitors get a 404 there. So the site never calls the app
@@ -333,16 +333,17 @@ Labels are verb + object, Title Case in English: *Copy Command*, *Show on Codebe
 
 - **CLI:** `dush [paths] [--min-size 1GB] [-f|-d] [-t N] [-e] [--exclude NAME] [--json]`. With no
   argument on a terminal, a full-screen session with the same live sections as the app
-  (`/entire`, Favorites, Recent; English only); `dush --no-tui`, a path or a pipe scans once (with
-  no path, a curated cleanup scan of 34 cache and temp locations). Sizes match `du`; ~150,000 items
-  in about a second. Live progress with funny messages. `dush update`. Read-only.
+  (`/entire`, Favorites, Recent; English only), requests in your own words and "Safe to delete?"
+  (`a`) through Apple Intelligence; `dush --no-tui`, a path or a pipe scans once (with no path, a
+  curated cleanup scan of 33 cache and temp locations). Sizes match `du`; ~150,000 items in about
+  a second. Live progress with funny messages. `dush update`. Read-only.
 - **Mac app:**
-  - Live sections in the sidebar, each opening on its last scan and updating itself in the background (scans take turns; nothing waits for them; Rescan, ⌘R, in every section): Caches & Temp (never called "Full Scan": it reads a few GB of caches, not the whole disk), Downloads & Desktop, Large files (every file in the home folder over 100 MB with its age, largest or oldest first), Developer Caches and Entire Mac (the whole startup disk, scanned only when you press Rescan).
-  - New Scan: drop a folder or choose one; the last 10 are kept in Recent. Scan This Folder repeats the scan on the selected folder, with the options on screen; Back returns to the previous scan.
+  - Live sections in the sidebar, each opening on its last scan and updating itself in the background only once that scan is three days old (the app reopens on the section it was on; scans take turns; nothing waits for them; Rescan, ⌘R, in every section): Caches & Temp (never called "Full Scan": it reads a few GB of caches, not the whole disk), Downloads & Desktop, Large files (every file in the home folder over 100 MB with its age, largest or oldest first), Developer Caches and Entire Mac (the whole startup disk, scanned only when you press Rescan).
+  - New Scan: drop a folder or choose one. Recent keeps the last 10 folders, from New Scan or opened from a scan. Scan This Folder (or a double-click) scans the selected folder with the options of the scan it is in, or shows its last scan if that is under three days old with the same options; Back returns to the previous scan.
   - Live counters, a rotating funny message, the biggest items so far.
   - Results: a big serif total, a composition bar, a list with share bars; List, Map (treemap)
-    and What changed (compares a section's scan with one of its last 10). Double-clicking a row goes into it (a folder is
-    scanned, a file is shown in Finder). Back and Forward in the title bar walk the visited
+    and What changed (compares a section's scan with one of its last 10). Double-clicking a row goes into it (a folder opens
+    its scan, a file is shown in Finder). Back and Forward in the title bar walk the visited
     screens. Export to JSON, Markdown, CSV.
   - Saved scans: each section keeps its last 10. Forget This Section, Remove from Favorites / Remove from Recent (with Undo) and Clear Saved Data… are the only things dush removes, and only its own data.
   - "Safe to delete?": Apple Intelligence on the Mac, metadata only. Verdicts: Safe to delete

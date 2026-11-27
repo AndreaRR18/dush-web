@@ -134,7 +134,7 @@
         <p>Under the results, dush compares its total with the used space your disk reports. The difference is APFS snapshots, purgeable space and what dush couldn't read, such as other accounts' files. Full Disk Access, in Settings › Privacy, lets dush read some of what it couldn't.</p>
 
         <h3 class="card__title">Can I keep using dush while it scans?</h3>
-        <p>Yes. Every section opens on its last scan at once and updates itself in the background, so you can look at results, open other sections and ask Apple Intelligence in the meantime. Scans take turns, and Entire Mac has a lane of its own, so it never holds up the others.</p>
+        <p>Yes. Every section opens on its last scan at once, and updates run in the background, so you can look at results, open other sections and ask Apple Intelligence in the meantime. When it opens, dush updates only the sections whose last scan is at least three days old. Scans take turns, and Entire Mac has a lane of its own, so it never holds up the others.</p>
         <p>Rescan (⌘R) brings the section on screen up to date now. Esc stops its update, and its last scan stays.</p>
 
         <h3 class="card__title">Why can an Apple Intelligence answer be wrong?</h3>
@@ -142,7 +142,7 @@
         <p>Take a verdict as a starting point, and look at the item yourself before you decide. The app shows what the model was told, under the answer.</p>
 
         <h3 class="card__title">How do I clear what dush saved?</h3>
-        <p>Choose Clear Saved Data… at the bottom of the sidebar or in Settings › General. dush asks first, then removes the saved scans of every section, favorites and recent folders included. Your files stay exactly where they are. Remembered Apple Intelligence answers, your settings and your favorites stay too.</p>
+        <p>Choose Clear Saved Data… at the bottom of the sidebar or in Settings › General. dush asks first, then removes the saved scans of every section, favorites and recent folders included, along with the Large files list and the developer caches' measurement. Your files stay exactly where they are. Remembered Apple Intelligence answers, your settings and your favorites stay too.</p>
         <p>For one section, choose Forget This Section from its menu. Remove from Favorites and Remove from Recent take a folder out of the sidebar, with its saved scans. Each of these three can be undone right away.</p>
 
         <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush never deletes files. If you decide to remove something, that's always your own step, in Finder or Terminal.</span></p>

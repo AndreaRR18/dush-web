@@ -111,7 +111,7 @@
           <span class="fact__text">elementi misurati in circa un secondo, su un Mac con chip Apple. Più veloce di <code>du</code> sulla stessa cartella.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">percorsi di cache, log e temporanei controllati da Cache e temporanei. Nessuna cartella da scegliere.</span>
         </li>
         <li>
@@ -128,13 +128,13 @@
           <p class="label">dush per Mac</p>
           <h2 class="heading" id="scan-title">Trascina una cartella, vedi cosa pesa.</h2>
           <p>Trascina una o più cartelle sulla finestra o sull'icona nel Dock, oppure premi ⌘O. dush le percorre in parallelo e conta ogni file, nascosti e bundle delle app inclusi, mentre guardi i numeri salire.</p>
-          <p>La barra laterale tiene misurati i tuoi posti di sempre: Cache e temporanei, Download e Scrivania, File di grandi dimensioni, Cache di sviluppo e Tutto il Mac. Ognuno si apre subito sull'ultima scansione e si aggiorna da solo in background, mentre continui a guardarti intorno.</p>
+          <p>La barra laterale tiene misurati i tuoi posti di sempre: Cache e temporanei, Download e Scrivania, File di grandi dimensioni, Cache di sviluppo e Tutto il Mac. Ognuno si apre subito sull'ultima scansione. dush lo aggiorna da solo soltanto quando quella scansione ha almeno tre giorni, in background, mentre continui a guardarti intorno; Tutto il Mac aspetta te. Un aggiornamento misura di nuovo solo ciò che è cambiato dall'ultima scansione. Se esci mentre sei su uno di questi, la prossima volta dush si apre lì.</p>
           <ul class="list">
             <li><strong>Cache e temporanei</strong> non richiede una cartella. Controlla le cache e le cartelle temporanee che contengono solo roba che il tuo Mac può ricostruire: cache di sistema e delle app, log, il Cestino, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, DerivedData e DeviceSupport di Xcode, le cache dei simulatori e quelle di VS&nbsp;Code. Le cartelle che non ci sono o non sono sicure restano fuori, e quelle annidate vengono contate una volta sola.</li>
             <li><strong>Download e Scrivania</strong> tiene d'occhio i due posti dove i file si accumulano.</li>
             <li><strong>File di grandi dimensioni</strong> non ha bisogno di una cartella: i file più grandi della tua cartella utente sopra i 100&nbsp;MB, con quanto pesano e da quanto tempo sono lì. Dal più grande, oppure prima i più vecchi per trovare quelli che nessuno apre da un pezzo.</li>
             <li><strong>Tutto il Mac</strong> è tutto il disco di avvio, con ogni file contato una volta. Misurarlo richiede più tempo delle altre sezioni, da qualche secondo a qualche minuto, quindi per risparmiare CPU e batteria dush lo fa solo quando premi Riscansiona. Nel frattempo il tuo ultimo risultato resta lì.</li>
-            <li><strong>Scansiona questa cartella</strong> rifà la scansione solo della cartella selezionata, con le opzioni che sono già sullo schermo. Indietro ti riporta alla scansione che stavi guardando.</li>
+            <li><strong>Scansiona questa cartella</strong> scansiona solo la cartella selezionata, con le opzioni della scansione in cui sei, e la aggiunge alle cartelle recenti. Se dush l'ha già fatto negli ultimi tre giorni, ritrovi subito quella scansione. Indietro ti riporta alla scansione che stavi guardando.</li>
             <li><strong>I più grandi finora</strong>: alla prima scansione, i file grandi compaiono appena vengono trovati, le cartelle appena sono misurate. Premi Esc per fermarti quando vuoi.</li>
             <li><strong>Riscansiona</strong>, in ogni sezione, la aggiorna subito (⌘R). Gli aggiornamenti non bloccano mai la finestra: le scansioni fanno a turno in background, e niente le aspetta.</li>
             <li><strong>Le tue opzioni</strong>: una dimensione minima (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB o una tua, come <code>1.5 GiB</code>), solo file o cartelle, salta <code>node_modules</code>, <code>.git</code> e altre cartelle di sviluppo, oppure escludi nomi e pattern come <code>*.xcarchive</code>.</li>
@@ -196,7 +196,7 @@
           <p>Confronta l'ultima scansione di una sezione con una delle sue ultime 10 scansioni. <span class="growth">È cresciuta di 7,90&nbsp;GB</span> dal 20 set, 18:40: ecco cosa è cresciuto, cosa si è ridotto e cosa è nuovo.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Doppio clic su una riga per continuare dentro: una cartella che c'è ancora viene scansionata, un file si apre nel Finder. Indietro e Avanti nella barra del titolo (⌘[ e ⌘]) percorrono le schermate che hai visitato, e ognuna torna con il suo filtro e la sua selezione.</p>
+      <p class="caption center" data-reveal>Doppio clic su una riga per continuare dentro: una cartella che c'è ancora si apre con la sua scansione, un file si apre nel Finder. Indietro e Avanti nella barra del titolo (⌘[ e ⌘]) percorrono le schermate che hai visitato, e ognuna torna con il suo filtro e la sua selezione.</p>
     </section>
 
     <!-- AI -->
@@ -307,7 +307,7 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Recenti</h3>
-          <p>Le ultime 10 cartelle che hai scansionato da Nuova scansione, a un clic nella barra laterale. Dimentica questa sezione toglie le scansioni salvate di una sezione, Svuota dati salvati… quelle di tutte.</p>
+          <p>Le ultime 10 cartelle che hai scansionato, da Nuova scansione o entrandoci da una scansione, a un clic nella barra laterale. Dimentica questa sezione toglie le scansioni salvate di una sezione, Svuota dati salvati… quelle di tutte.</p>
           <p class="quote">Scansioni salvate dimenticate. I tuoi file non sono stati toccati.</p>
         </li>
         <li class="card" data-reveal>
@@ -376,8 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">Nel Terminale</p>
         <h2 class="heading" id="cli-title">Lo stesso motore, nella tua shell.</h2>
-        <p>dush è nato come strumento da riga di comando, e lo è ancora. L'app e la CLI condividono lo stesso motore, quindi riportano le stesse dimensioni per la stessa cartella, fino al byte. Installalo con Homebrew:</p>
-        <p>In un terminale, <code>dush</code> da solo apre una sessione a schermo intero con le stesse sezioni sempre aggiornate dell'app, in inglese: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, scansionato solo quando premi <code>r</code>), i tuoi Favorites e le ultime 10 cartelle in Recent. Ognuna si apre sull'ultima scansione e si aggiorna dietro le quinte. Dai a <code>dush</code> un percorso o un'opzione, o reindirizza il suo output, e scansiona una volta e stampa la tabella, come qui sotto.</p>
+        <p>dush è nato come strumento da riga di comando, e lo è ancora. L'app e la CLI condividono lo stesso motore, quindi riportano le stesse dimensioni per la stessa cartella, fino al byte. Installalo con Homebrew, che lo compila con Xcode 26:</p>
+        <p>In un terminale, <code>dush</code> da solo apre una sessione a schermo intero con le stesse sezioni sempre aggiornate dell'app, in inglese: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, scansionato solo quando premi <code>r</code>), i tuoi Favorites e le ultime 10 cartelle in Recent. Ognuna si apre sull'ultima scansione e, quando questa ha tre giorni, si aggiorna dietro le quinte misurando di nuovo solo ciò che è cambiato. Puoi anche chiedere a parole tue: Apple Intelligence, su questo Mac, sceglie il comando o risponde, e può sbagliare. Su un elemento dei risultati, <code>a</code> chiede se si può eliminare. Dai a <code>dush</code> un percorso o un'opzione, o reindirizza il suo output, e scansiona una volta e stampa la tabella, come qui sotto.</p>
       </div>
 
       <div class="command" data-reveal>
