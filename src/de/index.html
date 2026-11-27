@@ -111,7 +111,7 @@
           <span class="fact__text">Elemente in etwa einer Sekunde, auf einem Mac mit Apple Silicon. Schneller als <code>du</code> auf demselben Ordner.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">Cache-, Log- und Temp-Orte, die Caches &amp; Temp prüft. Kein Ordner nötig.</span>
         </li>
         <li>
@@ -128,12 +128,15 @@
           <p class="label">dush für Mac</p>
           <h2 class="heading" id="scan-title">Wirf einen Ordner rein, sieh, was groß ist.</h2>
           <p>Zieh einen oder mehrere Ordner auf das Fenster oder das Dock-Symbol oder drück ⌘O. dush geht sie parallel durch und zählt jede Datei, versteckte und App-Bundles eingeschlossen, während du zusiehst, wie die Zahlen steigen.</p>
+          <p>Die Seitenleiste hält deine üblichen Orte vermessen: Caches &amp; Temp, Downloads &amp; Schreibtisch, Große Dateien, Entwickler-Caches und Ganzer Mac. Jeder Bereich öffnet sofort mit seinem letzten Scan. Von selbst aktualisiert dush ihn erst, wenn dieser Scan mindestens drei Tage alt ist, im Hintergrund, während du dich weiter umsiehst; Ganzer Mac wartet auf dich. Ein Update misst nur das neu, was sich seit dem letzten Scan geändert hat. Beendest du dush in einem dieser Bereiche, öffnet es sich beim nächsten Mal dort.</p>
           <ul class="list">
             <li><strong>Caches &amp; Temp</strong> braucht keinen Ordner. Der Scan prüft die Cache- und Temp-Ordner, in denen nur Zeug liegt, das dein Mac neu aufbauen kann: System- und App-Caches, Logs, der Papierkorb, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcodes DerivedData und DeviceSupport, die Simulator-Caches und die von VS&nbsp;Code. Ordner, die nicht da oder nicht sicher sind, bleiben außen vor, und verschachtelte werden nur einmal gezählt.</li>
-            <li><strong>Downloads &amp; Schreibtisch</strong> scannt die zwei üblichen Verdächtigen mit einem Klick.</li>
-            <li><strong>Große Dateien</strong> braucht auch keinen Ordner: die größten Dateien in deinem Benutzerordner über 100&nbsp;MB, mit ihrer Größe und damit, wie lange sie schon dort liegt. Die größte zuerst, oder die älteste zuerst, um die zu finden, an die niemand mehr gerührt hat. Die Liste bleibt gespeichert und ist beim nächsten Mal sofort da.</li>
-            <li><strong>Diesen Ordner scannen</strong> wiederholt den Scan nur für den Ordner, den du ausgewählt hast, mit den Optionen, die schon auf dem Bildschirm stehen. Der Scan, den du gerade angesehen hast, bleibt im Verlauf.</li>
-            <li><strong>Bisher größte</strong>: Große Dateien erscheinen, sobald sie gefunden werden, Ordner, sobald sie gemessen sind. Drück Esc, um jederzeit zu stoppen.</li>
+            <li><strong>Downloads &amp; Schreibtisch</strong> behält die zwei Orte im Blick, an denen sich Dateien stapeln.</li>
+            <li><strong>Große Dateien</strong> braucht auch keinen Ordner: die größten Dateien in deinem Benutzerordner über 100&nbsp;MB, mit ihrer Größe und damit, wie lange sie schon dort liegt. Die größte zuerst, oder die älteste zuerst, um die zu finden, an die niemand mehr gerührt hat.</li>
+            <li><strong>Ganzer Mac</strong> ist dein ganzes Startvolume, jede Datei einmal gezählt. Ihn zu messen dauert länger als die anderen Bereiche, von ein paar Sekunden bis zu ein paar Minuten. Um Prozessor und Batterie zu schonen, macht dush das deshalb nur, wenn du auf „Erneut scannen“ klickst. Dein letztes Ergebnis bleibt so lange dort.</li>
+            <li><strong>Diesen Ordner scannen</strong> scannt nur den Ordner, den du ausgewählt hast, mit den Optionen des Scans, in dem du bist, und nimmt ihn bei den zuletzt benutzten Ordnern auf. Hat dush das in den letzten drei Tagen schon getan, siehst du sofort diesen Scan. Zurück bringt dich zu dem Scan, den du gerade angesehen hast.</li>
+            <li><strong>Bisher größte</strong>: Beim ersten Scan erscheinen große Dateien, sobald sie gefunden werden, Ordner, sobald sie gemessen sind. Drück Esc, um jederzeit zu stoppen.</li>
+            <li><strong>Erneut scannen</strong> bringt jeden Bereich sofort auf den neuesten Stand (⌘R). Aktualisierungen blockieren das Fenster nie: Die Scans wechseln sich im Hintergrund ab, und nichts wartet auf sie.</li>
             <li><strong>Deine Optionen</strong>: eine Mindestgröße (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB oder deine eigene, wie <code>1.5 GiB</code>), nur Dateien oder Ordner, überspringe <code>node_modules</code>, <code>.git</code> und andere Entwickler-Ordner, oder schließe Namen und Muster aus wie <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -190,10 +193,10 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Was hat sich verändert</h3>
-          <p>Vergleicht den neuesten Scan eines Ordners mit einem früheren aus deinem Verlauf. <span class="growth">Ist um 7,90&nbsp;GB gewachsen</span> seit 20. Sept, 18:40 Uhr: hier ist, was gewachsen ist, was geschrumpft ist und was neu ist.</p>
+          <p>Vergleicht den neuesten Scan eines Bereichs mit einem seiner letzten 10 Scans. <span class="growth">Ist um 7,90&nbsp;GB gewachsen</span> seit 20. Sept, 18:40 Uhr: hier ist, was gewachsen ist, was geschrumpft ist und was neu ist.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Doppelklicke eine Zeile, um weiterzugehen: ein Ordner, der noch da ist, wird gescannt, eine Datei öffnet sich im Finder. Zurück und Vorwärts in der Titelleiste (⌘[ und ⌘]) gehen durch die Bildschirme, die du besucht hast, und jeder kommt mit seinem Filter und seiner Auswahl zurück.</p>
+      <p class="caption center" data-reveal>Doppelklicke eine Zeile, um weiterzugehen: ein Ordner, der noch da ist, öffnet sich mit eigenem Scan, eine Datei im Finder. Zurück und Vorwärts in der Titelleiste (⌘[ und ⌘]) gehen durch die Bildschirme, die du besucht hast, und jeder kommt mit seinem Filter und seiner Auswahl zurück.</p>
     </section>
 
     <!-- AI -->
@@ -298,18 +301,18 @@
       </div>
       <ul class="cards cards--three">
         <li class="card" data-reveal>
-          <h3 class="card__title">Scan-Verlauf</h3>
-          <p>Jeder Scan wird auf deinem Mac gespeichert, nach Tag gruppiert, und öffnet sich sofort wieder, ohne neu zu scannen. Behalte ihn 30&nbsp;Tage, 90&nbsp;Tage oder für immer, oder speichere gar nichts.</p>
-          <p class="quote">Aus dem Verlauf entfernt. Deine Dateien wurden nicht angetastet.</p>
-        </li>
-        <li class="card" data-reveal>
-          <h3 class="card__title">Überwachte Ordner</h3>
-          <p>Gib einem Ordner ein Limit, und dush meldet dir einmal, wenn ein Scan ihn über der Grenze findet. Er kann sie jeden Tag oder jede Woche scannen, solange er offen ist.</p>
+          <h3 class="card__title">Favoriten</h3>
+          <p>Deine eigenen Ordner, jeder ein Bereich in der Seitenleiste, aktuell gehalten wie der Rest. Gib einem ein Größenlimit, und dush schickt eine Benachrichtigung, wenn ein Scan ihn über der Grenze findet. dush kann sie auch täglich oder wöchentlich scannen, solange die App offen ist.</p>
           <p class="quote">Developer ist über 60&nbsp;GB. Es sind jetzt 64,10&nbsp;GB, plus 7,90&nbsp;GB seit dem 20. Sept.</p>
         </li>
         <li class="card" data-reveal>
+          <h3 class="card__title">Zuletzt benutzt</h3>
+          <p>Die letzten 10 Ordner, die du gescannt hast, über „Neuer Scan“ oder aus einem Scan heraus, einen Klick entfernt in der Seitenleiste. „Diesen Bereich vergessen“ entfernt die gesicherten Scans eines Bereichs, „Gesicherte Daten entfernen …“ die aller Bereiche.</p>
+          <p class="quote">Gesicherte Scans vergessen. Deine Dateien wurden nicht angetastet.</p>
+        </li>
+        <li class="card" data-reveal>
           <h3 class="card__title">Menüleiste</h3>
-          <p>Freier Speicher auf einen Blick, deine überwachten Ordner und wie viel sie gewachsen sind, und Kurzbefehle zum Scannen. Aus, bis du sie einschaltest.</p>
+          <p>Freier Speicher auf einen Blick, deine Favoriten und wie viel sie gewachsen sind, und Kurzbefehle zum Scannen. Aus, bis du sie einschaltest.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder und Kurzbefehle</h3>
@@ -337,7 +340,7 @@
           <dl class="promises">
             <div>
               <dt>dush löscht nie deine Dateien</dt>
-              <dd>Es schaut nur zu. Etwas zu entfernen ist immer deine Entscheidung, im Finder oder Terminal. Das Einzige, was dush entfernen kann, ist der eigene Scan-Verlauf.</dd>
+              <dd>Es schaut nur zu. Etwas zu entfernen ist immer deine Entscheidung, im Finder oder Terminal. Das Einzige, was dush entfernen kann, ist, was es selbst gesichert hat: seine eigenen Scans.</dd>
             </div>
             <div>
               <dt>Kein Tracking, kein Profiling</dt>
@@ -373,7 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">Im Terminal</p>
         <h2 class="heading" id="cli-title">Dieselbe Engine, in deiner Shell.</h2>
-        <p>dush begann als Kommandozeilen-Tool, und das ist es immer noch. App und CLI teilen dieselbe Engine, melden also für denselben Ordner dieselben Größen, bis auf das Byte genau. Installiere sie mit Homebrew:</p>
+        <p>dush begann als Kommandozeilen-Tool, und das ist es immer noch. App und CLI teilen dieselbe Engine, melden also für denselben Ordner dieselben Größen, bis auf das Byte genau. Installiere sie mit Homebrew, das sie mit Xcode 26 baut:</p>
+        <p>Im Terminal öffnet <code>dush</code> allein eine Vollbild-Sitzung mit denselben Live-Bereichen wie die App, auf Englisch: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, nur gescannt, wenn du <code>r</code> drückst), deine Favorites und die letzten 10 Ordner in Recent. Jeder Bereich öffnet mit seinem letzten Scan; ist der drei Tage alt, aktualisiert er sich dahinter und misst dabei nur das neu, was sich geändert hat. Du kannst auch in eigenen Worten fragen: Apple Intelligence auf diesem Mac wählt den Befehl oder antwortet, und kann sich irren. Bei einem Element in den Ergebnissen fragt <code>a</code>, ob es sicher löschbar ist. Gib <code>dush</code> einen Pfad oder eine Option, oder leite die Ausgabe um, dann scannt es einmal und gibt die Tabelle aus, wie unten.</p>
       </div>
 
       <div class="command" data-reveal>
@@ -384,8 +388,8 @@
       <div class="split split--top cli">
         <div data-reveal>
           <h3 class="card__title">Probier es aus</h3>
-<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
-dush
+<pre class="code"><code><span class="comment"># The caches and temp folders, printed once</span>
+dush --no-tui
 
 <span class="comment"># Your home, files over 1 GB, the top 10</span>
 dush ~ --min-size 1GB --files-only --top 10

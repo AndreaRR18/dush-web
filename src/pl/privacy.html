@@ -84,7 +84,7 @@
           <p class="label">dush na Maca, wiersz poleceń i ta strona</p>
           <h1 class="title" id="privacy-title">Polityka <em>prywatności</em></h1>
           <p class="lead">dush na Maca nic nie zbiera i nic nie wysyła. Ta strona mówi dokładnie, co czyta, co przechowuje i gdzie.</p>
-          <p class="caption">Ostatnia aktualizacja <time datetime="2026-11-17">17 listopada 2026</time></p>
+          <p class="caption">Ostatnia aktualizacja <time datetime="2026-11-27">27 listopada 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,12 +111,13 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Działa offline</h2>
         <p>dush na Maca działa w pełni offline. Wersja z App Store nie ma żadnego uprawnienia do sieci, zgody potrzebnej aplikacji do połączenia, więc sam macOS odmawia jej każdego połączenia.</p>
-        <p>Powiadomienia o obserwowanych folderach też są lokalne: macOS pokazuje je na Twoim Macu.</p>
+        <p>Powiadomienia o ulubionych folderach też są lokalne: macOS pokazuje je na Twoim Macu.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">Co czyta</h2>
         <p>Żeby zmierzyć Twój dysk, dush czyta nazwy, rozmiary i daty plików oraz folderów. Nie czyta zawartości Twoich plików.</p>
+        <p>Żeby wiedzieć, które foldery zmieniły się od ostatniego skanu sekcji, dush pyta też macOS o jego lokalny rejestr zmian systemu plików: tylko ścieżki folderów. Ten rejestr zostaje na Twoim Macu i nic nigdzie nie jest wysyłane.</p>
         <p>Dwie rzeczy sięgają dalej, i tylko gdy o to poprosisz:</p>
         <ul class="list">
           <li><strong>Szybki przegląd</strong> to własny podgląd macOS. macOS pokazuje plik, a nic nie opuszcza Twojego Maca.</li>
@@ -128,12 +129,13 @@
         <h2 class="doc__heading" id="keeps-title">Co przechowuje</h2>
         <p>dush przechowuje to tylko na tym Macu, we własnym folderze aplikacji. Niczego nie synchronizuje ani nie wysyła.</p>
         <ul class="list">
-          <li><strong>Historia skanów:</strong> co skanowałeś, kiedy, oraz nazwy, ścieżki i rozmiary największych znalezionych elementów.</li>
-          <li><strong>Ustawienia:</strong> Twoje wybory, w tym obserwowane foldery i ich limity.</li>
+          <li><strong>Zapisane skany każdej sekcji:</strong> dla każdego miejsca na pasku bocznym, łącznie z ulubionymi i ostatnimi folderami, jego 10 ostatnich skanów: kiedy, oraz nazwy, ścieżki i rozmiary największych znalezionych elementów. Lista dużych plików i pomiar Twoich cache deweloperskich są przechowywane tak samo.</li>
+          <li><strong>Mapa folderów każdej sekcji</strong> (jej indeks drzewa): nazwy i rozmiary folderów, które przeskanowała, łącznie z ulubionymi i ostatnimi folderami, żeby następna aktualizacja mierzyła ponownie tylko to, co się zmieniło. To największa rzecz, jaką dush przechowuje, i zostaje na tym Macu jak reszta.</li>
+          <li><strong>Ustawienia:</strong> Twoje wybory, w tym ulubione foldery i ich limity.</li>
           <li><strong>Zapamiętane odpowiedzi Apple Intelligence,</strong> ze szczegółami elementu, którego dotyczy każda, żeby nie zadawać dwa razy tego samego pytania.</li>
           <li><strong>Zakładka tylko do odczytu</strong> dostępu do dysku, który przyznałeś, żeby nie musieć przyznawać go ponownie.</li>
         </ul>
-        <p>Wyczyść historię usuwa zapisane skany, i tylko je. Twoje pliki pozostają nietknięte, a zapamiętane odpowiedzi i ustawienia zostają. W Ustawieniach › Ogólne możesz zachowywać skany przez 30&nbsp;lub 90&nbsp;dni albo całkiem przestać je zapisywać.</p>
+        <p>Zapomnij o tej sekcji, w menu sekcji, usuwa jej zapisane skany i mapę folderów; ulubiony folder pozostaje ulubionym. Usuń z Ulubionych i Usuń z Ostatnich zabierają folder z paska bocznego razem z jego zapisanymi skanami i mapą. Wyczyść zapisane dane…, na dole paska bocznego i w Ustawieniach › Ogólne, usuwa zapisane skany i mapy folderów wszystkich sekcji, listę dużych plików i pomiar cache deweloperskich. Żadna z tych opcji nie dotyka Twoich plików, a zapamiętane odpowiedzi, ustawienia i ulubione foldery zostają.</p>
         <p>Jeszcze trzy rzeczy, o których warto wiedzieć:</p>
         <ul class="list">
           <li>Silnik skanujący zapisuje liczby i czasy do własnego dziennika macOS na Twoim Macu. Ścieżki i nazwy pojawiają się tam jako <code>&lt;private&gt;</code>, a dush nigdzie tego dziennika nie wysyła.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">Narzędzie wiersza poleceń</h2>
-        <p> <code>dush</code> też nic nie zbiera. Dotyka sieci tylko w <code>dush update</code>, które szuka najnowszego wydania przez <code>git</code> i aktualizuje przez <code>brew</code>. Kopia zbudowana przez Ciebie ze źródeł jest pobierana przez <code>git</code> i budowana ponownie narzędziami Swift, które pobierają to, czego potrzebuje kompilacja.</p>
+        <p>Narzędzie wiersza poleceń <code>dush</code> też nic nie zbiera. Jego sesja przechowuje ten sam rodzaj zapisanych skanów, nazwy i rozmiary folderów przeskanowanych przez każdą sekcję, listę dużych plików, pomiar cache deweloperskich, zapamiętane odpowiedzi i swoje ustawienia we własnym folderze, <code>~/Library/Application Support/dush/CLI</code>, i tylko tam: <code>/forget</code> i <code>/clear-data</code> usuwają zapisane skany i mapy folderów, nigdy Twoje pliki. Dotyka sieci tylko w <code>dush update</code>, które szuka najnowszego wydania przez <code>git</code> i aktualizuje przez <code>brew</code>. Kopia zbudowana przez Ciebie ze źródeł jest pobierana przez <code>git</code> i budowana ponownie narzędziami Swift, które pobierają to, czego potrzebuje kompilacja. Apple Intelligence w sesji działa na Twoim Macu i tylko wtedy, gdy pytasz. Dostaje to, co wpisujesz, i nazwę widoku, w którym jesteś. Do odpowiedzi na pytanie o ten widok dostaje też Twoje wcześniejsze pytania wraz ze swoimi odpowiedziami oraz ścieżki i rozmiary najwyżej 20 elementów, z ich udziałami lub zmianami. O pojedynczym elemencie dostaje ten sam rodzaj szczegółów co w aplikacji. Elementy chronione dush pomija w tym, co jej opisuje, i nigdy nie przekazuje jej zawartości plików.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

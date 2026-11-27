@@ -111,7 +111,7 @@
           <span class="fact__text">items measured in about a second, on an Apple silicon Mac. Faster than <code>du</code> on the same folder.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">cache, log and temporary locations checked by Caches &amp; Temp. No folder to pick.</span>
         </li>
         <li>
@@ -128,12 +128,15 @@
           <p class="label">dush for Mac</p>
           <h2 class="heading" id="scan-title">Drop a folder, see what's big.</h2>
           <p>Drag one or more folders onto the window or onto the Dock icon, or press ⌘O. dush walks them in parallel and counts every file, hidden ones and app bundles included, while you watch the numbers climb.</p>
+          <p>The sidebar keeps your usual places measured: Caches &amp; Temp, Downloads &amp; Desktop, Large files, Developer Caches and Entire Mac. Each one opens on its last scan at once. dush updates it by itself only when that scan is at least three days old, in the background, while you keep looking around; Entire Mac waits for you. An update measures again only what changed since the last scan. Quit while you're on one of them, and dush opens there next time.</p>
           <ul class="list">
             <li><strong>Caches &amp; Temp</strong> needs no folder. It checks the caches and temp folders that only hold stuff your Mac can rebuild: system and app caches, logs, the Trash, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, Xcode's DerivedData and DeviceSupport, the simulator caches and VS Code's. Folders that aren't there or aren't safe are left out, and nested ones are counted once.</li>
-            <li><strong>Downloads &amp; Desktop</strong> scans the two usual suspects in one click.</li>
-            <li><strong>Large files</strong> needs no folder either: the biggest files in your home folder over 100&nbsp;MB, with how big each one is and how long it's been sitting there. Largest first, or oldest first to find the ones nothing has opened in a while. The list is kept, so it opens at once next time.</li>
-            <li><strong>Scan This Folder</strong> scans again just the folder you've selected, with the options that are already on screen. The scan you were looking at stays in History.</li>
-            <li><strong>Biggest so far</strong>: large files show up the moment they're found, folders as soon as they're measured. Press Esc to stop at any time.</li>
+            <li><strong>Downloads &amp; Desktop</strong> keeps an eye on the two places where files pile up.</li>
+            <li><strong>Large files</strong> needs no folder either: the biggest files in your home folder over 100&nbsp;MB, with how big each one is and how long it's been sitting there. Largest first, or oldest first to find the ones nothing has opened in a while.</li>
+            <li><strong>Entire Mac</strong> is your whole startup disk, every file counted once. Measuring it takes longer than the other sections, from a few seconds to a few minutes, so to spare your CPU and battery dush only does it when you press Rescan. Your last result stays there in the meantime.</li>
+            <li><strong>Scan This Folder</strong> scans just the folder you've selected, with the options of the scan you're in, and adds it to your recent folders. If dush did that in the last three days, you get that scan at once instead. Back takes you to the scan you were looking at.</li>
+            <li><strong>Biggest so far</strong>: on a first scan, large files show up the moment they're found, folders as soon as they're measured. Press Esc to stop at any time.</li>
+            <li><strong>Rescan</strong>, in every section, brings it up to date now (⌘R). Updates never block the window: scans take turns in the background, and nothing waits for them.</li>
             <li><strong>Your options</strong>: a minimum size (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB or your own, like <code>1.5 GiB</code>), files or folders only, skip <code>node_modules</code>, <code>.git</code> and other developer folders, or exclude names and patterns like <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -190,10 +193,10 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">What changed</h3>
-          <p>Compares a folder's latest scan with an earlier one from your history. <span class="growth">Grew by 7.90&nbsp;GB</span> since Sep 20, 18:40: here's what grew, what shrank and what's new.</p>
+          <p>Compares a section's latest scan with one of its last 10 scans. <span class="growth">Grew by 7.90&nbsp;GB</span> since Sep 20, 18:40: here's what grew, what shrank and what's new.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Double-click a row to carry on into it: a folder that's still there is scanned, a file opens in Finder. Back and Forward in the title bar (⌘[ and ⌘]) walk the screens you visited, and each one comes back with its filter and its selection.</p>
+      <p class="caption center" data-reveal>Double-click a row to carry on into it: a folder that's still there opens with its own scan, a file opens in Finder. Back and Forward in the title bar (⌘[ and ⌘]) walk the screens you visited, and each one comes back with its filter and its selection.</p>
     </section>
 
     <!-- AI -->
@@ -298,18 +301,18 @@
       </div>
       <ul class="cards cards--three">
         <li class="card" data-reveal>
-          <h3 class="card__title">Scan history</h3>
-          <p>Every scan is saved on your Mac, grouped by day, and reopens instantly without scanning again. Keep it 30 days, 90 days or forever, or don't save it at all.</p>
-          <p class="quote">Removed from history. Your files weren't touched.</p>
-        </li>
-        <li class="card" data-reveal>
-          <h3 class="card__title">Watched folders</h3>
-          <p>Give a folder a limit and dush tells you, once, when a scan finds it past the line. It can scan them every day or every week while it's open.</p>
+          <h3 class="card__title">Favorites</h3>
+          <p>Your own folders, each a section in the sidebar, kept up to date like the rest. Give one a size limit and dush sends a notification when a scan finds it past the line. It can also scan them every day or every week while it's open.</p>
           <p class="quote">Developer is over 60&nbsp;GB. It's 64.10&nbsp;GB now, up 7.90&nbsp;GB since Sep 20.</p>
         </li>
         <li class="card" data-reveal>
+          <h3 class="card__title">Recent</h3>
+          <p>The last 10 folders you scanned, from New Scan or by going into them from a scan, one click away in the sidebar. Forget This Section lets go of one section's saved scans, Clear Saved Data… of all of them.</p>
+          <p class="quote">Saved scans forgotten. Your files weren't touched.</p>
+        </li>
+        <li class="card" data-reveal>
           <h3 class="card__title">Menu bar</h3>
-          <p>Free disk space at a glance, your watched folders and how much they grew, and shortcuts to scan. Off until you turn it on.</p>
+          <p>Free disk space at a glance, your favorites and how much they grew, and shortcuts to scan. Off until you turn it on.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder and Shortcuts</h3>
@@ -337,7 +340,7 @@
           <dl class="promises">
             <div>
               <dt>dush never deletes your files</dt>
-              <dd>It only looks. Removing something is always your call, in Finder or Terminal. The one thing dush can remove is its own scan history.</dd>
+              <dd>It only looks. Removing something is always your call, in Finder or Terminal. The one thing dush can remove is what it saved itself: its own scans.</dd>
             </div>
             <div>
               <dt>No tracking, no profiling</dt>
@@ -373,7 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">In the Terminal</p>
         <h2 class="heading" id="cli-title">The same engine, in your shell.</h2>
-        <p>dush started as a command-line tool, and it still is one. The app and the CLI share the same engine, so they report the same sizes for the same folder, down to the byte. Install it with Homebrew:</p>
+        <p>dush started as a command-line tool, and it still is one. The app and the CLI share the same engine, so they report the same sizes for the same folder, down to the byte. Install it with Homebrew, which builds it with Xcode 26:</p>
+        <p>In a terminal, <code>dush</code> on its own opens a full-screen session with the same live sections as the app: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, scanned only when you press <code>r</code>), your Favorites and the last 10 folders in Recent. Each one opens on its last scan, and updates behind it once that scan is three days old, measuring again only what changed. You can ask in your own words too: Apple Intelligence, on this Mac, picks the command or answers, and it can be wrong. On an item in the results, press <code>a</code> to ask whether it's safe to delete. Give <code>dush</code> a path or an option instead, or pipe its output, and it scans once and prints the table, as below.</p>
       </div>
 
       <div class="command" data-reveal>
@@ -384,8 +388,8 @@
       <div class="split split--top cli">
         <div data-reveal>
           <h3 class="card__title">Try it</h3>
-<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
-dush
+<pre class="code"><code><span class="comment"># The caches and temp folders, printed once</span>
+dush --no-tui
 
 <span class="comment"># Your home, files over 1 GB, the top 10</span>
 dush ~ --min-size 1GB --files-only --top 10

@@ -111,7 +111,7 @@
           <span class="fact__text">éléments mesurés en environ une seconde, sur un Mac Apple silicon. Plus rapide que <code>du</code> sur le même dossier.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">emplacements de caches, logs et fichiers temporaires examinés par Caches et temp. Aucun dossier à choisir.</span>
         </li>
         <li>
@@ -128,12 +128,15 @@
           <p class="label">dush pour Mac</p>
           <h2 class="heading" id="scan-title">Déposez un dossier, voyez ce qui pèse.</h2>
           <p>Glissez un ou plusieurs dossiers sur la fenêtre ou sur l’icône du Dock, ou appuyez sur ⌘O. dush les parcourt en parallèle et compte chaque fichier, cachés et bundles d’apps inclus, pendant que vous regardez les chiffres monter.</p>
+          <p>La barre latérale garde vos endroits habituels mesurés&nbsp;: Caches et temp, Téléchargements et Bureau, Fichiers volumineux, Caches de dev et Mac entier. Chacun s’ouvre aussitôt sur sa dernière analyse. dush ne le met à jour de lui-même que lorsque cette analyse a au moins trois jours, en arrière-plan, pendant que vous continuez à regarder&nbsp;; Mac entier vous attend. Une mise à jour ne remesure que ce qui a changé depuis la dernière analyse. Quittez pendant que vous êtes sur l’un d’eux, et dush s’y rouvre la fois suivante.</p>
           <ul class="list">
             <li><strong>Caches et temp</strong> n’a besoin d’aucun dossier. Cette analyse examine les caches et dossiers temporaires qui ne contiennent que ce que votre Mac peut reconstruire : caches système et d’apps, logs, la Corbeille, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, le DerivedData et le DeviceSupport d’Xcode, les caches des simulateurs et ceux de VS&nbsp;Code. Les dossiers absents ou peu sûrs sont exclus, et les dossiers imbriqués ne comptent qu’une fois.</li>
-            <li><strong>Téléchargements et Bureau</strong> analyse les deux suspects habituels en un clic.</li>
-            <li><strong>Fichiers volumineux</strong> n’a pas besoin de dossier non plus : les plus gros fichiers de votre dossier personnel au-delà de 100&nbsp;Mo, avec leur taille et depuis combien de temps ils sont là. Du plus gros au plus petit, ou du plus ancien au plus récent pour trouver ceux que plus personne n’ouvre. La liste est conservée : elle s’affiche tout de suite la fois suivante.</li>
-            <li><strong>Analyser ce dossier</strong> relance l’analyse du seul dossier sélectionné, avec les options déjà à l’écran. L’analyse que vous regardiez reste dans l’historique.</li>
-            <li><strong>Les plus gros pour l’instant</strong>&nbsp;: les gros fichiers apparaissent dès qu’ils sont trouvés, les dossiers dès qu’ils sont mesurés. Appuyez sur Esc pour arrêter à tout moment.</li>
+            <li><strong>Téléchargements et Bureau</strong> garde un œil sur les deux endroits où les fichiers s’entassent.</li>
+            <li><strong>Fichiers volumineux</strong> n’a pas besoin de dossier non plus : les plus gros fichiers de votre dossier personnel au-delà de 100&nbsp;Mo, avec leur taille et depuis combien de temps ils sont là. Du plus gros au plus petit, ou du plus ancien au plus récent pour trouver ceux que plus personne n’ouvre.</li>
+            <li><strong>Mac entier</strong>, c’est tout votre disque de démarrage, chaque fichier compté une fois. Le mesurer prend plus de temps que les autres sections, de quelques secondes à quelques minutes&nbsp;; pour ménager votre processeur et votre batterie, dush ne le fait donc que quand vous cliquez sur Réanalyser. Votre dernier résultat reste là en attendant.</li>
+            <li><strong>Analyser ce dossier</strong> analyse le seul dossier sélectionné, avec les options de l’analyse où vous êtes, et l’ajoute aux dossiers récents. Si dush l’a déjà fait ces trois derniers jours, vous voyez aussitôt cette analyse. Retour vous ramène à l’analyse que vous regardiez.</li>
+            <li><strong>Les plus gros pour l’instant</strong>&nbsp;: lors d’une première analyse, les gros fichiers apparaissent dès qu’ils sont trouvés, les dossiers dès qu’ils sont mesurés. Appuyez sur Esc pour arrêter à tout moment.</li>
+            <li><strong>Réanalyser</strong>, dans chaque section, la met à jour tout de suite (⌘R). Les mises à jour ne bloquent jamais la fenêtre&nbsp;: les analyses passent chacune à leur tour en arrière-plan, et rien ne les attend.</li>
             <li><strong>Vos options</strong>&nbsp;: une taille minimale (100&nbsp;Mo, 512&nbsp;Mo, 1&nbsp;Go, 5&nbsp;Go ou la vôtre, comme <code>1.5 GiB</code>), fichiers ou dossiers uniquement, ignorez <code>node_modules</code>, <code>.git</code> et autres dossiers de développement, ou excluez des noms et motifs comme <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -190,10 +193,10 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Ce qui a changé</h3>
-          <p>Compare la dernière analyse d’un dossier à une précédente de votre historique. <span class="growth">A grossi de 7,90&nbsp;Go</span> depuis le 20 sept. 18:40 : voici ce qui a grossi, ce qui a rétréci et ce qui est nouveau.</p>
+          <p>Compare la dernière analyse d’une section à l’une de ses 10 dernières analyses. <span class="growth">A grossi de 7,90&nbsp;Go</span> depuis le 20 sept. 18:40 : voici ce qui a grossi, ce qui a rétréci et ce qui est nouveau.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Double-cliquez une ligne pour continuer dedans : un dossier toujours là est analysé, un fichier s’ouvre dans le Finder. Retour et Suivant dans la barre de titre (⌘[ et ⌘]) parcourent les écrans que vous avez visités, et chacun revient avec son filtre et sa sélection.</p>
+      <p class="caption center" data-reveal>Double-cliquez une ligne pour continuer dedans : un dossier toujours là s’ouvre avec sa propre analyse, un fichier s’ouvre dans le Finder. Retour et Suivant dans la barre de titre (⌘[ et ⌘]) parcourent les écrans que vous avez visités, et chacun revient avec son filtre et sa sélection.</p>
     </section>
 
     <!-- AI -->
@@ -298,18 +301,18 @@
       </div>
       <ul class="cards cards--three">
         <li class="card" data-reveal>
-          <h3 class="card__title">Historique des analyses</h3>
-          <p>Chaque analyse est enregistrée sur votre Mac, groupée par jour, et se rouvre instantanément sans réanalyser. Gardez-la 30&nbsp;jours, 90&nbsp;jours ou pour toujours, ou n’enregistrez rien du tout.</p>
-          <p class="quote">Retiré de l’historique. Vos fichiers n’ont pas été touchés.</p>
-        </li>
-        <li class="card" data-reveal>
-          <h3 class="card__title">Dossiers surveillés</h3>
-          <p>Donnez une limite à un dossier et dush vous prévient, une fois, quand une analyse le trouve au-delà. Il peut les analyser chaque jour ou chaque semaine tant qu’il est ouvert.</p>
+          <h3 class="card__title">Favoris</h3>
+          <p>Vos propres dossiers, chacun une section de la barre latérale, tenue à jour comme les autres. Donnez une limite de taille à l’un d’eux et dush envoie une notification quand une analyse le trouve au-delà. Il peut aussi les analyser chaque jour ou chaque semaine tant qu’il est ouvert.</p>
           <p class="quote">Developer dépasse les 60&nbsp;Go. Il fait 64,10&nbsp;Go maintenant, soit 7,90&nbsp;Go de plus depuis le 20 sept.</p>
         </li>
         <li class="card" data-reveal>
+          <h3 class="card__title">Récents</h3>
+          <p>Les 10 derniers dossiers analysés, depuis Nouvelle analyse ou en y entrant depuis une analyse, à un clic dans la barre latérale. Oublier cette section retire les analyses enregistrées d’une section, Vider les données enregistrées… celles de toutes.</p>
+          <p class="quote">Analyses enregistrées oubliées. Vos fichiers n’ont pas été touchés.</p>
+        </li>
+        <li class="card" data-reveal>
           <h3 class="card__title">Barre de menus</h3>
-          <p>L’espace disque libre d’un coup d’œil, vos dossiers surveillés et de combien ils ont grossi, et des raccourcis pour analyser. Désactivée jusqu’à ce que vous l’activiez.</p>
+          <p>L’espace disque libre d’un coup d’œil, vos favoris et de combien ils ont grossi, et des raccourcis pour analyser. Désactivée jusqu’à ce que vous l’activiez.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder et Raccourcis</h3>
@@ -337,7 +340,7 @@
           <dl class="promises">
             <div>
               <dt>dush ne supprime jamais vos fichiers</dt>
-              <dd>Il ne fait que regarder. Retirer quelque chose est toujours votre décision, dans le Finder ou le Terminal. La seule chose que dush puisse retirer, c’est son propre historique d’analyses.</dd>
+              <dd>Il ne fait que regarder. Retirer quelque chose est toujours votre décision, dans le Finder ou le Terminal. La seule chose que dush puisse retirer, c’est ce qu’il a enregistré lui-même&nbsp;: ses propres analyses.</dd>
             </div>
             <div>
               <dt>Aucun traçage, aucun profilage</dt>
@@ -373,7 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">Dans le Terminal</p>
         <h2 class="heading" id="cli-title">Le même moteur, dans votre shell.</h2>
-        <p>dush a commencé comme outil en ligne de commande, et il l’est toujours. L’app et la CLI partagent le même moteur, donc elles donnent les mêmes tailles pour le même dossier, à l’octet près. Installez-le avec Homebrew&nbsp;:</p>
+        <p>dush a commencé comme outil en ligne de commande, et il l’est toujours. L’app et la CLI partagent le même moteur, donc elles donnent les mêmes tailles pour le même dossier, à l’octet près. Installez-le avec Homebrew, qui le compile avec Xcode 26&nbsp;:</p>
+        <p>Dans un terminal, <code>dush</code> seul ouvre une session plein écran avec les mêmes sections en direct que l’app, en anglais&nbsp;: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, analysé seulement quand vous appuyez sur <code>r</code>), vos Favorites et les 10 derniers dossiers dans Recent. Chacune s’ouvre sur sa dernière analyse et, quand celle-ci a trois jours, se met à jour derrière en ne remesurant que ce qui a changé. Vous pouvez aussi demander avec vos mots&nbsp;: Apple Intelligence, sur ce Mac, choisit la commande ou répond, et peut se tromper. Sur un élément des résultats, <code>a</code> demande s’il peut être supprimé sans risque. Donnez à <code>dush</code> un chemin ou une option, ou redirigez sa sortie, et il analyse une fois et affiche le tableau, comme ci-dessous.</p>
       </div>
 
       <div class="command" data-reveal>
@@ -384,8 +388,8 @@
       <div class="split split--top cli">
         <div data-reveal>
           <h3 class="card__title">Essayez</h3>
-<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
-dush
+<pre class="code"><code><span class="comment"># The caches and temp folders, printed once</span>
+dush --no-tui
 
 <span class="comment"># Your home, files over 1 GB, the top 10</span>
 dush ~ --min-size 1GB --files-only --top 10

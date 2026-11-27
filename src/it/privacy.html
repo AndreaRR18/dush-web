@@ -84,7 +84,7 @@
           <p class="label">dush per Mac, la riga di comando e questo sito</p>
           <h1 class="title" id="privacy-title">Informativa sulla <em>privacy</em></h1>
           <p class="lead">dush per Mac non raccoglie nulla e non invia nulla. Questa pagina dice esattamente cosa legge, cosa conserva e dove.</p>
-          <p class="caption">Ultimo aggiornamento <time datetime="2026-11-17">17 novembre 2026</time></p>
+          <p class="caption">Ultimo aggiornamento <time datetime="2026-11-27">27 novembre 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,12 +111,13 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Funziona offline</h2>
         <p>dush per Mac funziona completamente offline. La versione dell'App Store non ha alcun diritto di rete, il permesso che serve a un'app per connettersi, quindi macOS stesso rifiuta ogni connessione.</p>
-        <p>Anche le notifiche per le cartelle monitorate sono locali: macOS le mostra sul tuo Mac.</p>
+        <p>Anche le notifiche per i preferiti sono locali: macOS le mostra sul tuo Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">Cosa legge</h2>
         <p>Per misurare il tuo disco, dush legge nomi, dimensioni e date di file e cartelle. Non legge cosa c'è dentro i tuoi file.</p>
+        <p>Per sapere quali cartelle sono cambiate dall'ultima scansione di una sezione, dush chiede anche a macOS il suo registro locale delle modifiche al file system: solo i percorsi delle cartelle. Quel registro resta sul tuo Mac e non viene mandato nulla da nessuna parte.</p>
         <p>Due cose vanno oltre, e solo quando le chiedi:</p>
         <ul class="list">
           <li><strong>Visualizzazione rapida</strong> è l'anteprima propria di macOS. macOS mostra il file, e nulla lascia il tuo Mac.</li>
@@ -128,12 +129,13 @@
         <h2 class="doc__heading" id="keeps-title">Cosa conserva</h2>
         <p>dush conserva queste cose solo su questo Mac, nella cartella propria dell'app. Non sincronizza né carica nulla.</p>
         <ul class="list">
-          <li><strong>Cronologia scansioni:</strong> cosa hai scansionato, quando, e nomi, percorsi e dimensioni dei più grandi elementi trovati.</li>
-          <li><strong>Impostazioni:</strong> le tue scelte, incluse le cartelle monitorate e i loro limiti.</li>
+          <li><strong>Scansioni salvate di ogni sezione:</strong> per ogni posto della barra laterale, preferiti e cartelle recenti compresi, le sue ultime 10 scansioni: quando, e nomi, percorsi e dimensioni dei più grandi elementi trovati. L'elenco dei file di grandi dimensioni e la misura delle tue cache di sviluppo sono conservati allo stesso modo.</li>
+          <li><strong>Una mappa delle cartelle di ogni sezione</strong> (il suo indice ad albero): i nomi e le dimensioni delle cartelle che ha scansionato, preferiti e cartelle recenti compresi, così il prossimo aggiornamento misura di nuovo solo ciò che è cambiato. È la cosa più grande che dush conserva, e resta su questo Mac come il resto.</li>
+          <li><strong>Impostazioni:</strong> le tue scelte, inclusi i preferiti e i loro limiti.</li>
           <li><strong>Risposte di Apple Intelligence ricordate,</strong> con i dettagli dell'elemento a cui si riferiscono, così la stessa domanda non viene fatta due volte.</li>
           <li><strong>Un segnalibro di sola lettura</strong> per l'accesso al disco che hai concesso, così non devi darlo di nuovo.</li>
         </ul>
-        <p>Svuota cronologia rimuove le scansioni salvate, e solo quelle. I tuoi file non vengono toccati, e risposte e impostazioni ricordate restano. In Impostazioni › Generali puoi tenere le scansioni per 30&nbsp;o 90&nbsp;giorni, oppure smettere di salvarle.</p>
+        <p>Dimentica questa sezione, nel menu di una sezione, rimuove le sue scansioni salvate e la sua mappa delle cartelle; un preferito resta un preferito. Rimuovi dai Preferiti e Rimuovi da Recenti tolgono una cartella dalla barra laterale, con le sue scansioni salvate e la sua mappa. Svuota dati salvati…, in fondo alla barra laterale e in Impostazioni › Generali, rimuove le scansioni salvate e le mappe delle cartelle di ogni sezione, l'elenco dei file di grandi dimensioni e la misura delle cache di sviluppo. Nessuno di questi tocca i tuoi file, e risposte ricordate, impostazioni e preferiti restano.</p>
         <p>Tre cose ancora da sapere:</p>
         <ul class="list">
           <li>Il motore di scansione scrive conteggi e tempi nel log proprio di macOS sul tuo Mac. Percorsi e nomi lì appaiono come <code>&lt;private&gt;</code>, e dush non manda quel log da nessuna parte.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">Lo strumento da riga di comando</h2>
-        <p>Anche la CLI di <code>dush</code> non raccoglie nulla. Tocca la rete solo in <code>dush update</code>, che cerca l'ultima release tramite <code>git</code> e aggiorna tramite <code>brew</code>. Una copia che hai compilato dal sorgente viene scaricata con <code>git</code> e ricompilata con gli strumenti Swift, che scaricano ciò che serve alla compilazione.</p>
+        <p>Anche la CLI di <code>dush</code> non raccoglie nulla. La sua sessione conserva lo stesso tipo di scansioni salvate, i nomi e le dimensioni delle cartelle che ogni sezione ha scansionato, l'elenco dei file grandi, la misura delle cache di sviluppo, le risposte ricordate e le sue impostazioni nella propria cartella, <code>~/Library/Application Support/dush/CLI</code>, e solo lì: <code>/forget</code> e <code>/clear-data</code> rimuovono le scansioni salvate e le mappe delle cartelle, mai i tuoi file. Tocca la rete solo in <code>dush update</code>, che cerca l'ultima release tramite <code>git</code> e aggiorna tramite <code>brew</code>. Una copia che hai compilato dal sorgente viene scaricata con <code>git</code> e ricompilata con gli strumenti Swift, che scaricano ciò che serve alla compilazione. Apple Intelligence nella sessione gira sul tuo Mac e lavora solo quando chiedi. Riceve quello che scrivi e il nome della schermata in cui sei. Per rispondere a una domanda su quella schermata, riceve anche le tue domande precedenti con le sue risposte, e percorsi e dimensioni di al massimo 20 elementi, con le loro quote o variazioni. Su un singolo elemento, riceve lo stesso tipo di dettagli dell'app. dush lascia gli elementi che protegge fuori da ciò che le descrive, e non le dà mai il contenuto dei file.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

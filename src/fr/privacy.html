@@ -84,7 +84,7 @@
           <p class="label">dush pour Mac, la ligne de commande et ce site</p>
           <h1 class="title" id="privacy-title">Politique de <em>confidentialité</em></h1>
           <p class="lead">dush pour Mac ne collecte rien et n’envoie rien. Cette page dit exactement ce qu’il lit, ce qu’il garde et où.</p>
-          <p class="caption">Dernière mise à jour <time datetime="2026-11-17">17 novembre 2026</time></p>
+          <p class="caption">Dernière mise à jour <time datetime="2026-11-27">27 novembre 2026</time></p>
         </div>
         <figure class="illustration" aria-hidden="true">
           <picture>
@@ -111,12 +111,13 @@
       <section class="doc__part" aria-labelledby="offline-title">
         <h2 class="doc__heading" id="offline-title">Il fonctionne hors ligne</h2>
         <p>dush pour Mac fonctionne entièrement hors ligne. La version App Store n’a aucun droit réseau, l’autorisation qu’il faut à une app pour se connecter, donc macOS lui-même refuse toute connexion.</p>
-        <p>Les notifications des dossiers surveillés sont locales aussi : macOS les affiche sur votre Mac.</p>
+        <p>Les notifications des favoris sont locales aussi : macOS les affiche sur votre Mac.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="reads-title">
         <h2 class="doc__heading" id="reads-title">Ce qu’il lit</h2>
         <p>Pour mesurer votre disque, dush lit les noms, tailles et dates des fichiers et dossiers. Il ne lit pas ce qu’il y a dans vos fichiers.</p>
+        <p>Pour savoir quels dossiers ont changé depuis la dernière analyse d’une section, dush demande aussi à macOS son registre local des changements du système de fichiers&nbsp;: des chemins de dossiers uniquement. Ce registre reste sur votre Mac, et rien n’est envoyé nulle part.</p>
         <p>Deux choses vont plus loin, et seulement si vous les demandez&nbsp;:</p>
         <ul class="list">
           <li><strong>Coup d’œil</strong> est l’aperçu propre à macOS. macOS affiche le fichier, et rien ne quitte votre Mac.</li>
@@ -128,12 +129,13 @@
         <h2 class="doc__heading" id="keeps-title">Ce qu’il garde</h2>
         <p>dush ne garde ces choses que sur ce Mac, dans le dossier propre de l’app. Il ne synchronise rien et n’envoie rien.</p>
         <ul class="list">
-          <li><strong>Historique des analyses&nbsp;:</strong> ce que vous avez analysé, quand, et les noms, chemins et tailles des plus gros éléments trouvés.</li>
-          <li><strong>Réglages&nbsp;:</strong> vos choix, dont vos dossiers surveillés et leurs limites.</li>
+          <li><strong>Analyses enregistrées de chaque section&nbsp;:</strong> pour chaque endroit de la barre latérale, favoris et dossiers récents compris, ses 10 dernières analyses&nbsp;: quand, et les noms, chemins et tailles des plus gros éléments trouvés. La liste des fichiers volumineux et la mesure de vos caches de développement sont gardées de la même façon.</li>
+          <li><strong>Une carte des dossiers de chaque section</strong> (son index d’arborescence)&nbsp;: les noms et tailles des dossiers qu’elle a analysés, favoris et dossiers récents compris, pour que la prochaine mise à jour ne remesure que ce qui a changé. C’est la plus grosse chose que dush garde, et elle reste sur ce Mac comme le reste.</li>
+          <li><strong>Réglages&nbsp;:</strong> vos choix, dont vos favoris et leurs limites.</li>
           <li><strong>Réponses d’Apple Intelligence mémorisées,</strong> avec les détails de l’élément concerné, pour ne pas poser deux fois la même question.</li>
           <li><strong>Un signet en lecture seule</strong> de l’accès au disque que vous avez accordé, pour ne pas avoir à le redonner.</li>
         </ul>
-        <p>Vider l’historique retire les analyses enregistrées, et seulement elles. Vos fichiers ne sont pas touchés, et les réponses et réglages mémorisés restent. Dans Réglages › Général, vous pouvez garder les analyses 30&nbsp;ou 90&nbsp;jours, ou cesser de les enregistrer.</p>
+        <p>Oublier cette section, dans le menu d’une section, retire ses analyses enregistrées et sa carte de dossiers&nbsp;; un favori reste un favori. Retirer des favoris et Retirer des récents enlèvent un dossier de la barre latérale, avec ses analyses enregistrées et sa carte. Vider les données enregistrées…, en bas de la barre latérale et dans Réglages › Général, retire les analyses enregistrées et les cartes de dossiers de chaque section, la liste des fichiers volumineux et la mesure des caches de développement. Aucun ne touche à vos fichiers, et les réponses mémorisées, les réglages et vos favoris restent.</p>
         <p>Trois choses encore à savoir&nbsp;:</p>
         <ul class="list">
           <li>Le moteur d’analyse écrit des compteurs et des durées dans le journal propre à macOS sur votre Mac. Les chemins et noms y apparaissent comme <code>&lt;private&gt;</code>, et dush n’envoie ce journal nulle part.</li>
@@ -197,7 +199,7 @@
 
       <section class="doc__part" aria-labelledby="cli-title">
         <h2 class="doc__heading" id="cli-title">L’outil en ligne de commande</h2>
-        <p>La CLI de <code>dush</code> ne collecte rien non plus. Elle ne touche au réseau que dans <code>dush update</code>, qui recherche la dernière version via <code>git</code> et met à niveau via <code>brew</code>. Une copie que vous avez compilée depuis les sources est récupérée avec <code>git</code> et recompilée avec les outils Swift, qui téléchargent ce dont la compilation a besoin.</p>
+        <p>La CLI de <code>dush</code> ne collecte rien non plus. Sa session garde le même genre d’analyses enregistrées, les noms et tailles des dossiers analysés par chaque section, la liste des fichiers volumineux, la mesure des caches de développement, les réponses mémorisées et ses réglages dans son propre dossier, <code>~/Library/Application Support/dush/CLI</code>, et nulle part ailleurs&nbsp;: <code>/forget</code> et <code>/clear-data</code> retirent les analyses enregistrées et les cartes de dossiers, jamais vos fichiers. Elle ne touche au réseau que dans <code>dush update</code>, qui recherche la dernière version via <code>git</code> et met à niveau via <code>brew</code>. Une copie que vous avez compilée depuis les sources est récupérée avec <code>git</code> et recompilée avec les outils Swift, qui téléchargent ce dont la compilation a besoin. Dans la session, Apple Intelligence fonctionne sur votre Mac et seulement quand vous demandez. Elle reçoit ce que vous tapez et le nom de la vue où vous êtes. Pour répondre à une question sur cette vue, elle reçoit aussi vos questions précédentes avec ses réponses, ainsi que les chemins et les tailles de 20 éléments au plus, avec leurs parts ou leurs changements. Sur un seul élément, elle reçoit le même genre de détails que dans l’app. dush laisse les éléments qu’il protège hors de ce qu’il lui décrit, et ne lui donne jamais le contenu des fichiers.</p>
       </section>
 
       <section class="doc__part" aria-labelledby="changes-title">

@@ -111,7 +111,7 @@
           <span class="fact__text">elementos medidos en aproximadamente un segundo, en un Mac con Apple silicon. Más rápido que <code>du</code> en la misma carpeta.</span>
         </li>
         <li>
-          <span class="fact__number" data-count="34">34</span>
+          <span class="fact__number" data-count="33">33</span>
           <span class="fact__text">ubicaciones de caché, logs y archivos temporales que comprueba Cachés y temp. Sin carpeta que elegir.</span>
         </li>
         <li>
@@ -128,12 +128,15 @@
           <p class="label">dush para Mac</p>
           <h2 class="heading" id="scan-title">Suelta una carpeta, mira qué pesa.</h2>
           <p>Arrastra una o más carpetas a la ventana o al icono del Dock, o pulsa ⌘O. dush las recorre en paralelo y cuenta cada archivo, incluidos los ocultos y los paquetes de apps, mientras ves subir los números.</p>
+          <p>La barra lateral mantiene medidos tus sitios de siempre: Cachés y temp, Descargas y Escritorio, Archivos grandes, Cachés de desarrollador y Mac completo. Cada uno se abre al instante con su último escaneo. dush lo actualiza por su cuenta solo cuando ese escaneo tiene al menos tres días, en segundo plano, mientras sigues mirando; Mac completo te espera. Una actualización vuelve a medir solo lo que ha cambiado desde el último escaneo. Si sales mientras estás en uno de ellos, la próxima vez dush se abre ahí.</p>
           <ul class="list">
             <li><strong>Cachés y temp</strong> no necesita carpeta. Comprueba las cachés y carpetas temporales que solo guardan cosas que tu Mac puede reconstruir: cachés del sistema y de apps, logs, la Papelera, npm, Yarn, pnpm, Gradle, Cargo, Go, CocoaPods, el DerivedData y el DeviceSupport de Xcode, las cachés de los simuladores y las de VS&nbsp;Code. Las carpetas que no están o no son seguras quedan fuera, y las anidadas solo se cuentan una vez.</li>
-            <li><strong>Descargas y Escritorio</strong> escanea los dos sospechosos habituales con un clic.</li>
-            <li><strong>Archivos grandes</strong> tampoco necesita una carpeta: los archivos más grandes de tu carpeta de usuario de más de 100&nbsp;MB, con lo que ocupan y con cuánto tiempo llevan ahí. El mayor primero, o el más antiguo primero para dar con los que nadie ha abierto en mucho tiempo. La lista se guarda, así que la próxima vez aparece al instante.</li>
-            <li><strong>Escanear esta carpeta</strong> repite el escaneo solo de la carpeta que has seleccionado, con las opciones que ya están en pantalla. El escaneo que estabas mirando se queda en el historial.</li>
-            <li><strong>Los más grandes hasta ahora</strong>: los archivos grandes aparecen en cuanto se encuentran, las carpetas en cuanto se miden. Pulsa Esc para detenerte cuando quieras.</li>
+            <li><strong>Descargas y Escritorio</strong> vigila los dos sitios donde se acumulan los archivos.</li>
+            <li><strong>Archivos grandes</strong> tampoco necesita una carpeta: los archivos más grandes de tu carpeta de usuario de más de 100&nbsp;MB, con lo que ocupan y con cuánto tiempo llevan ahí. El mayor primero, o el más antiguo primero para dar con los que nadie ha abierto en mucho tiempo.</li>
+            <li><strong>Mac completo</strong> es todo tu disco de arranque, con cada archivo contado una vez. Medirlo tarda más que las otras secciones, desde unos segundos hasta unos minutos, así que, para cuidar tu CPU y tu batería, dush solo lo hace cuando pulsas Volver a escanear. Mientras tanto, tu último resultado se queda ahí.</li>
+            <li><strong>Escanear esta carpeta</strong> escanea solo la carpeta que has seleccionado, con las opciones del escaneo en el que estás, y la añade a las carpetas recientes. Si dush ya lo hizo en los últimos tres días, ves ese escaneo al instante. Atrás te lleva al escaneo que estabas mirando.</li>
+            <li><strong>Los más grandes hasta ahora</strong>: en un primer escaneo, los archivos grandes aparecen en cuanto se encuentran, las carpetas en cuanto se miden. Pulsa Esc para detenerte cuando quieras.</li>
+            <li><strong>Volver a escanear</strong>, en cada sección, la pone al día ahora (⌘R). Las actualizaciones nunca bloquean la ventana: los escaneos se turnan en segundo plano y nada los espera.</li>
             <li><strong>Tus opciones</strong>: un tamaño mínimo (100&nbsp;MB, 512&nbsp;MB, 1&nbsp;GB, 5&nbsp;GB o el tuyo, como <code>1.5 GiB</code>), solo archivos o carpetas, omite <code>node_modules</code>, <code>.git</code> y otras carpetas de desarrollo, o excluye nombres y patrones como <code>*.xcarchive</code>.</li>
           </ul>
         </div>
@@ -190,10 +193,10 @@
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Qué ha cambiado</h3>
-          <p>Compara el último escaneo de una carpeta con uno anterior de tu historial. <span class="growth">Ha crecido 7,90&nbsp;GB</span> desde el 20 sep, 18:40: esto es lo que ha crecido, lo que se ha reducido y lo que es nuevo.</p>
+          <p>Compara el último escaneo de una sección con uno de sus 10 últimos escaneos. <span class="growth">Ha crecido 7,90&nbsp;GB</span> desde el 20 sep, 18:40: esto es lo que ha crecido, lo que se ha reducido y lo que es nuevo.</p>
         </li>
       </ul>
-      <p class="caption center" data-reveal>Haz doble clic en una fila para seguir dentro: una carpeta que sigue ahí se escanea, un archivo se abre en el Finder. Atrás y Adelante en la barra de título (⌘[ y ⌘]) recorren las pantallas que has visitado, y cada una vuelve con su filtro y su selección.</p>
+      <p class="caption center" data-reveal>Haz doble clic en una fila para seguir dentro: una carpeta que sigue ahí se abre con su propio escaneo, un archivo se abre en el Finder. Atrás y Adelante en la barra de título (⌘[ y ⌘]) recorren las pantallas que has visitado, y cada una vuelve con su filtro y su selección.</p>
     </section>
 
     <!-- AI -->
@@ -298,18 +301,18 @@
       </div>
       <ul class="cards cards--three">
         <li class="card" data-reveal>
-          <h3 class="card__title">Historial de escaneos</h3>
-          <p>Cada escaneo se guarda en tu Mac, agrupado por día, y se reabre al instante sin escanear de nuevo. Guárdalo 30&nbsp;días, 90&nbsp;días o para siempre, o no guardes nada.</p>
-          <p class="quote">Quitado del historial. Tus archivos no se tocaron.</p>
-        </li>
-        <li class="card" data-reveal>
-          <h3 class="card__title">Carpetas vigiladas</h3>
-          <p>Dale un límite a una carpeta y dush te avisa, una vez, cuando un escaneo la encuentre pasado el límite. Puede escanearlas cada día o cada semana mientras esté abierto.</p>
+          <h3 class="card__title">Favoritos</h3>
+          <p>Tus propias carpetas: cada una es una sección de la barra lateral, al día como las demás. Ponle a una un límite de tamaño y dush envía una notificación cuando un escaneo la encuentra por encima. También puede escanearlas cada día o cada semana mientras está abierto.</p>
           <p class="quote">Developer pasa de 60&nbsp;GB. Ahora son 64,10&nbsp;GB, 7,90&nbsp;GB más desde el 20 sep.</p>
         </li>
         <li class="card" data-reveal>
+          <h3 class="card__title">Recientes</h3>
+          <p>Las 10 últimas carpetas que escaneaste, desde Nuevo escaneo o entrando en ellas desde un escaneo, a un clic en la barra lateral. Olvidar esta sección quita los escaneos guardados de una sección, y Vaciar datos guardados… los de todas.</p>
+          <p class="quote">Escaneos guardados olvidados. Tus archivos no se han tocado.</p>
+        </li>
+        <li class="card" data-reveal>
           <h3 class="card__title">Barra de menús</h3>
-          <p>Espacio libre en disco de un vistazo, tus carpetas vigiladas y cuánto han crecido, y atajos para escanear. Apagada hasta que la enciendas.</p>
+          <p>Espacio libre en disco de un vistazo, tus favoritos y cuánto han crecido, y atajos para escanear. Apagada hasta que la enciendas.</p>
         </li>
         <li class="card" data-reveal>
           <h3 class="card__title">Finder y Atajos</h3>
@@ -337,7 +340,7 @@
           <dl class="promises">
             <div>
               <dt>dush nunca elimina tus archivos</dt>
-              <dd>Solo mira. Quitar algo siempre es tu decisión, en el Finder o en el Terminal. Lo único que dush puede quitar es su propio historial de escaneos.</dd>
+              <dd>Solo mira. Quitar algo siempre es tu decisión, en el Finder o en el Terminal. Lo único que dush puede quitar es lo que guardó él mismo: sus propios escaneos.</dd>
             </div>
             <div>
               <dt>Sin rastreo ni perfilado</dt>
@@ -373,7 +376,8 @@
       <div class="intro" data-reveal>
         <p class="label">En el Terminal</p>
         <h2 class="heading" id="cli-title">El mismo motor, en tu shell.</h2>
-        <p>dush empezó como herramienta de línea de comandos, y lo sigue siendo. La app y la CLI comparten el mismo motor, así que dan los mismos tamaños para la misma carpeta, hasta el byte. Instálalo con Homebrew:</p>
+        <p>dush empezó como herramienta de línea de comandos, y lo sigue siendo. La app y la CLI comparten el mismo motor, así que dan los mismos tamaños para la misma carpeta, hasta el byte. Instálalo con Homebrew, que lo compila con Xcode 26:</p>
+        <p>En un terminal, <code>dush</code> sin nada más abre una sesión a pantalla completa con las mismas secciones en vivo que la app, en inglés: Caches &amp; Temp, Developer Caches, Large Files, Downloads &amp; Desktop, Entire Mac (<code>/entire</code>, escaneado solo cuando pulsas <code>r</code>), tus Favorites y las 10 últimas carpetas en Recent. Cada una se abre con su último escaneo y, cuando este tiene tres días, se actualiza por detrás midiendo de nuevo solo lo que ha cambiado. También puedes preguntar con tus palabras: Apple Intelligence, en este Mac, elige el comando o responde, y puede equivocarse. Sobre un elemento de los resultados, <code>a</code> pregunta si se puede eliminar. Dale a <code>dush</code> una ruta o una opción, o redirige su salida, y escanea una vez e imprime la tabla, como abajo.</p>
       </div>
 
       <div class="command" data-reveal>
@@ -384,8 +388,8 @@
       <div class="split split--top cli">
         <div data-reveal>
           <h3 class="card__title">Pruébalo</h3>
-<pre class="code"><code><span class="comment"># The caches and temp folders, no path needed</span>
-dush
+<pre class="code"><code><span class="comment"># The caches and temp folders, printed once</span>
+dush --no-tui
 
 <span class="comment"># Your home, files over 1 GB, the top 10</span>
 dush ~ --min-size 1GB --files-only --top 10

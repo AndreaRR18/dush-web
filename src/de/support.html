@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Y9ULqaTsclkYG/fhtY1Tc78hTB2TELxyHcl3iV0SbNg='; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>dush · Support</title>
-  <meta name="description" content="Hilfe für dush für Mac: wie du ein Problem meldest, was du brauchst, und Antworten zu Plattenzugriff, Summen, Apple Intelligence und Verlauf.">
+  <meta name="description" content="Hilfe für dush für Mac: wie du ein Problem meldest, was du brauchst, und Antworten zu Plattenzugriff, Summen, Apple Intelligence und gesicherten Scans.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
@@ -120,7 +120,7 @@
         <h2 class="doc__heading" id="questions-title">Fragen</h2>
 
         <h3 class="card__title">Warum fragt dush nach meiner Platte, und was macht es mit diesem Zugriff?</h3>
-        <p>macOS hält Apps von deiner Platte fern, bis du zustimmst. Ein Ordner, den du reinziehst oder auswählst, braucht nichts weiter. Caches &amp; Temp, Downloads &amp; Schreibtisch und Entwickler-Caches schauen an Stellen, die du nicht ausgewählt hast, deshalb bittet dush dich einmal, dein Startvolume im System-Panel zu wählen.</p>
+        <p>macOS hält Apps von deiner Platte fern, bis du zustimmst. Ein Ordner, den du reinziehst oder auswählst, braucht nichts weiter. Caches &amp; Temp, Downloads &amp; Schreibtisch, Große Dateien, Entwickler-Caches und Ganzer Mac schauen an Stellen, die du nicht ausgewählt hast, deshalb bittet dush dich einmal, dein Startvolume im System-Panel zu wählen.</p>
         <p>Mit diesem Zugriff liest dush die Namen, Größen und Daten von Dateien und Ordnern. Es liest nicht, was in deinen Dateien steht, und es verändert sie nie. Den Zugriff hält es schreibgeschützt, auf diesem Mac.</p>
         <p>Festplattenvollzugriff ist ein eigener, optionaler Schritt. Er lässt dush auch die Ordner messen, die macOS privat hält, wie den Papierkorb und Safaris Caches. Nur du kannst ihn in den Systemeinstellungen einschalten. Die <a href="privacy.html">Datenschutzrichtlinie</a> hat das ganze Bild.</p>
 
@@ -129,13 +129,21 @@
         <p>Festplattenvollzugriff, in Einstellungen › Datenschutz, lässt dush einige davon lesen. Das Banner nennt nur die Anzahl, denn dush merkt sich diese Pfade nicht.</p>
         <p>Alles, was du ausgeschlossen hast, in den Optionen eines Scans oder in Einstellungen › Ausschlüsse, fehlt auch.</p>
 
+        <h3 class="card__title">Warum aktualisiert sich Ganzer Mac nicht von selbst?</h3>
+        <p>Deine ganze Festplatte zu messen dauert länger als die anderen Bereiche, von ein paar Sekunden bis zu ein paar Minuten. Um Prozessor und Batterie zu schonen, macht dush das nur, wenn du darum bittest: Klick auf Erneut scannen. Dein letztes Ergebnis bleibt so lange dort.</p>
+        <p>Unter den Ergebnissen vergleicht dush seine Summe mit dem belegten Speicher, den dein Volume meldet. Der Unterschied sind APFS-Snapshots, freigebbarer Speicher und was dush nicht lesen konnte, etwa die Dateien anderer Accounts. Festplattenvollzugriff, in Einstellungen › Datenschutz, lässt dush einiges davon lesen.</p>
+
+        <h3 class="card__title">Kann ich dush weiter benutzen, während es scannt?</h3>
+        <p>Ja. Jeder Bereich öffnet sofort mit seinem letzten Scan, und Updates laufen im Hintergrund. Du kannst also in der Zwischenzeit Ergebnisse ansehen, andere Bereiche öffnen und Apple Intelligence fragen. Beim Öffnen aktualisiert dush nur die Bereiche, deren letzter Scan mindestens drei Tage alt ist. Die Scans wechseln sich ab, und Ganzer Mac hat eine eigene Spur, damit er die anderen nie aufhält.</p>
+        <p>Erneut scannen (⌘R) bringt den Bereich auf dem Bildschirm sofort auf den neuesten Stand. Esc stoppt seine Aktualisierung, und sein letzter Scan bleibt.</p>
+
         <h3 class="card__title">Warum kann eine Apple-Intelligence-Antwort falsch sein?</h3>
         <p>Es ist ein kleines Modell auf deinem Mac, und es sieht nie, was in deinen Dateien steht. Es arbeitet mit Details wie Pfad, Größe und ein paar Namen. Deshalb kann es ein Element falsch einschätzen, und es kann nicht wissen, was dir wichtig ist.</p>
         <p>Nimm ein Urteil als Ausgangspunkt und schau dir das Element selbst an, bevor du entscheidest. Die App zeigt, was das Modell erfuhr, unter der Antwort.</p>
 
-        <h3 class="card__title">Wie leere ich den Verlauf?</h3>
-        <p>Wähle Verlauf leeren&nbsp;… unten in der Seitenleiste oder in Einstellungen › Allgemein. dush fragt erst nach und entfernt dann seine gespeicherten Scans. Deine Dateien bleiben genau, wo sie sind. Gemerkte Apple-Intelligence-Antworten bleiben auch.</p>
-        <p>Für einen einzelnen Scan nimm Aus dem Verlauf entfernen. Um das Speichern zu stoppen, schalte Gespeicherte Scans behalten in Einstellungen › Allgemein aus.</p>
+        <h3 class="card__title">Wie entferne ich, was dush gesichert hat?</h3>
+        <p>Wähle Gesicherte Daten entfernen&nbsp;… unten in der Seitenleiste oder in Einstellungen › Allgemein. dush fragt erst nach und entfernt dann die gesicherten Scans aller Bereiche, auch die der Favoriten und zuletzt benutzten Ordner, dazu die Liste der großen Dateien und die Messung der Entwickler-Caches. Deine Dateien bleiben genau, wo sie sind. Gemerkte Apple-Intelligence-Antworten, deine Einstellungen und deine Favoriten bleiben auch.</p>
+        <p>Für einen einzelnen Bereich wähle Diesen Bereich vergessen in seinem Menü. Aus Favoriten entfernen und Aus „Zuletzt benutzt“ entfernen nehmen einen Ordner samt seinen gesicherten Scans aus der Seitenleiste. Alle drei kannst du gleich danach widerrufen.</p>
 
         <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush löscht nie Dateien. Wenn du dich entscheidest, etwas zu entfernen, ist das immer dein eigener Schritt, im Finder oder Terminal.</span></p>
       </section>

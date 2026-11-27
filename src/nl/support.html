@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Y9ULqaTsclkYG/fhtY1Tc78hTB2TELxyHcl3iV0SbNg='; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>dush · Support</title>
-  <meta name="description" content="Hulp voor dush voor Mac: hoe je een probleem meldt, wat je nodig hebt om het te draaien, en antwoorden over schijftoegang, totalen, Apple Intelligence en geschiedenis.">
+  <meta name="description" content="Hulp voor dush voor Mac: hoe je een probleem meldt, wat je nodig hebt om het te draaien, en antwoorden over schijftoegang, totalen, Apple Intelligence en opgeslagen scans.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#F5F0E7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
@@ -120,7 +120,7 @@
         <h2 class="doc__heading" id="questions-title">Vragen</h2>
 
         <h3 class="card__title">Waarom vraagt dush om mijn schijf, en wat doet het met die toegang?</h3>
-        <p>macOS houdt apps van je schijf af totdat je het zegt. Een map die je erin sleept of kiest heeft niets meer nodig. Caches en temp, Downloads en Bureaublad en Ontwikkelaarscaches kijken op plekken die je niet koos, daarom vraagt dush je één keer om je opstartschijf te kiezen in het systeempaneel.</p>
+        <p>macOS houdt apps van je schijf af totdat je het zegt. Een map die je erin sleept of kiest heeft niets meer nodig. Caches en temp, Downloads en Bureaublad, Grote bestanden, Ontwikkelaarscaches en Hele Mac kijken op plekken die je niet koos, daarom vraagt dush je één keer om je opstartschijf te kiezen in het systeempaneel.</p>
         <p>Met die toegang leest dush de namen, groottes en datums van bestanden en mappen. Het leest niet wat er in je bestanden staat, en wijzigt ze nooit. Het houdt de toegang alleen-lezen, op deze Mac.</p>
         <p>Volledige schijftoegang is een aparte, optionele stap. Daarmee laat dush ook de mappen meten die macOS privé houdt, zoals de Prullenmand en de caches van Safari. Alleen jij kunt het aanzetten, in Systeeminstellingen. De <a href="privacy.html">Privacyverklaring</a> heeft het hele plaatje.</p>
 
@@ -129,13 +129,21 @@
         <p>Volledige schijftoegang, in Instellingen › Privacy, laat dush er een paar lezen. De banner geeft alleen het aantal, want dush bewaart die paden niet.</p>
         <p>Alles wat je hebt uitgesloten, in de opties van een scan of in Instellingen › Uitsluitingen, ontbreekt ook.</p>
 
+        <h3 class="card__title">Waarom werkt Hele Mac zichzelf niet bij?</h3>
+        <p>Je hele schijf meten duurt langer dan de andere secties, van een paar seconden tot een paar minuten. Om je processor en batterij te sparen, doet dush het alleen als je erom vraagt: klik op Scan opnieuw. Je laatste resultaat blijft daar zolang staan.</p>
+        <p>Onder de resultaten vergelijkt dush zijn totaal met de gebruikte ruimte die je schijf meldt. Het verschil zijn APFS-snapshots, opschoonbare ruimte en wat dush niet kon lezen, zoals bestanden van andere accounts. Volledige schijftoegang, in Instellingen › Privacy, laat dush een deel daarvan lezen.</p>
+
+        <h3 class="card__title">Kan ik dush blijven gebruiken terwijl het scant?</h3>
+        <p>Ja. Elke sectie opent meteen op zijn laatste scan en updates lopen op de achtergrond, dus intussen kun je resultaten bekijken, andere secties openen en Apple Intelligence iets vragen. Bij het openen werkt dush alleen de secties bij waarvan de laatste scan minstens drie dagen oud is. De scans wachten hun beurt af, en Hele Mac heeft een eigen baan, zodat hij de rest nooit ophoudt.</p>
+        <p>Scan opnieuw (⌘R) werkt de sectie op het scherm meteen bij. Esc stopt de update, en de laatste scan blijft.</p>
+
         <h3 class="card__title">Waarom kan een Apple Intelligence-antwoord fout zijn?</h3>
         <p>Het is een klein model dat op je Mac draait, en het ziet nooit wat er in je bestanden staat. Het werkt met details zoals het pad, de grootte en een paar namen. Daarom kan het een item verkeerd inschatten, en het kan niet weten wat jij belangrijk vindt.</p>
         <p>Neem een oordeel als uitgangspunt en bekijk het item zelf voordat je beslist. De app toont wat het model te horen kreeg, onder het antwoord.</p>
 
-        <h3 class="card__title">Hoe wis ik de geschiedenis?</h3>
-        <p>Kies Wis geschiedenis… onderaan de zijbalk of in Instellingen › Algemeen. dush vraagt het eerst en verwijdert dan zijn opgeslagen scans. Je bestanden blijven precies waar ze zijn. Onthouden antwoorden van Apple Intelligence blijven ook.</p>
-        <p>Voor één scan gebruik je Verwijder uit geschiedenis. Om te stoppen met scans opslaan, zet je Voltooide scans opslaan uit in Instellingen › Algemeen.</p>
+        <h3 class="card__title">Hoe wis ik wat dush heeft opgeslagen?</h3>
+        <p>Kies Wis opgeslagen gegevens… onderaan de navigatiekolom of in Instellingen › Algemeen. dush vraagt het eerst en verwijdert dan de opgeslagen scans van elke sectie, ook die van favorieten en recente mappen, samen met de lijst met grote bestanden en de meting van de ontwikkelaarscaches. Je bestanden blijven precies waar ze zijn. Onthouden antwoorden van Apple Intelligence, je instellingen en je favorieten blijven ook.</p>
+        <p>Voor één sectie kies je Vergeet deze sectie in het menu ervan. Verwijder uit favorieten en Verwijder uit recent halen een map uit de navigatiekolom, met zijn opgeslagen scans. Alle drie kun je meteen ongedaan maken.</p>
 
         <p class="notice"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg> <span>dush verwijdert nooit bestanden. Als je besluit iets te verwijderen, is dat altijd je eigen stap, in de Finder of de Terminal.</span></p>
       </section>
